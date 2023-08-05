@@ -31,6 +31,7 @@
 * [Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
 * [Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
 * [Cross-Sectional Investigation: Taxa Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
+* [Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
 
 ## Paired Samples Analysis
 
@@ -38,6 +39,7 @@
 * [Unraveling Paired Samples: Alpha Diversity Analysis](paired-samples-analysis/unraveling-paired-samples-alpha-diversity-analysis.md)
 * [Navigating Paired Samples: Beta Diversity Analysis](paired-samples-analysis/navigating-paired-samples-beta-diversity-analysis.md)
 * [Inspecting Paired Samples: Taxa Analysis](paired-samples-analysis/inspecting-paired-samples-taxa-analysis.md)
+* [Automated Reporting for Paired Studies: MicrobiomeStat's Integrated Analysis Reports](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
 
 ## Longitudinal Study Design
 
