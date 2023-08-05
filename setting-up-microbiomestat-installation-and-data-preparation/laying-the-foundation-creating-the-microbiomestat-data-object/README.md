@@ -6,7 +6,7 @@ description: >-
 
 # Laying the Foundation: Creating the MicrobiomeStat Data Object
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Figure 1: The Structure of a MicrobiomeStat Data Object. This diagram illustrates the interplay among the five components: 'Feature.tab', 'Meta.dat', 'Feature.ann', the optional 'Phylogenetic tree', and the optional 'Feature.agg.list'. It highlights how samples and features (OTU/ASV/KEGG/Gene etc.) align to connect these components.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Figure 1: The Structure of a MicrobiomeStat Data Object. This diagram illustrates the interplay among the five components: 'Feature.tab', 'Meta.dat', 'Feature.ann', the optional 'Phylogenetic tree', and the optional 'Feature.agg.list'. It highlights how samples and features (OTU/ASV/KEGG/Gene etc.) align to connect these components.</p></figcaption></figure>
 
 "**Objective: Constructing the MicrobiomeStat Data Object** You're just a few strides away from **mastering the inner workings** of the MicrobiomeStat data object. Let's unfold its **core components** and why each is a key pillar in your microbial analysis!
 
