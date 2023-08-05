@@ -10,12 +10,6 @@ Welcome to **Inspecting Paired Samples: Taxa Analysis**. Here, we delve into the
 
 It's all about deciphering patterns in **taxa composition, prevalence, abundance, and changes**, and identifying samples with similar trends of taxa variation. Prepare to **uncover the hidden narratives** within your microbial data and reveal the complexity of these fascinating **microbial communities**!
 
-\------------------------------------------------------------------------------------------
-
-**Coming soon: Differential Abundance Analysis**! This forthcoming section will plunge into the depths of **MicrobiomeStat's** robust techniques, **unmasking significant changes in microbial abundance** between paired conditions. With the aid of its intricate tools, we'll **unearth the secrets hidden within these complex microbial communities**. So, stay tuned for a **more comprehensive exploration and deeper insights**!&#x20;
-
-\------------------------------------------------------------------------------------------
-
 Before diving into the Differential Abundance Analysis, let's shed some light on two other powerful functions in our analytical toolbox: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
 
 Let's start with `generate_taxa_indiv_boxplot_long()`:
