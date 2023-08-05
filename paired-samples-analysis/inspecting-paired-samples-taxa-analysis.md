@@ -41,6 +41,37 @@ This fits linear mixed models to assess taxa abundance changes over time across 
 | Bacteroidetes  | Placebo | 202133.22205 | -0.140524866     | 0.2804474 | -0.50107380 | 0.61906560 | 0.9160217        | 1.946338e-01   | 1               | sexmale        |
 | Bacteroidetes  | LGG     | 202133.22205 | -0.140524866     | 0.2804474 | -0.50107380 | 0.61906560 | 0.9160217        | 1.751649e-01   | 1               | sexmale        |
 
+Alternatively, we can assess taxa changes between timepoints using `generate_taxa_change_test_pair()`:
+
+```r
+generate_taxa_change_test_pair(
+  data.obj = peerj32.obj,
+  subject.var = "subject",
+  time.var = "time",
+  group.var = "group",
+  adj.vars = c("sex"),
+  change.base = "1",
+  change.func = "lfc",
+  feature.level = "original",
+  prev.filter = 0.01,
+  abund.filter = 0.01,
+  feature.dat.type = "count"
+)
+```
+
+This computes fold changes in taxa abundance between timepoints. It models the changes using linear mixed models to test for group effects.
+
+| Variable                         | Group   | R.Squared   | F.Statistic | Estimate            | P.Value | Adjusted.P.Value | Mean.Abundance\_Change | Mean.Prevalence\_Change | SD.Abundance\_Change | SD.Prevalence\_Change |
+| -------------------------------- | ------- | ----------- | ----------- | ------------------- | ------- | ---------------- | ---------------------- | ----------------------- | -------------------- | --------------------- |
+| Akkermansia                      | Placebo | 0.224813850 | 5.75929207  | -0.786560304739555  | 0.05    | 0.3198653        | -0.37419286            | 0.3571429               | 0.9291046            | 0.4879500             |
+| Akkermansia                      | LGG     | 0.224813850 | 5.75929207  | -0.786560304739555  | 0.05    | 0.3198653        | 0.43559488             | 0.7500000               | 0.5547334            | 0.4472136             |
+| Anaerostipes caccae et rel.      | Placebo | 0.013836924 | 0.30074853  | 0.156445859566378   | 0.64    | 0.8195592        | 0.01211655             | 0.2857143               | 0.5373659            | 0.4600437             |
+| Anaerostipes caccae et rel.      | LGG     | 0.013836924 | 0.30074853  | 0.156445859566378   | 0.64    | 0.8195592        | -0.16805018            | 0.2500000               | 0.5034656            | 0.4472136             |
+| Bacteroides intestinalis et rel. | Placebo | 0.001066535 | 0.02111832  | -0.0630644885178442 | 0.88    | 0.9198885        | 0.01827511             | 0.5714286               | 1.1320547            | 0.5039526             |
+| Bacteroides intestinalis et rel. | LGG     | 0.001066535 | 0.02111832  | -0.0630644885178442 | 0.88    | 0.9198885        | 0.10736426             | 0.6250000               | 1.0647242            | 0.5000000             |
+| Bacteroides uniformis et rel.    | Placebo | 0.003758428 | 0.07334084  | -0.114486918852422  | 0.74    | 0.8538961        | -0.23956082            | 0.5000000               | 1.0205461            | 0.5091751             |
+| Bacteroides uniformis et rel.    | LGG     | 0.003758428 | 0.07334084  | -0.114486918852422  | 0.74    | 0.8538961        | -0.11328446            | 0.5000000               | 1.0481861            | 0.5163978             |
+
 After diving into the Differential Abundance Analysis, let's shed some light on two other powerful functions in our analytical toolbox: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
 
 Let's start with `generate_taxa_indiv_boxplot_long()`:
