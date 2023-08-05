@@ -8,6 +8,43 @@ description: >-
 
 Embarking on a journey through the microbial landscape, we first use MicrobiomeStat's `generate_taxa_heatmap_single` function. This function paints a rich, color-coded picture of microbial abundance across our groups of interest.
 
+Before visualizing taxa abundance, we can perform differential abundance testing using `generate_taxa_test_single` to identify taxa that differ significantly between groups.
+
+```r
+taxa_results <- generate_taxa_test_single(
+  data.obj = peerj32.obj,
+  time.var = "time",
+  t.level = "1",
+  group.var = "group",
+  adj_vars = "sex",
+  feature.level = "Genus",
+  ...
+)
+```
+
+This function applies preprocessing like filtering, normalization and aggregation at the specified taxonomic level. Then it runs the ZicoSeq method to test for significant differences between groups, adjusting for covariates.
+
+The results contain tables summarizing significant taxa, their abundance statistics, and associated p-values and effect sizes. This guides selection of interesting taxa for further investigation.
+
+#### Differential abundance results at Genus level
+
+| Variable                             | Group   | R.Squared | F.Statistic | Estimate | P.Value | Adjusted.P.Value | Mean.Proportion |
+| ------------------------------------ | ------- | --------- | ----------- | -------- | ------- | ---------------- | --------------- |
+| Actinomycetaceae                     | Placebo | 0.024     | 0.815       | -0.00387 | 0.45    | 0.963            | 0.000172        |
+| Actinomycetaceae                     | LGG     | 0.024     | 0.815       | -0.00387 | 0.45    | 0.963            | 0.000100        |
+| Aerococcus                           | Placebo | 0.011     | 0.515       | -0.0032  | 0.45    | 0.963            | 0.000168        |
+| Aerococcus                           | LGG     | 0.011     | 0.515       | -0.0032  | 0.45    | 0.963            | 0.000312        |
+| Aeromonas                            | Placebo | 0.00426   | 0.171       | -0.002   | 0.75    | 0.963            | 0.000178        |
+| Aeromonas                            | LGG     | 0.00426   | 0.171       | -0.002   | 0.75    | 0.963            | 0.000336        |
+| Akkermansia                          | Placebo | 0.00394   | 0.463       | -0.0182  | 0.36    | 0.963            | 0.0234          |
+| Akkermansia                          | LGG     | 0.00394   | 0.463       | -0.0182  | 0.36    | 0.963            | 0.0127          |
+| Alcaligenes faecalis subsp. faecalis | Placebo | 0.0399    | 0.987       | -0.0025  | 0.41    | 0.963            | 0.0000572       |
+| Alcaligenes faecalis subsp. faecalis | LGG     | 0.0399    | 0.987       | -0.0025  | 0.41    | 0.963            | 0               |
+
+This table shows the top 10 differentially abundant genera between groups based on ZicoSeq results, with statistics like R squared, F statistic, p-values, effect size and mean proportions. Additional columns for prevalence and abundance variation are omitted for brevity.
+
+Next, we can visualize the abundance using `generate_taxa_heatmap_single`:
+
 Let's start by omitting time factors and stratification variables:
 
 ```r
