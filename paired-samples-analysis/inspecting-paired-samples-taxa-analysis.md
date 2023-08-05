@@ -10,7 +10,38 @@ Welcome to **Inspecting Paired Samples: Taxa Analysis**. Here, we delve into the
 
 It's all about deciphering patterns in **taxa composition, prevalence, abundance, and changes**, and identifying samples with similar trends of taxa variation. Prepare to **uncover the hidden narratives** within your microbial data and reveal the complexity of these fascinating **microbial communities**!
 
-Before diving into the Differential Abundance Analysis, let's shed some light on two other powerful functions in our analytical toolbox: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
+Before visual exploration, we can perform statistical testing to identify differentially abundant taxa using `generate_taxa_test_pair()`:
+
+```r
+generate_taxa_test_pair(
+  data.obj = peerj32.obj,
+  subject.var = "subject",
+  time.var = "time",
+  group.var = "group",
+  adj.vars = c("sex"),
+  feature.level = "Family",
+  prev.filter = 0,
+  abund.filter = 0,
+  feature.dat.type = "count"
+)
+```
+
+This fits linear mixed models to assess taxa abundance changes over time across groups. The output contains data frames with log fold changes, p-values and other statistics for each taxonomic level.
+
+#### Differential abundance results at Family level
+
+| Variable       | Group   | Base.Mean    | Log2.Fold.Change | LFC.SE    | Stat        | P.Value    | Adjusted.P.Value | Mean.Abundance | Mean.Prevalence | Output.Element |
+| -------------- | ------- | ------------ | ---------------- | --------- | ----------- | ---------- | ---------------- | -------------- | --------------- | -------------- |
+| Actinobacteria | Placebo | 26787.28072  | 0.588211903      | 0.3408940 | 1.72549818  | 0.10066563 | 0.5536610        | 4.216254e-02   | 1               | sexmale        |
+| Actinobacteria | LGG     | 26787.28072  | 0.588211903      | 0.3408940 | 1.72549818  | 0.10066563 | 0.5536610        | 3.456194e-02   | 1               | sexmale        |
+| Asteroleplasma | Placebo | 26.72426     | -0.008993952     | 0.1867924 | -0.04814946 | 0.96209966 | 0.9731425        | 3.085257e-05   | 1               | sexmale        |
+| Asteroleplasma | LGG     | 26.72426     | -0.008993952     | 0.1867924 | -0.04814946 | 0.96209966 | 0.9731425        | 2.355158e-05   | 1               | sexmale        |
+| Bacilli        | Placebo | 42586.38242  | -0.164408489     | 0.3289424 | -0.49980943 | 0.62294818 | 0.9160217        | 3.842440e-02   | 1               | sexmale        |
+| Bacilli        | LGG     | 42586.38242  | -0.164408489     | 0.3289424 | -0.49980943 | 0.62294818 | 0.9160217        | 4.550907e-02   | 1               | sexmale        |
+| Bacteroidetes  | Placebo | 202133.22205 | -0.140524866     | 0.2804474 | -0.50107380 | 0.61906560 | 0.9160217        | 1.946338e-01   | 1               | sexmale        |
+| Bacteroidetes  | LGG     | 202133.22205 | -0.140524866     | 0.2804474 | -0.50107380 | 0.61906560 | 0.9160217        | 1.751649e-01   | 1               | sexmale        |
+
+After diving into the Differential Abundance Analysis, let's shed some light on two other powerful functions in our analytical toolbox: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
 
 Let's start with `generate_taxa_indiv_boxplot_long()`:
 
