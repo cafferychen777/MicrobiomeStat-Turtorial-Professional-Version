@@ -199,9 +199,7 @@ generate_taxa_indiv_boxplot_long(
   palette = c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  
   "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", "#aec7e8",
   "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", "#c49c94", "#f7b6d2",
-  "#
-
-c7c7c7", "#dbdb8d", "#9edae5", "#f0f0f0", "#3182bd"),
+  "#c7c7c7", "#dbdb8d", "#9edae5", "#f0f0f0", "#3182bd"),
   pdf = TRUE,
   file.ann = NULL,
   pdf.wid = 11,
@@ -239,6 +237,8 @@ generate_taxa_indiv_spaghettiplot_long(
 )
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.03.29.png" alt=""><figcaption><p>Individual Phylum Abundance Spaghetti Plots: This function generates spaghetti plots showing longitudinal abundance trajectories for specific phyla within each individual. It focuses on the top 5 phyla by mean abundance. Each line represents one subject's phylum abundance over time. These plots enable analysis of individual temporal dynamics.</p></figcaption></figure>
+
 **These individual spaghetti plots trace each subject's journey over time for specific phyla. The top 5 phyla by mean abundance are displayed for clarity.**
 
 To assess group changes, `generate_taxa_spaghettiplot_long()` creates stacked spaghetti plots:
@@ -266,6 +266,8 @@ generate_taxa_spaghettiplot_long(
   file.ann = NULL  
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.04.49.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Spaghetti Plots: This function generates stacked spaghetti plots showing longitudinal abundance trajectories for specific phyla. It focuses on the top 3 phyla by mean abundance and overlays individual trajectories to highlight group changes. Filtering enables focused insights into temporal dynamics. These plots enable analysis of phylum abundance shifts over time.</p></figcaption></figure>
 
 **These stacked spaghetti plots overlay individual trajectories to highlight group changes in phyla abundance over time. The top 3 phyla by mean abundance are displayed for a focused analysis.**
 
