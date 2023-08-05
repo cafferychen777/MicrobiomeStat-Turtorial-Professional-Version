@@ -11,14 +11,30 @@ Embarking on a journey through the microbial landscape, we first use MicrobiomeS
 Before visualizing taxa abundance, we can perform differential abundance testing using `generate_taxa_test_single` to identify taxa that differ significantly between groups.
 
 ```r
-taxa_results <- generate_taxa_test_single(
+generate_taxa_test_single(
   data.obj = peerj32.obj,
   time.var = "time",
   t.level = "1",
   group.var = "group",
   adj_vars = "sex",
+  feature.dat.type = "count",
   feature.level = "Genus",
-  ...
+  prev.filter = 0,
+  abund.filter = 0,
+  is.winsor = TRUE,
+  outlier.pct = 0.001,
+  winsor.end = 'top',
+  is.post.sample = TRUE,
+  post.sample.no = 25,
+  list(function (x) x^0.5, function (x) x^0.25),
+  stats.combine.func = max,
+  perm.no = 99,
+  strata = NULL,
+  ref.pct = 0.5,
+  stage.no = 6,
+  excl.pct = 0.2,
+  is.fwer = TRUE,
+  verbose = TRUE
 )
 ```
 
