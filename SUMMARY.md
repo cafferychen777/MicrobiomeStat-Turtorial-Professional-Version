@@ -53,3 +53,4 @@
 * [Data Normalization](data-manipulation-and-transformation/data-normalization.md)
 * [Data Filtering](data-manipulation-and-transformation/data-filtering.md)
 * [Metadata Management](data-manipulation-and-transformation/metadata-management.md)
+* [Data Validation](data-manipulation-and-transformation/data-validation.md)
