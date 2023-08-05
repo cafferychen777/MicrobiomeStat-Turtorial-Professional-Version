@@ -8,6 +8,69 @@ description: >-
 
 Prepare for an insightful journey into **Unraveling Paired Samples: Alpha Diversity Analysis**! We'll traverse through the diverse landscape of **alpha diversity**, examining variations across **different time points** and **groups**. Through the lens of **illustrative boxplots**, we'll probe into the existence of significant **changes or disparities** in alpha diversity. Additionally, we're set to explore if there are **transformations** in alpha diversity within the **same group across two time points**. So, let's dive in and witness the dynamic fluctuations within the microscopic world of microbiomes!
 
+Before delving deeper into **alpha diversity analysis**, it is prudent to understand how to test for differences in alpha diversity across timepoints or groups. MicrobiomeStat provides the `generate_alpha_test_pair()` function, which utilizes a **linear mixed model** to detect changes in alpha diversity for paired samples designs.
+
+The linear mixed model incorporates the time variable, group variable, and any additional adjustment variables as **fixed effects**, and the **subject variable** as a **random effect**.
+
+The output is a list of **coefficient tables**, one for each alpha diversity index. Each table includes the term, estimate, standard error, **t-value**, and **p-value** for each fixed effect in the model.
+
+Here is an example usage:
+
+```r
+data(peerj32.obj)
+
+alpha_test_results <- generate_alpha_test_pair(
+  data.obj = peerj32.obj,  
+  alpha.obj = NULL,
+  time.var = "time",
+  alpha.name = c("shannon"),
+  subject.var = "subject",
+  group.var = "group",
+  adj.vars = "sex"
+)
+```
+
+| Term         | Estimate | Std.Error | Statistic | P.Value  |
+| ------------ | -------- | --------- | --------- | -------- |
+| (Intercept)  | 3.55     | 0.0331    | 107.      | 4.74e-36 |
+| time2        | 0.0261   | 0.0265    | 0.982     | 3.37e-1  |
+| sexmale      | -0.0579  | 0.0355    | -1.63     | 1.19e-1  |
+| groupPlacebo | 0.0722   | 0.0343    | 2.10      | 4.90e-2  |
+
+This allows us to **test** for differences in alpha diversity across timepoints or groups, and understand changes in microbial diversity. Next, we will further **visualize** the results using the `generate_alpha_change_boxplot_pair()` function.
+
+Before visually exploring differences in **alpha diversity** changes between groups, it is essential to grasp how to test for differences in alpha diversity across timepoints. MicrobiomeStat provides the `generate_alpha_change_test_pair()` function to compare alpha diversity metrics between two time points.
+
+The function supports various options for adjusting the tests and calculating alpha diversity changes. It will utilize **linear models** and **ANOVA** to differentiate between-group and within-group alpha diversity differences.
+
+The output is a list of **summary tables** for each alpha diversity metric tested. Each table contains columns for: **Term** (variable name), **Estimate** (coefficient), **Std.Error**, **Statistic** (t or F), and **P.Value**.
+
+Here is an example usage:
+
+```r
+library(vegan)
+data(peerj32.obj)
+
+generate_alpha_change_test_pair(
+  data.obj = peerj32.obj,
+  alpha.obj = NULL,
+  time.var = "time",
+  alpha.name = c("shannon"), 
+  subject.var = "subject",
+  group.var = "group",
+  adj.vars = "sex",
+  change.base = "1"  
+)
+```
+
+| Term         | Estimate  | Std.Error | Statistic | P.Value |
+| ------------ | --------- | --------- | --------- | ------- |
+| (Intercept)  | 0.0174    | 0.0140    | 1.24      | 0.230   |
+| sexmale      | -0.000390 | 0.0164    | -0.0238   | 0.981   |
+| groupPlacebo | -0.0154   | 0.0158    | -0.975    | 0.342   |
+
+This allows us to **test** for alpha diversity changes across timepoints and understand between-group versus within-group differences. Next, we will **visualize** using `generate_alpha_change_boxplot_pair()`.
+
 A quick note before we proceed further with our **alpha diversity analysis**. In the MicrobiomeStat toolbox, the functions ending in '**single**' are versatile and adaptable, capable of handling **single time point designs**, a **specific time point in paired samples designs**, or a **particular time point in longitudinal study designs**. Functions with the suffix '**pair**' are specifically tailored for **paired samples designs**, and those concluding with '**long**' are applicable to both **paired and multiple time point scenarios**. However, bear in mind, certain **visualizations may not appear aesthetically pleasing or insightful when applied to a paired samples design**. As we explore `generate_alpha_change_boxplot_pair` and `generate_alpha_boxplot_long`, this distinction will become clearer!
 
 Delving into our alpha diversity analysis, we first employ the `generate_alpha_boxplot_long` function:
