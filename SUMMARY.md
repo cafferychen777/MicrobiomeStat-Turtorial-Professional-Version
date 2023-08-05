@@ -45,3 +45,11 @@
 * [Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
 * [Time Travel in Microbiome: Beta Diversity Analysis in Longitudinal Studies](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
 * [Taxonomic Timelines: Taxa Analysis in Longitudinal Studies](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
+
+## Data Manipulation and Transformation
+
+* [Data Combination](data-manipulation-and-transformation/data-combination.md)
+* [Data Aggregation](data-manipulation-and-transformation/data-aggregation.md)
+* [Data Normalization](data-manipulation-and-transformation/data-normalization.md)
+* [Data Filtering](data-manipulation-and-transformation/data-filtering.md)
+* [Metadata Management](data-manipulation-and-transformation/metadata-management.md)
