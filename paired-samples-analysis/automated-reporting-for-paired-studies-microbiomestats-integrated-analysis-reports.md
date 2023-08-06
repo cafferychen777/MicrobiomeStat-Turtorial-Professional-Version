@@ -46,9 +46,11 @@ mStat_generate_report_change_pair(
   theme.choice = "bw",
   base.size = 12,
   palette = NULL,
-  output.file = "change_report.pdf" 
+  output.file = "path/change_report.pdf" 
 )
 ```
+
+{% file src="../.gitbook/assets/mStat_generate_report_change_pair_example.pdf" %}
 
 This reports biological variations between timepoints, facilitating discoveries.
 
@@ -87,8 +89,10 @@ mStat_generate_report_pair(
   feature.dat.type = "count",
   theme.choice = "bw",
   base.size = 12,
-  output.file = "report.pdf"
+  output.file = "path/report.pdf"
 )
 ```
+
+{% file src="../.gitbook/assets/mStat_generate_report_pair_example.pdf" %}
 
 The two functions enable automated paired sample analysis and reporting with MicrobiomeStat. Researchers can swiftly synthesize multidimensional dynamics through integrated reports.

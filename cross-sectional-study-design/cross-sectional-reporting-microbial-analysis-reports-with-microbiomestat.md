@@ -41,10 +41,12 @@ mStat_generate_report_single(
   feature.dat.type = "count",  
   theme.choice = "bw",
   base.size = 12,
-  output.file = "report.pdf"
+  output.file = "path/report.pdf"
 )
 
 ```
+
+{% file src="../.gitbook/assets/mStat_generate_report_single_example.pdf" %}
 
 The automated report relieves the burden of **manual analysis** and promotes consistency. By **integrating results** from diverse analytical dimensions, it strengthens evidence and tells a cohesive story.
 

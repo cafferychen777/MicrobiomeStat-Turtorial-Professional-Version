@@ -24,11 +24,28 @@ It then compiles the results into a publication-ready PDF report containing:
 We provide the longitudinal data and analysis parameters:
 
 ```r
-mStat_generate_report_long(
-  data.obj = long_data, 
-  time.var = "week",
-  output.file = "report.pdf"
-) 
+ mStat_generate_report_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  alpha.obj = NULL,
+  group.var = "sample_body_site",
+  adj_vars = c("subject_race"),
+  subject.var = "subject_id",
+  time.var = "visit_number",
+  alpha.name = c("shannon","simpson"),
+  dist.name = c("BC",'Jaccard'),
+  t0.level = unique(sort(subset_T2D.obj$meta.dat$visit_number))[1],
+  ts.levels = unique(sort(subset_T2D.obj$meta.dat$visit_number))[-1],
+  strata.var = "subject_race",
+  feature.level = c("Phylum"),
+  feature.dat.type = "count",
+  prev.filter = 0.0001,
+  abund.filter = 0.0001,
+  Transform = "log",
+  theme.choice = "bw",
+  base.size = 12,
+  output.file = "path/report.pdf"
+)
 ```
 
 This automated workflow streamlines analysis and reporting for longitudinal studies. The integrated report synthesizes temporal dynamics across analytical dimensions.
