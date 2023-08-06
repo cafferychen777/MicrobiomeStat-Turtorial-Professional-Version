@@ -12,7 +12,7 @@ The `mStat_generate_report_long()` function performs a comprehensive analysis en
 
 * **Alpha diversity** analysis using `generate_alpha_boxplot_long()`, `generate_alpha_spaghettiplot_long()` and `generate_alpha_test_long()`
 * **Beta diversity** analysis using `generate_beta_ordination_long()`, `generate_beta_pc_boxplot_long()`, `generate_beta_change_spaghettiplot_long()` and `generate_beta_test_long()`
-* **Taxonomic composition** analysis using `generate_taxa_areaplot_long()`, `generate_taxa_heatmap_long()`, `generate_taxa_barplot_long()` , `generate_taxa_test_long()`, `generate_taxa_boxplot_long()` and `generate_taxa_indiv_boxplot_long()`
+* **Taxonomic composition** analysis using `generate_taxa_areaplot_long()`, `generate_taxa_heatmap_long()`, `generate_taxa_barplot_long()` , `generate_taxa_test_long()`, `generate_taxa_boxplot_long()`,  `generate_taxa_indiv_boxplot_long()`,  `generate_taxa_spaghettiplot_long()` and `generate_taxa_indiv_spaghettiplot_long()`
 
 It then compiles the results into a publication-ready PDF report containing:
 
@@ -47,6 +47,8 @@ We provide the longitudinal data and analysis parameters:
   output.file = "path/report.pdf"
 )
 ```
+
+{% file src="../.gitbook/assets/mStat_generate_report_long_example.pdf" %}
 
 This automated workflow streamlines analysis and reporting for longitudinal studies. The integrated report synthesizes temporal dynamics across analytical dimensions.
 
