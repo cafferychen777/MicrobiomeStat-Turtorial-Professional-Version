@@ -19,11 +19,11 @@
   * [Navigating Data from Phyloseq into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/navigating-data-from-phyloseq-into-microbiomestat.md)
   * [Importing Data from QIIME2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/importing-data-from-qiime2-into-microbiomestat.md)
   * [Integrating Data from DADA2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/integrating-data-from-dada2-into-microbiomestat.md)
-  * [Transferring Data from BIOM into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/transferring-data-from-biom-into-microbiomestat.md)
   * [Fetching Data from Mothur into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/fetching-data-from-mothur-into-microbiomestat.md)
   * [Loading DGEList Data into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/loading-dgelist-data-into-microbiomestat.md)
   * [Incorporating DESeqDataSet into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/incorporating-deseqdataset-into-microbiomestat.md)
   * [Inputting SummarizedExperiment into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/inputting-summarizedexperiment-into-microbiomestat.md)
+  * [Transferring Data from BIOM into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/transferring-data-from-biom-into-microbiomestat.md)
 
 ## Cross-Sectional Study Design
 
@@ -51,6 +51,7 @@
 
 ## Data Manipulation and Transformation
 
+* [Data Summary](data-manipulation-and-transformation/data-summary.md)
 * [Data Combination](data-manipulation-and-transformation/data-combination.md)
 * [Data Aggregation](data-manipulation-and-transformation/data-aggregation.md)
 * [Data Normalization](data-manipulation-and-transformation/data-normalization.md)
