@@ -1,10 +1,8 @@
 ---
-description: >-
-  Find out how MicrobiomeStat measures up against other leading microbiome
-  analysis tools.
+description: See how MicrobiomeStat compares to other top microbiome analysis packages.
 ---
 
-# How Does MicrobiomeStat Measure Up? A Longitudinal Package Comparison
+# MicrobiomeStat vs. Other Longitudinal Packages: An In-Depth Comparison
 
 ### Comparative Table 1: Longitudinal Packages
 

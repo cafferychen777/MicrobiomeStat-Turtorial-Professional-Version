@@ -1,15 +1,15 @@
 # Table of contents
 
-* [Welcome to the MicrobiomeStat Tutorial: Your Best Choice for Microbiome Analysis Ever!](README.md)
+* [Welcome to the MicrobiomeStat Tutorial: The Ultimate Guide for Mastering Microbiome Data Analysis.](README.md)
 
 ## INTRODUCTION
 
 * [Overview of the MicrobiomeStat Package](introduction/overview-of-the-microbiomestat-package.md)
-* [The Edge of MicrobiomeStat: Why It's Your Top Choice](introduction/the-edge-of-microbiomestat-why-its-your-top-choice.md)
+* [The Edge of MicrobiomeStat: Why It Should Be On Your Shortlist](introduction/the-edge-of-microbiomestat-why-it-should-be-on-your-shortlist.md)
 * [Feature Overview: Dive Deep into the Capabilities of MicrobiomeStat](introduction/feature-overview-dive-deep-into-the-capabilities-of-microbiomestat.md)
 * [MicrobiomeStat Versus the Competition: A Comparative Overview](introduction/microbiomestat-versus-the-competition-a-comparative-overview/README.md)
-  * [How Does MicrobiomeStat Measure Up? A Longitudinal Package Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/how-does-microbiomestat-measure-up-a-longitudinal-package-comparison.md)
-  * [How Does MicrobiomeStat Stand Out? A Comprehensive Package Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/how-does-microbiomestat-stand-out-a-comprehensive-package-comparison.md)
+  * [MicrobiomeStat vs. Other Longitudinal Packages: An In-Depth Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/microbiomestat-vs.-other-longitudinal-packages-an-in-depth-comparison.md)
+  * [MicrobiomeStat vs Integrated Analysis Packages: A Feature Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/microbiomestat-vs-integrated-analysis-packages-a-feature-comparison.md)
 
 ## Setting Up MicrobiomeStat: Installation and Data Preparation
 

@@ -1,10 +1,10 @@
 ---
 description: >-
-  Compare MicrobiomeStat with other comprehensive microbiome packages. Explore
-  why we excel!
+  Compare MicrobiomeStat with other comprehensive microbiome packages. See how
+  we match up.
 ---
 
-# How Does MicrobiomeStat Stand Out? A Comprehensive Package Comparison
+# MicrobiomeStat vs Integrated Analysis Packages: A Feature Comparison
 
 ### Comparative Table 2: Comprehensive Packages
 
