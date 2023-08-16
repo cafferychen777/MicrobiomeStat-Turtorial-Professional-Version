@@ -129,3 +129,74 @@ generate_alpha_boxplot_long(
 This boxplot crystallizes the shifts in **Shannon diversity** over selected time points, displaying the **distribution of diversity** within each time point with precision. Every box signifies a time point, where the line within represents the **median diversity**, and the box's edges marking the first and third quartiles.
 
 As we segment by **subject race**, this plot amplifies the impact of race on **microbiome diversity trends** over time. It's an exciting step in our journey, further unfurling the intriguing tapestry of the interplay between microbiome dynamics and race in longitudinal microbiome studies. Let's continue to decode these captivating complexities together!&#x20;
+
+Our exploration of the alpha diversity doesn't stop there. While the previously illustrated methods provide insight into differences across timepoints and showcase trends via visual representation, MicrobiomeStat offers yet more sophisticated ways to dig deeper into the temporal intricacies of microbiome data.
+
+**Trend Testing Across Timepoints**
+
+Post our in-depth dive into the spaghetti plot and boxplots, we pivot towards another compelling feature: trend testing for alpha diversity across timepoints. Here, we employ the `generate_alpha_trend_test_long` function, which presents a more nuanced understanding of the longitudinal trend in our data.
+
+```
+data("subset_T2D.obj")
+subset_T2D.obj2 <- subset_T2D.obj
+subset_T2D.obj2$meta.dat$visit_number <- as.numeric(subset_T2D.obj2$meta.dat$visit_number)
+generate_alpha_trend_test_long(
+  data.obj = subset_T2D.obj2,
+  alpha.name = c("shannon","simpson"),
+  time.var = "visit_number",
+  subject.var = "subject_id",
+  group.var = NULL,
+  adj.vars = "subject_gender"
+)
+```
+
+#### Shannon Diversity Results
+
+| Term                                 | Estimate | Std.Error | Statistic | P.Value  |
+| ------------------------------------ | -------- | --------- | --------- | -------- |
+| (Intercept)                          | 2.76     | 0.125     | 22.1      | 4.49e-54 |
+| subject\_gendermale                  | -0.0905  | 0.182     | -0.498    | 6.19e-1  |
+| subject\_genderunknown               | 0.0828   | 0.633     | 0.131     | 8.96e-1  |
+| visit\_number                        | -0.0362  | 0.0331    | -1.09     | 2.75e-1  |
+| subject\_gendermale:visit\_number    | 0.0737   | 0.0481    | 1.53      | 1.26e-1  |
+| subject\_genderunknown:visit\_number | -0.138   | 0.266     | -0.516    | 6.06e-1  |
+
+When interpreting the results, special attention should be paid to the interaction terms (`subject_gendermale:visit_number` and `subject_genderunknown:visit_number`). These terms provide insights into how the relationship between subject gender and Shannon diversity might change over different visit numbers, essentially exploring whether the effects of gender on Shannon diversity are consistent across time or if they vary depending on the specific visit.
+
+We encourage readers to examine these interaction terms closely, as they can uncover more nuanced insights about how gender and time dynamics jointly influence the microbiome diversity.
+
+This method empowers us to detect potential patterns in our alpha diversity as it unfolds across different timepoints.
+
+**Volatility Testing in Alpha Diversity**
+
+After discerning the trends, we should also be cautious of any abrupt spikes or drops in the diversity, which can hold essential clues about microbial shifts. For this purpose, we introduce `generate_alpha_volatility_test_long`, a function tailored to evaluate the volatility in our alpha diversity over time.
+
+```
+data("subset_T2D.obj")
+subset_T2D.obj2 <- subset_T2D.obj
+subset_T2D.obj2$meta.dat$visit_number <- as.numeric(subset_T2D.obj2$meta.dat$visit_number)
+generate_alpha_volatility_test_long(
+  data.obj = subset_T2D.obj2,
+  alpha.obj = NULL,
+  alpha.name = c("shannon","simpson"),
+  time.var = "visit_number",
+  subject.var = "subject_id",
+  group.var = "subject_race",
+  adj.vars = "sample_body_site"
+)
+```
+
+#### Shannon Diversity Results
+
+| Term                              | Estimate | Std.Error | Statistic | P.Value  |
+| --------------------------------- | -------- | --------- | --------- | -------- |
+| (Intercept)                       | 0.671    | 0.166     | 4.03      | 0.000145 |
+| subject\_raceasian                | -0.134   | 0.190     | -0.704    | 0.484    |
+| subject\_racecaucasian            | -0.118   | 0.173     | -0.680    | 0.499    |
+| subject\_raceethnic\_other        | 0.262    | 0.235     | 1.11      | 0.270    |
+| subject\_racehispanic\_or\_latino | -0.165   | 0.254     | -0.650    | 0.518    |
+| subject\_race                     | NA       | NA        | 1.36      | 0.256    |
+| Residuals                         | NA       | NA        | NA        | NA       |
+
+Volatility testing uncovers fluctuations that might get overlooked in standard trend analyses. By contrasting these volatility findings with our trend results, we weave a comprehensive narrative around the behavior of microbial communities in our study.
+
