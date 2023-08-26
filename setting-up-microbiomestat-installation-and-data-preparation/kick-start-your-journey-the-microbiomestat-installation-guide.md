@@ -16,6 +16,10 @@ You're only a **few steps away** from having **MicrobiomeStat** up and running o
 install.packages("MicrobiomeStat")
 ```
 
+{% hint style="info" %}
+Due to ongoing development, the latest features of MicrobiomeStat have not yet been uploaded to the CRAN repository. **The current version on CRAN only supports the `linda` and `linda.plot` functions.** If you require functionality for analyzing longitudinal data, we recommend installing **the development version from GitHub**.
+{% endhint %}
+
 **Option 2: GitHub Installation (Development version)** Fancy using the **freshest, just-out-of-the-oven version**? We've got you covered! Our development version is sitting on GitHub. First, you'll need the '**devtools**' package. If it's not already part of your toolkit, get it with this command:
 
 ```R
@@ -34,19 +38,6 @@ devtools::install_github("cafferychen777/MicrobiomeStat")
 
 ```R
 install.packages(c("ggplot2", "matrixStats", "Matrix", "parallel", "ggrepel", "lmerTest", "foreach", "modeest", "vegan", "dplyr", "ggprism", "pheatmap", "tidyr", "ggh4x", "rlang", "tibble", "ape", "GUniFrac", "philentropy", "broom", "rmarkdown", "knitr", "aplot", "scales", "forcats", "pander", "tinytex"))
-```
-
-**Bioconductor Buddies**: First, bring aboard the '**BiocManager**' from CRAN:
-
-```R
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-```
-
-Then, call in '**phyloseq**' from Bioconductor:
-
-```R
-BiocManager::install(c("phyloseq"))
 ```
 
 With these commands, you're signing up all the **required pals** from CRAN and Bioconductor. Just make sure you're operating the latest versions of R and Bioconductor for a smooth sail. If the winds seem stormy, it could be due to a package asking for a specific R or Bioconductor version. In that case, refer to the individual package's map (documentation) for the right direction.
