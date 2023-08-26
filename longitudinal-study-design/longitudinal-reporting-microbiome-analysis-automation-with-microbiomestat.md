@@ -6,7 +6,7 @@ description: >-
 
 # Longitudinal Reporting: Microbiome Analysis Automation with MicrobiomeStat
 
-Longitudinal microbiome studies reveal complex temporal dynamics. Manual synthesis is challenging. **MicrobiomeStat** offers an automated solution through integrated analysis reports.
+The `mStat_generate_report_long()` function in the MicrobiomeStat package is a comprehensive tool designed for automated analysis and reporting of longitudinal microbiome studies. This wiki page dives deep into the function's features, parameters, and how they integrate to provide a streamlined workflow.
 
 The `mStat_generate_report_long()` function performs a comprehensive analysis encompassing:
 
@@ -26,7 +26,7 @@ We provide the longitudinal data and analysis parameters:
 ```r
  mStat_generate_report_long(
   data.obj = subset_T2D.obj,
-  dist.obj = NULL,
+  dist.obj = NULL, 
   alpha.obj = NULL,
   group.var = "sample_body_site",
   adj_vars = c("subject_race"),
@@ -40,16 +40,18 @@ We provide the longitudinal data and analysis parameters:
   feature.level = c("Phylum"),
   feature.dat.type = "count",
   prev.filter = 0.0001,
-  abund.filter = 0.0001,
+  abund.filter = 0.0001, 
   Transform = "log",
-  theme.choice = "bw",
+  theme.choice = "bw", 
   base.size = 12,
-  output.file = "path/report.pdf"
+  output.file = "path/report.pdf" 
 )
 ```
 
 {% file src="../.gitbook/assets/mStat_generate_report_long_example.pdf" %}
 
-This automated workflow streamlines analysis and reporting for longitudinal studies. The integrated report synthesizes temporal dynamics across analytical dimensions.
+### Benefits of Using `mStat_generate_report_long`
 
-MicrobiomeStat powers longitudinal discoveries through automated, standardized data reports.
+* **Comprehensive**: Conducts a wide array of analyses and compiles them into a single, easy-to-read report.
+* **Customizable**: Numerous parameters for customizing the analysis as per the study's needs.
+* **Automated Workflow**: Reduces manual errors and saves time.
