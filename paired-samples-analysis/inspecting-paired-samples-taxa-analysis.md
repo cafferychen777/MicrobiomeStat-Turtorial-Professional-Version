@@ -383,6 +383,6 @@ generate_taxa_change_heatmap_pair(
 
 Generates a **meticulously detailed heatmap** that spotlights patterns of change in taxa abundance at the Family level. You are equipped to identify similar patterns among both **taxa and samples** based on relative changes in abundance.
 
-In the function, 'relative difference' is calculated using the formula `(change.after - change.before) / (change.before + change.after)`. This means the **intensity of color** in the heatmap is directly proportional to the **magnitude of change**. This **intuitive and visually engaging** method aids in understanding shifts in the microbial community over time.
+In the function, 'relative change' is calculated using the formula `(change.after - change.before) / (change.before + change.after)`. This means the **intensity of color** in the heatmap is directly proportional to the **magnitude of change**. This **intuitive and visually engaging** method aids in understanding shifts in the microbial community over time.
 
 By using this, you will journey into the depths of your data and **uncover the rich and intricate details** that shape your microbiome.
