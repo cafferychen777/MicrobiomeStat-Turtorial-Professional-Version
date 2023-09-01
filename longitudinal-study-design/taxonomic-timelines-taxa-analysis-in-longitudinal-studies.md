@@ -135,7 +135,7 @@ generate_taxa_change_heatmap_long(
   features.plot = NULL,
   top.k.plot = 10,
   top.k.func = "sd",
-  change.func = "lfc",
+  feature.change.func = "lfc",
   palette = NULL,
   prev.filter = 0.01,
   abund.filter = 0.01,

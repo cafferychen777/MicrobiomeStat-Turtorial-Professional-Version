@@ -111,7 +111,7 @@ mStat_generate_report_long(
   dist.obj = NULL,
   alpha.obj = NULL,
   group.var = "sample_body_site", 
-  adj_vars = c("subject_race"),
+  adj.vars = c("subject_race"),
   subject.var = "subject_id",
   time.var = "visit_number",
   alpha.name = c("shannon","simpson"),

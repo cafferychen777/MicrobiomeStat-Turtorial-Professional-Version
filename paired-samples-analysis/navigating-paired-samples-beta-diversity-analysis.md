@@ -23,7 +23,7 @@ generate_beta_change_test_pair(
   time.var = "time",
   subject.var = "subject",
   group.var = "group",
-  adj_vars = c("sex"),
+  adj.vars = c("sex"),
   change.base = "1",
   dist.name = c('BC', 'Jaccard') 
 )
@@ -52,7 +52,7 @@ generate_beta_test_pair(
   time.var = "time",
   subject.var = "subject",
   group.var = "group",
-  adj_vars = c("sex"),
+  adj.vars = c("sex"),
   dist.name = c('BC', 'Jaccard')
 )
 ```

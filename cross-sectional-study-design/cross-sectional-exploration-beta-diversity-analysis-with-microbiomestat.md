@@ -18,7 +18,7 @@ generate_beta_test_single(
   time.var = "time",
   t.level = "2",
   group.var = "group", 
-  adj_vars = "sex",
+  adj.vars = "sex",
   dist.name = c('BC', 'Jaccard') 
 )
 ```

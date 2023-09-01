@@ -16,7 +16,7 @@ generate_taxa_test_single(
   time.var = "time",
   t.level = "1",
   group.var = "group",
-  adj_vars = "sex",
+  adj.vars = "sex",
   feature.dat.type = "count",
   feature.level = "Genus",
   prev.filter = 0,

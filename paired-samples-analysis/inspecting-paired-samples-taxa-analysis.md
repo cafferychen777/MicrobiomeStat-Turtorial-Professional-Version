@@ -51,7 +51,7 @@ generate_taxa_change_test_pair(
   group.var = "group",
   adj.vars = c("sex"),
   change.base = "1",
-  change.func = "lfc",
+  feature.change.func = "lfc",
   feature.level = "original",
   prev.filter = 0.01,
   abund.filter = 0.01,
@@ -158,7 +158,7 @@ generate_taxa_indiv_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   change.func = "lfc",
+   feature.change.func = "lfc",
    feature.level = c("Family"),
    features.plot = NULL,
    feature.dat.type = "count",
@@ -189,7 +189,7 @@ generate_taxa_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   change.func = "lfc",
+   feature.change.func = "lfc",
    feature.level = c("Family"),
    feature.dat.type = "count",
    features.plot = NULL,
@@ -292,7 +292,7 @@ generate_taxa_change_dotplot_pair(
   group.var = "group",
   strata.var = NULL,
   change.base = "2",
-  change.func = "lfc",
+  feature.change.func = "lfc",
   feature.level = "Family",
   feature.dat.type = "count",
   features.plot = NULL,
@@ -312,7 +312,7 @@ generate_taxa_change_dotplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.06.46.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization underscores the dramatic shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity signals the prevalence of each taxon. This insightful depiction accentuates the differing microbial dynamics between groups, inviting a deep dive into the intricate ballet within your microbiome.</p></figcaption></figure>
 
-With `change.func` set to "lfc" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
+With `feature.change.func` set to "lfc" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
 
 However, the true power of this function isn't in tracking individual taxa changes, but in its capacity to **contrast these changes between different groups**. This capability allows you to dive deeper, uncovering the significant differences that propel your research forward towards more comprehensive conclusions.
 
@@ -360,7 +360,7 @@ generate_taxa_change_heatmap_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   change.func = "relative difference",
+   feature.change.func = "relative difference",
    feature.level = "Family",
    feature.dat.type = "count",
    features.plot = NULL,
