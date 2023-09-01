@@ -205,7 +205,7 @@ generate_taxa_barplot_single(
   base.size = 10,
   theme.choice = "bw",
   custom.theme = NULL,
-  palette = c(ggsci::pal_nejm()(8),ggsci::pal_npg()(9),ggsci::pal_jama()(7),ggsci::pal_lancet()(9)),
+  palette = NULL,
   pdf = TRUE,
   file.ann = NULL,
   pdf.wid = 11,
