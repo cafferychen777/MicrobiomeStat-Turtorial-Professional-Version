@@ -7,21 +7,26 @@ description: >-
 
 # Data Filtering
 
-## Data Filtering
+Microbiome data is rich and intricate, requiring specialized tools to aid in preprocessing and analysis. Filtering is one of the key steps in this process, allowing you to selectively focus on relevant samples and features.
 
-Filtering selectively removes features or samples based on criteria, enabling focused downstream analysis.
+## Overview of Data Filtering
 
-MicrobiomeStat provides key data filtering functions:
+Filtering, at its core, selectively removes features or samples from your dataset based on specific criteria. This refined focus can greatly improve the quality and interpretability of downstream analysis.
 
-* `mStat_remove_feature()`: Remove features by ID
-* `mStat_subset_data()`: Subset by sample ID
-* `mStat_subset_dist()`: Subset distance matrices
+MicrobiomeStat has been designed to provide researchers with a set of flexible functions tailored to the unique challenges of microbiome data.
 
-### Remove Features
+### Key Functions
 
-The `mStat_remove_feature()` function removes specified features from the data object:
+- `mStat_remove_feature()`: This function allows you to remove specific features based on their IDs.
+- `mStat_subset_data()`: Subset your data based on sample IDs or even conditions provided in the metadata.
+- `mStat_subset_dist()`: If you're working with distance matrices, this function lets you subset them by sample ID.
+- `mStat_filter()`: This versatile function aids in filtering taxa based on minimum prevalence and average abundance, ensuring the relevance of your data.
 
-```{r
+## Diving Deep into Each Function
+
+### Removing Features with `mStat_remove_feature()`
+
+```{r}
 mStat_remove_feature(
   data.obj = obj,
   featureIDs = c("feat1", "feat2"),
@@ -29,63 +34,68 @@ mStat_remove_feature(
 )
 ```
 
-It can filter at multiple taxonomic levels, or by original feature ID.
+What's happening under the hood?
 
-**Key steps:**
+- It verifies the feature IDs.
+- Separately handles the 'original' level.
+- Subsets the feature and annotation tables.
+- Recalculates abundance aggregation.
 
-* Check feature IDs are characters
-* Handle 'original' level separately
-* Subset feature/annotation tables
-* Recalculate abundance aggregation
+### Subset by Sample using `mStat_subset_data()`
 
-Filtering focuses analysis on relevant features and improves result interpretation.
-
-### Subset by Sample
-
-The `mStat_subset_data()` function subsets the data object by sample IDs:
-
-```{r
+```{r}
 mStat_subset_data(
   data.obj = obj,
   samIDs = c("s1", "s2", "s3") 
 )
 ```
 
-It also allows **subsetting by a logical expression** on metadata:
+You can also subset based on conditions present in the metadata:
 
-```{r
+```{r}
 mStat_subset_data(
   data.obj = obj,
   condition = "group == 'control'"
 )
 ```
 
-This filters samples based on metadata conditions, similar to dplyr::filter.
+The function verifies the provided condition, subsets the metadata, and then extracts the corresponding samples from the feature table and annotations. This metadata-driven approach is similar to `dplyr::filter`.
 
-The function first checks if a condition is provided and subsets metadata accordingly. It then extracts matching samples from feature table and annotations.
+### Working with Distance Matrices: `mStat_subset_dist()`
 
-This enables flexible, metadata-driven subsetting of microbiome data objects.
-
-Key steps include:
-
-* Handle sample IDs or logical expression
-* Subset metadata
-* Extract matching samples from tables
-* Report excluded samples
-
-Expressions offer an intuitive way to subset relevant samples for focused analysis.
-
-### Subset Distance Matrices
-
-The `mStat_subset_dist()` function subsets distance matrices by sample ID:
-
-```{r
+```{r}
 mStat_subset_dist(
   dist.obj = dist,
   samIDs = c("s1", "s2", "s3")  
 )
 ```
 
-It loops through the list of matrices, subsetting each by the sample IDs.
+This function processes each matrix in the list, subsetting based on the provided sample IDs.
 
-**Proper data filtering improves analysis quality and interpretability.** MicrobiomeStat provides flexible tools to filter microbiome data objects for focused downstream tasks.
+### Filtering Microbiome Data by Prevalence and Abundance: `mStat_filter()`
+
+```{r}
+mStat_filter(
+  x = data_matrix,
+  prev.filter = 0.5,
+  abund.filter = 5
+)
+```
+
+The function operates by:
+
+- Reshaping data to a long format for easier processing.
+- Grouping by taxa to calculate their average abundance and prevalence.
+- Applying filters based on the set thresholds.
+
+For example, using a mock matrix:
+
+```{r}
+data_matrix <- matrix(c(0, 3, 4, 0, 2, 7, 8, 9, 10), ncol=3)
+filtered_data <- mStat_filter(data_matrix, 0.5, 5)
+print(filtered_data)
+```
+
+## Conclusion
+
+Data filtering is an essential step in microbiome analysis. With MicrobiomeStat, researchers have a comprehensive set of tools to refine their data, ensuring that downstream analysis is both meaningful and interpretable.
