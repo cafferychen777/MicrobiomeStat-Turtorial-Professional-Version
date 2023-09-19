@@ -44,24 +44,30 @@ It then automatically compiles an integrated PDF report containing:
 We simply provide parameters like input data, variables of interest, and analysis settings:
 
 ```r
-mStat_generate_report_single(
-  data.obj = peerj32.obj, 
-  dist.obj = NULL,   
-  group.var = "group", 
-  adj.vars = c("sex"),
-  subject.var = "subject",   
-  time.var = "time",
-  alpha.name = c("shannon","simpson"),
-  dist.name = c("BC",'Jaccard'),   
-  t.level = "1",   
-  transform = "log",
-  strata.var = "sex",   
-  feature.level = c("Phylum","Family"),
-  feature.dat.type = "count",   
-  theme.choice = "bw",
-  base.size = 12,
-  output.file = "path/report.pdf" 
-)
+ mStat_generate_report_single(
+   data.obj = peerj32.obj,
+   dist.obj = NULL,
+   alpha.obj = NULL,
+   group.var = "group",
+   vis.adj.vars = c("sex"),
+   test.adj.vars = c("sex"),
+   subject.var = "subject",
+   time.var = "time",
+   alpha.name = c("shannon", "observed_species"),
+   depth = NULL,
+   dist.name = c("BC",'Jaccard'),
+   t.level = "1",
+   feature.box.axis.transform = "sqrt",
+   strata.var = "sex",
+   vis.feature.level = c("Phylum", "Family", "Genus"),
+   test.feature.level = "Family",
+   feature.dat.type = "count",
+   theme.choice = "bw",
+   base.size = 20,
+   feature.mt.method = "none",
+   feature.sig.level = 0.2,
+   output.file = "path/to/mStat_generate_report_single_example.pdf"
+ )
 ```
 
 <figure><img src="../.gitbook/assets/mStat_generate_report_single_example_page-0001.jpg" alt=""><figcaption></figcaption></figure>
