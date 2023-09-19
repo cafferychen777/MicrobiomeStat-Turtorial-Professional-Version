@@ -88,28 +88,37 @@ We provide the longitudinal data and analysis parameters:
 
 ```r
 
-mStat_generate_report_long(
-  data.obj = subset_T2D.obj, 
-  dist.obj = NULL,
-  alpha.obj = NULL,
-  group.var = "sample_body_site", 
-  adj.vars = c("subject_race"),
-  subject.var = "subject_id",
-  time.var = "visit_number",
-  alpha.name = c("shannon","simpson"),
-  dist.name = c("BC",'Jaccard'),
-  t0.level = unique(sort(subset_T2D.obj$meta.dat$visit_number))[1],
-  ts.levels = unique(sort(subset_T2D.obj$meta.dat$visit_number))[-1],
-  strata.var = "subject_race",
-  feature.level = c("Phylum"),
-  feature.dat.type = "count",
-  prev.filter = 0.0001,
-  abund.filter = 0.0001,
-  transform = "log",
-  theme.choice = "bw",
-  base.size = 12, 
-  output.file = "path/report.pdf"
-)
+ data(subset_T2D.obj)
+ mStat_generate_report_long(
+   data.obj = subset_T2D.obj,
+   dist.obj = NULL,
+   alpha.obj = NULL,
+   pc.obj = NULL,
+   group.var = "subject_race",
+   strata.var = "subject_gender",
+   test.adj.vars = NULL,
+   vis.adj.vars = NULL,
+   subject.var = "subject_id",
+   time.var = "visit_number_num",
+   alpha.name = c("shannon","observed_species"),
+   dist.name = c("BC",'Jaccard'),
+   t0.level = NULL,
+   ts.levels = NULL,
+   feature.mt.method = "none",
+   feature.sig.level = 0.3,
+   vis.feature.level = c("Family","Genus"),
+   test.feature.level = c("Family"),
+   feature.change.func = "relative change",
+   feature.dat.type = "count",
+   prev.filter = 0.1,
+   abund.filter = 1e-4,
+   bar.area.feature.no = 40,
+   heatmap.feature.no = 40,
+   feature.box.axis.transform = "sqrt",
+   theme.choice = "bw",
+   base.size = 20,
+   output.file = "path/to/Omics Analysis Report.pdf"
+ )
 
 ```
 
