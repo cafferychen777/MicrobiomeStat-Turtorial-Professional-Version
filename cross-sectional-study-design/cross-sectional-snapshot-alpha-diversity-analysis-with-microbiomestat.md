@@ -15,9 +15,10 @@ While visualization provides an overview, statistical tests are required to quan
 generate_alpha_test_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL, 
+  alpha.name = c("shannon", "simpson"),
+  depth = NULL,
   time.var = "time",
   t.level = "2",
-  alpha.name = c("shannon", "simpson"),
   group.var = "group",
   adj.vars = "sex")
 ```
@@ -66,6 +67,7 @@ generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
   alpha.name = c("simpson"),
+  depth = NULL,
   subject.var = "subject",
   time.var = NULL,
   t.level = NULL,
@@ -89,6 +91,7 @@ generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
   alpha.name = c("simpson"),
+  depth = NULL,
   subject.var = "subject",
   time.var = "time",
   t.level = "2",
@@ -112,6 +115,7 @@ generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
   alpha.name = c("simpson"),
+  depth = NULL,
   subject.var = "subject",
   time.var = "time",
   t.level = "2",

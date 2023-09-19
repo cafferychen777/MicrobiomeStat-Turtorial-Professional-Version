@@ -22,8 +22,9 @@ data(peerj32.obj)
 alpha_test_results <- generate_alpha_test_pair(
   data.obj = peerj32.obj,  
   alpha.obj = NULL,
-  time.var = "time",
   alpha.name = c("shannon"),
+  depth = NULL,
+  time.var = "time",
   subject.var = "subject",
   group.var = "group",
   adj.vars = "sex"
@@ -54,8 +55,9 @@ data(peerj32.obj)
 generate_alpha_change_test_pair(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  time.var = "time",
   alpha.name = c("shannon"), 
+  depth = NULL,
+  time.var = "time",
   subject.var = "subject",
   group.var = "group",
   adj.vars = "sex",
@@ -80,6 +82,7 @@ generate_alpha_boxplot_long(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
   alpha.name = c("simpson"),
+  depth = NULL,
   subject.var = "subject",
   time.var = "time",
   t0.level = "1",
@@ -107,6 +110,7 @@ generate_alpha_change_boxplot_pair(
    data.obj = peerj32.obj,
    alpha.obj = NULL,
    alpha.name = c("simpson"),
+   depth = NULL,
    subject.var = "subject",
    time.var = "time",
    group.var = "group",
