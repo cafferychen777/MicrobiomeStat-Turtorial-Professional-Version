@@ -126,17 +126,76 @@ The key parameters provided:
 
 mStat\_generate\_report\_long() then performs extensive longitudinal analysis and generates a report PDF containing all results.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-09-19 at 09.52.40.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0001.jpg" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0002 (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0002.jpg" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0003 (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0003.jpg" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0004 (2).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0004.jpg" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0005 (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0005.jpg" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0006 (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0006.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0007.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0008.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0009.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0010.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0011.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0012.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0013.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0014.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0015.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0016.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0017.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0018.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0019.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0020.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0021.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0022.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0023.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0024.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0025.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0026.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0027.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0028.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0029.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0030.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0031.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0032.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0033.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0034.jpg" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0035.jpg" alt=""><figcaption></figcaption></figure>
+
 
 {% file src="../.gitbook/assets/Omics Analysis Report 69 subjects.pdf" %}
 
