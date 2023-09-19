@@ -126,8 +126,6 @@ MicrobiomeStat powers researchers with **automated workflows** to swiftly synthe
 - **Alpha diversity** 
 - **Beta diversity**
 - **Differential abundance analysis**
-- **Functional potential analysis**
-- **Correlation networks**
 
 for comprehensive insights. 
 
