@@ -4,7 +4,7 @@ description: >-
   MicrobiomeStat.
 ---
 
-# Automated Reporting for Paired Studies: MicrobiomeStat's Integrated Analysis Reports
+# Paired Studies Reporting: Microbiome Analysis Automation with MicrobiomeStat
 
 Paired microbiome studies enable tracking temporal variations within subjects. But synthesis of multidimensional dynamics is challenging. **MicrobiomeStat** offers two automated solutions:
 
@@ -12,16 +12,21 @@ Paired microbiome studies enable tracking temporal variations within subjects. B
 
 The `mStat_generate_report_pair()` provides integrated analysis:
 
-* **Alpha diversity** indices using `generate_alpha_boxplot_long()` and `generate_alpha_test_pair()`
-* **Beta diversity** ordination and PERMANOVA testing using `generate_beta_ordination_pair()`, `generate_beta_test_pair()`
-* **Taxonomic composition** visualization using `generate_taxa_dotplot_pair()`, `generate_taxa_heatmap_pair()` and `generate_taxa_test_pair()`
+- **Alpha diversity** indices using `generate_alpha_boxplot_long()` to visualize the alpha diversity distribution across subjects and timepoints, and `generate_alpha_test_pair()` to perform statistical testing for group differences in alpha diversity over time based on linear mixed effects models.
+
+- **Beta diversity** ordination using `generate_beta_ordination_pair()` to visualize sample clustering and trajectories on a PCoA plot, as well as `generate_beta_test_pair()` for PERMANOVA hypothesis testing to detect group differences in beta diversity changes over time.
+
+- **Taxonomic composition** visualization using `generate_taxa_dotplot_pair()` to show average proportions of top taxa across groups and timepoints, `generate_taxa_heatmap_pair()` for an overview of taxonomic profiles, and `generate_taxa_test_pair()` to identify differentially abundant taxa across groups over time using the LinDA framework.
 
 It compiles results into a publication-ready report:
 
-* Summary statistics
-* Plots like boxplots, heatmaps
-* Statistical test results in tables
-* Interpretation of findings
+- Summary statistics like sample sizes, alpha diversity values, beta diversity distances etc. 
+
+- Visualization plots such as boxplots for alpha diversity distribution, PCoA plots for beta diversity ordination, heatmaps and dotplots for taxonomic composition.
+
+- Statistical test result tables from linear mixed effects models, ANOVA, PERMANOVA etc. showing p-values and significance.
+
+- Interpretation of key findings in the form of text to summarize the observed patterns and statistical results. 
 
 We provide paired data, time variables and change settings:
 
