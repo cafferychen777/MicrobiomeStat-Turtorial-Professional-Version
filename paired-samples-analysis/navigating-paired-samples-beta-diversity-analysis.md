@@ -43,41 +43,6 @@ It returns **coefficient tables** with **p-values** for assessing variable assoc
 | Jaccard  | sexmale      | 0.0853   | 0.0288    | 2.96      | 5.06e-3  |
 | Jaccard  | groupPlacebo | -0.0207  | 0.0279    | -0.744    | 4.61e-1  |
 
-Alternatively, `generate_beta_test_pair()` uses **PERMANOVA** to test beta diversity differences.
-
-```r
-generate_beta_test_pair(
-  data.obj = peerj32.obj,
-  dist.obj = NULL,
-  time.var = "time",
-  subject.var = "subject",
-  group.var = "group",
-  adj.vars = c("sex"),
-  dist.name = c('BC', 'Jaccard')
-)
-```
-
-It provides **test statistics** and **p-values** from PERMANOVA models.
-
-| Term  | D1.p.value | D2.p.value | omni.p.value |
-| ----- | ---------- | ---------- | ------------ |
-| sex   | 0.427      | 0.45       | 0.45         |
-| group | 0.427      | 0.45       | 0.45         |
-| time  | 0.427      | 0.45       | 0.45         |
-
-| Variable  | DF | Sum\_Sq | Mean\_Sq | F\_Statistic | R\_Squared | P\_Value | Distance |
-| --------- | -- | ------- | -------- | ------------ | ---------- | -------- | -------- |
-| sex       | 1  | 0.123   | 0.123    | 1.991        | 0.046      | 0.427    | BC       |
-| group     | 1  | 0.068   | 0.068    | 1.091        | 0.025      | 0.427    | BC       |
-| time      | 1  | 0.019   | 0.019    | 0.311        | 0.007      | 0.427    | BC       |
-| Residuals | 40 | 2.48    | 0.062    | NA           | 0.922      | NA       | BC       |
-| Total     | 43 | 2.69    | NA       | NA           | 1          | NA       | BC       |
-| sex       | 1  | 0.228   | 0.228    | 1.737        | 0.04       | 0.45     | Jaccard  |
-| group     | 1  | 0.151   | 0.151    | 1.151        | 0.027      | 0.45     | Jaccard  |
-| time      | 1  | 0.05    | 0.05     | 0.38         | 0.009      | 0.45     | Jaccard  |
-| Residuals | 40 | 5.26    | 0.131    | NA           | 0.924      | NA       | Jaccard  |
-| Total     | 43 | 5.69    | NA       | NA           | 1          | NA       | Jaccard  |
-
 Together these enable rigorous hypothesis testing before visualizing beta diversity changes in paired designs.
 
 Next, we'll delve into the magic of the `generate_beta_ordination_pair()` function, a powerful tool that operates in the background to streamline your analysis.
