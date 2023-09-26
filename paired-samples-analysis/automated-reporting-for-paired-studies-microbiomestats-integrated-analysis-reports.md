@@ -26,25 +26,33 @@ It compiles results into a publication-ready report:
 We provide paired data, time variables and change settings:
 
 ```r
-mStat_generate_report_pair(
-  data.obj = peerj32.obj,
-  dist.obj = NULL,
-  alpha.obj = NULL,
-  group.var = "group",
-  adj.vars = c("sex"),
-  subject.var = "subject",
-  time.var = "time",
-  alpha.name = c("shannon","simpson"),
-  dist.name = c("BC",'Jaccard'),
-  change.base = "1",
-  change.func = "relative change",
-  strata.var = "sex",
-  feature.level = c("Phylum","Family"),
-  feature.dat.type = "count",
-  theme.choice = "bw",
-  base.size = 12,
-  output.file = "path/report.pdf"
-)
+ data(peerj32.obj)
+ mStat_generate_report_pair(
+   data.obj = peerj32.obj,
+   group.var = "group",
+   test.adj.vars = NULL,
+   vis.adj.vars = NULL,
+   strata.var = "sex",
+   subject.var = "subject",
+   time.var = "time",
+   change.base = "1",
+   alpha.obj = NULL,
+   alpha.name = c("shannon", "observed_species"),
+   dist.obj = NULL,
+   dist.name = c("BC",'Jaccard'),
+   feature.change.func = "relative change",
+   vis.feature.level = c("Genus"),
+   test.feature.level = c("Genus"),
+   bar.area.feature.no = 30,
+   heatmap.feature.no = 30,
+   dotplot.feature.no = 20,
+   feature.dat.type = "count",
+   feature.mt.method = "none",
+   feature.sig.level = 0.1,
+   theme.choice = "bw",
+   base.size = 18,
+   output.file = "path/to/report.pdf"
+ )
 ```
 
 {% file src="../.gitbook/assets/mStat_generate_report_pair_example.pdf" %}
