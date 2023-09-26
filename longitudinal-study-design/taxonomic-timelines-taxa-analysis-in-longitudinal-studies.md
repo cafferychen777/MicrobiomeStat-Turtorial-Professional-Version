@@ -9,32 +9,54 @@ description: >-
 
 **Delving into the depths of longitudinal microbiome data requires a robust toolkit. Fortunately, MicrobiomeStat arms us with a set of powerful functions to illuminate the intricate taxonomic changes over time.**
 
-**Analyzing taxonomic changes in longitudinal microbiome studies reaches its pinnacle with the `generate_taxa_test_long()` function. Let's explore this powerful tool for differential abundance testing between groups and timepoints before delving into other visualizations.**
+### **Longitudinal Taxa Trend Test Generation**
 
+This function is designed to **conduct a longitudinal trend test on microbiome data**. The primary aim is to discern how the abundance of various microbial taxa changes over time and/or in response to different experimental or observational groups. The function delivers **robust statistical insights** that enable researchers to draw meaningful conclusions about the dynamics of microbial populations.
+
+#### **Example:**
 ```R
-generate_taxa_test_long(
-  data.obj = ecam.obj,
-  subject.var = "studyid",
-  time.var = "month",
-  t0.level = NULL,
-  ts.levels = NULL,
-  group.var = "diet",
-  adj.vars = "antiexposedall",
-  feature.level = "Phylum",
-  prev.filter = 0.001,
+data("subset_T2D.obj")
+generate_taxa_trend_test_long(
+  data.obj = subset_T2D.obj,
+  subject.var = "subject_id",
+  time.var = "visit_number_num",
+  group.var = "subject_race",
+  adj.vars = "sample_body_site",
+  prev.filter = 0.1,
   abund.filter = 0.001,
-  feature.dat.type = "proportion"
+  feature.level = c("Genus","Family"),
+  feature.dat.type = c("count")
 )
 ```
 
-**This function returns a detailed results table of longitudinal differential abundance analysis, exposing significant taxonomic differences between groups over time. Armed with these results, we can now embark on a comprehensive exploration of the microbiome dynamics using an array of other MicrobiomeStat functions.**
+This function returns a **detailed results table**, exposing significant taxonomic differences between groups over time. With this, a comprehensive exploration of the microbiome dynamics is more feasible and effective.
 
-| Phylum              | Variable | Group     | Base.Mean    | Log2.Fold.Change | LFC.SE       | Stat         | P.Value      | Adjusted.P.Value | Mean.Abundance | Mean.Prevalence | Output.Element |
-| ------------------- | -------- | --------- | ------------ | ---------------- | ------------ | ------------ | ------------ | ---------------- | -------------- | --------------- | -------------- |
-| p\_\_Actinobacteria | bd       | 17915.206 | -0.027940742 | 0.2988761        | -0.093486035 | 9.255558e-01 | 9.939802e-01 | 0.150289817      | 1              | antiexposedally |                |
-| p\_\_Actinobacteria | fd       | 17915.206 | -0.027940742 | 0.2988761        | -0.093486035 | 9.255558e-01 | 9.939802e-01 | 0.104519584      | 1              | antiexposedally |                |
-| p\_\_Bacteroidetes  | bd       | 45447.461 | 0.090221391  | 0.3533415        | 0.255337674  | 7.985264e-01 | 9.939802e-01 | 0.253147914      | 1              | antiexposedally |                |
-| p\_\_Bacteroidetes  | fd       | 45447.461 | 0.090221391  | 0.3533415        | 0.255337674  | 7.985264e-01 | 9.939802e-01 | 0.255437214      | 1              | antiexposedally |                |
+### **Longitudinal Taxa Abundance Volatility Test**
+
+This function calculates the **volatility of taxa abundances** in longitudinal microbiome data, testing for association between abundance volatility and a grouping variable. Volatility is calculated as the mean absolute difference in abundance between consecutive time points, normalized by the time difference.
+
+#### **Usage:**
+```R
+data("subset_T2D.obj")
+generate_taxa_volatility_test_long(
+  data.obj = subset_T2D.obj,
+  time.var = "visit_number_num",
+  subject.var = "subject_id",
+  group.var = "subject_race",
+  adj.vars = "sample_body_site",
+  prev.filter = 0.1,
+  abund.filter = 0.0001,
+  feature.mt.method = "fdr",
+  feature.sig.level = 0.1,
+  feature.level = c("Genus", "Family", "Species"),
+  feature.dat.type = "count",
+  transform = "CLR"
+)
+```
+
+This function calculates the **volatility within each subject**, and tests for association with the grouping variable using linear models. It transforms the abundance data first before volatility calculation, providing a more accurate representation of the microbiome data dynamics.
+
+Armed with these tools from MicrobiomeStat, delving into the intricacies of microbial community patterns and shifts over time is now more **insightful and precise than ever before**.
 
 Next, let's explore `generate_taxa_areaplot_long()` to visualize the abundance trajectories of specific taxa across multiple timepoints:
 
