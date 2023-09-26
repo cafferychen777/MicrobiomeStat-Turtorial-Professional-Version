@@ -88,50 +88,103 @@ We provide the longitudinal data and analysis parameters:
 
 ```r
 
- data(subset_T2D.obj)
- mStat_generate_report_long(
+# Load the data
+data(subset_T2D.obj)
+
+# Generate the report
+mStat_generate_report_long(
+   # Assigning the longitudinal microbiome data object
    data.obj = subset_T2D.obj,
+   
+   # Setting distance object and other objects to NULL
    dist.obj = NULL,
    alpha.obj = NULL,
    pc.obj = NULL,
+   
+   # Grouping variable is 'subject_race'
    group.var = "subject_race",
+   
+   # Stratification variable is 'subject_gender'
    strata.var = "subject_gender",
+   
+   # No additional adjustment variables for statistical tests
    test.adj.vars = NULL,
+   
+   # No additional visualization variables
    vis.adj.vars = NULL,
+   
+   # Subject IDs are in 'subject_id' column
    subject.var = "subject_id",
+   
+   # Time variable is 'visit_number_num'
    time.var = "visit_number_num",
+   
+   # Analyzing 'shannon' and 'observed_species' alpha diversity indices
    alpha.name = c("shannon","observed_species"),
+   
+   # Analyzing 'BC' and 'Jaccard' beta diversity indices
    dist.name = c("BC",'Jaccard'),
+   
+   # No baseline and follow-up times provided
    t0.level = NULL,
    ts.levels = NULL,
+   
+   # Using 'none' for multiple testing method
    feature.mt.method = "none",
+   
+   # Setting significance level to 0.3
    feature.sig.level = 0.3,
+   
+   # Visualizing 'Family' and 'Genus' taxonomic levels
    vis.feature.level = c("Family","Genus"),
+   
+   # Testing 'Family' taxonomic level
    test.feature.level = c("Family"),
+   
+   # Using 'relative change' for feature change calculation
    feature.change.func = "relative change",
+   
+   # Feature data type is 'count'
    feature.dat.type = "count",
+   
+   # Setting prevalence filter to 0.1
    prev.filter = 0.1,
+   
+   # Setting abundance filter to 1e-4
    abund.filter = 1e-4,
+   
+   # Retaining top 40 features for barplot and areaplot
    bar.area.feature.no = 40,
+   
+   # Retaining top 40 features for heatmap
    heatmap.feature.no = 40,
+   
+   # Applying square root transformation to feature's boxplot y-axis
    feature.box.axis.transform = "sqrt",
+   
+   # Using 'bw' theme
    theme.choice = "bw",
+   
+   # Setting base font size to 20
    base.size = 20,
+   
+   # Output report filename
    output.file = "path/to/Omics Analysis Report.pdf"
- )
+)
+
 
 ```
 
-The key parameters provided:
+Key Parameters Explanation:
 
-* data.obj - longitudinal microbiome data object
-* group.var - grouping variable
-* subject.var - subject IDs
-* time.var - time variable
-* alpha.name, dist.name - diversity indices to analyze
-* t0.level, ts.levels - baseline and follow-up times
-* feature.level - taxonomic level for analysis
-* transform - data transformation
+- `data.obj`: Contains the longitudinal microbiome data object.
+- `group.var`: Specifies the grouping variable, here set as "subject_race".
+- `subject.var`: Column name in metadata containing subject IDs, here "subject_id".
+- `time.var`: Column name in metadata containing time variable, here "visit_number_num".
+- `alpha.name`, `dist.name`: Diversity indices to be analyzed, here "shannon", "observed_species", "BC", and "Jaccard".
+- `vis.feature.level`, `test.feature.level`: Specifies the taxonomic levels for visualization and testing, "Family" and "Genus" for visualization, "Family" for testing.
+- `feature.change.func`: Specifies how to calculate the change from baseline value, here "relative change".
+- `output.file`: Specifies the output PDF report filename.
 
 mStat\_generate\_report\_long() then performs extensive longitudinal analysis and generates a report PDF containing all results.
 
