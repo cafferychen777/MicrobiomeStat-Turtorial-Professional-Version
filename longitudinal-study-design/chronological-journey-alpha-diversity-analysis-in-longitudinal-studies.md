@@ -20,61 +20,46 @@ Once we've prepared our dataset, we move on to calculate the alpha diversity, us
 T2D.alpha.obj <- mStat_calculate_alpha_diversity(subset_T2D.obj$feature.tab, "shannon")
 ```
 
-As we embark on our Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies, it is prudent to first grasp how to test for differences in alpha diversity across timepoints. MicrobiomeStat provides the `generate_alpha_test_long()` function, which utilizes a linear mixed model approach to detect changes in alpha diversity over time.
+As we embark on our Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies, it is prudent to first grasp how to test for differences in alpha diversity across timepoints. MicrobiomeStat provides two significant functions for this purpose: `generate_alpha_trend_test_long` and `generate_alpha_volatility_test_long`.
 
-The linear mixed model incorporates a temporal component, accounting for the correlation between repeated measurements on the same subject. The function also accepts additional adjustment variables for greater modeling flexibility.
+#### Longitudinal Alpha Diversity Trend Test in MicrobiomeStat
 
-The output is a list of coefficient tables, one for each alpha diversity index. Each table includes the term, estimate, standard error, t-value, and p-value for each fixed effect in the model.
+This function, `generate_alpha_trend_test_long`, performs a trend test on longitudinal alpha diversity data using a linear mixed-effects model. The model is used to test the association between alpha diversity and a numeric time variable while adjusting for potential confounding variables.
 
 Here is an example usage:
 
 ```r
 data("subset_T2D.obj") 
-alpha_test_results <- generate_alpha_test_long(
+alpha_trend_test_results <- generate_alpha_trend_test_long(
   data.obj = subset_T2D.obj,
-  alpha.obj = NULL,
-  alpha.name = c("shannon", "simpson"),
-  depth = NULL,
-  time.var = "visit_number",
-  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number))[1],
-  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number))[2:6],
+  alpha.name = c("shannon","observed_species"),
+  time.var = "visit_number_num",
   subject.var = "subject_id",
   group.var = "subject_race",
-  adj.vars = "subject_gender"
+  adj.vars = NULL
 )
 ```
 
-| Term                              | Estimate  | Std.Error | Statistic | P.Value  |
-| --------------------------------- | --------- | --------- | --------- | -------- |
-| (Intercept)                       | 3.03      | 0.215     | 14.1      | 3.86e-22 |
-| visit\_number 2                   | -0.122    | 0.125     | -0.971    | 3.32e-1  |
-| visit\_number 3                   | -0.150    | 0.129     | -1.17     | 2.44e-1  |
-| visit\_number 4                   | -0.215    | 0.126     | -1.71     | 8.83e-2  |
-| visit\_number 5                   | -0.0412   | 0.138     | -0.298    | 7.66e-1  |
-| visit\_number 6                   | -0.0611   | 0.142     | -0.430    | 6.67e-1  |
-| subject\_gendermale               | 0.219     | 0.100     | 2.19      | 3.22e-2  |
-| subject\_genderunknown            | 0.625     | 0.414     | 1.51      | 1.33e-1  |
-| subject\_raceasian                | -0.481    | 0.229     | -2.10     | 4.02e-2  |
-| subject\_racecaucasian            | -0.306    | 0.208     | -1.47     | 1.47e-1  |
-| subject\_raceethnic\_other        | -1.08     | 0.349     | -3.11     | 2.51e-3  |
-| subject\_racehispanic\_or\_latino | -0.000394 | 0.290     | -0.00136  | 9.99e-1  |
+#### Longitudinal Alpha Diversity Volatility Test in MicrobiomeStat
 
-| Term                              | Estimate | Std.Error | Statistic | P.Value  |
-| --------------------------------- | -------- | --------- | --------- | -------- |
-| (Intercept)                       | 0.840    | 0.0382    | 22.0      | 8.28e-30 |
-| visit\_number 2                   | -0.0221  | 0.0177    | -1.25     | 2.13e-1  |
-| visit\_number 3                   | -0.0243  | 0.0183    | -1.33     | 1.84e-1  |
-| visit\_number 4                   | -0.0377  | 0.0179    | -2.11     | 3.55e-2  |
-| visit\_number 5                   | -0.0178  | 0.0197    | -0.906    | 3.65e-1  |
-| visit\_number 6                   | -0.0154  | 0.0202    | -0.763    | 4.46e-1  |
-| subject\_gendermale               | 0.0394   | 0.0180    | 2.19      | 3.30e-2  |
-| subject\_genderunknown            | 0.108    | 0.0676    | 1.60      | 1.12e-1  |
-| subject\_raceasian                | -0.0566  | 0.0417    | -1.36     | 1.81e-1  |
-| subject\_racecaucasian            | -0.0403  | 0.0381    | -1.06     | 2.94e-1  |
-| subject\_raceethnic\_other        | -0.198   | 0.0600    | -3.30     | 1.45e-3  |
-| subject\_racehispanic\_or\_latino | 0.0316   | 0.0539    | 0.587     | 5.60e-1  |
+This function, `generate_alpha_volatility_test_long`, calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
 
-This allows us to test for differences in alpha diversity across timepoints and understand temporal trends. Next, we'll use a spaghetti plot to show how the alpha diversity changes over time for each individual in the study, grouped by race:
+Here is an example usage:
+
+```r
+data("subset_T2D.obj") 
+alpha_volatility_test_results <- generate_alpha_volatility_test_long(
+  data.obj = subset_T2D.obj,
+  alpha.obj = NULL,
+  alpha.name = c("shannon","observed_species"),
+  time.var = "visit_number_num",
+  subject.var = "subject_id",
+  group.var = "subject_race",
+  adj.vars = "sample_body_site"
+)
+```
+
+These tools allow us to test for differences in alpha diversity across timepoints and understand temporal and volatility trends respectively. Next, we'll use a spaghetti plot to show how the alpha diversity changes over time for each individual in the study, grouped by race."
 
 ```r
 # Generate a spaghetti plot of alpha diversity over time
