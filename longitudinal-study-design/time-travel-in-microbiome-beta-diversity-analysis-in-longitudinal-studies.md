@@ -5,47 +5,51 @@ description: >-
   samples.
 ---
 
-# Time Travel in Microbiome: Beta Diversity Analysis in Longitudinal Studies
+# Beta Diversity Analysis in Longitudinal Data with MicrobiomeStat
 
-Emerging from the temporal mists, we arrive at our next destination - **illuminating shifts in beta diversity over time using `generate_beta_test_long()`**. This powerful function performs pairwise PERMANOVA tests, comparing each time point to the baseline visit. The returned p-values **quantify significant differences**, acting as guideposts to changing microbial landscapes.
+In the exploration of longitudinal microbiome data, understanding the **patterns and shifts in beta diversity over time** is crucial. `MicrobiomeStat` offers sophisticated and robust tools to dissect these temporal intricacies in beta diversity.
 
-Let's traverse this rugged terrain:
+## Generate Beta Diversity Trend Test for Longitudinal Data
 
-```{r
-# Perform pairwise beta diversity tests using PERMANOVA
-beta_test_long_results <- generate_beta_test_long(
+The function `generate_beta_trend_test_long()` conducts a comprehensive examination utilizing a **linear mixed effects model** to discern the longitudinal trend in beta diversity. It processes the distance matrix as the response, taking time as a fixed effect and subject as a random effect.
+
+### **Usage:**
+```r
+data(subset_T2D.obj)
+generate_beta_trend_test_long(
   data.obj = subset_T2D.obj,
-  dist.obj = NULL, 
-  time.var = "visit_number",
-  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number))[1],
-  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number))[2:6],
+  dist.obj = NULL,
   subject.var = "subject_id",
+  time.var = "visit_number",
   group.var = "subject_race",
-  adj.vars = "subject_gender",
-  dist.name = c('BC', 'Jaccard')
+  adj.vars = c("subject_gender", "sample_body_site"),
+  dist.name = c("BC", "Jaccard")
 )
 ```
 
-| Term            | D1.p.value | D2.p.value | omni.p.value |
-| --------------- | ---------- | ---------- | ------------ |
-| subject\_gender | 0.96       | 0.948      | 0.953        |
-| subject\_race   | 0.96       | 0.948      | 0.953        |
-| visit\_number   | 0.96       | 0.948      | 0.953        |
+In this application, the function evaluates the **impact of time on beta diversity**, returning estimated coefficients that portray the **trends over time** and **differences between groups**.
 
-| Variable        | DF  | Sum\_Sq | Mean\_Sq | F\_Statistic | R\_Squared | P\_Value | Distance |
-| --------------- | --- | ------- | -------- | ------------ | ---------- | -------- | -------- |
-| subject\_gender | 2   | 1.90    | 0.952    | 2.422        | 0.007      | 0.96     | BC       |
-| subject\_race   | 4   | 4.89    | 1.222    | 3.11         | 0.019      | 0.96     | BC       |
-| visit\_number   | 5   | 1.39    | 0.279    | 0.709        | 0.005      | 0.96     | BC       |
-| Residuals       | 630 | 248.    | 0.393    | NA           | 0.968      | NA       | BC       |
-| Total           | 641 | 256.    | NA       | NA           | 1          | NA       | BC       |
-| subject\_gender | 2   | 1.84    | 0.92     | 2.144        | 0.007      | 0.948    | Jaccard  |
-| subject\_race   | 4   | 4.73    | 1.183    | 2.756        | 0.017      | 0.948    | Jaccard  |
-| visit\_number   | 5   | 1.73    | 0.346    | 0.807        | 0.006      | 0.948    | Jaccard  |
-| Residuals       | 630 | 270.    | 0.429    | NA           | 0.97       | NA       | Jaccard  |
-| Total           | 641 | 279.    | NA       | NA           | 1          | NA       | Jaccard  |
+## Generate Beta Diversity Volatility Test for Longitudinal Data
 
-The returned p-values are signposts guiding us to diverging microbial landscapes across time. **Low p-values indicate significant differences** compared to baseline, intimating dynamic change.
+Another paramount function, `generate_beta_volatility_test_long()`, calculates a **volatility test for beta diversity** in longitudinal data, testing the relationship between beta diversity volatility and the specified group variable.
+
+### **Usage:**
+```r
+data(subset_T2D.obj)
+generate_beta_volatility_test_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  subject.var = "subject_id",
+  time.var = "visit_number_num",
+  group.var = "subject_race",
+  adj.vars = NULL,
+  dist.name = c("BC", "Jaccard")
+)
+```
+
+This function computes the **volatility of the beta diversity** for each subject and fits linear models to test the association. The output is a clear portrayal of the **associations and patterns in beta diversity volatility over time**, aiding in the profound understanding of the microbiome's temporal dynamics.
+
+Leverage these **advanced tools by MicrobiomeStat** to delve deeper into the temporal landscape of beta diversity in your longitudinal microbiome studies. Your pathway to uncovering the **underlying patterns and shifts in microbial communities** over time is now more straightforward and insightful than ever before.
 
 Now let's **visualize these temporal journeys using `generate_beta_pc_boxplot_long()`**. This function traces individual trajectories across ordination Axes, connecting the dots from one timepoint to the next.
 
