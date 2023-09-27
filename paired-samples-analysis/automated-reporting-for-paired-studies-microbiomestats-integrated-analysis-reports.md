@@ -8,6 +8,10 @@ description: >-
 
 Paired microbiome studies enable tracking temporal variations within subjects. But synthesis of multidimensional dynamics is challenging. **MicrobiomeStat** offers two automated solutions:
 
+- `mStat_generate_report_pair()`: Provides integrated analysis and generates a comprehensive report including alpha diversity, beta diversity, taxonomic composition, summary statistics, plots and results interpretation. It takes inputs like paired microbiome data, time variables, sample metadata etc.
+
+- Modular functions like `generate_alpha_boxplot_long()`, `generate_taxa_heatmap_pair()` etc: Allow flexible and customized analysis by calling individual functions for specific tasks like visualization or hypothesis testing.
+
 ### Paired Sample Analysis Report
 
 The `mStat_generate_report_pair()` provides integrated analysis:
@@ -61,5 +65,3 @@ We provide paired data, time variables and change settings:
 ```
 
 {% file src="../.gitbook/assets/mStat_generate_report_pair_example.pdf" %}
-
-The two functions enable automated paired sample analysis and reporting with MicrobiomeStat. Researchers can swiftly synthesize multidimensional dynamics through integrated reports.
