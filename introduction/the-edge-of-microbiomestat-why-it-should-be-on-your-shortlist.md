@@ -1,10 +1,11 @@
 ---
 description: >-
-  Explore MicrobiomeStat's advantages: user-friendly, versatile, and powerful
-  for high-quality microbiome research and data visualization.
+  Discover MicrobiomeStat's offerings: a user-centric approach, adaptability,
+  and a supportive environment for insightful microbiome research and data
+  illustration.
 ---
 
-# Exploring MicrobiomeStat: Unique Features at a Glance
+# Exploring MicrobiomeStat: A Consideration for Your Research Toolkit
 
 **High-Quality Graphics**: One of the major advantages of **MicrobiomeStat** is its ability to generate charts of **exceptional quality** that are **publication-ready**. Our aesthetically pleasing and informative visualizations aid effective data interpretation.
 
@@ -12,7 +13,7 @@ description: >-
 
 **Broad Input Format Support**: **MicrobiomeStat** supports an impressive range of input and conversion formats, accommodating virtually all commonly used formats in microbiome research. This includes - but is not limited to - **qiime2**, **dada2**, **biom**, **mothur**, **phyloseq**, **DGEList**, **DESeqDataSet**, and **SummarizedExperiment**. This broad compatibility makes the data importing process smooth and hassle-free. If there's a format used in microbiome research that is not yet supported, please feel free to contact us!
 
-**Comprehensive Visualization Capabilities**: MicrobiomeStat boasts a plethora of visualization styles, effectively catering to all current forms used in microbiome research. Our offerings include specific chart types such as **boxplot**, **violinplot**, **scatterplot**, **barplot**, **heatmap**, **dotplot**, **ordinationplot**, **areaplot**, and **spaghettiplot**. Moreover, our designs for **paired and longitudinal studies have been specially optimized** to highlight the unique characteristics and insights of your data. With MicrobiomeStat, your data will tell its story in the most impactful way possible!&#x20;
+**Comprehensive Visualization Capabilities**: MicrobiomeStat boasts a plethora of visualization styles, effectively catering to all current forms used in microbiome research. Our offerings include specific chart types such as **boxplot**, **violinplot**, **scatterplot**, **barplot**, **heatmap**, **dotplot**, **ordinationplot**, **areaplot**, and **spaghettiplot**. Moreover, our designs for **paired and longitudinal studies have been specially optimized** to highlight the unique characteristics and insights of your data. With MicrobiomeStat, your data will tell its story in the most impactful way possible!
 
 **Multi-Omics Data Analysis**: As we continually expand **MicrobiomeStat**, it's evolving into a comprehensive package for multi-omics data analysis. Data analyzed using **MicrobiomeStat** will have an edge in **multi-omics data integration**.
 
@@ -22,4 +23,4 @@ description: >-
 
 **Outputs as ggplot objects**: Unique to **MicrobiomeStat**, it provides outputs as **ggplot objects**, allowing users to further manipulate and customize their graphs post-analysis.
 
-**MicrobiomeStat** isn't just a tool—it's your companion in the exciting journey of microbiome research!&#x20;
+**MicrobiomeStat** isn't just a tool—it's your companion in the exciting journey of microbiome research!

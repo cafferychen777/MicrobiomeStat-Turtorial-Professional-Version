@@ -1,7 +1,7 @@
 ---
 description: >-
-  Dive into MicrobiomeStat: a comprehensive tool for advanced microbiome
-  analysis, with robust multi-omics data handling capabilities.
+  Discover MicrobiomeStat: A friendly tool for engaging with microbiome data,
+  extending a hand towards multi-omics data exploration.
 ---
 
 # Overview of the MicrobiomeStat Package

@@ -1,7 +1,8 @@
 ---
 description: >-
-  Explore MicrobiomeStat's diverse analyses for cross-sectional, paired, and
-  longitudinal studies. Discover powerful tools for your microbiome research!
+  Explore MicrobiomeStat's array of analyses for cross-sectional, paired, and
+  longitudinal studies. Uncover supportive tools for your microbiome research
+  journey!
 ---
 
 # Feature Overview: Dive Deep into the Capabilities of MicrobiomeStat
