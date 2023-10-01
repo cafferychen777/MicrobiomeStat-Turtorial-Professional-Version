@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome to the MicrobiomeStat Tutorial: The Ultimate Guide for Mastering Microbiome Data Analysis.](README.md)
+* [Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Tale with MicrobiomeStat.](README.md)
 
 ## INTRODUCTION
 
