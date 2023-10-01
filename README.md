@@ -13,6 +13,10 @@ description: >-
 
 Interestingly, **MicrobiomeStat** isn't limited to microbiome data. Have **multi-omics data**? **MicrobiomeStat** is ready to assist! Our goal is to establish **MicrobiomeStat** as a **helpful R package** for **longitudinal analysis of multi-omics data**.
 
+Before diving further, we would like to extend our heartfelt appreciation to the developers of the packages that **MicrobiomeStat** depends on. Our work is built upon the robust foundations laid by packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `parallel`, `ggrepel`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `broom`, and others. Their diligent work has greatly facilitated the development of **MicrobiomeStat**.
+
+We also acknowledge and pay homage to the pioneering work done by the developers of **microbiomeutilities**, **phyloseq**, **microbiomemarker**, **MicrobiomeAnalyst**, **microbiomeeco**, **EasyAmplicon**, **STAMP**, **qiime2**, **MicrobiotaProcess**, **q2-longitudinal**, **SplinectomeR**, and **coda4microbiome**. Their contributions have significantly advanced the field and inspired us in creating **MicrobiomeStat**.
+
 Whether you're conducting a simple cross-sectional study or diving into a complex longitudinal analysis with multiple omics data, **MicrobiomeStat** aims to be your **reliable companion**. Our package is designed with **user-friendliness at its core**, aiding your path to **efficient and effective analysis**.
 
 Ready to uncover new insights? Explore the **varied capabilities** of **MicrobiomeStat**, delve into its **extensive features**, practical use cases, and stay informed with the **latest updates**. Welcome to a new chapter in microbiome analysis!

@@ -1,10 +1,12 @@
 ---
-description: See how MicrobiomeStat compares to other top microbiome analysis packages.
+description: Explore the unique features MicrobiomeStat brings to the microbiome analysis landscape alongside other notable packages.
 ---
 
-# MicrobiomeStat vs. Other Longitudinal Packages: An In-Depth Comparison
+# Exploring Longitudinal Analysis Features: MicrobiomeStat Among Other Packages
 
-### Comparative Table 1: Longitudinal Packages
+In the thriving community of microbiome data analysis, many packages have been developed offering a variety of features. Each package has its unique strengths, and collectively, they enrich the toolkit available to researchers. Here, we present a feature overview of **MicrobiomeStat** alongside other respected packages like **q2-longitudinal**, **SplinectomeR**, **coda4microbiome**. This overview aims to provide a clearer understanding of the diverse functionalities across different packages, acknowledging the valuable contributions of each to the field.
+
+### Table 1: Feature Overview of Longitudinal Packages
 
 |                    Features                    |                                      MicrobiomeStat                                      |               q2-longitudinal              |                               SplinectomeR                               |                              coda4microbiome                             |
 | :--------------------------------------------: | :--------------------------------------------------------------------------------------: | :----------------------------------------: | :----------------------------------------------------------------------: | :----------------------------------------------------------------------: |
@@ -22,3 +24,5 @@ description: See how MicrobiomeStat compares to other top microbiome analysis pa
 |    Similar Changes in Composition Over Time    |                                            ✔️                                            |                      ❌                     |                                     ❌                                    |                                     ❌                                    |
 |                Publication Ready               |                                            ✔️                                            |                     ✔️                     |                                     ❌                                    |                                     ❌                                    |
 |               Ongoing Development              |                                            ✔️                                            |                     ✔️                     |                                    ✔️                                    |                                    ✔️                                    |
+
+We extend our heartfelt gratitude towards the developers and contributors of **q2-longitudinal**, **SplinectomeR**, **coda4microbiome**, and other packages in the microbiome data analysis community. Their pioneering work has laid a strong foundation, inspiring and enabling further innovation in the field, including the development of **MicrobiomeStat**. We are honored to be part of this vibrant and collaborative community, and look forward to contributing to the collective endeavor of advancing microbiome research.
