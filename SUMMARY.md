@@ -7,9 +7,9 @@
 * [Overview of the MicrobiomeStat Package](introduction/overview-of-the-microbiomestat-package.md)
 * [The Edge of MicrobiomeStat: Why It Should Be On Your Shortlist](introduction/the-edge-of-microbiomestat-why-it-should-be-on-your-shortlist.md)
 * [Feature Overview: Dive Deep into the Capabilities of MicrobiomeStat](introduction/feature-overview-dive-deep-into-the-capabilities-of-microbiomestat.md)
-* [MicrobiomeStat Versus the Competition: A Comparative Overview](introduction/microbiomestat-versus-the-competition-a-comparative-overview/README.md)
-  * [MicrobiomeStat vs. Other Longitudinal Packages: An In-Depth Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/microbiomestat-vs.-other-longitudinal-packages-an-in-depth-comparison.md)
-  * [MicrobiomeStat vs Integrated Analysis Packages: A Feature Comparison](introduction/microbiomestat-versus-the-competition-a-comparative-overview/microbiomestat-vs-integrated-analysis-packages-a-feature-comparison.md)
+* [Unveiling MicrobiomeStat: A Glimpse into Diverse Microbiome Analysis Solutions](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/README.md)
+  * [Exploring Longitudinal Analysis Features: MicrobiomeStat Among Other Packages](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/exploring-longitudinal-analysis-features-microbiomestat-among-other-packages.md)
+  * [Exploring Feature Offerings: MicrobiomeStat Among Integrated Analysis Packages](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/exploring-feature-offerings-microbiomestat-among-integrated-analysis-packages.md)
 
 ## Setting Up MicrobiomeStat: Installation and Data Preparation
 
