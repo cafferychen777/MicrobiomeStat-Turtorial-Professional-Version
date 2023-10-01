@@ -9,6 +9,8 @@ description: >-
 
 ## **MicrobiomeStat: Bridging Time and Data in Microbiome Analysis**
 
+<figure><img src=".gitbook/assets/cover.png" alt=""><figcaption></figcaption></figure>
+
 **MicrobiomeStat** isn't just another package, it's a **specialized tool** for microbiome analysis. Designed with a focus on **longitudinal studies**, it provides comprehensive solutions for both **longitudinal** and **paired analyses**. And that's not all; **MicrobiomeStat** is also versatile enough for **cross-sectional studies**.
 
 Interestingly, **MicrobiomeStat** isn't limited to microbiome data. Have **multi-omics data**? **MicrobiomeStat** is ready to assist! Our goal is to establish **MicrobiomeStat** as a **helpful R package** for **longitudinal analysis of multi-omics data**.
