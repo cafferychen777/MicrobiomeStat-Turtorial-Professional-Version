@@ -7,7 +7,7 @@ description: >-
 
 # Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Tale with MicrobiomeStat.
 
-## **MicrobiomeStat: Bridging Time and Data in Microbiome Analysis**
+## **MicrobiomeStat:** Supporting Longitudinal Microbiome Analysis in R
 
 <figure><img src=".gitbook/assets/cover.png" alt=""><figcaption></figcaption></figure>
 
