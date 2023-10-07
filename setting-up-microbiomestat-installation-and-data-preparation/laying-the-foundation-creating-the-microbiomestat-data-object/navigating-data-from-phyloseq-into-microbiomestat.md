@@ -21,6 +21,19 @@ data.obj <- mStat_convert_phyloseq_to_data_obj(peerj32.phy)
 
 Just like that, your Phyloseq object transmutes into a **MicrobiomeStat data object**.
 
+### ⚠️ Heads up on Factor Loss!
+
+While the conversion process is streamlined, there's a possibility of factor loss in your metadata when importing from a Phyloseq object into MicrobiomeStat. This can disrupt the order of levels or even drop levels entirely.
+
+**Solution:** To ensure the integrity of your data, always double-check your factors after conversion. If you notice any discrepancies, reset the factor levels:
+
+```r
+# Example: Setting the 'sex' factor in the desired order
+data.obj$meta.dat$sex <- factor(as.factor(data.obj$meta.dat$sex), levels = c("male", "female"))
+```
+
+Replace `'sex'` with the relevant metadata column and adjust the factor levels accordingly.
+
 With `mStat_convert_phyloseq_to_data_obj`, you acquire a **MicrobiomeStat data object** (a list) brimming with:
 
 * **feature.tab**: A matrix of the feature table (OTU table). Superfluous rows with a sum of zero are swept away, leaving only the features present in the samples.
