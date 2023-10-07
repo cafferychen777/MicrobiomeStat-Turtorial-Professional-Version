@@ -10,7 +10,7 @@ Welcome to **Inspecting Paired Samples: Taxa Analysis**. Here, we delve into the
 
 It's all about deciphering patterns in **taxa composition, prevalence, abundance, and changes**, and identifying samples with similar trends of taxa variation. Prepare to **uncover the hidden narratives** within your microbial data and reveal the complexity of these fascinating **microbial communities**!
 
-Before visual exploration, we can perform statistical testing to identify differentially abundant taxa using `generate_taxa_test_pair()`:
+Before delving into visual exploration, it's valuable to perform statistical tests to pinpoint differentially abundant taxa. The function `generate_taxa_test_pair()` is designed for this purpose, employing linear mixed models to gauge taxa abundance variations over time and across different groups:
 
 ```r
 generate_taxa_test_pair(
@@ -20,19 +20,29 @@ generate_taxa_test_pair(
   group.var = "group",
   adj.vars = c("sex"),
   feature.level = "Family",
-  prev.filter = 0,
-  abund.filter = 0,
+  prev.filter = 0.01,
+  abund.filter = 0.0001,
   feature.dat.type = "count"
 )
 ```
 
-This fits linear mixed models to assess taxa abundance changes over time across groups. The output contains data frames with log fold changes, p-values and other statistics for each taxonomic level.
+This function is particularly adept at evaluating taxa abundance variations across different groups and time points. It accounts for temporal changes using the `time.var`, and makes adjustments based on specified variables like "sex". The analysis is focused on the taxonomic level defined by `feature.level`.
 
-#### Differential abundance results at Family level
+The output comprises multiple data frames, each corresponding to different comparisons and interactions within the model. These data frames provide detailed statistics, including:
 
+- **Log fold changes**: This represents the magnitude and direction of change in taxa abundance between different groups.
+  
+- **P-values**: These give the statistical significance of observed changes, helping to discern if the variations in taxa abundance are likely due to chance or are genuinely significant.
 
+Moreover, for specific comparisons, you might encounter labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]`.
 
-Alternatively, we can assess taxa changes between timepoints using `generate_taxa_change_test_pair()`:
+- The `[Main Effect]` label showcases the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
+  
+- The `[Interaction]` label reveals the nuanced relationship between group differences and another variable, such as time. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
+
+These detailed results from the function provide a robust foundation for further investigations. They guide researchers in pinpointing which taxa exhibit significant changes and under which conditions, thereby paving the way for insightful visual analyses or deeper data explorations.
+
+To explore the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is indispensable. The function not only gauges the changes but also puts the spotlight on the group-wise differences.
 
 ```r
 generate_taxa_change_test_pair(
@@ -50,7 +60,19 @@ generate_taxa_change_test_pair(
 )
 ```
 
-This computes fold changes in taxa abundance between timepoints. It models the changes using linear mixed models to test for group effects.
+The function employs the following mechanisms:
+
+- It evaluates the data considering time variations, adjusting for specific variables such as "sex".
+  
+- It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The kind of change is determined by the `feature.change.func`, which in the above example is "log fold change (lfc)".
+
+- The output is a detailed breakdown of taxa differences at the selected taxonomic level (`feature.level`), here it's set as "original". It consists of statistics such as coefficients, p-values, and adjusted p-values for each taxon.
+
+- Additionally, for each taxon, the function discerns group-specific effects using linear models. It investigates whether specific groups, defined by `group.var`, have distinct patterns of change over time.
+
+- Results are organized by taxon and by group comparisons. For instance, you might see outputs highlighting differences like "TreatmentA vs TreatmentB" for each taxon.
+
+The comprehensive results allow researchers to identify taxa that have significant alterations in abundance across timepoints, and if these changes are influenced by group affiliations. This analysis paves the way for insightful visual representations or more intricate explorations.
 
 After diving into the Differential Abundance Analysis, let's shed some light on two other powerful functions in our analytical toolbox: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
 
