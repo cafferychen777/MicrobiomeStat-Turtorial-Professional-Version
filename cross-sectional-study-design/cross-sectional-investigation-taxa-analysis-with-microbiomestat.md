@@ -8,10 +8,6 @@ description: >-
 
 Embarking on a journey through the microbial landscape, we first use MicrobiomeStat's `generate_taxa_heatmap_single` function. This function paints a rich, color-coded picture of microbial abundance across our groups of interest.
 
-Of course, here's a more concise version of the content with the description of the volcano plot:
-
-***
-
 Before visualizing taxa abundance, we conduct differential abundance testing using `generate_taxa_test_single` to pinpoint taxa with significant differences between groups.
 
 ```r
