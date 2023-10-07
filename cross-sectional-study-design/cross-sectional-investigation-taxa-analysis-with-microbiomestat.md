@@ -8,56 +8,56 @@ description: >-
 
 Embarking on a journey through the microbial landscape, we first use MicrobiomeStat's `generate_taxa_heatmap_single` function. This function paints a rich, color-coded picture of microbial abundance across our groups of interest.
 
-Before visualizing taxa abundance, we can perform differential abundance testing using `generate_taxa_test_single` to identify taxa that differ significantly between groups.
+Of course, here's a more concise version of the content with the description of the volcano plot:
+
+---
+
+Before visualizing taxa abundance, we conduct differential abundance testing using `generate_taxa_test_single` to pinpoint taxa with significant differences between groups.
 
 ```r
-generate_taxa_test_single(
-  data.obj = peerj32.obj,
-  time.var = "time",
-  t.level = "1",
-  group.var = "group",
-  adj.vars = "sex",
-  feature.dat.type = "count",
-  feature.level = "Genus",
-  prev.filter = 0,
-  abund.filter = 0,
-  is.winsor = TRUE,
-  outlier.pct = 0.001,
-  winsor.end = 'top',
-  is.post.sample = TRUE,
-  post.sample.no = 25,
-  list(function (x) x^0.5, function (x) x^0.25),
-  stats.combine.func = max,
-  perm.no = 99,
-  strata = NULL,
-  ref.pct = 0.5,
-  stage.no = 6,
-  excl.pct = 0.2,
-  is.fwer = TRUE,
-  verbose = TRUE
+data(peerj32.obj)
+test.list <- generate_taxa_test_single(
+    data.obj = peerj32.obj,
+    time.var = "time",
+    t.level = "2",
+    group.var = "group",
+    adj.vars = "sex",
+    feature.dat.type = "count",
+    feature.level = c("Phylum","Genus","Family"),
+    prev.filter = 0.1,
+    abund.filter = 0.0001,
+    feature.sig.level = 0.1,
+    feature.mt.method = "none"
 )
+volcano_plots <- generate_taxa_volcano_single(data.obj = peerj32.obj,
+                                              group.var = "group",
+                                              test.list = test.list,
+                                              feature.sig.level = 0.1,
+                                              feature.mt.method = "none")
+volcano_plots
 ```
 
-This function applies preprocessing like filtering, normalization and aggregation at the specified taxonomic level. Then it runs the ZicoSeq method to test for significant differences between groups, adjusting for covariates.
+Using the `volcano_plots` from the code, we produce a volcano plot. This plot visualizes the relationship between the magnitude of change (x-axis) and its statistical significance (y-axis), aiding researchers in identifying significant differences in taxa abundance.
+
+This function applies preprocessing like filtering, normalization and aggregation at the specified taxonomic level. Then it runs the LinDA method to test for significant differences between groups, adjusting for covariates.
 
 The results contain tables summarizing significant taxa, their abundance statistics, and associated p-values and effect sizes. This guides selection of interesting taxa for further investigation.
 
 #### Differential abundance results at Genus level
 
-| Variable                             | Group   | R.Squared | F.Statistic | Estimate | P.Value | Adjusted.P.Value | Mean.Proportion |
-| ------------------------------------ | ------- | --------- | ----------- | -------- | ------- | ---------------- | --------------- |
-| Actinomycetaceae                     | Placebo | 0.024     | 0.815       | -0.00387 | 0.45    | 0.963            | 0.000172        |
-| Actinomycetaceae                     | LGG     | 0.024     | 0.815       | -0.00387 | 0.45    | 0.963            | 0.000100        |
-| Aerococcus                           | Placebo | 0.011     | 0.515       | -0.0032  | 0.45    | 0.963            | 0.000168        |
-| Aerococcus                           | LGG     | 0.011     | 0.515       | -0.0032  | 0.45    | 0.963            | 0.000312        |
-| Aeromonas                            | Placebo | 0.00426   | 0.171       | -0.002   | 0.75    | 0.963            | 0.000178        |
-| Aeromonas                            | LGG     | 0.00426   | 0.171       | -0.002   | 0.75    | 0.963            | 0.000336        |
-| Akkermansia                          | Placebo | 0.00394   | 0.463       | -0.0182  | 0.36    | 0.963            | 0.0234          |
-| Akkermansia                          | LGG     | 0.00394   | 0.463       | -0.0182  | 0.36    | 0.963            | 0.0127          |
-| Alcaligenes faecalis subsp. faecalis | Placebo | 0.0399    | 0.987       | -0.0025  | 0.41    | 0.963            | 0.0000572       |
-| Alcaligenes faecalis subsp. faecalis | LGG     | 0.0399    | 0.987       | -0.0025  | 0.41    | 0.963            | 0               |
+| Variable                             | Coefficient  | SE        | P.Value    | Adjusted.P.Value | Mean.Abundance | Prevalence |
+|--------------------------------------|--------------|-----------|------------|------------------|----------------|------------|
+| Actinomycetaceae                     | 0.43088737   | 0.8125191 | 0.60204023 | 0.9892442        | 0.0001950405   | 0.7272727  |
+| Aerococcus                          | -0.09734179  | 0.7893169 | 0.90314569 | 0.9892442        | 0.0002352668   | 0.5909091  |
+| Aeromonas                           | 0.02022775   | 1.0311377 | 0.98455351 | 0.9892442        | 0.0002829477   | 0.6363636  |
+| Akkermansia                         | -0.70914707  | 0.5667601 | 0.22603834 | 0.9892442        | 0.0202212889   | 1.0000000  |
+| Allistipes et rel.                  | -0.54628088  | 0.4985462 | 0.28688461 | 0.9892442        | 0.0083365762   | 1.0000000  |
+| Anaerofustis                        | 0.37736758   | 0.3988262 | 0.35592789 | 0.9892442        | 0.0013725489   | 1.0000000  |
+| Anaerostipes caccae et rel.         | -0.45297144  | 0.1723513 | 0.01655715 | 0.7004574        | 0.0185944926   | 1.0000000  |
+| Anaerotruncus colihominis et rel.   | 0.05420558   | 0.4605402 | 0.90754073 | 0.9892442        | 0.0028354658   | 1.0000000  |
+| Anaerovorax odorimutans et rel.     | -0.55577241  | 0.3180729 | 0.09672749 | 0.9892442        | 0.0044828621   | 1.0000000  |
+| Aneurinibacillus                    | -0.20493605  | 0.5227462 | 0.69939327 | 0.9892442        | 0.0007296989   | 0.9545455  |
 
-This table shows the top 10 differentially abundant genera between groups based on ZicoSeq results, with statistics like R squared, F statistic, p-values, effect size and mean proportions. Additional columns for prevalence and abundance variation are omitted for brevity.
 
 Before visualizing abundance distribution using heatmaps, we can also generate exploratory plots like boxplots to compare taxa abundance between groups.
 
