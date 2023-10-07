@@ -11,7 +11,7 @@ The MicrobiomeStat data object consists of the following components:
 * **feature.tab (Matrix)**: Stores microbiome feature abundance data, with **rows representing features** (OTUs, ASVs, genes, etc) and **columns representing samples**.
 * **meta.dat (Dataframe)**: Stores sample metadata, with **each row representing a sample** and **columns representing metadata variables**.
 * **feature.ann (Matrix, optional)**: Stores feature annotation data, with **rows representing features** and **columns representing annotations** (taxonomic classifications, functional categories, etc).
-* **phylo (optional)**: Represents evolutionary relationships between features.
+* **tree (optional)**: Represents evolutionary relationships between features.
 * **feature.agg.list (List, optional)**: Aggregated statistics based on Feature.tab and Feature.ann.
 
 Here is how to construct the MicrobiomeStat data object directly from matrix and dataframe:
