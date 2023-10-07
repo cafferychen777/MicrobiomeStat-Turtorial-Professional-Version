@@ -57,7 +57,7 @@ Feature.ann <- matrix(c(rep(c("Bacteria","Archaea"),c(80,20)),
 If phylogenetic tree is available, directly assign:
 
 ```r
-phylo <- ape::rtree(100) # generate random tree
+tree <- ape::rtree(100) # generate random tree
 ```
 
 ### Combine into MicrobiomeStat Object
@@ -69,7 +69,7 @@ MicrobiomeData <- list(
   feature.tab = Feature.tab,
   meta.dat = Meta.dat,
   feature.ann = Feature.ann,
-  phylo = phylo
+  tree = tree
 )
 ```
 
