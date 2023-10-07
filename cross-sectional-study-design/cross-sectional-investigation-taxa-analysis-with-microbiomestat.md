@@ -10,7 +10,7 @@ Embarking on a journey through the microbial landscape, we first use MicrobiomeS
 
 Of course, here's a more concise version of the content with the description of the volcano plot:
 
----
+***
 
 Before visualizing taxa abundance, we conduct differential abundance testing using `generate_taxa_test_single` to pinpoint taxa with significant differences between groups.
 
@@ -37,6 +37,8 @@ volcano_plots <- generate_taxa_volcano_single(data.obj = peerj32.obj,
 volcano_plots
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-07 at 15.18.08.png" alt=""><figcaption></figcaption></figure>
+
 Using the `volcano_plots` from the code, we produce a volcano plot. This plot visualizes the relationship between the magnitude of change (x-axis) and its statistical significance (y-axis), aiding researchers in identifying significant differences in taxa abundance.
 
 This function applies preprocessing like filtering, normalization and aggregation at the specified taxonomic level. Then it runs the LinDA method to test for significant differences between groups, adjusting for covariates.
@@ -45,19 +47,18 @@ The results contain tables summarizing significant taxa, their abundance statist
 
 #### Differential abundance results at Genus level
 
-| Variable                             | Coefficient  | SE        | P.Value    | Adjusted.P.Value | Mean.Abundance | Prevalence |
-|--------------------------------------|--------------|-----------|------------|------------------|----------------|------------|
-| Actinomycetaceae                     | 0.43088737   | 0.8125191 | 0.60204023 | 0.9892442        | 0.0001950405   | 0.7272727  |
-| Aerococcus                          | -0.09734179  | 0.7893169 | 0.90314569 | 0.9892442        | 0.0002352668   | 0.5909091  |
-| Aeromonas                           | 0.02022775   | 1.0311377 | 0.98455351 | 0.9892442        | 0.0002829477   | 0.6363636  |
-| Akkermansia                         | -0.70914707  | 0.5667601 | 0.22603834 | 0.9892442        | 0.0202212889   | 1.0000000  |
-| Allistipes et rel.                  | -0.54628088  | 0.4985462 | 0.28688461 | 0.9892442        | 0.0083365762   | 1.0000000  |
-| Anaerofustis                        | 0.37736758   | 0.3988262 | 0.35592789 | 0.9892442        | 0.0013725489   | 1.0000000  |
-| Anaerostipes caccae et rel.         | -0.45297144  | 0.1723513 | 0.01655715 | 0.7004574        | 0.0185944926   | 1.0000000  |
-| Anaerotruncus colihominis et rel.   | 0.05420558   | 0.4605402 | 0.90754073 | 0.9892442        | 0.0028354658   | 1.0000000  |
-| Anaerovorax odorimutans et rel.     | -0.55577241  | 0.3180729 | 0.09672749 | 0.9892442        | 0.0044828621   | 1.0000000  |
-| Aneurinibacillus                    | -0.20493605  | 0.5227462 | 0.69939327 | 0.9892442        | 0.0007296989   | 0.9545455  |
-
+| Variable                          | Coefficient | SE        | P.Value    | Adjusted.P.Value | Mean.Abundance | Prevalence |
+| --------------------------------- | ----------- | --------- | ---------- | ---------------- | -------------- | ---------- |
+| Actinomycetaceae                  | 0.43088737  | 0.8125191 | 0.60204023 | 0.9892442        | 0.0001950405   | 0.7272727  |
+| Aerococcus                        | -0.09734179 | 0.7893169 | 0.90314569 | 0.9892442        | 0.0002352668   | 0.5909091  |
+| Aeromonas                         | 0.02022775  | 1.0311377 | 0.98455351 | 0.9892442        | 0.0002829477   | 0.6363636  |
+| Akkermansia                       | -0.70914707 | 0.5667601 | 0.22603834 | 0.9892442        | 0.0202212889   | 1.0000000  |
+| Allistipes et rel.                | -0.54628088 | 0.4985462 | 0.28688461 | 0.9892442        | 0.0083365762   | 1.0000000  |
+| Anaerofustis                      | 0.37736758  | 0.3988262 | 0.35592789 | 0.9892442        | 0.0013725489   | 1.0000000  |
+| Anaerostipes caccae et rel.       | -0.45297144 | 0.1723513 | 0.01655715 | 0.7004574        | 0.0185944926   | 1.0000000  |
+| Anaerotruncus colihominis et rel. | 0.05420558  | 0.4605402 | 0.90754073 | 0.9892442        | 0.0028354658   | 1.0000000  |
+| Anaerovorax odorimutans et rel.   | -0.55577241 | 0.3180729 | 0.09672749 | 0.9892442        | 0.0044828621   | 1.0000000  |
+| Aneurinibacillus                  | -0.20493605 | 0.5227462 | 0.69939327 | 0.9892442        | 0.0007296989   | 0.9545455  |
 
 Before visualizing abundance distribution using heatmaps, we can also generate exploratory plots like boxplots to compare taxa abundance between groups.
 
