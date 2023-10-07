@@ -24,3 +24,5 @@ description: >-
 **Outputs as ggplot objects**: Unique to **MicrobiomeStat**, it provides outputs as **ggplot objects**, allowing users to further manipulate and customize their graphs post-analysis.
 
 **MicrobiomeStat** isn't just a tool—it's your companion in the exciting journey of microbiome research!
+
+<figure><img src="../.gitbook/assets/DALL·E 2023-10-07 17.57.44 - Illustration of a collaborative research environment. A male scientist with European descent and a female scientist with South Asian descent are discu.png" alt=""><figcaption></figcaption></figure>
