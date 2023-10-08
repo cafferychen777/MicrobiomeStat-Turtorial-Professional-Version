@@ -16,3 +16,9 @@ We acknowledge with great respect the remarkable work done by the developers of 
 Our aim is to illuminate the diverse functionalities and the user-friendly nature of **MicrobiomeStat**, focusing on the breadth of features it offers. Through this overview, we hope to provide you with a clearer understanding of the landscape of microbiome data analysis tools, aiding your decision-making process.
 
 We encourage you to delve into the features of **MicrobiomeStat**, exploring its capacities within the broader ecosystem of microbiome analysis tools. Engage in a journey of discovery and see how **MicrobiomeStat** can serve as a supportive companion in your microbiome data analysis endeavors.
+
+<div data-full-width="true">
+
+<figure><img src="../../.gitbook/assets/DALL·E 2023-10-07 18.02.00 - Illustration of a vast digital landscape, symbolizing the realm of microbiome data analysis. On the horizon, iconic symbols represent various known to.png" alt=""><figcaption></figcaption></figure>
+
+</div>
