@@ -5,7 +5,7 @@ description: >-
   microbial dynamics over time.
 ---
 
-# Taxonomic Timelines: Taxa Analysis in Longitudinal Studies
+# Taxonomic Timelines: Feature-level Analysis in Longitudinal Studies
 
 **Delving into the depths of longitudinal microbiome data requires a robust toolkit. Fortunately, MicrobiomeStat arms us with a set of powerful functions to illuminate the intricate taxonomic changes over time.**
 
@@ -157,7 +157,7 @@ generate_taxa_change_heatmap_long(
   features.plot = NULL,
   top.k.plot = 10,
   top.k.func = "sd",
-  feature.change.func = "lfc",
+  feature.change.func = "log fold change",
   palette = NULL,
   prev.filter = 0.01,
   abund.filter = 0.01,
