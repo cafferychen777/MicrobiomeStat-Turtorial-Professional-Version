@@ -1,8 +1,7 @@
 ---
 description: >-
-  Unveil microbial diversity in your data with MicrobiomeStat's feature-level
-  analysis tools. Investigate how taxa abundance varies across groups and time
-  points.
+  Unveil microbial diversity in your data with MicrobiomeStat's feature-level analysis
+  tools. Investigate how taxa abundance varies across groups and time points.
 ---
 
 # Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat
