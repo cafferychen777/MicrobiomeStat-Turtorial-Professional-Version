@@ -114,7 +114,7 @@ generate_beta_pc_change_boxplot_pair(
   group.var = "group",
   strata.var = NULL,
   change.base = "1",
-  change.func = "difference",
+  change.func = "absolute change",
   dist.name = c('BC'),
   base.size = 20,
   theme.choice = "bw",
