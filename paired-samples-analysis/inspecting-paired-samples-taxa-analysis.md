@@ -4,9 +4,9 @@ description: >-
   significant changes in microbial abundance between paired conditions.
 ---
 
-# Inspecting Paired Samples: Taxa Analysis
+# Inspecting Paired Samples: Feature-level Analysis
 
-Welcome to **Inspecting Paired Samples: Taxa Analysis**. Here, we delve into the minutiae of **microbial ecosystems**, with our sights set on **taxa variations**. **MicrobiomeStat** presents us with powerful tools for **differential abundance analysis**, letting us illuminate significant **changes in microbial abundance** between paired conditions.
+Welcome to **Inspecting Paired Samples: Feature-level Analysis**. Here, we delve into the minutiae of **microbial ecosystems**, with our sights set on **taxa variations**. **MicrobiomeStat** presents us with powerful tools for **differential abundance analysis**, letting us illuminate significant **changes in microbial abundance** between paired conditions.
 
 It's all about deciphering patterns in **taxa composition, prevalence, abundance, and changes**, and identifying samples with similar trends of taxa variation. Prepare to **uncover the hidden narratives** within your microbial data and reveal the complexity of these fascinating **microbial communities**!
 
@@ -52,7 +52,7 @@ generate_taxa_change_test_pair(
   group.var = "group",
   adj.vars = c("sex"),
   change.base = "1",
-  feature.change.func = "lfc",
+  feature.change.func = "log fold change",
   feature.level = "Family",
   prev.filter = 0.01,
   abund.filter = 0.01,
@@ -64,7 +64,7 @@ The function employs the following mechanisms:
 
 - It evaluates the data considering time variations, adjusting for specific variables such as "sex".
   
-- It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The kind of change is determined by the `feature.change.func`, which in the above example is "log fold change (lfc)".
+- It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The kind of change is determined by the `feature.change.func`, which in the above example is "log fold change".
 
 - The output is a detailed breakdown of taxa differences at the selected taxonomic level (`feature.level`), here it's set as "original". It consists of statistics such as coefficients, p-values, and adjusted p-values for each taxon.
 
@@ -143,12 +143,12 @@ generate_taxa_boxplot_long(
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 10.32.08.png" alt=""><figcaption><p><strong>Comprehensive Boxplot of Individual Taxa in Paired Samples</strong>: The <code>generate_taxa_boxplot_long()</code> function creates a combined boxplot of all taxa on one page, allowing for an immediate comparison of abundance variations across paired samples over time. This view is especially beneficial for highlighting taxa that show significant differential abundance, presenting a clear snapshot of the microbiome dynamics in paired samples.</p></figcaption></figure>
 
 {% hint style="info" %}
-🔍 **Hint:** When it comes to controlling the features you wish to visualize, the `features.plot` parameter is your best friend. If it's not NULL, **`abund.filter` and `prev.filter` will be disregarded during the visualization process**, although they will still be considered during computation. This means `features.plot` allows you to **filter the taxa after calculations and just before visualization**, displaying only the taxa listed in `features.plot`. This feature is particularly useful when you want to **visualize only those taxa that show significant changes in a Differential Abundance Analysis (DAA)**. It’s your bridge to effectively linking taxa analysis and DAA!&#x20;
+🔍 **Hint:** When it comes to controlling the features you wish to visualize, the `features.plot` parameter is your best friend. If it's not NULL, **`abund.filter` and `prev.filter` will be disregarded during the visualization process**, although they will still be considered during computation. This means `features.plot` allows you to **filter the taxa after calculations and just before visualization**, displaying only the taxa listed in `features.plot`. This feature is particularly useful when you want to **visualize only those taxa that show significant changes in a Differential Abundance Analysis (DAA)**. It’s your bridge to effectively linking feature-level analysis and DAA!&#x20;
 {% endhint %}
 
 This function places all taxa onto a single page, providing an overview of all your taxa at once. This can be especially useful for visualizing features with significant differential abundance (<0.05).
 
-Moving forward, we introduce a couple of essential tools for our paired taxa analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`. This pair of functions offer a deep dive into changes in the taxonomic composition at the family level.
+Moving forward, we introduce a couple of essential tools for our paired feature-level analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`. This pair of functions offer a deep dive into changes in the taxonomic composition at the family level.
 
 The first function, `generate_taxa_indiv_change_boxplot_pair()`, is applied as follows:
 
@@ -160,7 +160,7 @@ generate_taxa_indiv_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "lfc",
+   feature.change.func = "log fold change",
    feature.level = c("Family"),
    features.plot = NULL,
    feature.dat.type = "count",
@@ -191,7 +191,7 @@ generate_taxa_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "lfc",
+   feature.change.func = "log fold change",
    feature.level = c("Family"),
    feature.dat.type = "count",
    features.plot = NULL,
@@ -244,7 +244,7 @@ generate_taxa_barplot_pair(
 {% endhint %}
 
 {% hint style="info" %}
-**Hint** : The `feature.level` parameter is highly flexible and plays a key role in refining your taxa analysis. It can be set to any column name in `feature.ann`. Moreover, if you want to perform analysis directly on **OTUs, ASVs, KEGG, Genes**, etc., you can simply set `feature.level` to '**original**'. This flexibility allows MicrobiomeStat to cater to your specific analytical needs, offering personalized insights into your microbiome data.
+**Hint** : The `feature.level` parameter is highly flexible and plays a key role in refining your feature-level analysis. It can be set to any column name in `feature.ann`. Moreover, if you want to perform analysis directly on **OTUs, ASVs, KEGG, Genes**, etc., you can simply set `feature.level` to '**original**'. This flexibility allows MicrobiomeStat to cater to your specific analytical needs, offering personalized insights into your microbiome data.
 {% endhint %}
 
 With its vibrant visuals, this function illuminates the shift in **taxa composition** for each subject across different time points, while simultaneously showcasing the average taxa composition change within groups. These **graphical representations provide a holistic understanding of the dynamic microbial landscape**, capturing the unique microbiome journey of each subject and revealing overarching patterns across groups. A true feast for the eyes and the mind!&#x20;
@@ -294,7 +294,7 @@ generate_taxa_change_dotplot_pair(
   group.var = "group",
   strata.var = NULL,
   change.base = "2",
-  feature.change.func = "lfc",
+  feature.change.func = "log fold change",
   feature.level = "Family",
   feature.dat.type = "count",
   features.plot = NULL,
@@ -314,7 +314,7 @@ generate_taxa_change_dotplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.06.46.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization underscores the dramatic shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity signals the prevalence of each taxon. This insightful depiction accentuates the differing microbial dynamics between groups, inviting a deep dive into the intricate ballet within your microbiome.</p></figcaption></figure>
 
-With `feature.change.func` set to "lfc" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
+With `feature.change.func` set to "log fold change" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
 
 However, the true power of this function isn't in tracking individual taxa changes, but in its capacity to **contrast these changes between different groups**. This capability allows you to dive deeper, uncovering the significant differences that propel your research forward towards more comprehensive conclusions.
 
@@ -362,7 +362,7 @@ generate_taxa_change_heatmap_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "relative difference",
+   feature.change.func = "relative change",
    feature.level = "Family",
    feature.dat.type = "count",
    features.plot = NULL,
