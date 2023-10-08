@@ -306,7 +306,7 @@ generate_taxa_change_dotplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.06.46.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization underscores the dramatic shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity signals the prevalence of each taxon. This insightful depiction accentuates the differing microbial dynamics between groups, inviting a deep dive into the intricate ballet within your microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.12.29.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization underscores the dramatic shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity signals the prevalence of each taxon. This insightful depiction accentuates the differing microbial dynamics between groups, inviting a deep dive into the intricate ballet within your microbiome.</p></figcaption></figure>
 
 With `feature.change.func` set to "log fold change" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
 
