@@ -1,13 +1,11 @@
 ---
 description: >-
-  Dive into MicrobiomeStat's tools for analyzing beta diversity in
-  cross-sectional microbiome studies. Compute distances, visualize
-  dissimilarities, and more!
+  MicrobiomeStat offers tools for analyzing beta diversity in cross-sectional microbiome studies, including computing distances and visualizing dissimilarities.
 ---
 
 # Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat
 
-**Simple Cross-Sectional Design**: With MicrobiomeStat, we can launch our exploration without any pre-calculations of `dist.obj` and `pc.obj`. They will be automatically computed based on `dist.name` in action. Upon generating the ordination plot, we can observe a significant difference in Axis 2 between the two groups:
+**Simple Cross-Sectional Design**: With MicrobiomeStat, we can launch our exploration without any pre-calculations of `dist.obj` and `pc.obj`. They will be automatically computed based on `dist.name` in action. 
 
 Before visualizing beta diversity using `generate_beta_ordination_single`, we can quantitatively assess group differences using `generate_beta_test_single`. This function performs PERMANOVA on the specified distance matrices to test for significant differences between groups, adjusting for additional covariates.
 
@@ -23,7 +21,7 @@ generate_beta_test_single(
 )
 ```
 
-#### PERMANOVA p-values
+#### Omnibus test results
 
 | Term  | BC    | Jaccard | Omnibus |
 | ----- | ----- | ------- | ------- |
@@ -32,13 +30,21 @@ generate_beta_test_single(
 
 This table summarizes the p-values from PERMANOVA tests for each distance matrix and the omnibus test across all distances.
 
-#### PERMANOVA ANOVA results
+#### PERMANOVA results
 
-<table><thead><tr><th>Variable</th><th width="53">DF</th><th>Sum_Sq</th><th>Mean_Sq</th><th>F_Statistic</th><th>R_Squared</th><th>P_Value</th><th>Distance</th></tr></thead><tbody><tr><td>sex</td><td>1</td><td>0.043</td><td>0.043</td><td>0.644</td><td>0.032</td><td>0.791</td><td>BC</td></tr><tr><td>group</td><td>1</td><td>0.042</td><td>0.042</td><td>0.621</td><td>0.031</td><td>0.794</td><td>BC</td></tr><tr><td>Residuals</td><td>19</td><td>1.28</td><td>0.067</td><td>NA</td><td>0.938</td><td>NA</td><td>BC</td></tr><tr><td>Total</td><td>21</td><td>1.36</td><td>NA</td><td>NA</td><td>1</td><td>NA</td><td>BC</td></tr><tr><td>sex</td><td>1</td><td>0.099</td><td>0.099</td><td>0.707</td><td>0.035</td><td>0.819</td><td>Jaccard</td></tr><tr><td>group</td><td>1</td><td>0.094</td><td>0.094</td><td>0.668</td><td>0.033</td><td>0.859</td><td>Jaccard</td></tr><tr><td>Residuals</td><td>19</td><td>2.67</td><td>0.14</td><td>NA</td><td>0.933</td><td>NA</td><td>Jaccard</td></tr><tr><td>Total</td><td>21</td><td>2.86</td><td>NA</td><td>NA</td><td>1</td><td>NA</td><td>Jaccard</td></tr></tbody></table>
+| Distance | Variable   | DF | Sum.Sq | Mean.Sq | F.Statistic | R.Squared | P.Value |
+|----------|------------|----|--------|---------|-------------|-----------|---------|
+| BC       | sex        | 1  | 0.043  | 0.043   | 0.644       | 0.032     | 0.786   |
+| BC       | group      | 1  | 0.042  | 0.042   | 0.621       | 0.031     | 0.782   |
+| BC       | Residuals  | 19 | 1.28   | 0.067   | NA          | 0.938     | NA      |
+| BC       | Total      | 21 | 1.36   | NA      | NA          | 1         | NA      |
+| Jaccard  | sex        | 1  | 0.099  | 0.099   | 0.707       | 0.035     | 0.827   |
+| Jaccard  | group      | 1  | 0.094  | 0.094   | 0.668       | 0.033     | 0.827   |
+| Jaccard  | Residuals  | 19 | 2.67   | 0.14    | NA          | 0.933     | NA      |
+| Jaccard  | Total      | 21 | 2.86   | NA      | NA          | 1         | NA      |
 
-This table provides the detailed ANOVA results from PERMANOVA tests for each distance matrix, including degrees of freedom, sum of squares, F statistics, R squared, and p-values.
 
-The PERMANOVA results contain p-value and ANOVA tables to evaluate if community structure differs significantly between groups.
+The above table outlines the PERMANOVA analysis outcomes for various beta diversity distances, offering details such as degrees of freedom (DF), sum of squares, mean squares, F-statistics, R-squared values, and corresponding p-values. The results enable an assessment of significant differences in microbial community structures across specified groups.
 
 Next, we visualize the beta diversity using `generate_beta_ordination_single`:
 
@@ -48,8 +54,8 @@ generate_beta_ordination_single(
   dist.obj = NULL,
   pc.obj = NULL,
   subject.var = "subject",
-  time.var = NULL,
-  t.level = NULL,
+  time.var = NULL, # Variable representing time points
+  t.level = NULL, # Specific time level for subset (if subset desired)
   group.var = "group",
   strata.var = NULL,
   dist.name = c("BC","Jaccard"),
@@ -68,7 +74,8 @@ generate_beta_ordination_single(
 
 Next, we'll shift our focus to a **specific time point**. By setting `t.level` to "2", we aim to uncover any significant beta diversity differences. Interestingly, at this time point, the difference in Axis 2 between the two groups becomes more pronounced:
 
-<pre class="language-r"><code class="lang-r">generate_beta_ordination_single(
+```r
+ generate_beta_ordination_single(
   data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
@@ -80,14 +87,14 @@ Next, we'll shift our focus to a **specific time point**. By setting `t.level` t
   dist.name = c("BC","Jaccard"),
   base.size = 20,
   theme.choice = "bw",
-<strong>  custom.theme = NULL,
-</strong>  palette = NULL,
+  custom.theme = NULL,
+  palette = NULL,
   pdf = TRUE,
-<strong>  file.ann = NULL,
-</strong>  pdf.wid = 11,
+  file.ann = NULL,
+  pdf.wid = 11,
   pdf.hei = 8.5
 )
-</code></pre>
+```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.21.25.png" alt=""><figcaption><p>Beta Diversity Ordination at Time Point '2' (BC distance): This visualization offers insights into how the microbial community structure varies at a specific time point.</p></figcaption></figure>
 
