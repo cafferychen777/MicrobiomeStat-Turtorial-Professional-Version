@@ -1,10 +1,11 @@
 ---
 description: >-
-  Unveil microbial diversity in your data with MicrobiomeStat's taxa analysis
-  tools. Investigate how taxa abundance varies across groups and time points.
+  Unveil microbial diversity in your data with MicrobiomeStat's feature-level
+  analysis tools. Investigate how taxa abundance varies across groups and time
+  points.
 ---
 
-# Cross-Sectional Investigation: Taxa Analysis with MicrobiomeStat
+# Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat
 
 Before visualizing taxa abundance, we conduct differential abundance testing using `generate_taxa_test_single` to pinpoint taxa with significant differences between groups.
 
