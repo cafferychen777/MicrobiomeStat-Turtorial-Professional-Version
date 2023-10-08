@@ -375,7 +375,7 @@ generate_taxa_change_heatmap_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.33.57.png" alt=""><figcaption><p>Taxa Change Heatmap: Generated with the <code>generate_taxa_change_heatmap_pair()</code> function, this heatmap reveals the relative changes in taxa abundance at the Family level. The color intensity signifies the magnitude of change, providing an in-depth look at how microbial populations shift over time. Clustering reveals groups of taxa with similar abundance change patterns, shedding light on potential functional or ecological relationships.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.30.23.png" alt=""><figcaption><p>Taxa Change Heatmap: Generated with the <code>generate_taxa_change_heatmap_pair()</code> function, this heatmap reveals the relative changes in taxa abundance at the Family level. The color intensity signifies the magnitude of change, providing an in-depth look at how microbial populations shift over time. Clustering reveals groups of taxa with similar abundance change patterns, shedding light on potential functional or ecological relationships.</p></figcaption></figure>
 
 Generates a **meticulously detailed heatmap** that spotlights patterns of change in taxa abundance at the Family level. You are equipped to identify similar patterns among both **taxa and samples** based on relative changes in abundance.
 
