@@ -322,15 +322,15 @@ generate_taxa_heatmap_pair(
    subject.var = "subject",
    time.var = "time",
    group.var = "group",
-   strata.var = NULL,
+   strata.var = "sex",
    feature.level = c("Family"),
    feature.dat.type = "count",
    features.plot = NULL,
    top.k.plot = NULL,
    top.k.func = NULL,
    prev.filter = 0.1,
-   abund.filter = 0.1,
-   base.size = 10,
+   abund.filter = 0.001,
+   base.size = 12,
    custom.theme = NULL,
    palette = NULL,
    pdf = TRUE,
@@ -340,7 +340,7 @@ generate_taxa_heatmap_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.20.20.png" alt=""><figcaption><p>Individual Taxa Heatmap: This detailed heatmap was created using the <code>generate_taxa_heatmap_pair()</code> function, offering a vibrant visual display of taxa changes at the Family level within individual samples over time. The color intensity indicates the relative abundance of each taxon, revealing shared abundance patterns among different taxa and providing insights into the intricate ecology of the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption><p>Individual Taxa Heatmap: This detailed heatmap was created using the <code>generate_taxa_heatmap_pair()</code> function, offering a vibrant visual display of taxa changes at the Family level within individual samples over time. The color intensity indicates the relative abundance of each taxon, revealing shared abundance patterns among different taxa and providing insights into the intricate ecology of the microbiome.</p></figcaption></figure>
 
 This function crafts a heatmap that not only lets us observe individual samples' taxa shifts at the **Family** level, but also helps us identify **taxa that share similar abundance patterns** across different conditions. Such insights can be instrumental in uncovering potential biological interactions and ecological behaviors within your microbiome data!
 
