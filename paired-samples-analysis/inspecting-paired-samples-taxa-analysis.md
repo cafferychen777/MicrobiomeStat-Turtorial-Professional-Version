@@ -50,7 +50,7 @@ generate_taxa_change_test_pair(
   group.var = "group",
   adj.vars = c("sex"),
   change.base = "1",
-  feature.change.func = "lfc",
+  feature.change.func = "log fold change",
   feature.level = "Family",
   prev.filter = 0.01,
   abund.filter = 0.01,
@@ -61,7 +61,7 @@ generate_taxa_change_test_pair(
 The function employs the following mechanisms:
 
 * It evaluates the data considering time variations, adjusting for specific variables such as "sex".
-* It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The kind of change is determined by the `feature.change.func`, which in the above example is "log fold change (lfc)".
+* It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The kind of change is determined by the `feature.change.func`, which in the above example is "log fold change".
 * The output is a detailed breakdown of taxa differences at the selected taxonomic level (`feature.level`), here it's set as "original". It consists of statistics such as coefficients, p-values, and adjusted p-values for each taxon.
 * Additionally, for each taxon, the function discerns group-specific effects using linear models. It investigates whether specific groups, defined by `group.var`, have distinct patterns of change over time.
 * Results are organized by taxon and by group comparisons. For instance, you might see outputs highlighting differences like "TreatmentA vs TreatmentB" for each taxon.
@@ -154,7 +154,7 @@ generate_taxa_indiv_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "lfc",
+   feature.change.func = "log fold change",
    feature.level = c("Family"),
    features.plot = NULL,
    feature.dat.type = "count",
@@ -185,7 +185,7 @@ generate_taxa_change_boxplot_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "lfc",
+   feature.change.func = "log fold change",
    feature.level = c("Family"),
    feature.dat.type = "count",
    features.plot = NULL,
@@ -288,7 +288,7 @@ generate_taxa_change_dotplot_pair(
   group.var = "group",
   strata.var = NULL,
   change.base = "2",
-  feature.change.func = "lfc",
+  feature.change.func = "log fold change",
   feature.level = "Family",
   feature.dat.type = "count",
   features.plot = NULL,
@@ -308,7 +308,7 @@ generate_taxa_change_dotplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 21.06.46.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization underscores the dramatic shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity signals the prevalence of each taxon. This insightful depiction accentuates the differing microbial dynamics between groups, inviting a deep dive into the intricate ballet within your microbiome.</p></figcaption></figure>
 
-With `feature.change.func` set to "lfc" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
+With `feature.change.func` set to "log fold change" (log 2 fold change), you can **visually articulate** these microbiome shifts, unveiling the mysterious dance of your microbial communities over time.
 
 However, the true power of this function isn't in tracking individual taxa changes, but in its capacity to **contrast these changes between different groups**. This capability allows you to dive deeper, uncovering the significant differences that propel your research forward towards more comprehensive conclusions.
 
