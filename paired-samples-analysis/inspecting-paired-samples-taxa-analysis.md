@@ -356,7 +356,7 @@ generate_taxa_change_heatmap_pair(
    group.var = "group",
    strata.var = NULL,
    change.base = "1",
-   feature.change.func = "relative difference",
+   feature.change.func = "relative change",
    feature.level = "Family",
    feature.dat.type = "count",
    features.plot = NULL,
