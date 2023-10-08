@@ -42,7 +42,7 @@ Moreover, for specific comparisons, you might encounter labels like `$Genus$Plac
 
 These detailed results from the function provide a robust foundation for further investigations. They guide researchers in pinpointing which taxa exhibit significant changes and under which conditions, thereby paving the way for insightful visual analyses or deeper data explorations.
 
-To explore the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is indispensable. The function not only gauges the changes but also puts the spotlight on the group-wise differences.
+Building on this foundation, if the aim is specifically to explore the shifts in taxa abundance across distinct timepoints, then the `generate_taxa_change_test_pair()` function comes into play. The function not only gauges the changes but also puts the spotlight on the group-wise differences.
 
 ```r
 generate_taxa_change_test_pair(
@@ -53,7 +53,7 @@ generate_taxa_change_test_pair(
   adj.vars = c("sex"),
   change.base = "1",
   feature.change.func = "lfc",
-  feature.level = "original",
+  feature.level = "Family",
   prev.filter = 0.01,
   abund.filter = 0.01,
   feature.dat.type = "count"
