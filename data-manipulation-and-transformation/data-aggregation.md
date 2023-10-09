@@ -15,10 +15,10 @@ Data aggregation plays a vital role in simplifying and structuring microbiome da
 The `mStat_aggregate_data()` function is designed to aggregate a microbiome dataset based on a specified subject variable. Additionally, users have the option to further stratify the aggregation through an additional variable.
 
 ```r
-#' # Prepare data for the function
+ # Prepare data for the function
 data(peerj32.obj)
 
-#' # Call the function
+ # Call the function
 aggregated_data <- mStat_aggregate_data(
   data.obj = peerj32.obj,
   subject.var = "subject",
@@ -46,55 +46,71 @@ After the aggregation, the data will be restructured and summarized based on the
 
 ## Detailed Breakdown
 
-The `mStat_aggregate_data()` function executes the following key actions:
+The `mStat_aggregate_data()` function performs the following significant steps:
 
-1. **Taxonomic Aggregation:** The function collapses the feature table based on taxonomic annotations, facilitating the generation of aggregated abundance tables across various taxonomic levels.
-2. **Grouping and Summarization:** Data is grouped by the primary subject and, if specified, the stratification variable. Within these groups, abundance values are then summarized to provide a cohesive representation of data.
-3. **Handling of `feature.agg.list`**: The function checks for the presence of a `feature.agg.list` within the `data.obj`. If it exists, the function appends new aggregation tables to it. In the absence of this list, a new one is created.
-4. **Output Generation:** The final output is a renewed MicrobiomeStat data object. This object now houses the aggregated data, primed for downstream analysis.
+1. **Initialization and Message Communication:** The function starts by conveying to the user its intent to aggregate the data based on the provided criteria.
+
+2. **Aggregation of `feature.agg.list`:** Before diving into the primary feature table aggregation, the function examines whether the `data.obj` contains a `feature.agg.list`. If present, this list contains feature abundance tables that need to be aggregated in a similar manner to the primary feature table.
+
+3. **Main Feature Table Aggregation (`feature.tab`):** The microbiome feature abundances from `feature.tab` are grouped and summarized based on the provided `subject.var` and, if available, `strata.var`. This forms the crux of the aggregation process, effectively collapsing the dataset based on the selected variables.
+
+4. **Metadata Aggregation (`meta.dat`):** The metadata accompanying the samples is equally crucial. The function groups and summarizes this data analogously, ensuring that the metadata remains consistent with the aggregated feature table.
+
+5. **Other Data Elements:** The function retains other essential components of the `data.obj`, like the `tree` and `feature.ann`, ensuring the output remains comprehensive.
+
+6. **Output Formation:** The function culminates by packaging all processed components into a new MicrobiomeStat data object, ready for further exploration and analysis.
 
 ## Practical Applications
 
-The `mStat_aggregate_data()` function can be harnessed for a variety of analytical purposes:
+The `mStat_aggregate_data()` function is indispensable for various microbiome data analysis ventures:
 
-* **Pattern Examination at Higher Taxonomic Levels:** Users can delve into compositional patterns at broader taxonomic scales, revealing overarching trends within the dataset.
-* **Data Simplification:** By aggregating data, the overall complexity of tables is reduced. This is particularly beneficial for specific types of analyses where more straightforward data structures are preferred.
-* **Stratified Data Comparisons:** If a stratification variable is specified, the function enables stratified comparisons. Users can contrast aggregation profiles across different groups or categories.
-* **Data Preparation for Longitudinal Studies:** The function equips users with aggregated datasets, tailor-made for detailed longitudinal analyses.
+* **Simplifying Complex Data:** By conglomerating data based on subjects or other criteria, it renders dense microbiome tables more interpretable and manageable.
 
-In summation, effective data aggregation is pivotal for unlocking deeper microbiome insights, especially when looking at broader ecological contexts. The `mStat_aggregate_data()` function emerges as a quintessential tool in this regard, providing users with an automated yet flexible method to derive aggregated datasets suited for a plethora of analytical tasks.
+* **Harnessing Detailed Metadata:** The function's ability to integrate and process associated metadata means users can make better-informed decisions based on contextual information alongside microbial abundances.
+
+* **Stratification and Comparative Analysis:** Should users provide a `strata.var`, the function creates a stratified view of the microbiome landscape, vital for dissecting differences among distinct groups or conditions.
+
+* **Streamlined Longitudinal and Cohort Studies:** The aggregated view of the data, especially when based on subjects or time-points, is invaluable for long-term studies, ensuring patterns across time or multiple visits are discernible.
+
+In essence, the `mStat_aggregate_data()` function is a robust tool, simplifying and restructuring microbiome datasets for clearer interpretation and deeper analytical dives.
 
 ## 2. mStat\_aggregate\_by\_taxonomy()
 
 ### Function Overview
 
-The `mStat_aggregate_by_taxonomy()` function facilitates aggregation based on a specific taxonomic level, such as "Phylum" or "Family". This ensures that the output is presented in a more biologically meaningful manner.
+The `mStat_aggregate_by_taxonomy()` function facilitates the aggregation of microbiome data based on specified taxonomic levels, such as "Phylum" or "Family". This function is primarily designed to populate the `feature.agg.list` within the `data.obj`. Through this, microbiome datasets can be represented in terms that are more biologically interpretable. It's noteworthy that if `feature.agg.list` is not generated prior to using certain other functions within the package, those functions will automatically invoke `mStat_aggregate_by_taxonomy()` to ensure the necessary aggregation is performed.
 
 ### Usage
 
 ```r
-data.obj <- list(
-  feature.tab = matrix(c(5, 10, 0, 7, 0, 20), nrow=3, byrow=TRUE),
-  feature.ann = data.frame(Phylum = c("Bacteroidetes", "Firmicutes", "Bacteroidetes"))
-)
-rownames(data.obj$feature.tab) <- c("OTU1", "OTU2", "OTU3")
-colnames(data.obj$feature.tab) <- c("Sample1", "Sample2")
-rownames(data.obj$feature.ann) <- c("OTU1", "OTU2", "OTU3")
+ data(peerj32.obj)
 
-result.obj <- mStat_aggregate_by_taxonomy(data.obj, feature.level="Phylum")
+ # Specify the taxonomy level
+ feature.level <- c("Phylum", "Family")
+
+ # Aggregate data object by taxonomy level
+ peerj32.obj <- mStat_aggregate_by_taxonomy(peerj32.obj, feature.level)
 ```
 
 ### Detailed Breakdown
 
-The `mStat_aggregate_by_taxonomy()` function first verifies the `feature.level` to ensure it's provided. Then, it loads the data object and joins the OTU table with the taxonomy table. Post this, it ensures the row names between the two tables are consistent. Lastly, it performs aggregation based on the chosen taxonomic level and updates the `feature.agg.list` with the aggregated table.
+The `mStat_aggregate_by_taxonomy()` function undertakes the following steps:
+
+1. **Verification:** It checks if the `feature.level` is provided.
+2. **Data Joining:** Loads the OTU table (`feature.tab`) and taxonomy table (`feature.ann`) from the data object. It then joins these two tables based on row names, ensuring a unified dataset.
+3. **Consistency Check:** Validates that the row names between the OTU and taxonomy tables are consistent. It provides messages if there are discrepancies.
+4. **Taxonomic Aggregation:** Using the chosen taxonomic level, the function aggregates the data, transforming OTUs to a higher taxonomy level representation.
+5. **List Update:** It updates or creates the `feature.agg.list` within the data object to include the aggregated tables for the specified taxonomic levels.
 
 ### Practical Applications
 
-This function is particularly beneficial when:
+The `mStat_aggregate_by_taxonomy()` function proves beneficial in scenarios like:
 
-* **Interpreting biological implications:** By aggregating data based on taxonomic levels, it's easier to draw biological conclusions from the data.
-* **Reducing granularity:** Often, microbial OTU tables can be very granular, which might not be ideal for all types of analyses. Aggregating by taxonomy simplifies the data representation.
-* **Harmonizing OTU and Taxonomy data:** By ensuring that the OTU and taxonomy tables' row names are consistent, the function prevents potential mismatches that can arise due to discrepancies between the tables.
+* **Biological Interpretation:** The function aids in presenting data in a manner that’s biologically insightful by focusing on higher taxonomic ranks like Phylum or Family.
+* **Data Simplification:** The microbiome OTU tables can be extremely detailed. By aggregating data based on taxonomy, the table's complexity is reduced, making it more manageable and comprehensible.
+* **Consistent Data Representation:** By aligning the OTU and taxonomy tables, the function ensures the dataset's integrity and consistency. This is particularly crucial as mismatches can lead to erroneous interpretations or analytical challenges.
+
+Overall, the `mStat_aggregate_by_taxonomy()` function serves as an indispensable tool for microbiome researchers, enabling them to transmute granular OTU-level data into a higher, more interpretable taxonomic hierarchy.
 
 ## 3. mStat\_aggregate\_by\_taxonomy2()
 
