@@ -49,15 +49,10 @@ After the aggregation, the data will be restructured and summarized based on the
 The `mStat_aggregate_data()` function performs the following significant steps:
 
 1. **Initialization and Message Communication:** The function starts by conveying to the user its intent to aggregate the data based on the provided criteria.
-
 2. **Aggregation of `feature.agg.list`:** Before diving into the primary feature table aggregation, the function examines whether the `data.obj` contains a `feature.agg.list`. If present, this list contains feature abundance tables that need to be aggregated in a similar manner to the primary feature table.
-
 3. **Main Feature Table Aggregation (`feature.tab`):** The microbiome feature abundances from `feature.tab` are grouped and summarized based on the provided `subject.var` and, if available, `strata.var`. This forms the crux of the aggregation process, effectively collapsing the dataset based on the selected variables.
-
 4. **Metadata Aggregation (`meta.dat`):** The metadata accompanying the samples is equally crucial. The function groups and summarizes this data analogously, ensuring that the metadata remains consistent with the aggregated feature table.
-
 5. **Other Data Elements:** The function retains other essential components of the `data.obj`, like the `tree` and `feature.ann`, ensuring the output remains comprehensive.
-
 6. **Output Formation:** The function culminates by packaging all processed components into a new MicrobiomeStat data object, ready for further exploration and analysis.
 
 ## Practical Applications
@@ -65,11 +60,8 @@ The `mStat_aggregate_data()` function performs the following significant steps:
 The `mStat_aggregate_data()` function is indispensable for various microbiome data analysis ventures:
 
 * **Simplifying Complex Data:** By conglomerating data based on subjects or other criteria, it renders dense microbiome tables more interpretable and manageable.
-
 * **Harnessing Detailed Metadata:** The function's ability to integrate and process associated metadata means users can make better-informed decisions based on contextual information alongside microbial abundances.
-
 * **Stratification and Comparative Analysis:** Should users provide a `strata.var`, the function creates a stratified view of the microbiome landscape, vital for dissecting differences among distinct groups or conditions.
-
 * **Streamlined Longitudinal and Cohort Studies:** The aggregated view of the data, especially when based on subjects or time-points, is invaluable for long-term studies, ensuring patterns across time or multiple visits are discernible.
 
 In essence, the `mStat_aggregate_data()` function is a robust tool, simplifying and restructuring microbiome datasets for clearer interpretation and deeper analytical dives.
@@ -91,6 +83,8 @@ The `mStat_aggregate_by_taxonomy()` function facilitates the aggregation of micr
  # Aggregate data object by taxonomy level
  peerj32.obj <- mStat_aggregate_by_taxonomy(peerj32.obj, feature.level)
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-09 at 19.42.36.png" alt=""><figcaption><p>An illustrative representation of the <code>feature.agg.list</code> created by the <code>mStat_aggregate_by_taxonomy()</code> function, showcasing the aggregation results.</p></figcaption></figure>
 
 ### Detailed Breakdown
 
