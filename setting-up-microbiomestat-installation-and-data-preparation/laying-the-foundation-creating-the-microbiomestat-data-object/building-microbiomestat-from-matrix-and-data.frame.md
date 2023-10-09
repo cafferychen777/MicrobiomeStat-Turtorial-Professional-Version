@@ -9,16 +9,13 @@ description: >-
 The MicrobiomeStat data object consists of the following components:
 
 * **feature.tab (Matrix)**: A matrix displaying the connection between research entities (like OTUs, ASVs, genes) as rows and samples as columns. Ensure row names are the names of the research entities, and column names match the samples.
-
 * **meta.dat (Dataframe)**: Holds metadata for samples, where rows correlate with samples, and columns denote annotations. Examples of annotations include disease severity (mild, moderate, severe), treatment status (treated, untreated), and study phases (phase 1, phase 2, etc). Ensure the row names match the feature.tab columns. Tibbles are not permitted; use a standard R data frame.
-
 * **feature.ann (Matrix)**: An annotation matrix with research entities as rows. Columns might provide taxonomic details for microbiome data, cell types for single-cell data, or pathway levels for KEGG data. Ensure row names match those in feature.tab.
-
-* **tree (optional)**: Depicts evolutionary relationships among research entities. It's essential for specific beta-diversity calculations but isn't required for the majority (~99%) of MicrobiomeStat analyses.
-
+* **tree (optional)**: Depicts evolutionary relationships among research entities. It's essential for specific beta-diversity calculations but isn't required for the majority (\~99%) of MicrobiomeStat analyses.
 * **feature.agg.list (List, optional)**: Generated using the `mStat_aggregate_by_taxonomy()` function, this list contains matrices of aggregated data based on taxonomy or cell type, with each matrix's columns representing sample names and rows representing the aggregation level (e.g., Phylum, CellType).
 
 Here is how to construct the MicrobiomeStat data object directly from matrix and dataframe:
+
 ### 1. Using Existing Data in R Environment
 
 #### Starting from Matrix and Dataframe
@@ -78,11 +75,17 @@ MicrobiomeData <- list(
 )
 ```
 
----
+***
 
 ### 2. Using External CSV Data
 
-For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`. You can download these files [here](#link-to-download-page).
+For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`. You can download these files here.
+
+{% file src="../../.gitbook/assets/feature_tab.csv" %}
+
+{% file src="../../.gitbook/assets/meta_dat.csv" %}
+
+{% file src="../../.gitbook/assets/feature_ann.csv" %}
 
 #### Import Data from CSV
 
@@ -104,6 +107,6 @@ MicrobiomeData <- list(
 )
 ```
 
----
+***
 
 With either approach, you now have a complete MicrobiomeStat data object ready for analysis and visualization.
