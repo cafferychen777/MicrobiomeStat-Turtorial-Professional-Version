@@ -4,42 +4,79 @@ description: >-
   for installing MicrobiomeStat, setting you up for your exploration journey.
 ---
 
-# Kick-start Your Journey: The MicrobiomeStat Installation Guide
+# MicrobiomeStat Installation Guide
 
-**Target: Install MicrobiomeStat**&#x20;
+## Objective: Install MicrobiomeStat
 
-You're only a **few steps away** from having **MicrobiomeStat** up and running on your system!
+This document will guide you through the installation process of the MicrobiomeStat package.
 
-**Option 1: CRAN Installation** Our package has comfortably nestled in the **CRAN repository**. Just input the command below in your R console and it will land safely onto your system:
+### Option 1: Installation via CRAN
+MicrobiomeStat is available on the CRAN repository. To install it, run the following command in your R console:
 
 ```R
 install.packages("MicrobiomeStat")
 ```
 
-{% hint style="info" %}
-Due to ongoing development, the latest features of MicrobiomeStat have not yet been uploaded to the CRAN repository. **The current version on CRAN only supports the `linda` and `linda.plot` functions.** If you require functionality for analyzing longitudinal data, we recommend installing **the development version from GitHub**.
-{% endhint %}
+**Note:** The current version of MicrobiomeStat on CRAN supports only the `linda` and `linda.plot` functions. For a complete set of functionalities, especially for analyzing longitudinal data, consider installing the development version from GitHub.
 
-**Option 2: GitHub Installation (Development version)** Fancy using the **freshest, just-out-of-the-oven version**? We've got you covered! Our development version is sitting on GitHub. First, you'll need the '**devtools**' package. If it's not already part of your toolkit, get it with this command:
+### Option 2: Installation via GitHub (Development Version)
+The development version of MicrobiomeStat is hosted on GitHub. To install it, you will first need the 'devtools' package. If you haven't installed it yet, you can do so using the command:
 
 ```R
 install.packages("devtools")
 ```
 
-Once 'devtools' is ready, summon the **MicrobiomeStat** from GitHub with this incantation:
+After installing 'devtools', you can proceed to install MicrobiomeStat:
 
 ```R
 devtools::install_github("cafferychen777/MicrobiomeStat")
 ```
 
-**Checklist: Dependencies** To ensure a **hiccup-free journey**, check that you've got these companions along:
+### Dependencies
+To ensure the proper functioning of MicrobiomeStat, ensure that you have the following packages installed:
 
-**CRAN Companions**:
+**Required CRAN Packages**:
 
 ```R
-install.packages(c("ggplot2", "matrixStats", "Matrix", "parallel", "ggrepel", "lmerTest", "foreach", "modeest", "vegan", "dplyr", "ggprism", "pheatmap", "tidyr", "ggh4x", "rlang", "tibble", "ape", "GUniFrac", "philentropy", "broom", "rmarkdown", "knitr", "aplot", "scales", "forcats", "pander", "tinytex"))
+# List of packages to install
+packages_to_install <- c(
+  "rlang",
+  "tibble",
+  "ggplot2",
+  "matrixStats",
+  "parallel",
+  "ggrepel",
+  "lmerTest",
+  "foreach",
+  "modeest",
+  "vegan",
+  "dplyr",
+  "pheatmap",
+  "tidyr",
+  "ggh4x",
+  "ape",
+  "GUniFrac",
+  "scales",
+  "stringr",
+  "broom",
+  "rmarkdown",
+  "knitr",
+  "ggprism",
+  "aplot",
+  "philentropy",
+  "forcats",
+  "pander",
+  "tinytex"
+)
+
+# Installing packages
+install.packages(packages_to_install)
 ```
 
-With these commands, you're signing up all the **required pals** from CRAN and Bioconductor. Just make sure you're operating the latest versions of R and Bioconductor for a smooth sail. If the winds seem stormy, it could be due to a package asking for a specific R or Bioconductor version. In that case, refer to the individual package's map (documentation) for the right direction.
+{% hint style="info" %}
+**Note:** Due to CRAN's restrictions, we couldn't list all the packages that `MicrobiomeStat` depends on as dependencies in our package documentation. However, for a smooth analysis process, it's imperative to have all these packages installed. Please ensure that you've installed all the packages listed above to prevent any disruptions during your analysis using `MicrobiomeStat`.
+{% endhint %}
 
-**Happy journey with MicrobiomeStat!**&#x20;
+Ensure that you are using the latest versions of R and Bioconductor. If you encounter any issues, it might be because a package requires a specific version of R or Bioconductor. Consult the documentation of the problematic package for guidance.
+
+Thank you for choosing MicrobiomeStat.
