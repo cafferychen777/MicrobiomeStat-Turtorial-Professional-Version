@@ -39,8 +39,6 @@ Through rarefaction, technical variations between samples are minimized, promoti
 
 Sure! Here's a more detailed version of the scaling approaches section, integrating the specifics of the `mStat_normalize_data()` function:
 
----
-
 ## Scaling Approaches in Microbiome Analysis
 
 When working with microbiome data, scaling is a pivotal step in ensuring that the data remains consistent across samples and is ready for downstream analysis. The `mStat_normalize_data()` function in MicrobiomeStat offers a suite of scaling techniques tailored to handle the unique challenges and intricacies of microbiome datasets.
