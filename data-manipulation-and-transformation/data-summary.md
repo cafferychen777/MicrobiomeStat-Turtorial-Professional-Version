@@ -56,33 +56,36 @@ print(summary)
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-07 at 18.55.31.png" alt=""><figcaption><p>Histogram of sample counts over time by subject race using mStat_summarize_data_obj() on the subset_T2D dataset. The plot shows the distribution of sample counts across visit numbers, grouped by subject race. Samples from African American subjects are shown in red, while samples from Caucasian subjects are shown in blue. This allows visual inspection of the longitudinal sampling distribution stratified by an important covariate. The mStat_summarize_data_obj() function and inclusion of grouping variables enables informative exploration of metadata and temporal distributions.</p></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.44.44.png" alt=""><figcaption><p>Using the <code>mStat_summarize_data_obj()</code> function on a specified dataset, a boxplot depicting sequencing depth over time has been generated. This plot illustrates the distribution of sequencing depth across various time points, stratified by a provided grouping variable, such as patient race. For instance, if the grouping variable is patient race, samples from African American subjects might be shown in red, while those from Caucasian subjects could be depicted in blue. This visualization aids in the visual inspection of the longitudinal sampling distribution when stratified by a significant covariate. The <code>mStat_summarize_data_obj()</code> function, combined with the inclusion of grouping variables, facilitates an informative exploration of metadata and temporal distributions.</p></figcaption></figure>
+
 After executing the `mStat_summarize_data_obj()` function, we obtain a structured summary table that captures the essential attributes and metrics of the `subset_T2D.obj` dataset. This table encompasses various facets, from basic statistical properties of the microbiome feature table to the detailed insights about metadata, feature annotations, and time-series distribution. Let's delve into the results:
 
-| Category                      | Variable                                     | Value                                                                                                                                                                    |
-| ----------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Basic Statistics              | Min. reads per sample                        | 2007                                                                                                                                                                     |
-| Basic Statistics              | Max. reads per sample                        | 91908                                                                                                                                                                    |
-| Basic Statistics              | Total reads dplyr::across all samples        | 16314146                                                                                                                                                                 |
-| Basic Statistics              | Average reads per sample                     | 1352.86060203997                                                                                                                                                         |
-| Basic Statistics              | Median reads per sample                      | 22230                                                                                                                                                                    |
-| Basic Statistics              | Proportion of zero counts                    | 0.970438438838742                                                                                                                                                        |
-| Basic Statistics              | Count of features that only appear once      | 1551                                                                                                                                                                     |
-| Metadata                      | Number of metadata variables                 | 13                                                                                                                                                                       |
-| Metadata                      | Metadata variables                           | file\_id, md5, size, urls, sample\_id, file\_name, env\_broad\_scale, env\_local\_scale, env\_medium, reference\_db, target\_gene, collection\_timestamp, feature\_count |
-| Feature Annotations           | Proportion of missing annotations in Kingdom | 0                                                                                                                                                                        |
-| Feature Annotations           | Proportion of missing annotations in Phylum  | 0                                                                                                                                                                        |
-| Feature Annotations           | Proportion of missing annotations in Class   | 0.00232191724023551                                                                                                                                                      |
-| Feature Annotations           | Proportion of missing annotations in Order   | 0.0154241645244216                                                                                                                                                       |
-| Feature Annotations           | Proportion of missing annotations in Family  | 0.136744340326727                                                                                                                                                        |
-| Feature Annotations           | Proportion of missing annotations in Genus   | 0.493573264781491                                                                                                                                                        |
-| Feature Annotations           | Proportion of missing annotations in Species | 0.893440583796335                                                                                                                                                        |
-| Phylogenetic Tree             | Exists in the dataset                        | No                                                                                                                                                                       |
-| Time-Series Information       | Unique time-points                           | 6                                                                                                                                                                        |
-| Distribution of sample counts | Sample Count at Time-point: 1                | 136                                                                                                                                                                      |
-| Distribution of sample counts | Sample Count at Time-point: 2                | 117                                                                                                                                                                      |
-| Distribution of sample counts | Sample Count at Time-point: 3                | 108                                                                                                                                                                      |
-| Distribution of sample counts | Sample Count at Time-point: 4                | 116                                                                                                                                                                      |
-| Distribution of sample counts | Sample Count at Time-point: 5                | 86                                                                                                                                                                       |
-| Distribution of sample counts | Sample Count at Time-point: 6                | 79                                                                                                                                                                       |
+| Category                | Variable                                     | Value    |
+| ----------------------- | -------------------------------------------- | -------- |
+| Basic Statistics        | Number of samples                            | 575      |
+| Basic Statistics        | Number of features                           | 9533     |
+| Basic Statistics        | Min. reads per sample                        | 2007     |
+| Basic Statistics        | Max. reads per sample                        | 91908    |
+| Basic Statistics        | Total reads across all samples               | 14138179 |
+| Basic Statistics        | Average reads per sample                     | 1483.078 |
+| Basic Statistics        | Median reads per sample                      | 21062    |
+| Basic Statistics        | Proportion of zero counts                    | 0.963    |
+| Basic Statistics        | Count of features that only appear once      | 1505     |
+| Metadata                | Number of metadata variables                 | 14       |
+| Feature Annotations     | Proportion of missing annotations in Kingdom | 0        |
+| Feature Annotations     | Proportion of missing annotations in Phylum  | 0        |
+| Feature Annotations     | Proportion of missing annotations in Class   | 0.002    |
+| Feature Annotations     | Proportion of missing annotations in Order   | 0.012    |
+| Feature Annotations     | Proportion of missing annotations in Family  | 0.128    |
+| Feature Annotations     | Proportion of missing annotations in Genus   | 0.484    |
+| Feature Annotations     | Proportion of missing annotations in Species | 0.887    |
+| Phylogenetic Tree       | Exists in the dataset                        | No       |
+| Time-Series Information | Number of unique time points                 | 6        |
+| Time-Series Information | Sample count at time point: 1                | 117      |
+| Time-Series Information | Sample count at time point: 2                | 104      |
+| Time-Series Information | Sample count at time point: 3                | 97       |
+| Time-Series Information | Sample count at time point: 4                | 104      |
+| Time-Series Information | Sample count at time point: 5                | 79       |
+| Time-Series Information | Sample count at time point: 6                | 74       |
 
 In summary, the `mStat_summarize_data_obj()` function furnishes a detailed and structured overview of a MicrobiomeStat data object. This comprehensive breakdown ensures that the user possesses a firm grasp on their data's intricacies and characteristics, setting the stage for well-informed subsequent statistical analyses.
