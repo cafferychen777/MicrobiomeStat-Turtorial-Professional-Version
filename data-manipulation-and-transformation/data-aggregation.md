@@ -15,10 +15,14 @@ Data aggregation plays a vital role in simplifying and structuring microbiome da
 The `mStat_aggregate_data()` function is designed to aggregate a microbiome dataset based on a specified subject variable. Additionally, users have the option to further stratify the aggregation through an additional variable.
 
 ```r
-mStat_aggregate_data(
-  data.obj = obj,
-  subject.var = "subject_id",
-  strata.var = "group"
+#' # Prepare data for the function
+data(peerj32.obj)
+
+#' # Call the function
+aggregated_data <- mStat_aggregate_data(
+  data.obj = peerj32.obj,
+  subject.var = "subject",
+  strata.var = NULL
 )
 ```
 
@@ -26,6 +30,10 @@ Where:
 - `data.obj`: Refers to the data object within MicrobiomeStat that needs to be aggregated.
 - `subject.var`: Represents the primary variable for aggregation, such as a patient ID.
 - `strata.var`: Acts as an optional stratification variable, allowing for more nuanced aggregation based on groups or categories.
+
+In this example, we've prepared the data for our function using the `peerj32.obj` dataset. Next, we call the `mStat_aggregate_data()` function to aggregate the data based on the "subject" variable. We haven't provided any stratification variable (`strata.var`), so the function will aggregate solely based on the "subject" variable.
+
+After the aggregation, the data will be restructured and summarized based on the specified "subject" variable.
 
 ## Detailed Breakdown
 
