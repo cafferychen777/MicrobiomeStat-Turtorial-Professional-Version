@@ -4,7 +4,6 @@
 
 ## INTRODUCTION
 
-* [Overview of the MicrobiomeStat Package](introduction/overview-of-the-microbiomestat-package.md)
 * [Exploring MicrobiomeStat: A Consideration for Your Research Toolkit](introduction/the-edge-of-microbiomestat-why-it-should-be-on-your-shortlist.md)
 * [Feature Overview: Dive Deep into the Capabilities of MicrobiomeStat](introduction/feature-overview-dive-deep-into-the-capabilities-of-microbiomestat.md)
 * [Unveiling MicrobiomeStat: A Glimpse into Diverse Microbiome Analysis Solutions](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/README.md)
