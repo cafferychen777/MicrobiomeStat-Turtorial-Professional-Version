@@ -52,9 +52,9 @@
 ## Data Manipulation and Transformation
 
 * [Data Summary](data-manipulation-and-transformation/data-summary.md)
-* [Data Combination](data-manipulation-and-transformation/data-combination.md)
 * [Data Aggregation](data-manipulation-and-transformation/data-aggregation.md)
 * [Data Normalization](data-manipulation-and-transformation/data-normalization.md)
 * [Data Filtering](data-manipulation-and-transformation/data-filtering.md)
-* [Metadata Management](data-manipulation-and-transformation/metadata-management.md)
 * [Data Validation](data-manipulation-and-transformation/data-validation.md)
+* [Data Combination](data-manipulation-and-transformation/data-combination.md)
+* [Metadata Management](data-manipulation-and-transformation/metadata-management.md)
