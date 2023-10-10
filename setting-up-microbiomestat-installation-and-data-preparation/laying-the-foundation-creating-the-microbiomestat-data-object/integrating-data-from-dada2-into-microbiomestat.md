@@ -47,6 +47,8 @@ data_obj <- mStat_import_dada2_as_data_obj(
 )
 ```
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 14.34.05.png" alt=""><figcaption><p>Structure of the MicrobiomeStat data object after importing DADA2 data. This visualization highlights the different components of the data object, including the feature table, taxonomy table, and sample metadata, facilitating a comprehensive understanding of the imported dataset.</p></figcaption></figure>
+
 {% hint style="info" %}
 Note: Ensure to replace `"path_to_your_downloaded_folder"` with the actual path where you've saved the downloaded files.
 {% endhint %}
