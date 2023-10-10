@@ -8,25 +8,18 @@ Alright! Time to seamlessly transport your data from DADA2 to MicrobiomeStat!
 
 Here's how to launch your DADA2 data straight into the MicrobiomeStat cosmos:
 
+{% file src="../../.gitbook/assets/dada2_seqtab.rds" %}
+
+{% file src="../../.gitbook/assets/dada2_taxtab.rds" %}
+
+{% file src="../../.gitbook/assets/dada2_samdata.txt" %}
+
 ```r
 # Example code
-seq_tab <- readRDS(
-  system.file(
-    "extdata", "dada2_seqtab.rds",
-    package = "microbiomeMarker"
-  )
-)
-tax_tab <- readRDS(
-  system.file(
-    "extdata", "dada2_taxtab.rds",
-    package = "microbiomeMarker"
-  )
-)
+seq_tab <- readRDS("dada2_seqtab.rds")
+tax_tab <- readRDS("dada2_taxtab.rds")
 sam_tab <- read.table(
-  system.file(
-    "extdata", "dada2_samdata.txt",
-    package = "microbiomeMarker"
-  ),
+  "dada2_samdata.txt",
   sep = "\t",
   header = TRUE,
   row.names = 1
