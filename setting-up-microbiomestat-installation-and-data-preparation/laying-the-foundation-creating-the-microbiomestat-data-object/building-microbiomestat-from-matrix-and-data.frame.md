@@ -107,6 +107,6 @@ MicrobiomeData <- list(
 )
 ```
 
-
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.28.16.png" alt=""><figcaption><p>This visualization presents the structure of the imported <code>MicrobiomeStat</code> data object using R's <code>str</code> function, illustrating the organization of the components sourced from external CSV files.</p></figcaption></figure>
 
 With either approach, you now have a complete MicrobiomeStat data object ready for analysis and visualization.
