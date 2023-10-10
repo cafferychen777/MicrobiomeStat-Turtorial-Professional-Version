@@ -1,25 +1,26 @@
 ---
 description: >-
-  Delve deep into microbial diversity patterns with MicrobiomeStat's feature-level analysis tools, providing insight into taxa abundance variations across distinct groups.
+  Delve deep into microbial diversity patterns with MicrobiomeStat's
+  feature-level analysis tools, providing insight into taxa abundance variations
+  across distinct groups.
 ---
 
 # Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat
 
 A foundational step in feature-level analysis is discerning taxa with differential abundance between groups. The `generate_taxa_test_single` function facilitates this by performing differential abundance testing.
 
-The `generate_taxa_test_single` function employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance between groups. 
+The `generate_taxa_test_single` function employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance between groups.
 
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
-- **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
-
-- **"proportion"**: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
-
-- **"other"**: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+* **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
+* **"proportion"**: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
+* **"other"**: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
 
 Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
-- `prev.filter` targets taxa retention based on their prevalence across samples.
-- `abund.filter` focuses on the average abundance of taxa across all samples.
+
+* `prev.filter` targets taxa retention based on their prevalence across samples.
+* `abund.filter` focuses on the average abundance of taxa across all samples.
 
 Such filtering ensures that the analysis centers on taxa both prevalent and abundant, enhancing result reliability by excluding potential outliers or noise.
 
@@ -27,9 +28,8 @@ For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don'
 
 Furthermore, when interpreting the results, it's essential to understand the role of `feature.sig.level` and `feature.mt.method` parameters:
 
-- **`feature.sig.level`**: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
-
-- **`feature.mt.method`**: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
+* **`feature.sig.level`**: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
+* **`feature.mt.method`**: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
 
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
@@ -64,8 +64,8 @@ Subsequently, the provided table offers a comprehensive overview of various taxa
 
 In the context of this table:
 
-- **Mean Abundance**: This signifies the average abundance of a particular taxon (variable) across all samples.
-- **Prevalence**: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
+* **Mean Abundance**: This signifies the average abundance of a particular taxon (variable) across all samples.
+* **Prevalence**: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
 
 #### Differential abundance results at Genus level
 
@@ -97,8 +97,8 @@ generate_taxa_boxplot_single(
   feature.level = c("Family"),
   feature.dat.type = "count",
   features.plot = NULL,
-  top.k.plot = NULL,
-  top.k.func = NULL,
+  top.k.plot = 8,
+  top.k.func = "mean",
   transform = "log",
   prev.filter = 0,
   abund.filter = 0,
@@ -113,7 +113,7 @@ generate_taxa_boxplot_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 19.58.13.png" alt=""><figcaption><p>This boxplot, generated by MicrobiomeStat's <code>generate_taxa_boxplot_single</code> function, visually showcases the distribution of microbial genus abundance between LGG and placebo groups at time point 1. The white lines represent the median abundance, while the violin shapes showcase the abundance distribution. Genera like Akkermansia and Parabacteroides exhibit lower abundance among LGG samples compared to placebo. This plot swiftly highlights patterns of differential abundance between groups, priming us for subsequent in-depth analysis.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.03.21.png" alt=""><figcaption><p>This boxplot, generated by MicrobiomeStat's <code>generate_taxa_boxplot_single</code> function, visually showcases the distribution of microbial genus abundance between LGG and placebo groups at time point 1. The white lines represent the median abundance, while the violin shapes showcase the abundance distribution. Genera like Akkermansia and Parabacteroides exhibit lower abundance among LGG samples compared to placebo. This plot swiftly highlights patterns of differential abundance between groups, priming us for subsequent in-depth analysis.</p></figcaption></figure>
 
 2. For more granularity, `generate_taxa_indiv_boxplot_single` provides separate plots for each taxon:
 
