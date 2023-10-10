@@ -1,12 +1,13 @@
 ---
 description: >-
-  Unveil microbial diversity in your data with MicrobiomeStat's feature-level analysis
-  tools. Investigate how taxa abundance varies across groups and time points.
+  Delve deep into microbial diversity patterns with MicrobiomeStat's feature-level analysis tools, providing insight into taxa abundance variations across distinct groups.
 ---
 
 # Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat
 
-Before visualizing taxa abundance, we conduct differential abundance testing using `generate_taxa_test_single` to pinpoint taxa with significant differences between groups.
+A foundational step in feature-level analysis is discerning taxa with differential abundance between groups. The `generate_taxa_test_single` function facilitates this by performing differential abundance testing.
+
+For those aiming to analyze entities such as OTU, ASV, Gene, KEGG, etc., do not require aggregation. In such cases, set the `feature.level` parameter to "original" during the analysis.
 
 ```r
 data(peerj32.obj)
