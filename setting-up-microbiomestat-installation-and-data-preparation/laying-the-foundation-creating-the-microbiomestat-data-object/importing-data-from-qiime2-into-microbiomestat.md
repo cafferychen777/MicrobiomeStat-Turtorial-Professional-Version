@@ -1,10 +1,10 @@
 ---
-description: Learn to seamlessly import data from QIIME2 into MicrobiomeStat's data object.
+description: This guide provides a step-by-step method for importing QIIME2 data structures into the MicrobiomeStat data object.
 ---
 
-# Importing Data from QIIME2 into MicrobiomeStat
+# Converting QIIME2 Data for MicrobiomeStat
 
-Here's how you import your Qiime2 data into MicrobiomeStat!
+To effectively utilize the capabilities of MicrobiomeStat, it's essential to ensure your data is in a compatible format. This guide details the process to convert QIIME2 data structures into MicrobiomeStat's required data object.
 
 {% file src="../../.gitbook/assets/table.qza" %}
 
@@ -15,27 +15,29 @@ Here's how you import your Qiime2 data into MicrobiomeStat!
 {% file src="../../.gitbook/assets/tree.qza" %}
 
 ```r
-# Example code
-otuqza_file <- "table.qza"
-taxaqza_file <- "taxonomy.qza"
-sample_file <- "sample-metadata.tsv"
-treeqza_file <- "tree.qza"
+# Define paths to your QIIME2 files
+# NOTE: Update these paths to point to the location of the files on your computer.
+otuqza_file <- "path_to_your_directory/table.qza"
+taxaqza_file <- "path_to_your_directory/taxonomy.qza"
+sample_file <- "path_to_your_directory/sample-metadata.tsv"
+treeqza_file <- "path_to_your_directory/tree.qza"
 
 # Import QIIME2 data into a MicrobiomeStat data object
 data_obj <- mStat_import_qiime2_as_data_obj(
-    otu_qza = otuqza_file, taxa_qza = taxaqza_file,
-    sam_tab = sample_file, tree_qza = treeqza_file,
+    otu_qza = otuqza_file, 
+    taxa_qza = taxaqza_file,
+    sam_tab = sample_file, 
+    tree_qza = treeqza_file
 )
 ```
 
-The `mStat_import_qiime2_as_data_obj` function transforms your Qiime2 data into **MicrobiomeStat-friendly format**, setting you up for your exploration journey through the microbial universe. Here's what you need:
+The function `mStat_import_qiime2_as_data_obj` efficiently transforms QIIME2 datasets into the data format required by MicrobiomeStat. Here's a breakdown of the input parameters:
 
-* **otu\_qza**: Your feature table, offering a snapshot of your microbial community.
-* **taxa\_qza** (Optional): Your taxonomy assignment table, providing taxonomic identities to your microbial species.
-* **sam\_tab** (Optional): Your sample metadata table, illuminating the conditions and characteristics of your samples.
-* **refseq\_qza** (Optional): Your representative sequences table, featuring the most common sequences in your community.
-* **tree\_qza** (Optional): Your phylogenetic tree, illustrating the evolutionary relationships amongst your microbial species.
+* **otu\_qza**: This file represents your feature table, containing the abundance data of microbial entities across samples.
+* **taxa\_qza** (Optional): This is the taxonomy assignment table which provides taxonomic classifications for the microbial entities.
+* **sam\_tab** (Optional): The sample metadata table offers details about the conditions, treatments, or any other pertinent annotations related to the samples.
+* **tree\_qza** (Optional): A phylogenetic tree depicting the evolutionary relationships of the microbial entities.
 
-Your Qiime2 data is now equipped for a journey through the MicrobiomeStat landscape. The MicrobiomeStat data object, created by the transformation, can directly dock into the **MicrobiomeStat's analytical tools**, offering you an extensive suite of options for microbiome data exploration.
+Upon successful conversion, the generated MicrobiomeStat data object can be directly used with the suite of analysis tools provided by MicrobiomeStat, ensuring a seamless and efficient analytical workflow.
 
-Buckle up, explorers! Your journey into the mesmerizing world of microbiome data analysis starts here!&#x20;
+Ensure that you have the correct file paths and all required dependencies installed before initiating the conversion process.&#x20;
