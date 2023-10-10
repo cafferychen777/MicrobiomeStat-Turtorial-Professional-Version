@@ -8,13 +8,23 @@ description: >-
 
 To effectively utilize the capabilities of MicrobiomeStat, it's essential to ensure your data is in a compatible format. This guide details the process to convert QIIME2 data structures into MicrobiomeStat's required data object.
 
+The provided files represent essential QIIME2 artifacts and metadata required for microbiome data analysis:
+
 {% file src="../../.gitbook/assets/table.qza" %}
+This artifact contains the feature table, which is a summary of the observed microbial features (e.g., OTUs, ASVs) across different samples. QIIME2 users typically recognize it as their primary count or abundance matrix.
+{% endfile %}
 
 {% file src="../../.gitbook/assets/taxonomy.qza" %}
+This artifact holds taxonomic assignments for each microbial feature, allowing users to determine the classification of observed features at various taxonomic ranks (e.g., kingdom, phylum, class).
+{% endfile %}
 
 {% file src="../../.gitbook/assets/sample-metadata.tsv" %}
+A tab-separated values (TSV) file detailing the metadata associated with each sample. Metadata might include sample conditions, treatments, or any other annotations pertinent to the study.
+{% endfile %}
 
 {% file src="../../.gitbook/assets/tree.qza" %}
+A phylogenetic tree artifact representing the evolutionary relationships between microbial features. This tree is crucial for various phylogenetic diversity metrics and analyses within QIIME2.
+{% endfile %}
 
 ```r
 # Define paths to your QIIME2 files
