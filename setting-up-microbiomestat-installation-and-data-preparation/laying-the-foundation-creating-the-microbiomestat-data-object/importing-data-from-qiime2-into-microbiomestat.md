@@ -6,12 +6,20 @@ description: Learn to seamlessly import data from QIIME2 into MicrobiomeStat's d
 
 Here's how you import your Qiime2 data into MicrobiomeStat!
 
+{% file src="../../.gitbook/assets/table.qza" %}
+
+{% file src="../../.gitbook/assets/taxonomy.qza" %}
+
+{% file src="../../.gitbook/assets/sample-metadata.tsv" %}
+
+{% file src="../../.gitbook/assets/tree.qza" %}
+
 ```r
 # Example code
-otuqza_file <- system.file("extdata", "table.qza", package = "microbiomeMarker")
-taxaqza_file <- system.file("extdata", "taxonomy.qza", package = "microbiomeMarker")
-sample_file <- system.file("extdata", "sample-metadata.tsv", package = "microbiomeMarker")
-treeqza_file <- system.file("extdata", "tree.qza", package = "microbiomeMarker")
+otuqza_file <- "table.qza"
+taxaqza_file <- "taxonomy.qza"
+sample_file <- "sample-metadata.tsv"
+treeqza_file <- "tree.qza"
 
 # Import QIIME2 data into a MicrobiomeStat data object
 data_obj <- mStat_import_qiime2_as_data_obj(
