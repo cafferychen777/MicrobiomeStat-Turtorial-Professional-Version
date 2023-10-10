@@ -75,7 +75,7 @@ generate_beta_ordination_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.20.28.png" alt=""><figcaption><p>Illustration of Beta Diversity Ordination for the entire dataset, offering a broad perspective on microbial community structures without temporal or strata distinctions.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption><p>Illustration of Beta Diversity Ordination for the entire dataset, offering a broad perspective on microbial community structures without temporal or strata distinctions.</p></figcaption></figure>
 
 Shifting our gaze to a specific temporal frame by setting `t.level` to "2", we probe into the beta diversity nuances of this time juncture:
 
@@ -101,7 +101,7 @@ Shifting our gaze to a specific temporal frame by setting `t.level` to "2", we p
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.21.25.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'. This delineation unveils the microbial community structures' intricacies at this particular instance.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'. This delineation unveils the microbial community structures' intricacies at this particular instance.</p></figcaption></figure>
 
 Incorporating a stratifying dimension, such as `sex`, augments the depth of the analysis:
 
@@ -127,6 +127,8 @@ generate_beta_ordination_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.22.28.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
+
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.56.17.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
 
 The robustness of MicrobiomeStat is evident in its adaptability, allowing researchers to orchestrate analyses that align with their study's granularity and requirements.
