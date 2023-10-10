@@ -1,10 +1,10 @@
 ---
 description: >-
-  Follow the guide to construct MicrobiomeStat's data object directly from
-  matrix and data.frame structures.
+  description: >-
+  Discover how to craft the MicrobiomeStat data object using matrices and data frames from your R environment or by importing data from external CSV files.
 ---
 
-# Building MicrobiomeStat from Matrix and Data.frame
+# Constructing the MicrobiomeStat Data Object from Matrix, Dataframe, and CSV Files
 
 The MicrobiomeStat data object consists of the following components:
 
@@ -79,7 +79,13 @@ MicrobiomeData <- list(
 
 ### 2. Using External CSV Data
 
-For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`. You can download these files here.
+To facilitate your understanding and to ease the process of setting up your data, we have provided sample CSV files that can be used as templates. By analyzing these sample files, you can structure your data similarly and ensure it's compatible with our tool.
+
+For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`. 
+
+#### Download Sample Data Files
+
+You can download these files to understand the expected format:
 
 {% file src="../../.gitbook/assets/feature_tab.csv" %}
 
@@ -87,7 +93,11 @@ For this demonstration, we'll import data from three external CSV files: `featur
 
 {% file src="../../.gitbook/assets/feature_ann.csv" %}
 
+If you want to use your own data, download these example files, examine their structure, and modify your data accordingly to match this format.
+
 #### Import Data from CSV
+
+Once you have the desired CSV files, you can proceed to import the data:
 
 ```r
 Feature.tab <- read.csv("feature_tab.csv", row.names = 1)
@@ -109,4 +119,6 @@ MicrobiomeData <- list(
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.28.16.png" alt=""><figcaption><p>This visualization presents the structure of the imported <code>MicrobiomeStat</code> data object using R's <code>str</code> function, illustrating the organization of the components sourced from external CSV files.</p></figcaption></figure>
 
-With either approach, you now have a complete MicrobiomeStat data object ready for analysis and visualization.
+With either the provided sample data or your own structured data, you now have a complete MicrobiomeStat data object ready for subsequent analysis and visualization.
+
+
