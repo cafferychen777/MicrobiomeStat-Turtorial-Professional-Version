@@ -6,12 +6,18 @@ description: Understand how to import your BIOM data into MicrobiomeStat's data 
 
 Here's how you can bring your BIOM data into MicrobiomeStat!
 
+{% file src="../../.gitbook/assets/rich_dense_otu_table.biom" %}
+
+{% file src="../../.gitbook/assets/biom-tree.phy" %}
+
+{% file src="../../.gitbook/assets/biom-refseq.fasta" %}
+
 {% code fullWidth="true" %}
 ```r
 # Example code
-rich_dense_biom <- system.file("extdata", "rich_dense_otu_table.biom",  package="phyloseq")
-treefilename <- system.file("extdata", "biom-tree.phy",  package="phyloseq")
-refseqfilename <- system.file("extdata", "biom-refseq.fasta",  package="phyloseq")
+rich_dense_biom <- "rich_dense_otu_table.biom"
+treefilename <- "biom-tree.phy"
+refseqfilename <- "biom-refseq.fasta"
 
 # Convert BIOM data into a MicrobiomeStat data object
 data_obj <- mStat_import_biom_as_data_obj(rich_dense_biom, treefilename, refseqfilename, parseFunction=parse_taxonomy_greengenes)
