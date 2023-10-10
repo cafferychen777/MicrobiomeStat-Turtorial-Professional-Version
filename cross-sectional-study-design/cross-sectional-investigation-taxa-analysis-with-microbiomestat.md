@@ -9,13 +9,29 @@ A foundational step in feature-level analysis is discerning taxa with differenti
 
 The `generate_taxa_test_single` function employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance between groups. 
 
-The `prev.filter` and `abund.filter` parameters are integral to the preprocessing steps. Specifically:
-- `prev.filter`: This parameter filters out taxa based on their prevalence in samples. A taxon is retained if its prevalence across samples is greater than or equal to the threshold set by `prev.filter`.
-- `abund.filter`: This filters taxa based on their average abundance across all samples. A taxon is retained if its average abundance meets or exceeds the threshold specified by `abund.filter`.
+The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
-These filtering steps ensure that the subsequent analysis focuses on taxa that are both prevalent and abundant, thereby removing potential noise and improving the robustness of the results.
+- **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
 
-For users focusing on entities like OTU, ASV, Gene, KEGG, etc., which don't necessitate aggregation, it's advisable to set the `feature.level` parameter to "original".
+- **"proportion"**: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
+
+- **"other"**: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+
+Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
+- `prev.filter` targets taxa retention based on their prevalence across samples.
+- `abund.filter` focuses on the average abundance of taxa across all samples.
+
+Such filtering ensures that the analysis centers on taxa both prevalent and abundant, enhancing result reliability by excluding potential outliers or noise.
+
+For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don't require aggregation, it's recommended to set the `feature.level` parameter to "original".
+
+Furthermore, when interpreting the results, it's essential to understand the role of `feature.sig.level` and `feature.mt.method` parameters:
+
+- **`feature.sig.level`**: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
+
+- **`feature.mt.method`**: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
+
+By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
 ```r
 data(peerj32.obj)
@@ -40,11 +56,16 @@ volcano_plots
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-07 at 15.18.08.png" alt=""><figcaption></figcaption></figure>
 
-The volcano plot, resultant from the `volcano_plots`, presents a nuanced visualization of the relationship between fold-change (magnitude of variation) and its statistical relevance. This tool is pivotal for distinguishing taxa with significant differences in abundance.
+The resultant volcano plot visualizes the relationship between the magnitude of change (fold-change) and its statistical significance. This graphical representation aids researchers in pinpointing taxa with substantial differential abundance.
 
-The method initiates with preprocessing tasks, such as filtering, normalization, and aggregation at designated taxonomic levels. Subsequent to these tasks, the LinDA method identifies significant variances between groups, considering specified covariates.
+Upon preprocessing which includes filtering, normalization, and optional aggregation at designated taxonomic levels, the function employs the LinDA method to identify variances between groups while adjusting for provided covariates.
 
-The table provides concise results, outlining significant taxa with pertinent statistical metrics, facilitating informed selection for subsequent detailed exploration.
+Subsequently, the provided table offers a comprehensive overview of various taxa accompanied by pertinent statistical measures, paving the way for detailed exploration and analysis.
+
+In the context of this table:
+
+- **Mean Abundance**: This signifies the average abundance of a particular taxon (variable) across all samples.
+- **Prevalence**: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
 
 #### Differential abundance results at Genus level
 
@@ -61,7 +82,7 @@ The table provides concise results, outlining significant taxa with pertinent st
 | Anaerovorax odorimutans et rel.   | -0.55577241 | 0.3180729 | 0.09672749 | 0.9892442        | 0.0044828621   | 1.0000000  |
 | Aneurinibacillus                  | -0.20493605 | 0.5227462 | 0.69939327 | 0.9892442        | 0.0007296989   | 0.9545455  |
 
-To further elucidate taxa abundance distinctions between groups, it's beneficial to visualize data using boxplots prior to heatmap aggregation. MicrobiomeStat offers two visualization methods:
+By inspecting these metrics, researchers can gain insights into the relative importance and ubiquity of each taxon within the analyzed samples, fostering an informed approach to subsequent analyses.
 
 1. `generate_taxa_boxplot_single` outputs a singular comprehensive plot with taxa data:
 
