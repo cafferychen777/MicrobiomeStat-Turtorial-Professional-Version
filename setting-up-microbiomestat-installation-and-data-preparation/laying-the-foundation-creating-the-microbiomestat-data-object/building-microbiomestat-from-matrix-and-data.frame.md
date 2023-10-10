@@ -75,7 +75,7 @@ MicrobiomeData <- list(
 )
 ```
 
-***
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.18.21.png" alt=""><figcaption><p>The image displays the structured breakdown of the <code>MicrobiomeStat</code> data object using R's <code>str</code> function. Additionally, the successful validation of the object with <code>mStat_validate_data(MicrobiomeData)</code> confirms its readiness for subsequent analyses.</p></figcaption></figure>
 
 ### 2. Using External CSV Data
 
@@ -101,12 +101,12 @@ With the imported data, combine the components:
 
 ```r
 MicrobiomeData <- list(
-  feature.tab = Feature.tab,
+  feature.tab = as.matrix(Feature.tab),
   meta.dat = Meta.dat,
-  feature.ann = Feature.ann
+  feature.ann = as.matrix(Feature.ann)
 )
 ```
 
-***
+
 
 With either approach, you now have a complete MicrobiomeStat data object ready for analysis and visualization.
