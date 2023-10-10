@@ -7,9 +7,11 @@ description: >-
 
 # Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat
 
-Alpha diversity indices provide insights into the species richness and evenness within individual microbiome samples. Utilizing **MicrobiomeStat**, we can adeptly analyze these metrics in the `peerj32` dataset. For a comprehensive view, we'll start by analyzing the dataset without distinguishing time-based and strata variables.
+Alpha diversity indices provide insights into the species richness and evenness within individual microbiome samples. Utilizing **MicrobiomeStat**, we can adeptly analyze these metrics in the `peerj32.obj` dataset. For a comprehensive view, we'll start by analyzing the dataset without distinguishing time-based and strata variables.
 
-To ascertain significant differences in alpha diversity between groups, it's essential to employ appropriate statistical tests. The `generate_alpha_test_single` function facilitates this by executing association tests between the indices and the selected grouping variable, framed within linear models.
+Prior to diving deep, it's noteworthy to explain the role of `alpha.obj`. It represents pre-computed alpha diversity indices, derived from the `mStat_calculate_alpha_diversity` function. If this isn't calculated beforehand and supplied to alpha-related functions, those functions will, by default, invoke `mStat_calculate_alpha_diversity` internally.
+
+Determining significant disparities in alpha diversity across groups mandates the application of robust statistical testing. For this, the `generate_alpha_test_single` function is invaluable. It conducts association tests juxtaposing the indices with a designated grouping variable, all within the confines of linear models.
 
 ```r
 generate_alpha_test_single(
@@ -29,19 +31,21 @@ For each specified index in `alpha.name`, a linear model is applied, designating
 
 In scenarios where `group.var` encapsulates multiple categories, ANOVA gets employed to statistically validate alpha diversity disparities between the groups, considering potential confounding elements.
 
-### Shannon Index and Observed Species Results
+### Shannon Index Results
 
 | Term         | Estimate | Std.Error | Statistic | P.Value  |
 | ------------ | -------- | --------- | --------- | -------- |
-| (Intercept)  | 3.59     | 0.0390    | 92.2      | 1.17e-26 |
-| sexmale      | -0.0598  | 0.0455    | -1.31     | 2.04e-1  |
-| groupPlacebo | 0.0455   | 0.0441    | 1.03      | 3.15e-1  |
+| (Intercept)  | 3.60     | 0.0386    | 93.2      | 9.47e-27 |
+| sexmale      | -0.0633  | 0.0451    | -1.40     | 1.77e-1  |
+| groupPlacebo | 0.0415   | 0.0437    | 0.950     | 3.54e-1  |
+
+### Observed Species Results
 
 | Term         | Estimate | Std.Error | Statistic | P.Value  |
 | ------------ | -------- | --------- | --------- | -------- |
-| (Intercept)  | 0.952    | 0.00311   | 306.      | 1.49e-36 |
-| sexmale      | -0.00223 | 0.00364   | -0.614    | 5.47e-1  |
-| groupPlacebo | 0.00428  | 0.00352   | 1.21      | 2.39e-1  |
+| (Intercept)  | 100.     | 3.72      | 26.9      | 1.36e-16 |
+| sexmale      | 2.29     | 4.35      | 0.528     | 6.04e-1  |
+| groupPlacebo | 1.99     | 4.21      | 0.473     | 6.42e-1  |
 
 The visualization of these findings is made possible through the `generate_alpha_boxplot_single` function. Initially, to gain an overarching perspective, we'll sidestep the time-based and strata variables.
 
