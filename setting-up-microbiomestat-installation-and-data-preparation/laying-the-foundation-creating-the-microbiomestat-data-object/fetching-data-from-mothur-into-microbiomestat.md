@@ -6,12 +6,20 @@ description: Acquire the knowledge to import data from Mothur into MicrobiomeSta
 
 Here's how you can sail your Mothur data into MicrobiomeStat!
 
+{% file src="../../.gitbook/assets/esophagus.fn.list.gz" %}
+
+{% file src="../../.gitbook/assets/esophagus.fn.shared.gz" %}
+
+{% file src="../../.gitbook/assets/esophagus.good.groups.gz" %}
+
+{% file src="../../.gitbook/assets/esophagus.tree.gz" %}
+
 ```r
 # Example code (Replace with your real file paths!)
-path_to_list_file <- "/path_to_your_files/your_list_file.list"
-path_to_group_file <- "/path_to_your_files/your_group_file.groups"
-path_to_tree_file <- "/path_to_your_files/your_tree_file.tree"
-path_to_shared_file <- "/path_to_your_files/your_shared_file.shared"
+path_to_list_file <- "/path_to_your_files/esophagus.fn.list.gz"
+path_to_group_file <- "/path_to_your_files/esophagus.good.groups.gz"
+path_to_tree_file <- "/path_to_your_files/esophagus.tree.gz"
+path_to_shared_file <- "/path_to_your_files/esophagus.fn.shared.gz"
 
 # Convert Mothur data into a MicrobiomeStat data object
 data_obj <- mStat_import_mothur_as_data_obj(mothur_list_file = path_to_list_file,
@@ -20,6 +28,8 @@ data_obj <- mStat_import_mothur_as_data_obj(mothur_list_file = path_to_list_file
                                             mothur_shared_file = path_to_shared_file
                                             )
 ```
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 16.27.19.png" alt=""><figcaption></figcaption></figure>
 
 The `mStat_import_mothur_as_data_obj` function is your captain in navigating the sea of Mothur data and steering it towards the shores of MicrobiomeStat. Here's your navigational chart:
 
