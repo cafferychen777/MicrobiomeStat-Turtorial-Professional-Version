@@ -30,7 +30,7 @@ generate_beta_test_single(
 | sex   | 0.791 | 0.819   | 0.808   |
 | group | 0.794 | 0.859   | 0.817   |
 
-This table aggregates the p-values from the PERMANOVA tests across the different distance matrices and encompasses the omnibus test results for a more holistic understanding.
+It's noteworthy that in practical scenarios, the nature of microbial changes isn't inherently known. Distinct distance measures excel at detecting specific scenarios. Leveraging multiple distance matrices and conducting separate tests for each can lead to a reduction in analytical power due to the necessity of multiple testing corrections. An integrated approach that combines the matrices in a singular test can enhance this power. PermanovaG exemplifies this by amalgamating multiple distance matrices, primarily by considering the minimum of the P values from individual matrices and evaluating significance through permutation. Hence, this table not only aggregates the p-values from the PERMANOVA tests across distinct distance matrices but also offers an omnibus test result, furnishing a more comprehensive understanding of the microbial community structures across the designated groups.
 
 #### PERMANOVA results
 
