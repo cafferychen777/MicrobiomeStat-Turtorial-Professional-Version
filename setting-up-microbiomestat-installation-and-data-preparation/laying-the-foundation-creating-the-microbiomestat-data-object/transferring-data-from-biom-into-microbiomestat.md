@@ -19,11 +19,20 @@ Phylogenetic tree file representing evolutionary relationships among observed sp
 {% code fullWidth="true" %}
 ```r
 # Example code
-rich_dense_biom <- "rich_dense_otu_table.biom"
-treefilename <- "biom-tree.phy"
 
-# Convert BIOM data into a MicrobiomeStat data object
-data.obj <- mStat_import_biom_as_data_obj(rich_dense_biom, treefilename)
+# Specify the path to your BIOM data. Replace the placeholder with the correct path on your system.
+rich_dense_biom <- "rich_dense_otu_table.biom"
+# Reminder: Ensure that you replace the above path with the actual location of your BIOM file.
+
+# Specify the path to your phylogenetic tree. Again, replace the placeholder with the correct path on your system.
+treefilename <- "biom-tree.phy"
+# Reminder: Ensure that you replace the above path with the actual location of your phylogenetic tree file.
+
+# Convert the BIOM data and associated phylogenetic tree (if provided) 
+# into a format suitable for MicrobiomeStat using the mStat_import_biom_as_data_obj function.
+data.obj <- mStat_import_biom_as_data_obj(biom_filename = rich_dense_biom, tree_filename = treefilename)
+
+# The resulting 'data.obj' is now a MicrobiomeStat data object that you can use for further analyses.
 ```
 {% endcode %}
 
