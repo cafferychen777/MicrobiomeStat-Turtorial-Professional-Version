@@ -1,13 +1,16 @@
 ---
 description: >-
-  Learn the steps to efficiently import DGEList data structures into MicrobiomeStat for streamlined analysis.
+  Learn the steps to efficiently import DGEList data structures into
+  MicrobiomeStat for streamlined analysis.
 ---
 
-# Importing DGEList Data into MicrobiomeStat
+# Loading DGEList Data into MicrobiomeStat
 
 This guide will assist you in transferring data from the DGEList format to MicrobiomeStat.
 
 Before we proceed with the conversion, let's examine the original structure of our DGEList data:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 14.45.38.png" alt=""><figcaption><p>Original structure of the DGEList data.</p></figcaption></figure>
 
 Now, follow the steps below to convert the DGEList data:
 
@@ -28,6 +31,8 @@ data.obj <- mStat_convert_DGEList_to_data_obj(dge)
 
 After conversion, let's take a look at the transformed data structure:
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 14.46.16.png" alt=""><figcaption><p>Structure of the MicrobiomeStat data object after importing DGEList data.</p></figcaption></figure>
+
 By using the `mStat_convert_DGEList_to_data_obj` function, you can effectively convert:
 
 * **dge.obj**: Your existing DGEList object.
@@ -39,4 +44,4 @@ The resultant **MicrobiomeStat data object** encompasses:
 
 As part of the conversion process, features with a sum of zero from the counts data are filtered out to maintain data relevance and accuracy.
 
-By integrating DGEList data into the MicrobiomeStat framework, researchers can harness the comprehensive analysis tools provided by MicrobiomeStat, further enhancing their data-driven insights and findings.&#x20;
+By integrating DGEList data into the MicrobiomeStat framework, researchers can harness the comprehensive analysis tools provided by MicrobiomeStat, further enhancing their data-driven insights and findings.
