@@ -7,11 +7,15 @@ description: >-
 
 # Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat
 
-In cross-sectional studies, beta diversity acts as an instrumental measure to gauge differences in microbial community composition between samples. The `MicrobiomeStat` toolkit aids researchers in navigating these complex terrains.
+In cross-sectional studies, beta diversity serves as a pivotal metric to discern differences in microbial community composition across samples. The `MicrobiomeStat` toolkit is specifically designed to guide researchers through this intricate analysis.
 
-When venturing into the dataset with a **Simple Cross-Sectional Design**, it's not obligatory to have pre-computed `dist.obj` and `pc.obj`. The suite, being intuitive, defaults to computing these based on the `dist.name` provided.
+Before starting with pre-computed data objects, it's beneficial to grasp the utility of `dist.obj` and `pc.obj` in the context of this toolkit. By design, if these aren't provided, `MicrobiomeStat` auto-generates them. The `dist.obj` is computed using the `mStat_calculate_beta_diversity` function. When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_distance` function refines the microbial community dissimilarities using a method based on linear models and multidimensional scaling. This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
-Before embarking on a visual interpretation of beta diversity through `generate_beta_ordination_single`, a quantitative assessment is essential. The `generate_beta_test_single` function fills this role by deploying PERMANOVA on the chosen distance matrices. The aim is to discern significant variances between groups while factoring in supplementary covariates.
+`pc.obj`, in its essence, is derived from the `mStat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers with a penchant for advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. Subsequently, these results can be reformatted to align with the `pc.obj` structure, facilitating effortless integration with `MicrobiomeStat`.
+
+Further, it's worth noting that the range of distance measures (`dist.name`) supported includes "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence). It's pivotal to understand that some of these methods, especially those like "UniFrac", necessitate the presence of a phylogenetic tree. Thus, prior to leveraging these metrics, ensure that the `tree` component exists within the `data.obj`.
+
+Venturing forth, before plunging into the visual realms of beta diversity with `generate_beta_ordination_single`, it's prudent to quantify the underlying patterns. The `generate_beta_test_single` function is primed for this, employing PERMANOVA on the designated distance matrices to pinpoint significant compositional variations across groups, all while accommodating specified covariates.
 
 ```r
 generate_beta_test_single(
