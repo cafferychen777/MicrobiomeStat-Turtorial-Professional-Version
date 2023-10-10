@@ -1,14 +1,18 @@
 ---
-description: Understand how to import your BIOM data into MicrobiomeStat's data structure.
+description: Guide to importing data in BIOM format into MicrobiomeStat's structure.
 ---
 
 # Transferring Data from BIOM into MicrobiomeStat
 
-Here's how you can bring your BIOM data into MicrobiomeStat!
+# Importing BIOM Data to MicrobiomeStat
+
+Follow the instructions below to convert your BIOM data into a format suitable for MicrobiomeStat.
 
 {% file src="../../.gitbook/assets/rich_dense_otu_table.biom" %}
+**Caption:** BIOM file containing biological observation matrix and associated metadata.
 
 {% file src="../../.gitbook/assets/biom-tree.phy" %}
+**Caption:** Phylogenetic tree file representing evolutionary relationships among observed species.
 
 {% code fullWidth="true" %}
 ```r
@@ -21,14 +25,12 @@ data.obj <- mStat_import_biom_as_data_obj(rich_dense_biom, treefilename, parseFu
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 15.18.52.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 15.18.52.png" alt=""><figcaption>Structure of the MicrobiomeStat data object created from BIOM data.</figcaption></figure>
 
-The `mStat_import_biom_as_data_obj` function takes your BIOM (Biological Observation Matrix) file and breathes life into it by creating a **MicrobiomeStat data object**. Here's the essentials you need:
+By employing the `mStat_import_biom_as_data_obj` function, the BIOM data, along with optional phylogenetic tree data, can be integrated into the MicrobiomeStat framework. Here's a brief overview of the function's parameters:
 
-* **BIOMfilename**: Your BIOM file, a treasure trove of your biological observation matrix and related metadata.
-* **treefilename** (Optional): Your phylogenetic tree file, which encapsulates the evolutionary relationships among your observed species.
-* **parseFunction** (Optional): Your custom function to parse the taxonomy from the metadata in your BIOM file. You can leverage 'parse\_taxonomy\_default' as your starting point!
+* **BIOMfilename**: The file path to your BIOM data.
+* **treefilename** (Optional): The file path to your phylogenetic tree.
+* **parseFunction** (Optional): A user-defined function to interpret the taxonomy from the BIOM file metadata.
 
-Once your BIOM data is imported into the **MicrobiomeStat data object**, you're all set to harness the powerful suite of **MicrobiomeStat's statistical analysis tools**! Whether you have a phylogenetic tree or not, your journey into microbiome data analysis can smoothly set sail!
-
-Embark on your exciting exploration now! Your voyage through the fascinating world of microbiome data analysis is about to commence!
+With the conversion complete, the data is now ready to be analyzed using the various tools provided by MicrobiomeStat.
