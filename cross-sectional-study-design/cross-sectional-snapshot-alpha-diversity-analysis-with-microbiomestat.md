@@ -11,6 +11,8 @@ Alpha diversity indices provide insights into the species richness and evenness 
 
 Prior to diving deep, it's noteworthy to explain the role of `alpha.obj`. It represents pre-computed alpha diversity indices, derived from the `mStat_calculate_alpha_diversity` function. If this isn't calculated beforehand and supplied to alpha-related functions, those functions will, by default, invoke `mStat_calculate_alpha_diversity` internally.
 
+By default, the alpha functions in MicrobiomeStat perform data rarefaction, ensuring the datasets become more comparable by leveling the sequencing depth across samples. Rarefaction standardizes the sampling depth, rendering it instrumental in comparative analyses. If your research objective is to retain the original, non-rarefied data for alpha diversity calculations, it's crucial to pre-compute `alpha.obj`. This approach bypasses the internal rarefaction step, preserving the integrity of the original data.
+
 Determining significant disparities in alpha diversity across groups mandates the application of robust statistical testing. For this, the `generate_alpha_test_single` function is invaluable. It conducts association tests juxtaposing the indices with a designated grouping variable, all within the confines of linear models.
 
 ```r
@@ -50,11 +52,10 @@ In scenarios where `group.var` encapsulates multiple categories, ANOVA gets empl
 The visualization of these findings is made possible through the `generate_alpha_boxplot_single` function. Initially, to gain an overarching perspective, we'll sidestep the time-based and strata variables.
 
 ```r
-# Generate alpha diversity boxplot (simpson index) for all data
 generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  alpha.name = c("simpson"),
+  alpha.name = c("shannon"),
   depth = NULL,
   subject.var = "subject",
   time.var = NULL,
@@ -78,7 +79,7 @@ Zooming into the particular time point, `t.level = "2`, provides a more nuanced 
 generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  alpha.name = c("simpson"),
+  alpha.name = c("shannon"),
   depth = NULL,
   subject.var = "subject",
   time.var = "time",
