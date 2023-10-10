@@ -7,7 +7,7 @@ description: >-
 
 A foundational step in feature-level analysis is discerning taxa with differential abundance between groups. The `generate_taxa_test_single` function facilitates this by performing differential abundance testing.
 
-For those aiming to analyze entities such as OTU, ASV, Gene, KEGG, etc., do not require aggregation. In such cases, set the `feature.level` parameter to "original" during the analysis.
+For those aiming to analyze entities such as OTU, ASV, Gene, KEGG, etc., that do not require aggregation, set the `feature.level` parameter to "original" during the analysis.
 
 ```r
 data(peerj32.obj)
