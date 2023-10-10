@@ -26,7 +26,7 @@
 
 ## Cross-Sectional Study Design
 
-* [Unraveling Cross-Sectional Studies with MicrobiomeStat](cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
+* [Analyzing Cross-Sectional Microbiome Data with MicrobiomeStat](cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
 * [Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
 * [Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
 * [Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
