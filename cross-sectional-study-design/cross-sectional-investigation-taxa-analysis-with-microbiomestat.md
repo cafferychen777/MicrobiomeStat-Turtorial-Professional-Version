@@ -86,13 +86,11 @@ By inspecting these metrics, researchers can gain insights into the relative imp
 
 Before we delve into the detailed examination of the `generate_taxa_boxplot_single` function, it's essential to first understand some critical parameters that play a pivotal role in shaping the visualization:
 
-- **`features.plot`**: This parameter dictates which features (or taxa) should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
-
-- **`top.k.plot` and `top.k.func`**: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
-  
-  - `top.k.func` assists in determining the criteria for this selection, offering two choices:
-    - `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-    - `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
+* **`features.plot`**: This parameter dictates which features (or taxa) should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
+* **`top.k.plot` and `top.k.func`**: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
+  * `top.k.func` assists in determining the criteria for this selection, offering two choices:
+    * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+    * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
 
 With this foundational understanding in place, let's proceed with the function:
 
@@ -216,7 +214,7 @@ generate_taxa_dotplot_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.44.18.png" alt=""><figcaption><p>With the help of the <code>generate_taxa_dotplot_single</code> function, this dot plot presents a clear comparison of the average abundance and prevalence of each microbial family across our groups. The graphical representation makes it easier to spot potential differences in microbial presence and abundance across different groups.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.34.06.png" alt=""><figcaption><p>With the help of the <code>generate_taxa_dotplot_single</code> function, this dot plot presents a clear comparison of the average abundance and prevalence of each microbial family across our groups. The graphical representation makes it easier to spot potential differences in microbial presence and abundance across different groups.</p></figcaption></figure>
 
 Further, the `generate_taxa_barplot_single` function elucidates species composition differences:
 
