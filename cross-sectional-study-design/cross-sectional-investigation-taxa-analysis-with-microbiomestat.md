@@ -156,9 +156,13 @@ generate_taxa_indiv_boxplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 20.04.16.png" alt=""><figcaption><p>These individual boxplots, produced by MicrobiomeStat's <code>generate_taxa_indiv_boxplot_single</code> function, offer a nuanced view of microbial family abundance distribution across subjects, faceted by sex. The x-axis represents subjects grouped by LGG/placebo, and y-axis shows log-transformed abundance. Differing abundance ranges and distribution shapes are observed between taxa like Ruminococcaceae and Lachnospiraceae. Such customized inspection uncovers fine-grained sample-level variations, setting the stage for subsequent integration of patterns.</p></figcaption></figure>
 
-With these plots in place, we advance to the `generate_taxa_heatmap_single` function to depict abundance:
+Transitioning from bar plots, we venture into the domain of heatmaps using the `generate_taxa_heatmap_single` function. Heatmaps offer a unique, colorful perspective on data, visually encapsulating the richness and patterns of microbial abundance across samples.
 
-By scrutinizing the heatmap, distinct microbial family clusters with analogous abundance patterns become evident. When `cluster.cols = TRUE`, it becomes feasible to discern samples with similar abundance attributes.
+Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. By default, the function will cluster rows (features or taxa) based on their abundance patterns. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
+
+The function also allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions.
+
+Let's dive into the function's implementation:
 
 ```r
 generate_taxa_heatmap_single(
@@ -216,7 +220,11 @@ generate_taxa_dotplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.34.06.png" alt=""><figcaption><p>With the help of the <code>generate_taxa_dotplot_single</code> function, this dot plot presents a clear comparison of the average abundance and prevalence of each microbial family across our groups. The graphical representation makes it easier to spot potential differences in microbial presence and abundance across different groups.</p></figcaption></figure>
 
-Further, the `generate_taxa_barplot_single` function elucidates species composition differences:
+Before we dive into the visual interpretation offered by the `generate_taxa_barplot_single` function, let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
+
+- **`feature.number`**: This parameter determines the maximum number of features (or taxa) that will be visualized directly in the barplot. When confronted with datasets teeming with numerous features, it's practical to limit our visual focus to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function smartly aggregates all excess, low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
+
+With this insight, let's now examine the function and the resultant visuals:
 
 ```r
 generate_taxa_barplot_single(
@@ -245,5 +253,3 @@ generate_taxa_barplot_single(
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.38.40.png" alt=""><figcaption><p>Leveraging the same <code>generate_taxa_barplot_single</code> function, this stacked bar plot reveals the average species composition across our groups. The layers illustrate the overall microbial balance, offering a birds-eye view on group-level differences in microbiome structure.</p></figcaption></figure>
 
 These visual tools, particularly the stacked bar plots, are paramount in understanding the species distribution both at individual and group levels. They highlight the relative contributions of various species to the overall microbiome composition, presenting a clear picture of the microbial diversity landscape.
-
-The provided functions and visualizations in MicrobiomeStat serve to extract meaningful insights from complex microbial datasets. Whether you're focused on a specific time point—by setting parameters such as `time.var` and `t.level`—or keen on segmenting data through stratification variables, these tools are designed for thorough and nuanced exploration. Proper analysis and visualization are essential for understanding microbial dynamics and can form the foundation for further hypothesis-driven research.
