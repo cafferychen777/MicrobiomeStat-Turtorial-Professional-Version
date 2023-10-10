@@ -71,7 +71,7 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 19.45.33.png" alt=""><figcaption><p>Boxplot of the Simpson alpha diversity index across all samples, disregarding the time and strata variables. The boxplot provides an overview of the species complexity within the samples from the two groups: Probiotic LGG and Placebo.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.16.07.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index across all samples, disregarding the time and strata variables. The boxplot provides an overview of the species complexity within the samples from the two groups: Probiotic LGG and Placebo.</p></figcaption></figure>
 
 Zooming into the particular time point, `t.level = "2`, provides a more nuanced understanding.
 
@@ -95,7 +95,7 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 19.46.41.png" alt=""><figcaption><p>Boxplot of the Simpson alpha diversity index for samples at the specific time point '2'. The plot shows the species complexity for each group at this particular time point, offering insights into the potential impact of the probiotic intervention.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.17.06.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at the specific time point '2'. The plot shows the species complexity for each group at this particular time point, offering insights into the potential impact of the probiotic intervention.</p></figcaption></figure>
 
 For a detailed inspection, we can further stratify the analysis using the variable `sex`.
 
@@ -103,7 +103,7 @@ For a detailed inspection, we can further stratify the analysis using the variab
 generate_alpha_boxplot_single(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  alpha.name = c("simpson"),
+  alpha.name = c("shannon"),
   depth = NULL,
   subject.var = "subject",
   time.var = "time",
@@ -119,6 +119,6 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 19.47.28.png" alt=""><figcaption><p>Boxplot of the Simpson alpha diversity index for samples at time point '2', considering the strata variable 'sex'. The plot provides an added layer of understanding by showcasing the species complexity stratified by sex and group. This helps to identify any sex-specific effects of the intervention on the microbiome's species complexity.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.18.43.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at time point '2', considering the strata variable 'sex'. The plot provides an added layer of understanding by showcasing the species complexity stratified by sex and group. This helps to identify any sex-specific effects of the intervention on the microbiome's species complexity.</p></figcaption></figure>
 
-Although this example majorly employs the Shannon index and Observed Species for alpha diversity, **MicrobiomeStat** supports multiple indices, including **"shannon"**, **"simpson"**, **"observed_species"**, **"chao1"**, **"ace"**, and **"pielou"**. Each offers unique insights into the species richness and evenness in the microbiome samples.
+Although this example majorly employs the Shannon index and Observed Species for alpha diversity, **MicrobiomeStat** supports multiple indices, including **"shannon"**, **"simpson"**, **"observed\_species"**, **"chao1"**, **"ace"**, and **"pielou"**. Each offers unique insights into the species richness and evenness in the microbiome samples.
