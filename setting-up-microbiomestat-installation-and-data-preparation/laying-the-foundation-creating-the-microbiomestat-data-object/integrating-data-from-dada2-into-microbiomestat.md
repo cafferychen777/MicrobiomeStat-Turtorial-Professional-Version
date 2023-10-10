@@ -29,6 +29,8 @@ sam_tab <- read.table(
 data_obj <- mStat_import_dada2_as_data_obj(seq_tab = seq_tab, tax_tab = tax_tab, sam_tab = sam_tab)
 ```
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 11.58.13.png" alt=""><figcaption></figcaption></figure>
+
 The function `mStat_import_dada2_as_data_obj` acts as your trusted **data transporter**, diligently taking care of your essential DADA2 outputs:
 
 * **seq\_tab**: Your sequence table from DADA2. Rows symbolize samples, while columns stand for sequences (features). This table forms the backbone for your upcoming MicrobiomeStat voyage.
