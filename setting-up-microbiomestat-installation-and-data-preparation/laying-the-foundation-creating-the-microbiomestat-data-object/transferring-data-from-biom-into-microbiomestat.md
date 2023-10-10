@@ -10,19 +10,18 @@ Here's how you can bring your BIOM data into MicrobiomeStat!
 
 {% file src="../../.gitbook/assets/biom-tree.phy" %}
 
-{% file src="../../.gitbook/assets/biom-refseq.fasta" %}
-
 {% code fullWidth="true" %}
 ```r
 # Example code
 rich_dense_biom <- "rich_dense_otu_table.biom"
 treefilename <- "biom-tree.phy"
-refseqfilename <- "biom-refseq.fasta"
 
 # Convert BIOM data into a MicrobiomeStat data object
-data_obj <- mStat_import_biom_as_data_obj(rich_dense_biom, treefilename, refseqfilename, parseFunction=parse_taxonomy_greengenes)
+data.obj <- mStat_import_biom_as_data_obj(rich_dense_biom, treefilename, parseFunction=parse_taxonomy_greengenes)
 ```
 {% endcode %}
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 15.18.52.png" alt=""><figcaption></figcaption></figure>
 
 The `mStat_import_biom_as_data_obj` function takes your BIOM (Biological Observation Matrix) file and breathes life into it by creating a **MicrobiomeStat data object**. Here's the essentials you need:
 
