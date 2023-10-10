@@ -1,45 +1,39 @@
 ---
 description: >-
-  Automate analysis reporting for cross-sectional studies with MicrobiomeStat.
-  Generate integrated reports encompassing alpha diversity, beta diversity and
-  taxonomic compositions.
+  MicrobiomeStat offers automated analysis reporting for cross-sectional studies in microbiome research. It generates comprehensive reports covering alpha diversity, beta diversity, and taxonomic compositions.
 ---
 
-# Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat
+# Cross-Sectional Microbial Analysis Reports via MicrobiomeStat
 
-Microbiome studies produce **multidimensional datasets** with intricacies along various analytical dimensions including:
+Microbiome research yields complex multidimensional datasets. These encompass:
 
-- Alpha diversity - measuring within-sample taxonomic diversity
-- Beta diversity - assessing between-sample taxonomic dissimilarity
-- Differential abundance - identifying differentially abundant taxa across experimental conditions
+- Alpha diversity: Represents within-sample taxonomic diversity.
+- Beta diversity: Captures between-sample taxonomic dissimilarity.
+- Differential abundance: Pinpoints differentially abundant taxa across experimental conditions.
 
-Manual interpretation across dimensions is challenging. 
+Manually analyzing these dimensions is not only tedious but prone to inconsistencies. 
 
-**MicrobiomeStat** provides a robust automation solution through **integrated analysis reports** for cross-sectional studies. The reports contain intuitive visualizations and statistical summaries of key results across dimensions to support biological interpretation and accelerate discoveries. 
+MicrobiomeStat offers an efficient approach, generating integrated reports for cross-sectional studies. These reports encompass:
 
-By automating complex analytical workflows, MicrobiomeStat enables rapid, reproducible, and comprehensive reporting to boost productivity in microbiome research.
+- Visualizations to illustrate key findings
+- Statistical summaries highlighting the main outcomes
 
-The `mStat_generate_report_single()` function performs a comprehensive analysis encompassing:
+This ensures a thorough and consistent interpretation of data.
 
-- **Alpha diversity** indices calculation using `mStat_calculate_alpha_diversity()`, visualization using `generate_alpha_boxplot_single()` and hypothesis testing using `generate_alpha_test_single()`
-- **Beta diversity** calculation using `mStat_calculate_beta_diversity()`, ordination using `generate_beta_ordination_single()` and PERMANOVA testing using `generate_beta_test_single()`
-- **Taxonomic composition** visualization using `generate_taxa_barplot_single()`, `generate_taxa_dotplot_single()` and `generate_taxa_heatmap_single()`, as well as differential abundance testing using `generate_taxa_test_single()`
+Central to this process is the `mStat_generate_report_single()` function. It conducts:
 
-It then automatically compiles an integrated PDF report containing:
+- **Alpha diversity** analyses: These utilize functions like `mStat_calculate_alpha_diversity()`, `generate_alpha_boxplot_single()`, and `generate_alpha_test_single()`.
+- **Beta diversity** analyses: Leveraging functions such as `mStat_calculate_beta_diversity()`, `generate_beta_ordination_single()`, and `generate_beta_test_single()`.
+- **Taxonomic composition** analyses: Employing `generate_taxa_barplot_single()`, `generate_taxa_dotplot_single()`, `generate_taxa_heatmap_single()`, and `generate_taxa_test_single()`.
 
-- Summary statistics table from `mStat_summarize_data_obj()`
+The function then assembles these analyses into a cohesive PDF report, featuring:
 
-- Alpha diversity boxplots from `generate_alpha_boxplot_single()`
+- A data summary from `mStat_summarize_data_obj()`
+- Visual representations like alpha diversity boxplots, beta diversity ordination plots, and taxa composition visualizations
+- Tables detailing statistical test results
+- Commentaries on key findings
 
-- Beta diversity ordination plots from `generate_beta_ordination_single()` 
-
-- Taxa composition barplot, dotplot and heatmap from `generate_taxa_barplot_single()`, `generate_taxa_dotplot_single()` and `generate_taxa_heatmap_single()`
-
-- Statistical test results tables for alpha diversity, beta diversity and taxonomic differential abundance
-
-- Text interpretations and highlights of key statistical findings
-
-We simply provide parameters like input data, variables of interest, and analysis settings:
+Here's how the function can be implemented:
 
 ```r
  mStat_generate_report_single(
