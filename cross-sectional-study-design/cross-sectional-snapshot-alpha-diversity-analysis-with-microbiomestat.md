@@ -5,15 +5,15 @@ description: >-
   microbiome dataset insights.
 ---
 
-# Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat
+Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples. Utilizing **MicrobiomeStat**, we're equipped to delve deep into these metrics using the `peerj32.obj` dataset. For an encompassing perspective, our initial approach will be to scrutinize the dataset in its entirety, eschewing time-based and strata considerations.
 
-Alpha diversity indices provide insights into the species richness and evenness within individual microbiome samples. Utilizing **MicrobiomeStat**, we can adeptly analyze these metrics in the `peerj32.obj` dataset. For a comprehensive view, we'll start by analyzing the dataset without distinguishing time-based and strata variables.
+It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, **MicrobiomeStat** is versatile, supporting a variety of indices. These encompass **"shannon"**, **"simpson"**, **"observed_species"**, **"chao1"**, **"ace"**, and **"pielou"**. Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
 
-Prior to diving deep, it's noteworthy to explain the role of `alpha.obj`. It represents pre-computed alpha diversity indices, derived from the `mStat_calculate_alpha_diversity` function. If this isn't calculated beforehand and supplied to alpha-related functions, those functions will, by default, invoke `mStat_calculate_alpha_diversity` internally.
+Before delving further, it's pivotal to comprehend the significance of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
 
-By default, the alpha functions in MicrobiomeStat perform data rarefaction, ensuring the datasets become more comparable by leveling the sequencing depth across samples. Rarefaction standardizes the sampling depth, rendering it instrumental in comparative analyses. If your research objective is to retain the original, non-rarefied data for alpha diversity calculations, it's crucial to pre-compute `alpha.obj`. This approach bypasses the internal rarefaction step, preserving the integrity of the original data.
+Additionally, the alpha functions in MicrobiomeStat, by default, undertake data rarefaction. This process ensures the datasets are rendered more comparable by harmonizing the sequencing depth across samples. Such standardization is vital for comparative analyses. However, if you're aiming to work with the original, non-rarefied data when determining alpha diversity, it's imperative to pre-calculate `alpha.obj`. By doing so, the intrinsic rarefaction process is sidestepped, thereby maintaining the data's originality.
 
-Determining significant disparities in alpha diversity across groups mandates the application of robust statistical testing. For this, the `generate_alpha_test_single` function is invaluable. It conducts association tests juxtaposing the indices with a designated grouping variable, all within the confines of linear models.
+Lastly, ascertaining pronounced variations in alpha diversity across distinct groups necessitates rigorous statistical scrutiny. The `generate_alpha_test_single` function serves this purpose, executing association tests that compare the indices with a specified grouping variable, all under the ambit of linear models.
 
 ```r
 generate_alpha_test_single(
@@ -120,5 +120,3 @@ generate_alpha_boxplot_single(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.18.43.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at time point '2', considering the strata variable 'sex'. The plot provides an added layer of understanding by showcasing the species complexity stratified by sex and group. This helps to identify any sex-specific effects of the intervention on the microbiome's species complexity.</p></figcaption></figure>
-
-Although this example majorly employs the Shannon index and Observed Species for alpha diversity, **MicrobiomeStat** supports multiple indices, including **"shannon"**, **"simpson"**, **"observed\_species"**, **"chao1"**, **"ace"**, and **"pielou"**. Each offers unique insights into the species richness and evenness in the microbiome samples.
