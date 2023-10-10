@@ -1,12 +1,22 @@
 ---
-description: Learn the process for converting Phyloseq data structures for compatibility with MicrobiomeStat.
+description: >-
+  Learn the process for converting Phyloseq data structures for compatibility
+  with MicrobiomeStat.
 ---
 
-# Converting Phyloseq Data for Use with MicrobiomeStat
+# Navigating Data from Phyloseq into MicrobiomeStat
 
-This guide illustrates the procedure to convert a Phyloseq object into a MicrobiomeStat data object.
+This guide is tailored for users who already possess a Phyloseq object. If you haven't yet successfully constructed a Phyloseq object, we recommend reviewing this tutorial for guidance.&#x20;
+
+{% content-ref url="building-microbiomestat-from-matrix-and-data.frame.md" %}
+[building-microbiomestat-from-matrix-and-data.frame.md](building-microbiomestat-from-matrix-and-data.frame.md)
+{% endcontent-ref %}
+
+The current guide illustrates the procedure to convert a Phyloseq object into a MicrobiomeStat data object.
 
 First, let's take a look at the original structure of our Phyloseq data:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.51.53.png" alt=""><figcaption><p><strong>Figure 1</strong>: Structure of the original Phyloseq data object.</p></figcaption></figure>
 
 Now, initiate the conversion:
 
@@ -23,6 +33,8 @@ data.obj <- mStat_convert_phyloseq_to_data_obj(peerj32.phy)
 ```
 
 After the conversion, the Phyloseq object is transformed into a MicrobiomeStat data object. Let's examine the structure post-conversion:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.52.44.png" alt=""><figcaption><p><strong>Figure 2</strong>: Structure of the MicrobiomeStat data object after converting from Phyloseq.</p></figcaption></figure>
 
 ### Caution Regarding Factor Levels
 
