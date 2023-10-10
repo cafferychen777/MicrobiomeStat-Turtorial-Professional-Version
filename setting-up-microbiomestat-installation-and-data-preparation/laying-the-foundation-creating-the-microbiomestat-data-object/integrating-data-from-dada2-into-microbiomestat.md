@@ -1,43 +1,47 @@
 ---
-description: Discover the process of importing your DADA2 data into MicrobiomeStat.
+description: Learn the steps to import data from DADA2 into MicrobiomeStat's data structure.
 ---
 
-# Integrating Data from DADA2 into MicrobiomeStat
+# Importing Data from DADA2 into MicrobiomeStat
 
-Alright! Time to seamlessly transport your data from DADA2 to MicrobiomeStat!
+This guide will walk you through the steps required to convert and integrate data from DADA2 into MicrobiomeStat.
 
-Here's how to launch your DADA2 data straight into the MicrobiomeStat cosmos:
+### Download Necessary Files
 
 {% file src="../../.gitbook/assets/dada2_seqtab.rds" %}
+**Caption:** Sequence table (`seq_tab`) - This table from DADA2 contains sample-specific sequence abundance data. Rows represent samples, and columns correspond to sequences.
 
 {% file src="../../.gitbook/assets/dada2_taxtab.rds" %}
+**Caption:** Taxonomy assignment table (`tax_tab`) - This table provides taxonomic classifications for sequences, helping users understand the biological context of the identified sequences.
 
 {% file src="../../.gitbook/assets/dada2_samdata.txt" %}
+**Caption:** Sample metadata table (`sam_tab`) - This table offers detailed metadata for each sample, enriching the context and facilitating more in-depth analyses.
+
+### Code to Integrate Data
 
 ```r
-# Example code
-seq_tab <- readRDS("dada2_seqtab.rds")
-tax_tab <- readRDS("dada2_taxtab.rds")
+# Read the sequence table from the downloaded RDS file
+seq_tab <- readRDS("path_to_your_downloaded_folder/dada2_seqtab.rds")
+
+# Read the taxonomy table from the downloaded RDS file
+tax_tab <- readRDS("path_to_your_downloaded_folder/dada2_taxtab.rds")
+
+# Read the sample metadata from the downloaded txt file
 sam_tab <- read.table(
-  "dada2_samdata.txt",
+  "path_to_your_downloaded_folder/dada2_samdata.txt",
   sep = "\t",
   header = TRUE,
   row.names = 1
 )
 
-# Import DADA2 data into a MicrobiomeStat data object
-data_obj <- mStat_import_dada2_as_data_obj(seq_tab = seq_tab, tax_tab = tax_tab, sam_tab = sam_tab)
+# Convert DADA2 data into a MicrobiomeStat data object
+data_obj <- mStat_import_dada2_as_data_obj(
+  seq_tab = seq_tab,
+  tax_tab = tax_tab,
+  sam_tab = sam_tab
+)
 ```
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 11.58.13.png" alt=""><figcaption></figcaption></figure>
+By following the above steps, the DADA2 data gets structured into a MicrobiomeStat data object. This object is now ready to be used with the various analysis functionalities provided by MicrobiomeStat.
 
-The function `mStat_import_dada2_as_data_obj` acts as your trusted **data transporter**, diligently taking care of your essential DADA2 outputs:
-
-* **seq\_tab**: Your sequence table from DADA2. Rows symbolize samples, while columns stand for sequences (features). This table forms the backbone for your upcoming MicrobiomeStat voyage.
-* **tax\_tab** (Optional): Your taxonomy assignment table, enriching your sequence data with layers of taxonomic information.
-* **sam\_tab** (Optional): Your sample metadata table, akin to a treasure map guiding the exploration of your samples' metadata.
-* **phy\_tree** (Optional): Your 'phylo' class phylogenetic tree, showcasing the intertwined relationships between your sequences.
-
-Your data transition is now complete! What you've got in your hands is a **MicrobiomeStat data object**, an all-access pass to MicrobiomeStat's wide array of downstream analysis functions.
-
-With your DADA2 data now comfortably housed in a MicrobiomeStat-compatible format, you're all set for a thrilling ride through the breathtaking vistas of microbiome data analysis. So fasten your seatbelts and enjoy the journey!
+Note: Ensure to replace `"path_to_your_downloaded_folder"` with the actual path where you've saved the downloaded files.
