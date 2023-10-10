@@ -225,7 +225,7 @@ generate_taxa_barplot_single(
   time.var = NULL,
   t.level = NULL,
   group.var = "group",
-  strata.var = NULL,
+  strata.var = "sex",
   feature.level = "Family",
   feature.dat.type = "count",
   feature.number = 30,
@@ -240,9 +240,9 @@ generate_taxa_barplot_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.57.06.png" alt=""><figcaption><p>This stacked bar plot, produced by the <code>generate_taxa_barplot_single</code> function, provides a detailed overview of individual species composition in our groups. By layering the information, we're able to see the distinct microbial composition of each subject, allowing us to appreciate the individual variability in the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.37.34.png" alt=""><figcaption><p>This stacked bar plot, produced by the <code>generate_taxa_barplot_single</code> function, provides a detailed overview of individual species composition in our groups. By layering the information, we're able to see the distinct microbial composition of each subject, allowing us to appreciate the individual variability in the microbiome.</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-11 at 20.57.37.png" alt=""><figcaption><p>Leveraging the same <code>generate_taxa_barplot_single</code> function, this stacked bar plot reveals the average species composition across our groups. The layers illustrate the overall microbial balance, offering a birds-eye view on group-level differences in microbiome structure.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.38.40.png" alt=""><figcaption><p>Leveraging the same <code>generate_taxa_barplot_single</code> function, this stacked bar plot reveals the average species composition across our groups. The layers illustrate the overall microbial balance, offering a birds-eye view on group-level differences in microbiome structure.</p></figcaption></figure>
 
 These visual tools, particularly the stacked bar plots, are paramount in understanding the species distribution both at individual and group levels. They highlight the relative contributions of various species to the overall microbiome composition, presenting a clear picture of the microbial diversity landscape.
 
