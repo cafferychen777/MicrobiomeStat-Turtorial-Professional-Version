@@ -10,6 +10,8 @@ description: 'description: Instructions for creating MicrobiomeStat data objects
 
 **Component 1: feature.tab (Matrix)** The primary matrix of the data object is the **feature.tab**. It represents the connection between research entities (**OTU/ASV/KEGG/Gene**, etc.) and **samples**. In this matrix, research entities are designated as rows, while samples are designated as columns. It's essential to ensure that the row names correspond to the research entities (**OTU/ASV/KEGG/Gene**, etc.) and the column names align with the names of the samples.
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.35.59.png" alt=""><figcaption><p>peerj32.obj$feature.tab</p></figcaption></figure>
+
 **Component 2: meta.dat (Data frame)** The **meta.dat** is a structured data frame that holds metadata corresponding to the samples. The rows represent the samples and they must align precisely with the columns of the feature.tab. Each column in the meta.dat acts as an **annotation** for the samples. These annotations can include various categories or factors associated with each sample. For instance:
 
 * **Disease Severity**: This could categorize samples based on the severity of a disease, such as 'mild', 'moderate', or 'severe'.
@@ -22,6 +24,8 @@ It's imperative to ensure that the row names of the meta.dat are the names of th
 **Note**: Tibbles are not allowed for this component. Ensure you are working with a standard R data frame.
 {% endhint %}
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.37.35.png" alt=""><figcaption><p>peerj32.obj$meta.dat</p></figcaption></figure>
+
 **Component 3: feature.ann (Matrix)** The **feature.ann** is an annotation matrix where research entities such as **OTU/ASV/KEGG/Gene**, etc., are designated as rows. These row names must exactly match those in the feature.tab to maintain consistency in the data object. The columns of the feature.ann matrix hold **annotations** offering insights and classifications for the respective research entities.
 
 For example:
@@ -32,7 +36,11 @@ For example:
 
 Ensure that the row names of the feature.ann align perfectly with the row names of the feature.tab to ensure accurate and meaningful analyses.
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.38.05.png" alt=""><figcaption><p>peerj32.obj$feature.ann</p></figcaption></figure>
+
 **Component 4: tree (Optional)** The **phylogenetic tree** represents the evolutionary relationships among various research entities. In most situations when using MicrobiomeStat, the phylogenetic tree is not required; in fact, about 99% of MicrobiomeStat analyses can be conducted without it. However, for certain beta-diversity calculations, the phylogenetic tree becomes essential as it provides additional evolutionary context. Unless your analysis specifically requires this evolutionary perspective, you can typically proceed without this component.
+
+
 
 **Component 5: feature.agg.list (Optional)** The **feature.agg.list** is an optional component derived from the aggregation of data in the **feature.tab** based on annotations in **feature.ann**. This aggregated data is generated using the `mStat_aggregate_by_taxonomy()` function.
 
@@ -42,6 +50,8 @@ For each matrix within the `feature.agg.list`:
 
 * The columns represent the sample names.
 * The rows represent the aggregated level, such as `Phylum` or `CellType`.
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.39.08.png" alt=""><figcaption><p>peerj32.obj$feature.agg.list</p></figcaption></figure>
 
 It's worth noting that if you employ another function and set a `feature.level` parameter other than "original", the function will automatically call `mStat_aggregate_by_taxonomy()` to ensure the data is properly aggregated.
 
