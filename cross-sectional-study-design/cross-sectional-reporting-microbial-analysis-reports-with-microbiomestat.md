@@ -33,7 +33,31 @@ The function then assembles these analyses into a cohesive PDF report, featuring
 - Tables detailing statistical test results
 - Commentaries on key findings
 
-Here's how the function can be implemented:
+Before we implement the function, let's understand the parameters we will be using:
+
+- `data.obj`: A list object in a specific format to MicrobiomeStat, which can include components such as feature.tab (matrix), feature.ann (matrix), meta.dat (data.frame), tree, and feature.agg.list (list). This object can be converted from other formats using several functions from the MicrobiomeStat package, or constructed manually. For more detailed information on how to convert data from other formats or how to construct the `data.obj` manually, please refer to the [following page](link to the page).
+- `group.var`: Variable name used for grouping samples.
+- `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
+- `vis.adj.vars`: Names of columns in the metadata containing covariates to visualize in plots, in addition to the primary variables of interest such as groups. Default is NULL, which indicates only the primary variables of interest will be visualized without additional covariates.
+- `strata.var`: Variable to stratify the analysis by (optional).
+- `subject.var`: Variable name used for subject identification.
+- `time.var`: Variable name used for time points.
+- `alpha.obj`: An optional list containing pre-calculated alpha diversity indices. If NULL (default), alpha diversity indices will be calculated using mStat_calculate_alpha_diversity function from MicrobiomeStat package.
+- `alpha.name`: The alpha diversity index to be plotted. Supported indices include "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou".
+- `depth`: An integer. The sequencing depth to be used for the "Rarefy" and "Rarefy-TSS" methods. If NULL, the smallest total count across samples is used as the rarefaction depth.
+- `dist.obj`: Distance matrix between samples, usually calculated using `mStat_calculate_beta_diversity` function. If NULL, beta diversity will be automatically computed from `data.obj` using `mStat_calculate_beta_diversity`.
+- `dist.name`: A character vector specifying which beta diversity indices to calculate. Supported indices are "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence).
+- `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be the taxonomic level like "Phylum", or any other annotation columns like "Genus" or "OTU_ID".
+- `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be the taxonomic level like "Phylum", or any other annotation columns like "Genus" or "OTU_ID".
+- `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
+- `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are: "identity": No transformation (default), "sqrt": Square root transformation, "log": Logarithmic transformation.
+- `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme_prism(), "classic": theme_classic(), "gray": theme_gray(), "bw": theme_bw().
+- `base.size`: Base font size for the generated plots.
+- `feature.mt.method`: Character, multiple testing method for features, "fdr" or "none", default is "fdr".
+- `feature.sig.level`: Numeric, significance level cutoff for highlighting features, default is 0.1.
+- `output.file`: Output file name for the report.
+
+Now, let's see how we can implement the function:
 
 ```r
  mStat_generate_report_single(
