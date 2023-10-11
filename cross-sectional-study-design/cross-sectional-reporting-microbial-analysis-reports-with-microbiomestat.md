@@ -1,6 +1,8 @@
 ---
 description: >-
-  MicrobiomeStat provides automated report generation for cross-sectional studies in microbiome research. It produces comprehensive reports that include alpha diversity, beta diversity, and taxonomic composition.
+  MicrobiomeStat provides automated report generation for cross-sectional
+  studies in microbiome research. It produces comprehensive reports that include
+  alpha diversity, beta diversity, and taxonomic co
 ---
 
 # Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat
@@ -58,14 +60,13 @@ Before using the function, it's important to understand the parameters:
   * `$eig`: Eigenvalues for each PC dimension.
   * `$vectors`: Loadings vectors for features onto each PC.
   * Other metadata like `$method`, `$dist.name`, etc. See `mStat_calculate_PC` function for details on output format.
-* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway_L1", "Pathway_L2", or "Pathway_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
-* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway_L1", "Pathway_L2", or "Pathway_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
+* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
+* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
 * `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
-* `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are: 
+* `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are:
   * "identity": No transformation (default),
   * "sqrt": Square root transformation,
-  * "log": Logarithmic transformation.
-  In the function `mStat_generate_report_single`, this parameter is only used in `generate_taxa_boxplot_single` and `generate_taxa_indiv_boxplot_single`. In other functions, it is also used solely to adjust boxplots related to feature functions.
+  * "log": Logarithmic transformation. In the function `mStat_generate_report_single`, this parameter is only used in `generate_taxa_boxplot_single` and `generate_taxa_indiv_boxplot_single`. In other functions, it is also used solely to adjust boxplots related to feature functions.
 * `feature.analysis.rarafy`: Logical, indicating whether to rarefy the data at the feature-level for analysis. If TRUE, the feature data will be rarefied before analysis. Default is TRUE.
 * `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
 * `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
@@ -74,7 +75,7 @@ Before using the function, it's important to understand the parameters:
 * `feature.sig.level`: Numeric, significance level cutoff for highlighting features, default is 0.1.
 * `base.size`: Base font size for the generated plots.
 * `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
-* `output.file`: A character string specifying the output file name for the report. This will also determine the title of the generated report. For example, if you set it to "path_to_your_location/report.pdf", the title of the report will be "report".
+* `output.file`: A character string specifying the output file name for the report. This will also determine the title of the generated report. For example, if you set it to "path\_to\_your\_location/report.pdf", the title of the report will be "report".
 
 Now, let's see how we can implement the function:
 
