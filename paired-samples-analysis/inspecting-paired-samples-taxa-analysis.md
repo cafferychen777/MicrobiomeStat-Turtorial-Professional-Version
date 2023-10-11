@@ -1,16 +1,15 @@
 ---
 description: >-
-  A look at techniques for differential abundance analysis, illuminating
-  significant changes in microbial abundance between paired conditions.
+  This tutorial focuses on techniques for differential abundance analysis, highlighting significant changes in microbial abundance between paired conditions.
 ---
 
 # Inspecting Paired Samples: Feature-level Analysis
 
-Welcome to **Inspecting Paired Samples: Taxa Analysis**. Here, we delve into the minutiae of **microbial ecosystems**, with our sights set on **taxa variations**. **MicrobiomeStat** presents us with powerful tools for **differential abundance analysis**, letting us illuminate significant **changes in microbial abundance** between paired conditions.
+In **Inspecting Paired Samples: Taxa Analysis**, we focus on the variations within microbial ecosystems, particularly taxa variations. **MicrobiomeStat** provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
 
-It's all about deciphering patterns in **taxa composition, prevalence, abundance, and changes**, and identifying samples with similar trends of taxa variation. Prepare to **uncover the hidden narratives** within your microbial data and reveal the complexity of these fascinating **microbial communities**!
+Our goal is to understand patterns in taxa composition, prevalence, abundance, and changes, and to identify samples with similar trends of taxa variation. The tutorial will guide you through the process of analyzing your microbial data and understanding the complexity of microbial communities.
 
-Before delving into visual exploration, it's valuable to perform statistical tests to pinpoint differentially abundant taxa. The function `generate_taxa_test_pair()` is designed for this purpose, employing linear mixed models to gauge taxa abundance variations over time and across different groups:
+Before visual exploration, statistical tests are performed to identify differentially abundant taxa. The function `generate_taxa_test_pair()` is designed for this purpose, using linear mixed models to assess taxa abundance variations over time and across different groups:
 
 ```r
 generate_taxa_test_pair(
@@ -26,21 +25,21 @@ generate_taxa_test_pair(
 )
 ```
 
-This function is particularly adept at evaluating taxa abundance variations across different groups and time points. It accounts for temporal changes using the `time.var`, and makes adjustments based on specified variables like "sex". The analysis is focused on the taxonomic level defined by `feature.level`.
+This function is effective at evaluating taxa abundance variations across different groups and time points. It accounts for temporal changes using the `time.var`, and adjusts based on specified variables like "sex". The analysis is focused on the taxonomic level defined by `feature.level`.
 
-The output comprises multiple data frames, each corresponding to different comparisons and interactions within the model. These data frames provide detailed statistics, including:
+The output includes multiple data frames, each corresponding to different comparisons and interactions within the model. These data frames provide detailed statistics, including:
 
-* **Log fold changes**: This represents the magnitude and direction of change in taxa abundance between different groups.
-* **P-values**: These give the statistical significance of observed changes, helping to discern if the variations in taxa abundance are likely due to chance or are genuinely significant.
+* **Log fold changes**: Representing the magnitude and direction of change in taxa abundance between different groups.
+* **P-values**: Indicating the statistical significance of observed changes, assisting in determining if the variations in taxa abundance are likely due to chance or are genuinely significant.
 
-Moreover, for specific comparisons, you might encounter labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]`.
+For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]` may appear.
 
-* The `[Main Effect]` label showcases the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
-* The `[Interaction]` label reveals the nuanced relationship between group differences and another variable, such as time. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
+* The `[Main Effect]` label indicates the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
+* The `[Interaction]` label reveals the relationship between group differences and another variable, such as time. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
 
-These detailed results from the function provide a robust foundation for further investigations. They guide researchers in pinpointing which taxa exhibit significant changes and under which conditions, thereby paving the way for insightful visual analyses or deeper data explorations.
+The detailed results from the function provide a robust basis for further investigations. They guide researchers in pinpointing which taxa exhibit significant changes and under which conditions, thereby paving the way for insightful visual analyses or deeper data explorations.
 
-Building on this foundation, if the aim is specifically to explore the shifts in taxa abundance across distinct timepoints, then the `generate_taxa_change_test_pair()` function comes into play. The function not only gauges the changes but also puts the spotlight on the group-wise differences.
+If the focus is specifically to explore the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is useful. The function not only assesses the changes but also highlights the differences between groups.
 
 ```r
 generate_taxa_change_test_pair(
