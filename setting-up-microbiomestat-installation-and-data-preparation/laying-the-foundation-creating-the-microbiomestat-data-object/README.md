@@ -4,8 +4,6 @@ description: 'description: Instructions for creating MicrobiomeStat data objects
 
 # Building the Foundation: Creating the MicrobiomeStat Data Object
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Figure 1: The Structure of a MicrobiomeStat Data Object. The diagram demonstrates the relationship among the five components: 'feature.tab', 'meta.dat', 'feature.ann', the optional 'tree', and the optional 'feature.agg.list'. It clarifies how samples and features (OTU/ASV/KEGG/Gene etc.) are interconnected within these components.</p></figcaption></figure>
-
 **Objective: Understanding the MicrobiomeStat Data Object Structure** This section outlines the core components of the MicrobiomeStat data object and provides insight into their functionality and relevance.
 
 **Component 1: feature.tab (Matrix)** The primary matrix of the data object is the **feature.tab**. It represents the connection between research entities (**OTU/ASV/KEGG/Gene**, etc.) and **samples**. In this matrix, research entities are designated as rows, while samples are designated as columns. It's essential to ensure that the row names correspond to the research entities (**OTU/ASV/KEGG/Gene**, etc.) and the column names align with the names of the samples.
@@ -51,7 +49,7 @@ For each matrix within the `feature.agg.list`:
 * The columns represent the sample names.
 * The rows represent the aggregated level, such as `Phylum` or `CellType`.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.39.08.png" alt=""><figcaption><p>peerj32.obj$feature.agg.list</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.44.02.png" alt=""><figcaption><p>peerj32.obj$feature.agg.list$Phylum</p></figcaption></figure>
 
 It's worth noting that if you employ another function and set a `feature.level` parameter other than "original", the function will automatically call `mStat_aggregate_by_taxonomy()` to ensure the data is properly aggregated.
 
