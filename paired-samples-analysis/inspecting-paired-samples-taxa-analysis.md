@@ -124,7 +124,7 @@ generate_taxa_boxplot_long(
    prev.filter = 0.1,
    abund.filter = 0.1,
    base.size = 16,
-   theme.choice = "classic",
+   theme.choice = "bw",
    custom.theme = NULL,
    palette = NULL,
    pdf = TRUE,
