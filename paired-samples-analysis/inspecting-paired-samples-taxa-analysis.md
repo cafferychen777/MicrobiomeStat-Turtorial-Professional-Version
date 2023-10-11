@@ -140,7 +140,7 @@ generate_taxa_indiv_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 10.29.38.png" alt=""><figcaption><p>Longitudinal Boxplot of Individual Taxa: The <code>generate_taxa_indiv_boxplot_long()</code> function enables an in-depth investigation of the variation in abundance for each taxon within paired samples across time. Each page of the multi-page PDF represents a single taxon, providing a focused perspective on the dynamic changes under paired conditions.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.50.17.png" alt=""><figcaption><p>Longitudinal Boxplot of Individual Taxa: The <code>generate_taxa_indiv_boxplot_long()</code> function enables an in-depth investigation of the variation in abundance for each taxon within paired samples across time. Each page of the multi-page PDF represents a single taxon, providing a focused perspective on the dynamic changes under paired conditions.</p></figcaption></figure>
 
 This function creates a series of boxplots, one for each taxon, and outputs them into a multi-page PDF. Each page provides a focused look at a single taxon, helping to analyze complex data in manageable pieces.
 
@@ -174,9 +174,9 @@ generate_taxa_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 10.32.08.png" alt=""><figcaption><p>Comprehensive Boxplot of Individual Taxa: The <code>generate_taxa_boxplot_long()</code> function generates a combined boxplot of all taxa, allowing an immediate comparison of abundance variations across paired samples over time. This visualization is particularly useful in highlighting taxa with significant differential abundance, offering a clear overview of the microbiome dynamics within paired samples.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.52.12.png" alt=""><figcaption><p>Comprehensive Boxplot of Individual Taxa: The <code>generate_taxa_boxplot_long()</code> function generates a combined boxplot of all taxa, allowing an immediate comparison of abundance variations across paired samples over time. This visualization is particularly useful in highlighting taxa with significant differential abundance, offering a clear overview of the microbiome dynamics within paired samples.</p></figcaption></figure>
 
-This function places all taxa onto a single page, providing an overview of all your taxa at once. This can be especially useful for visualizing features with significant differential abundance (<0.05).
+This function places all taxa onto a single page, providing an overview of all your taxa at once.&#x20;
 
 We introduce two essential tools for our paired taxa analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`. These functions offer an in-depth look into changes in the taxonomic composition at the family level.
 
@@ -188,16 +188,16 @@ generate_taxa_indiv_change_boxplot_pair(
    subject.var = "subject",
    time.var = "time",
    group.var = "group",
-   strata.var = NULL,
+   strata.var = "sex",
    change.base = "1",
    feature.change.func = "log fold change",
-   feature.level = c("Family"),
+   feature.level = c("Genus"),
    features.plot = NULL,
    feature.dat.type = "count",
    top.k.plot = NULL,
    top.k.func = NULL,
    prev.filter = 0.1,
-   abund.filter = 0.01,
+   abund.filter = 0.001,
    base.size = 20,
    theme.choice = "bw",
    custom.theme = NULL,
@@ -210,6 +210,8 @@ generate_taxa_indiv_change_boxplot_pair(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 10.54.42.png" alt=""><figcaption><p>Individual Taxa Change Boxplot Pair: Created by the <code>generate_taxa_indiv_change_boxplot_pair()</code> function, this plot visualizes changes in taxonomic composition at the family level. The log-fold-change metric provides a clear depiction of the shifts in abundance over time, offering a more detailed understanding of the dynamics between different conditions.</p></figcaption></figure>
+
+
 
 Next, we move onto the second function `generate_taxa_change_boxplot_pair()`:
 
