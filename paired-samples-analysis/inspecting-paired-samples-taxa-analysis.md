@@ -7,7 +7,7 @@ description: >-
 
 # Inspecting Paired Samples: Feature-level Analysis
 
-![](<../.gitbook/assets/Screenshot 2023-10-11 at 16.09.46.png>)In **Inspecting Paired Samples: Taxa Analysis**, we focus on the variations within microbial ecosystems, particularly taxa variations. **MicrobiomeStat** provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
+In **Inspecting Paired Samples: Taxa Analysis**, we focus on the variations within microbial ecosystems, particularly taxa variations. **MicrobiomeStat** provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
 
 Our goal is to understand patterns in taxa composition, prevalence, abundance, and changes, and to identify samples with similar trends of taxa variation. The tutorial will guide you through the process of analyzing your microbial data and understanding the complexity of microbial communities.
 
