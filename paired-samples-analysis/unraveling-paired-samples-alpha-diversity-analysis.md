@@ -8,6 +8,12 @@ description: >-
 
 Welcome to this tutorial on Alpha Diversity Analysis within Paired Samples. This analysis will involve studying variations in alpha diversity across different time points and groups. Our primary tools will be illustrative boxplots, which will assist in identifying potential changes or disparities in alpha diversity. One of our main objectives is to explore transformations in alpha diversity within the same group across two time points.
 
+Before we delve into the specifics, it's important to note that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
+
+Another crucial aspect to understand is the role of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
+
+Additionally, the alpha functions in MicrobiomeStat, by default, undertake data rarefaction. This process ensures the datasets are rendered more comparable by harmonizing the sequencing depth across samples. Such standardization is vital for comparative analyses. However, if you're aiming to work with the original, non-rarefied data when determining alpha diversity, it's imperative to pre-calculate `alpha.obj`. By doing so, the intrinsic rarefaction process is sidestepped, thereby maintaining the data's originality.
+
 The first step in this process involves understanding how to test for differences in alpha diversity across timepoints or groups. To this end, MicrobiomeStat provides the `generate_alpha_test_pair()` function. This function employs a linear mixed model to detect changes in alpha diversity within paired samples designs. The model takes into account the time variable, group variable, and any additional adjustment variables as fixed effects, and the subject variable as a random effect. The function generates a list of coefficient tables, one for each alpha diversity index. These tables present the term, estimate, standard error, t-value, and p-value for each fixed effect in the model.
 
 Here is an example of its application:
@@ -19,7 +25,7 @@ generate_alpha_test_pair(
    data.obj = peerj32.obj,
    alpha.obj = NULL,
    time.var = "time",
-   alpha.name = c("shannon"),
+   alpha.name = c("shannon","observed_species"),
    subject.var = "subject",
    group.var = "group",
    adj.vars = "sex"
@@ -60,7 +66,7 @@ data(peerj32.obj)
 generate_alpha_change_test_pair(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  alpha.name = c("shannon"), 
+  alpha.name = c("shannon","observed_species"), 
   depth = NULL,
   time.var = "time",
   subject.var = "subject",
@@ -88,7 +94,7 @@ Here's how you can use this function:
 generate_alpha_boxplot_long(
   data.obj = peerj32.obj,
   alpha.obj = NULL,
-  alpha.name = c("simpson"),
+  alpha.name = c("shannon","observed_species"),
   depth = NULL,
   subject.var = "subject",
   time.var = "time",
@@ -116,7 +122,7 @@ Here's an example of its usage:
 generate_alpha_change_boxplot_pair(
    data.obj = peerj32.obj,
    alpha.obj = NULL,
-   alpha.name = c("simpson"),
+   alpha.name = c("shannon","observed_species"),
    depth = NULL,
    subject.var = "subject",
    time.var = "time",
