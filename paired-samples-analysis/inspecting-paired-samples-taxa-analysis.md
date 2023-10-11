@@ -9,7 +9,9 @@ In **Inspecting Paired Samples: Taxa Analysis**, we focus on the variations with
 
 Our goal is to understand patterns in taxa composition, prevalence, abundance, and changes, and to identify samples with similar trends of taxa variation. The tutorial will guide you through the process of analyzing your microbial data and understanding the complexity of microbial communities.
 
-Before visual exploration, statistical tests are performed to identify differentially abundant taxa. The function `generate_taxa_test_pair()` is designed for this purpose, using linear mixed models to assess taxa abundance variations over time and across different groups:
+Before visual exploration, statistical tests are performed to identify differentially abundant taxa. The function `generate_taxa_test_pair()` employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance and change trend between groups.
+
+> Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
