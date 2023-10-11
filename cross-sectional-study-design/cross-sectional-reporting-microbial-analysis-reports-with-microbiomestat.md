@@ -116,6 +116,11 @@ t.level = "1" # Replace with a desired time level if time points have multiple l
 feature.box.axis.transform = "sqrt" # Axis transformation for feature boxplots
 strata.var = "sex" # Variable to stratify by in diversity calculations and statistical tests
 
+# Specify parameters for feature retention
+bar.area.feature.no = 20 # Number of top abundant features to retain in barplot and areaplot
+heatmap.feature.no = 20 # Number of top abundant features to retain in heatmap
+dotplot.feature.no = 40 # Number of top abundant features to retain in dotplot
+
 # Run the function
 mStat_generate_report_single(
    data.obj = data.obj,
@@ -135,10 +140,13 @@ mStat_generate_report_single(
    vis.feature.level = vis.feature.level,
    test.feature.level = test.feature.level,
    feature.dat.type = feature.dat.type,
-   theme.choice = theme.choice,
-   base.size = base.size,
+   bar.area.feature.no = bar.area.feature.no,
+   heatmap.feature.no = heatmap.feature.no,
+   dotplot.feature.no = dotplot.feature.no,
    feature.mt.method = feature.mt.method,
    feature.sig.level = feature.sig.level,
+   theme.choice = theme.choice,
+   base.size = base.size,
    output.file = output.file
  )
 ```
@@ -191,14 +199,8 @@ mStat_generate_report_single(
 
 {% file src="../.gitbook/assets/mStat_generate_report_single_example.pdf" %}
 
-The automated report relieves the burden of **manual analysis** and promotes consistency. By **integrating results** from diverse analytical dimensions, it strengthens evidence and tells a cohesive story.
+The automated report reduces the need for manual analysis and ensures consistency. By integrating results from different analytical dimensions, it provides a comprehensive view of the data.
 
-MicrobiomeStat powers researchers with **automated workflows** to swiftly synthesize and report discoveries from cross-sectional studies. The standardized reports integrate multidimensional perspectives including:
+MicrobiomeStat equips researchers with automated workflows to quickly synthesize and report findings from cross-sectional studies. The standardized reports integrate multidimensional perspectives, including alpha diversity, beta diversity, and differential abundance analysis, for comprehensive insights.
 
-* **Alpha diversity**
-* **Beta diversity**
-* **Differential abundance analysis**
-
-for comprehensive insights.
-
-The reports contain intuitive visualizations and statistical summaries to support biological interpretation and facilitate result dissemination. By automating time-consuming, manual analytical tasks, MicrobiomeStat enables rapid, reproducible, and robust reporting to accelerate microbiome research.
+The reports contain clear visualizations and statistical summaries to aid in biological interpretation and facilitate result dissemination. By automating time-consuming manual analytical tasks, MicrobiomeStat enables rapid, reproducible, and robust reporting to advance microbiome research.
