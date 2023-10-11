@@ -1,9 +1,10 @@
 ---
 description: >-
-  MicrobiomeStat provides automated solutions for integrated analysis reporting in paired microbiome studies.
+  MicrobiomeStat provides automated solutions for integrated analysis reporting
+  in paired microbiome studies.
 ---
 
-# Automated Integrated Analysis for Paired Microbiome Studies with MicrobiomeStat
+# Automated Reporting for Paired Studies: MicrobiomeStat's Integrated Analysis Reports
 
 Microbiome research generates complex multidimensional datasets. These datasets often include:
 
@@ -64,15 +65,15 @@ Before using the function, it's important to understand the parameters:
 * `feature.change.func`: A function or character string specifying how to calculate the change from baseline value. This allows flexible options:
   * If a function is provided, it will be applied to each row to calculate change. The function should take 2 arguments: value at timepoint t and value at baseline t0.
   * If a character string is provided, following options are supported:
-    * 'relative change': (value_t - value_t0) / (value_t + value_t0)
-    * 'absolute change': value_t - value_t0
-    * 'log fold change': log2(value_t + 1e-5) - log2(value_t0 + 1e-5)
+    * 'relative change': (value\_t - value\_t0) / (value\_t + value\_t0)
+    * 'absolute change': value\_t - value\_t0
+    * 'log fold change': log2(value\_t + 1e-5) - log2(value\_t0 + 1e-5)
   * Default is 'relative change'.
   * If none of the above options are matched, an error will be thrown indicating the acceptable options or prompting the user to provide a custom function.
 * `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are:
   * "identity": No transformation (default),
   * "sqrt": Square root transformation,
-  * "log": Logarithmic transformation. 
+  * "log": Logarithmic transformation.
 * `feature.analysis.rarafy`: Logical, indicating whether to rarefy the data at the feature-level for analysis. If TRUE, the feature data will be rarefied before analysis. Default is TRUE.
 * `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
 * `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
@@ -152,7 +153,8 @@ mStat_generate_report_pair(
    base.size = base.size,
    output.file = output.file
  )
-
 ```
 
-{% file src="../.gitbook/assets/mStat_generate_report_pair_example.pdf" %}
+
+
+{% file src="../.gitbook/assets/mStat_generate_report_pair_example (1).pdf" %}
