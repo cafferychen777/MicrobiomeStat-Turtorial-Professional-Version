@@ -11,26 +11,55 @@ Our goal is to understand patterns in taxa composition, prevalence, abundance, a
 
 Before visual exploration, statistical tests are performed to identify differentially abundant taxa. The function `generate_taxa_test_pair()` is designed for this purpose, using linear mixed models to assess taxa abundance variations over time and across different groups:
 
+The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
+
+* **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
+* **"proportion"**: Data presented as proportions remains unaltered. 
+* **"other"**: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+
+Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
+
+* `prev.filter` targets taxa retention based on their prevalence across samples.
+* `abund.filter` focuses on the average abundance of taxa across all samples.
+
+Such filtering ensures that the analysis centers on taxa both prevalent and abundant, enhancing result reliability by excluding potential outliers or noise.
+
+For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don't require aggregation, it's recommended to set the `feature.level` parameter to "original".
+
+Furthermore, when interpreting the results, it's essential to understand the role of `feature.sig.level` and `feature.mt.method` parameters:
+
+* **`feature.sig.level`**: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
+* **`feature.mt.method`**: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the test function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
+
+By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
+
 ```r
-generate_taxa_test_pair(
+#' Load the dataset
+data(peerj32.obj)
+
+#' Perform the differential abundance test
+test.list <- generate_taxa_test_pair(
   data.obj = peerj32.obj,
   subject.var = "subject",
   time.var = "time",
   group.var = "group",
   adj.vars = c("sex"),
-  feature.level = "Family",
-  prev.filter = 0.01,
+  feature.level = c("Genus"),
+  prev.filter = 0.1,
   abund.filter = 0.0001,
   feature.dat.type = "count"
 )
+
+#' Generate the volcano plot
+plot.list <- generate_taxa_volcano_single(
+  data.obj = peerj32.obj,
+  group.var = "group",
+  test.list = test.list,
+  feature.sig.level = 0.1,
+  feature.mt.method = "none"
+)
+
 ```
-
-This function is effective at evaluating taxa abundance variations across different groups and time points. It accounts for temporal changes using the `time.var`, and adjusts based on specified variables like "sex". The analysis is focused on the taxonomic level defined by `feature.level`.
-
-The output includes multiple data frames, each corresponding to different comparisons and interactions within the model. These data frames provide detailed statistics, including:
-
-* **Log fold changes**: Representing the magnitude and direction of change in taxa abundance between different groups.
-* **P-values**: Indicating the statistical significance of observed changes, assisting in determining if the variations in taxa abundance are likely due to chance or are genuinely significant.
 
 For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]` may appear.
 
