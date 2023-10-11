@@ -36,7 +36,7 @@ generate_alpha_test_pair(
 
 The output from this function allows us to test differences in alpha diversity across timepoints or groups, contributing to our understanding of changes in microbial diversity. 
 
-To further understand these differences, we can perform a more detailed statistical test. MicrobiomeStat provides the `generate_alpha_change_test_pair()` function for this purpose. This function compares alpha diversity metrics between two time points using linear models and ANOVA.
+For a different perspective on these differences, MicrobiomeStat provides the `generate_alpha_change_test_pair()` function. This function compares alpha diversity metrics between two time points using linear models and ANOVA, offering a different angle on the analysis of diversity changes.
 
 The output of this function is a list of summary tables for each alpha diversity metric tested. Each table contains columns for Term (variable name), Estimate (coefficient), Std.Error, Statistic (t or F), and P.Value.
 
@@ -65,11 +65,11 @@ generate_alpha_change_test_pair(
 | sexmale      | -0.000390 | 0.0164    | -0.0238   | 0.981   |
 | groupPlacebo | -0.0154   | 0.0158    | -0.975    | 0.342   |
 
-This allows us to **test** for alpha diversity changes across timepoints and understand between-group versus within-group differences. Next, we will **visualize** using `generate_alpha_change_boxplot_pair()`.
+The output from this function allows us to test for alpha diversity changes across timepoints and aids in understanding between-group versus within-group differences. 
 
-A quick note before we proceed further with our **alpha diversity analysis**. In the MicrobiomeStat toolbox, the functions ending in '**single**' are versatile and adaptable, capable of handling **single time point designs**, a **specific time point in paired samples designs**, or a **particular time point in longitudinal study designs**. Functions with the suffix '**pair**' are specifically tailored for **paired samples designs**, and those concluding with '**long**' are applicable to both **paired and multiple time point scenarios**. However, bear in mind, certain **visualizations may not appear aesthetically pleasing or insightful when applied to a paired samples design**. As we explore `generate_alpha_change_boxplot_pair` and `generate_alpha_boxplot_long`, this distinction will become clearer!
+In the MicrobiomeStat toolbox, there are three types of functions: those ending in 'single', 'pair', and 'long'. The 'single' functions are designed to handle single time point designs, a specific time point in paired samples designs, or a particular time point in longitudinal study designs. The 'pair' functions are specifically for paired samples designs, and the 'long' functions are applicable to both paired and multiple time point scenarios. However, it's important to note that certain visualizations may not be as effective when applied to a paired samples design. As we explore `generate_alpha_boxplot_long`, this distinction will become clearer.
 
-Delving into our alpha diversity analysis, we first employ the `generate_alpha_boxplot_long` function:
+To begin our alpha diversity analysis, we use the `generate_alpha_boxplot_long` function:
 
 ```r
 generate_alpha_boxplot_long(
@@ -95,9 +95,9 @@ generate_alpha_boxplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 14.35.00.png" alt=""><figcaption><p>This boxplot, crafted by <strong>generate_alpha_boxplot_long()</strong>, showcases the Simpson diversity index across multiple time points for each group. The connecting lines represent individual subjects over time, intuitively visualizing each subject's alpha diversity change.</p></figcaption></figure>
 
-This function produces an **informative alpha diversity boxplot**. Should you choose not to provide an **alpha.obj**, the function will conveniently call **mStat\_calculate\_alpha\_diversity** to do the calculations for you. What's particularly striking about this plot is the **lines linking the boxplots**; these lines represent the same subject across different time points. This provides an immediate visual of how **individual subjects' alpha diversity changes over time**. Please note that if you have more thRan **10 time points or more than 25 subjects**, the connecting lines will automatically be adjusted to represent the **average alpha diversity index within the same time point**, ensuring the plot remains clear and interpretable.
+This function generates an informative alpha diversity boxplot. The lines connecting the boxplots represent the same subject across different time points, providing a visual representation of how individual subjects' alpha diversity changes over time. 
 
-Diving deeper, we now explore the **generate\_alpha\_change\_boxplot\_pair()** function. Take a look at the sample code below:
+To further delve into the analysis, we use the `generate_alpha_change_boxplot_pair()` function:
 
 ```r
 generate_alpha_change_boxplot_pair(
@@ -123,10 +123,10 @@ generate_alpha_change_boxplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 14.53.57.png" alt=""><figcaption><p>This boxplot, generated by <strong>generate_alpha_change_boxplot_pair()</strong>, illustrates the log 2 fold change in alpha diversity between groups. The connecting lines highlight the changes for individual subjects, providing an intuitive view of group differences.</p></figcaption></figure>
 
-This powerful tool is designed to **visualize shifts in alpha diversity**. With this function, **complex data** transforms into an easily **digestible format**, allowing you to swiftly pinpoint significant disparities between **two timepoints' alpha diversity changes**. This tool incorporates the **alpha.change.func** parameter, offering options of 'absolute change', 'log fold change', or even a custom function tailored to your analytical preferences. The 'absolute change' represents the **direct difference** between two timepoints, while 'log fold change' captures the **log2 fold change**. If a custom function is provided for **alpha.change.func**, it will be applied to compute the diversity changes as per the function's definition.
+This function is designed to visualize shifts in alpha diversity. The 'absolute change' represents the direct difference between two timepoints, while 'log fold change' captures the log2 fold change. If a custom function is provided for `alpha.change.func`, it will be applied to compute the diversity changes as per the function's definition.
 
 {% hint style="info" %}
-**Hint**: You can **create your own `alpha.change.func`** to customize how the change in alpha diversity is calculated between two time points. Here's an example of how you can do it:
+Hint: You can create your own `alpha.change.func` to customize how the change in alpha diversity is calculated between two time points. Here's an example:
 
 ```r
 # Define custom function
@@ -135,5 +135,6 @@ change_ratio <- function(time_2, time_1) {
 }
 ```
 
-In this case, the function `change_ratio` is defined to calculate the **ratio** of alpha diversity at `time_2` to `time_1`. You can then use `change_ratio` as your `alpha.change.func` in the `generate_alpha_change_boxplot_pair()` function. This will result in the plot showing the **fold-change** in alpha diversity for each subject across the two time points.
+In this case, the function `change_ratio` is defined to calculate the ratio of alpha diversity at `time_2` to `time_1`. You can then use `change_ratio` as your `alpha.change.func` in the `generate_alpha_change_boxplot_pair()` function. This will result in the plot showing the fold-change in alpha diversity for each subject across the two time points.
 {% endhint %}
+
