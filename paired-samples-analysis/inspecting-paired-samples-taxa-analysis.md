@@ -63,6 +63,7 @@ plot.list <- generate_taxa_volcano_single(
   feature.mt.method = "none"
 )
 
+plot.list
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.07.17.png" alt=""><figcaption><p>Volcano plot for main effect presents the volcano plot for the Main Effect, reflecting the primary differences in taxa abundance between the compared groups, excluding the influence of other factors. Each point represents a genus, with its position on the x-axis indicating the log fold change and on the y-axis indicating the adjusted p-value (-log10). Points located at the top and on either side of the vertical line represent genera with statistically significant differences in abundance.</p></figcaption></figure>
@@ -74,7 +75,7 @@ For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main E
 * The `[Main Effect]` label indicates the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
 * The `[Interaction]` label reveals the relationship between group differences and time variable. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
 
-If the focus is specifically to explore the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is useful. The function not only assesses the changes but also highlights the differences between groups.
+If the aim is to specifically investigate the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is advantageous. This function employs a linear model (lm) to evaluate the changes in taxa abundance and to distinguish the differences between groups.
 
 ```r
 generate_taxa_change_test_pair(
@@ -85,11 +86,22 @@ generate_taxa_change_test_pair(
   adj.vars = c("sex"),
   change.base = "1",
   feature.change.func = "log fold change",
-  feature.level = "Family",
+  feature.level = "Genus",
   prev.filter = 0.01,
-  abund.filter = 0.01,
+  abund.filter = 0.001,
   feature.dat.type = "count"
 )
+
+#' Generate the volcano plot
+plot.list <- generate_taxa_volcano_single(
+  data.obj = peerj32.obj,
+  group.var = "group",
+  test.list = test.list,
+  feature.sig.level = 0.1,
+  feature.mt.method = "none"
+)
+
+plot.list
 ```
 
 The comprehensive results allow researchers to identify taxa that have significant alterations in abundance across timepoints, and if these changes are influenced by group affiliations. This analysis paves the way for insightful visual representations or more intricate explorations.
