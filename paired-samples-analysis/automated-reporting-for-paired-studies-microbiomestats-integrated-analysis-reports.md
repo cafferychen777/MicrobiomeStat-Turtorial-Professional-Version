@@ -188,6 +188,21 @@ mStat_generate_report_pair(
 <figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0031.jpg" alt=""><figcaption></figcaption></figure>
 <figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0032.jpg" alt=""><figcaption></figcaption></figure>
 <figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0033.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0034.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0035.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0036.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0037.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0038.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0039.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0040.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0041.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0042.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0043.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0044.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0045.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0046.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0047.jpg" alt=""><figcaption></figcaption></figure>
+
 
 
 {% file src="../.gitbook/assets/mStat_generate_report_pair_example (1).pdf" %}
