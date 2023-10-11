@@ -5,9 +5,9 @@ description: >-
   microbiome dataset insights.
 ---
 
-Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples. Utilizing **MicrobiomeStat**, we're equipped to delve deep into these metrics using the `peerj32.obj` dataset. For an encompassing perspective, our initial approach will be to scrutinize the dataset in its entirety, eschewing time-based and strata considerations.
+Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples. Utilizing MicrobiomeStat, we're equipped to delve deep into these metrics using the `peerj32.obj` dataset. For an encompassing perspective, our initial approach will be to scrutinize the dataset in its entirety, eschewing time-based and strata considerations.
 
-It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, **MicrobiomeStat** is versatile, supporting a variety of indices. These encompass **"shannon"**, **"simpson"**, **"observed_species"**, **"chao1"**, **"ace"**, and **"pielou"**. Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
+It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
 
 Before delving further, it's pivotal to comprehend the significance of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
 
