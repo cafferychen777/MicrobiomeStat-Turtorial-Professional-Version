@@ -1,8 +1,7 @@
 ---
 description: >-
   MicrobiomeStat provides automated report generation for cross-sectional
-  studies in microbiome research. It produces comprehensive reports that include
-  alpha diversity, beta diversity, and taxonomic co
+  studies in microbiome research.
 ---
 
 # Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat
