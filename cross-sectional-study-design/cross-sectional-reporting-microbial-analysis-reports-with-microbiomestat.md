@@ -49,20 +49,24 @@ Before we implement the function, let's understand the parameters we will be usi
 * `strata.var`: Variable to stratify the analysis by (optional).
 * `subject.var`: Variable name used for subject identification.
 * `time.var`: Variable name used for time points.
-* `alpha.obj`: An optional list containing pre-calculated alpha diversity indices. If NULL (default), alpha diversity indices will be calculated using mStat\_calculate\_alpha\_diversity function from MicrobiomeStat package.
+* `alpha.obj`: An optional list containing pre-calculated alpha diversity indices. If NULL (default), alpha diversity indices will be calculated using `mStat_calculate_alpha_diversity` function.
 * `alpha.name`: The alpha diversity index to be plotted. Supported indices include "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou".
 * `depth`: An integer. The sequencing depth to be used for the "Rarefy" and "Rarefy-TSS" methods. If NULL, the smallest total count across samples is used as the rarefaction depth.
 * `dist.obj`: Distance matrix between samples, usually calculated using `mStat_calculate_beta_diversity` function. If NULL, beta diversity will be automatically computed from `data.obj` using `mStat_calculate_beta_diversity`.
 * `dist.name`: A character vector specifying which beta diversity indices to calculate. Supported indices are "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence).
-* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be the taxonomic level like "Phylum", or any other annotation columns like "Genus" or "OTU\_ID".
-* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be the taxonomic level like "Phylum", or any other annotation columns like "Genus" or "OTU\_ID".
+* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway_L1", "Pathway_L2", or "Pathway_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
+* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway_L1", "Pathway_L2", or "Pathway_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
 * `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
-* `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are: "identity": No transformation (default), "sqrt": Square root transformation, "log": Logarithmic transformation.
-* `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
-* `base.size`: Base font size for the generated plots.
+* `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are: 
+  * "identity": No transformation (default),
+  * "sqrt": Square root transformation,
+  * "log": Logarithmic transformation.
+  In the function `mStat_generate_report_single`, this parameter is only used in `generate_taxa_boxplot_single` and `generate_taxa_indiv_boxplot_single`. In other functions, it is also used solely to adjust boxplots related to feature functions.
 * `feature.mt.method`: Character, multiple testing method for features, "fdr" or "none", default is "fdr".
 * `feature.sig.level`: Numeric, significance level cutoff for highlighting features, default is 0.1.
-* `output.file`: Output file name for the report.
+* `base.size`: Base font size for the generated plots.
+* `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
+* `output.file`: A character string specifying the output file name for the report. This will also determine the title of the generated report. For example, if you set it to "path_to_your_location/report.pdf", the title of the report will be "report".
 
 Now, let's see how we can implement the function:
 
