@@ -104,6 +104,8 @@ plot.list <- generate_taxa_volcano_single(
 plot.list
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.37.16.png" alt=""><figcaption><p>Volcano plot visualizing the taxa changes between groups. Each point represents a taxon, plotted according to its log2 fold change (x-axis) and -log10 adjusted p-value (y-axis) derived from the <code>generate_taxa_change_test_pair()</code>function. The plot helps to identify taxa with significant differences in abundance across timepoints. The horizontal line indicates the threshold for statistical significance (p=0.1). Taxa that pass this threshold are considered significantly different between groups.</p></figcaption></figure>
+
 The comprehensive results allow researchers to identify taxa that have significant alterations in abundance across timepoints, and if these changes are influenced by group affiliations. This analysis paves the way for insightful visual representations or more intricate explorations.
 
 After the Differential Abundance Analysis, we introduce two other functions: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide an in-depth visualization analysis for individual taxa.
