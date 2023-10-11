@@ -35,9 +35,7 @@ The output includes multiple data frames, each corresponding to different compar
 For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]` may appear.
 
 * The `[Main Effect]` label indicates the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
-* The `[Interaction]` label reveals the relationship between group differences and another variable, such as time. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
-
-The detailed results from the function provide a robust basis for further investigations. They guide researchers in pinpointing which taxa exhibit significant changes and under which conditions, thereby paving the way for insightful visual analyses or deeper data explorations.
+* The `[Interaction]` label reveals the relationship between group differences and time variable. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
 
 If the focus is specifically to explore the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is useful. The function not only assesses the changes but also highlights the differences between groups.
 
@@ -56,14 +54,6 @@ generate_taxa_change_test_pair(
   feature.dat.type = "count"
 )
 ```
-
-The function operates as follows:
-
-* It evaluates the data considering time variations, adjusting for specific variables such as "sex".
-* It computes the difference in taxa abundance between two timepoints: the baseline (`change.base`) and subsequent timepoints. The type of change is determined by the `feature.change.func`, which in the above example is "log fold change".
-* The output is a detailed breakdown of taxa differences at the selected taxonomic level (`feature.level`), here it's set as "original". It consists of statistics such as coefficients, p-values, and adjusted p-values for each taxon.
-* For each taxon, the function discerns group-specific effects using linear models. It investigates whether specific groups, defined by `group.var`, have distinct patterns of change over time.
-* Results are organized by taxon and by group comparisons. For instance, you might see outputs highlighting differences like "TreatmentA vs TreatmentB" for each taxon.
 
 The comprehensive results allow researchers to identify taxa that have significant alterations in abundance across timepoints, and if these changes are influenced by group affiliations. This analysis paves the way for insightful visual representations or more intricate explorations.
 
