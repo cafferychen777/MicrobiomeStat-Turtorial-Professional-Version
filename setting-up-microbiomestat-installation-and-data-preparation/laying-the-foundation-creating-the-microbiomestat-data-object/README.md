@@ -40,7 +40,7 @@ Ensure that the row names of the feature.ann align perfectly with the row names 
 
 **Component 4: tree (Optional)** The **phylogenetic tree** represents the evolutionary relationships among various research entities. In most situations when using MicrobiomeStat, the phylogenetic tree is not required; in fact, about 99% of MicrobiomeStat analyses can be conducted without it. However, for certain beta-diversity calculations, the phylogenetic tree becomes essential as it provides additional evolutionary context. Unless your analysis specifically requires this evolutionary perspective, you can typically proceed without this component.
 
-
+<figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.42.09.png" alt=""><figcaption><p>MicrobiomeData$tree</p></figcaption></figure>
 
 **Component 5: feature.agg.list (Optional)** The **feature.agg.list** is an optional component derived from the aggregation of data in the **feature.tab** based on annotations in **feature.ann**. This aggregated data is generated using the `mStat_aggregate_by_taxonomy()` function.
 
