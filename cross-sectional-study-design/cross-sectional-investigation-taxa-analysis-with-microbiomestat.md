@@ -11,6 +11,8 @@ A foundational step in feature-level analysis is discerning taxa with differenti
 
 The `generate_taxa_test_single` function employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance between groups.
 
+> Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
+
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
 * **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
@@ -64,6 +66,9 @@ Subsequently, the provided table offers a comprehensive overview of various taxa
 
 In the context of this table:
 
+* **Variable**: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
+* **Coefficient**: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
+* **SE**: This stands for lfcSE, the standard errors of the coefficients. It measures the variability or dispersion of the coefficient values.
 * **Mean Abundance**: This signifies the average abundance of a particular taxon (variable) across all samples.
 * **Prevalence**: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
 
