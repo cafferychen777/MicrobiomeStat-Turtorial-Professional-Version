@@ -5,28 +5,17 @@ description: >-
   answer this question.
 ---
 
-# Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies
+# Alpha Diversity Analysis in Longitudinal Studies
 
-Our expedition into **Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies** launches with the indispensable task of loading our _critical dataset_ and meticulously **filtering out samples with low sequencing depth**. The star of this journey is none other than **alpha diversity analysis**, a potent method celebrated for unraveling the captivating complexities of **species diversity within each sample**. However, beware! This analytical star is highly **sensitive to sequencing depth**, its notorious adversary. In particular, samples with **extremely low sequencing depth** (for instance, those deceitful ones below 10) can throw our understanding of **microbial diversity** into disarray, weaving distorted narratives and infusing our analysis with treacherous bias. To fend off these destructive forces, we utilize our filtering arsenal with utmost precision, ensuring they meet their well-deserved exit.&#x20;
+This section introduces alpha diversity analysis in longitudinal studies, focusing on how within-sample diversity changes over time. The first step is to filter out samples with low sequencing depth, as alpha diversity analysis is sensitive to this factor. 
 
-```r
-data(subset_T2D.obj)
-```
+It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
 
-Once we've prepared our dataset, we move on to calculate the alpha diversity, using Shannon diversity as our metric:
+Before delving further, it's pivotal to comprehend the significance of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
 
-```r
-# Calculate alpha diversity
-T2D.alpha.obj <- mStat_calculate_alpha_diversity(subset_T2D.obj$feature.tab, "shannon")
-```
+Additionally, the alpha functions in MicrobiomeStat, by default, undertake data rarefaction. This process ensures the datasets are rendered more comparable by harmonizing the sequencing depth across samples. Such standardization is vital for comparative analyses. However, if you're aiming to work with the original, non-rarefied data when determining alpha diversity, it's imperative to pre-calculate `alpha.obj`. By doing so, the intrinsic rarefaction process is sidestepped, thereby maintaining the data's originality.
 
-As we embark on our Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies, it is prudent to first grasp how to test for differences in alpha diversity across timepoints. MicrobiomeStat provides two significant functions for this purpose: `generate_alpha_trend_test_long` and `generate_alpha_volatility_test_long`.
-
-#### Longitudinal Alpha Diversity Trend Test in MicrobiomeStat
-
-This function, `generate_alpha_trend_test_long`, performs a trend test on longitudinal alpha diversity data using a linear mixed-effects model. The model is used to test the association between alpha diversity and a numeric time variable while adjusting for potential confounding variables.
-
-Here is an example usage:
+After the initial preparation, we can use MicrobiomeStat's functions to test for differences in alpha diversity across timepoints. One such function is `generate_alpha_trend_test_long`, which performs a trend test on longitudinal alpha diversity data using a linear mixed-effects model. This model is used to test the association between alpha diversity and a numeric time variable while adjusting for potential confounding variables.
 
 ```r
 data("subset_T2D.obj") 
@@ -40,11 +29,7 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
 )
 ```
 
-#### Longitudinal Alpha Diversity Volatility Test in MicrobiomeStat
-
-This function, `generate_alpha_volatility_test_long`, calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
-
-Here is an example usage:
+Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
 
 ```r
 data("subset_T2D.obj") 
@@ -59,7 +44,7 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
 )
 ```
 
-These tools allow us to test for differences in alpha diversity across timepoints and understand temporal and volatility trends respectively. Next, we'll use a spaghetti plot to show how the alpha diversity changes over time for each individual in the study, grouped by race."
+We can then visualize the alpha diversity changes over time for each individual in the study, grouped by race, using a spaghetti plot.
 
 ```r
 # Generate a spaghetti plot of alpha diversity over time
@@ -83,11 +68,9 @@ generate_alpha_spaghettiplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 21.18.16.png" alt=""><figcaption><p>Alpha Diversity Over Time Spaghetti Plot: Generated by the <code>generate_alpha_spaghettiplot_long()</code> function, this plot illustrates the temporal changes in the alpha diversity of each individual. It specifically displays Shannon diversity, a commonly used measure of species diversity, over time, with each line representing an individual in the study. Stratified by subject race, this plot provides insights into the impact of race on microbiome diversity trends over time, highlighting the complex interplay between demographic factors and microbiome dynamics.</p></figcaption></figure>
+This plot illustrates the temporal changes in the alpha diversity of each individual, stratified by subject race. This provides insights into the impact of race on microbiome diversity trends over time.
 
-This plot, made up of lines and colors, represents the fascinating journey of our microbiome over time, influenced by various factors, including race. Stay tuned as we delve deeper into the complexities of microbiome analysis in the context of longitudinal studies!&#x20;
-
-Embarking further on our **Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies**, we now harness the power of boxplots to provide a distilled view of **alpha diversity over time**. This is achieved using the `generate_alpha_boxplot_long()` function. But, owing to the boxplot's structure, it isn't ideal for showcasing changes over a prolonged duration. Thus, to remedy this, we curate the time points exhibited via the `t0.level` and `ts.levels` parameters. Here's how:
+Next, we use the `generate_alpha_boxplot_long()` function to visualize alpha diversity over time.
 
 ```r
 # Render a boxplot encapsulating alpha diversity across chosen time points
@@ -112,11 +95,6 @@ generate_alpha_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-13 at 21.45.06.png" alt=""><figcaption><p>Longitudinal Alpha Diversity Boxplot: Derived from the <code>generate_alpha_boxplot_long()</code> function, this plot efficiently compresses the temporal trends of Shannon diversity into a sequence of boxplots. Each box represents a distinct time point, and the spread of diversity within each time slot is succinctly portrayed. The median diversity is showcased by the line within each box, while the edges outline the first and third quartiles. This stratified depiction, segmented by subject race, enlightens us on the subtle, yet impactful influence of race on the shifts in microbiome diversity. The plot thus serves as a key that unlocks deeper understanding of the nuanced interplay between demographic variables and microbiome dynamics over time.</p></figcaption></figure>
+This boxplot displays the distribution of Shannon diversity over selected time points, segmented by subject race. This plot provides insights into the influence of race on shifts in microbiome diversity over time.
 
-This boxplot crystallizes the shifts in **Shannon diversity** over selected time points, displaying the **distribution of diversity** within each time point with precision. Every box signifies a time point, where the line within represents the **median diversity**, and the box's edges marking the first and third quartiles.
-
-As we segment by **subject race**, this plot amplifies the impact of race on **microbiome diversity trends** over time. It's an exciting step in our journey, further unfurling the intriguing tapestry of the interplay between microbiome dynamics and race in longitudinal microbiome studies. Let's continue to decode these captivating complexities together!&#x20;
-
-As we conclude this page, remember that our exploration of the alpha diversity doesn't stop here. While the methods illustrated above provide insight into differences across timepoints and showcase trends via visual representation, always know that MicrobiomeStat offers even more sophisticated ways to dig deeper into the temporal intricacies of microbiome data. Let's continue our journey into understanding and uncovering the myriad secrets held within our microbiome data in the forthcoming sections.
-
+In the following sections, we will continue to explore the temporal intricacies of microbiome data using more advanced methods provided by MicrobiomeStat.
