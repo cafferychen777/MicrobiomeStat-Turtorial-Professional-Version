@@ -115,7 +115,11 @@ plot.list
 
 The outcomes enable researchers to recognize taxa that exhibit notable changes in abundance across timepoints, and to determine whether these changes are associated with group affiliations. In the following sections, we will demonstrate how to visualize features of interest from the differential abundance analysis, or other specific features, using various methods.
 
-After the Differential Abundance Analysis, we introduce two other functions: `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`. These functions provide boxplot visualization analyses for individual taxa.
+In the analysis of large-scale microbiome datasets, it's often necessary to concentrate on a subset of taxa that are either most abundant or exhibit significant variability. This focus is facilitated by two parameters, `top.k.plot` and `top.k.func`, which are particularly useful when creating boxplot visualizations. 
+
+The `top.k.plot` parameter limits the number of taxa visualized. For instance, setting it to 10 will visualize only the top 10 taxa. The criteria for this selection is defined by `top.k.func`, which can be set to `"mean"` to prioritize taxa with the highest mean abundances across samples, or `"sd"` to emphasize taxa with the greatest standard deviation across samples. This is especially beneficial when studying taxa with substantial differences across conditions or time frames.
+
+These parameters are integral to our next topic of discussion: boxplot visualization analyses for individual taxa. We introduce two functions for this purpose, `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`.
 
 Before delving into these functions, it's worth noting the `transform` parameter. It's a string indicating the transformation to apply to the axis when plotting. The options include:
 
@@ -124,12 +128,6 @@ Before delving into these functions, it's worth noting the `transform` parameter
 * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
 
 Additionally, three other parameters play significant roles in these functions:
-
-* `features.plot`: This parameter dictates which features (or taxa) should be visualized. For instance, after executing a differential abundance analysis, you might want to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
-* `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
-    * `top.k.func` assists in determining the criteria for this selection, offering two choices:
-      * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-      * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
 
 First, we look at `generate_taxa_indiv_boxplot_long()`:
 
