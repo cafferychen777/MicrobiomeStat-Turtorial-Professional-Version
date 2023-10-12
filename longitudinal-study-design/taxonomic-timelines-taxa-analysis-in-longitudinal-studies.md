@@ -1,6 +1,7 @@
 ---
 description: >-
-  This page facilitates an objective study of taxonomic shifts over time, illuminating microbial dynamics.
+  This page facilitates an objective study of taxonomic shifts over time,
+  illuminating microbial dynamics.
 ---
 
 # Taxonomic Timelines: Feature-level Analysis in Longitudinal Studies
@@ -38,7 +39,7 @@ Another important parameter is `feature.change.func`, which specifies the method
 
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
-```R
+```r
 data("subset_T2D.obj")
 generate_taxa_trend_test_long(
   data.obj = subset_T2D.obj,
@@ -61,13 +62,13 @@ $$
 V = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{A(t_{i+1}) - A(t_i)}{t_{i+1} - t_i} \right|
 $$
 
-where 'A(t)' is the abundance at time 't' and 'Δt = t_{i+1} - t_i' is the time difference.
+where 'A(t)' is the abundance at time 't' and 'Δt = t\_{i+1} - t\_i' is the time difference.
 
-This function fits a linear model to the volatility data with the formula 'V = β_0 + β_1*G + β_2*X + ε', where 'V' is the volatility, 'G' is the group variable, 'X' represents adjustment variables, and 'ε' is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
+This function fits a linear model to the volatility data with the formula 'V = β\_0 + β\_1_G + β\_2_X + ε', where 'V' is the volatility, 'G' is the group variable, 'X' represents adjustment variables, and 'ε' is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
 
 The function is applied as follows:
 
-```R
+```r
 data("subset_T2D.obj")
 generate_taxa_volatility_test_long(
   data.obj = subset_T2D.obj,
@@ -89,7 +90,7 @@ To visualize the abundance trajectories of specific taxa across multiple timepoi
 
 * `feature.number`: This parameter determines the maximum number of features (or taxa) that will be visualized directly in the aeraplot and barplot. When confronted with datasets teeming with numerous features, it's practical to limit our visual focus to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function smartly aggregates all excess, low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
 
-```R
+```r
 generate_taxa_areaplot_long(
   data.obj = ecam.obj,
   subject.var = "studyid", 
@@ -115,7 +116,7 @@ This longitudinal area plot allows us to track the changes of specific taxa over
 
 For insights into the taxonomic composition within groups at each timepoint, `generate_taxa_barplot_long()` can be utilized:
 
-```R
+```r
 generate_taxa_barplot_long(
   data.obj = ecam.obj,
   subject.var = "studyid",
@@ -138,13 +139,13 @@ generate_taxa_barplot_long(
 
 Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
 
-- `"identity"`: No transformation (default)
-- `"sqrt"`: Square root transformation
-- `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
+* `"identity"`: No transformation (default)
+* `"sqrt"`: Square root transformation
+* `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
 
 Now, for an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:
 
-```R
+```r
 generate_taxa_boxplot_long(
   data.obj = subset_T2D.obj,
   subject.var = "subject_id",
@@ -172,7 +173,7 @@ generate_taxa_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.35.57.png" alt=""><figcaption><p>Longitudinal Distribution of Phylum Abundance: This longitudinal boxplot visualizes the distribution of abundance over time for a specific phylum of interest. Generated via <code>generate_taxa_boxplot_long()</code>, it displays changes in central tendency and dispersion. Log transformation and filtering enable focused insights. The plot enables in-depth analysis of phylum-level abundance shifts across the timeline.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 18.56.27.png" alt=""><figcaption><p>Longitudinal Distribution of Phylum Abundance: This longitudinal boxplot visualizes the distribution of abundance over time for a specific phylum of interest. Generated via <code>generate_taxa_boxplot_long()</code>, it displays changes in central tendency and dispersion. Log transformation and filtering enable focused insights. The plot enables in-depth analysis of phylum-level abundance shifts across the timeline.</p></figcaption></figure>
 
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
@@ -183,7 +184,7 @@ With these parameters in mind, let's look at the implementation of these functio
 
 To uncover intricate abundance change patterns, `generate_taxa_change_heatmap_long()` can be used:
 
-```R
+```r
 generate_taxa_change_heatmap_long(
   data.obj = ecam.obj,
   subject.var = "studyid",
@@ -195,7 +196,7 @@ generate_taxa_change_heatmap_long(
   feature.level = c("Family"),
   feature.dat.type = "proportion",
   features.plot = NULL,
-  top.k.plot = 10,
+  top.k.plot = 15,
   top.k.func = "sd",
   feature.change.func = "log fold change",
   palette = NULL,
@@ -206,11 +207,11 @@ generate_taxa_change_heatmap_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.37.55.png" alt=""><figcaption><p>Longitudinal Family Abundance Change Heatmap: This heatmap visualizes longitudinal changes in family abundance using log2 fold change. Generated via <code>generate_taxa_change_heatmap_long()</code>, it focuses on the top 10 most dynamic families. The color intensity reflects the magnitude of change over time. It provides insights into meaningful abundance shifts and relationships between specific families.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 18.58.00.png" alt=""><figcaption><p>Longitudinal Family Abundance Change Heatmap: This heatmap visualizes longitudinal changes in family abundance using log2 fold change. Generated via <code>generate_taxa_change_heatmap_long()</code>, it focuses on the top 10 most dynamic families. The color intensity reflects the magnitude of change over time. It provides insights into meaningful abundance shifts and relationships between specific families.</p></figcaption></figure>
 
 For a comprehensive heatmap of taxonomic composition, `generate_taxa_heatmap_long()` can be employed:
 
-```R
+```r
 generate_taxa_heatmap_long(
   data.obj = ecam.obj,
   subject.var = "studyid",
@@ -233,7 +234,7 @@ generate_taxa_heatmap_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.41.20.png" alt=""><figcaption><p>Longitudinal Microbiome Composition Heatmap: This heatmap visualizes the longitudinal taxonomic composition at the family level. Generated via <code>generate_taxa_heatmap_long()</code>, color intensity represents abundance. It provides an intuitive overview of community dynamics over time, stratified by delivery mode and diet. Filtering focuses the analysis on relevant families. The plot enables visualization of temporal abundance patterns.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.00.58.png" alt=""><figcaption><p>Longitudinal Microbiome Composition Heatmap: This heatmap visualizes the longitudinal taxonomic composition at the family level. Generated via <code>generate_taxa_heatmap_long()</code>, color intensity represents abundance. It provides an intuitive overview of community dynamics over time, stratified by delivery mode and diet. Filtering focuses the analysis on relevant families. The plot enables visualization of temporal abundance patterns.</p></figcaption></figure>
 
 To construct detailed individual boxplots, `generate_taxa_indiv_boxplot_long()` can be used:
 
