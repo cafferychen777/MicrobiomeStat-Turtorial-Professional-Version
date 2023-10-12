@@ -4,7 +4,7 @@ description: >-
   illuminating microbial dynamics.
 ---
 
-# Taxonomic Timelines: Feature-level Analysis in Longitudinal Studies
+# Feature-level Longitudinal Data Analysis in Microbiome Studies
 
 This guide will walk you through the process of investigating how taxonomic composition changes within a longitudinal context, providing insights into microbial dynamics over time.
 
@@ -171,8 +171,8 @@ These parameters are particularly effective when generating heatmaps, as they en
 
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
-* `cluster.rows`: By default, the `generate_taxa_heatmap_pair()` function will cluster rows (features or taxa) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
-* `cluster.cols`: The `generate_taxa_change_heatmap_pair()` function allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions. By default, this function clusters both rows and columns (`cluster.rows = TRUE` and `cluster.cols = TRUE`).
+* `cluster.rows`: By default, the `generate_taxa_heatmap_long()` function will cluster rows (features or taxa) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
+* `cluster.cols`: The `generate_taxa_change_heatmap_long()` function allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions. By default, this function clusters rows (`cluster.rows = TRUE`) and does not cluster columns (`cluster.cols = FALSE`).
 
 With these parameters in mind, let's look at the implementation of these functions:
 
@@ -190,6 +190,8 @@ generate_taxa_change_heatmap_long(
   feature.level = c("Family"),
   feature.dat.type = "proportion",
   features.plot = NULL,
+  cluster.rows = NULL,
+  cluster.cols = NULL,
   top.k.plot = 15,
   top.k.func = "sd",
   feature.change.func = "log fold change",
@@ -221,6 +223,8 @@ generate_taxa_heatmap_long(
   top.k.func = NULL,
   prev.filter = 0.01,
   abund.filter = 0.01,
+  cluster.rows = NULL,
+  cluster.cols = NULL,
   pdf = TRUE,
   file.ann = NULL,
   pdf.wid = 11,
@@ -328,29 +332,29 @@ To construct detailed individual boxplots, `generate_taxa_indiv_boxplot_long()` 
 
 ```R
 generate_taxa_indiv_boxplot_long(
-  data.obj = ecam.obj,
-  subject.var = "studyid",
-  time.var = "month",
-  t0.level = NULL,
-  ts.levels = NULL,
-  group.var = NULL,  
-  strata.var = NULL,
-  feature.level = c("Phylum"),
-  feature.dat.type = "proportion",
-  transform = "log",
-  prev.filter = 0.01,
-  abund.filter = 0.01,
-  base.size = 20,
-  theme.choice = "bw",
-  custom.theme = NULL,
-  palette = NULL,
-  pdf = TRUE,
-  file.ann = NULL,
-  pdf.wid = 11,
-  pdf.hei = 8.5
+    data.obj = ecam.obj,
+    subject.var = "studyid",
+    time.var = "month",
+    t0.level = unique(ecam.obj$meta.dat$month)[1],
+    ts.levels = unique(ecam.obj$meta.dat$month)[2:5],
+    group.var = "diet",  
+    strata.var = NULL,
+    feature.level = c("Phylum"),
+    feature.dat.type = "proportion",
+    transform = "log",
+    prev.filter = 0.01,
+    abund.filter = 0.01,
+    base.size = 20,
+    theme.choice = "bw",
+    custom.theme = NULL,
+    palette = NULL,
+    pdf = TRUE,
+    file.ann = NULL,
+    pdf.wid = 11,
+    pdf.hei = 8.5
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 20.08.07.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Transformations and filtering enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 20.08.07.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Log transformation and abundance filtering (at 0.01) enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
 
 With these powerful tools at our disposal, we can now uncover intricate taxonomic changes and gain deeper insights into the dynamics of the microbiome in longitudinal studies. We can proceed with the MicrobiomeStat functions to unravel the mysteries within the data.
