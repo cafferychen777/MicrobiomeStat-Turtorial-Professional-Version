@@ -5,7 +5,6 @@
 ## INTRODUCTION
 
 * [Exploring MicrobiomeStat: A Consideration for Your Research Toolkit](introduction/the-edge-of-microbiomestat-why-it-should-be-on-your-shortlist.md)
-* [Feature Overview: Dive Deep into the Capabilities of MicrobiomeStat](introduction/feature-overview-dive-deep-into-the-capabilities-of-microbiomestat.md)
 * [Unveiling MicrobiomeStat: A Glimpse into Diverse Microbiome Analysis Solutions](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/README.md)
   * [Exploring Longitudinal Analysis Features: MicrobiomeStat Among Other Packages](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/exploring-longitudinal-analysis-features-microbiomestat-among-other-packages.md)
   * [Exploring Feature Offerings: MicrobiomeStat Among Integrated Analysis Packages](introduction/unveiling-microbiomestat-a-glimpse-into-diverse-microbiome-analysis-solutions/exploring-feature-offerings-microbiomestat-among-integrated-analysis-packages.md)
