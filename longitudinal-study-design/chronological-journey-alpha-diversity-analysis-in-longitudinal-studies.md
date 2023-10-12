@@ -5,11 +5,11 @@ description: >-
   answer this question.
 ---
 
-# Alpha Diversity Analysis in Longitudinal Studies
+# Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies
 
-This section introduces alpha diversity analysis in longitudinal studies, focusing on how within-sample diversity changes over time. The first step is to filter out samples with low sequencing depth, as alpha diversity analysis is sensitive to this factor. 
+This section introduces alpha diversity analysis in longitudinal studies, focusing on how within-sample diversity changes over time. The first step is to filter out samples with low sequencing depth, as alpha diversity analysis is sensitive to this factor.
 
-It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
+It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
 
 Before delving further, it's pivotal to comprehend the significance of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
 
@@ -30,35 +30,58 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
   adj.vars = NULL
 )
 ```
+
 **Alpha Diversity Trend Test Results**
 
 **Shannon Diversity**
 
-| Term                                            | Estimate | Std.Error | Statistic | P.Value    |
-|-------------------------------------------------|----------|-----------|-----------|------------|
-| (Intercept)                                     | 2.59     | 0.204     | 12.7      | 5.13e-27   |
-| subject_racecaucasian                           | 0.214    | 0.231     | 0.928     | 3.55e-1    |
-| subject_racehispanic_or_latino                  | 0.197    | 0.441     | 0.446     | 6.56e-1    |
-| visit_number_num                                | -0.00852 | 0.0547    | -0.156    | 8.76e-1    |
-| subject_racecaucasian:visit_number_num          | -0.0105  | 0.0617    | -0.170    | 8.65e-1    |
-| subject_racehispanic_or_latino:visit_number_num | 0.0515   | 0.116     | 0.443     | 6.58e-1    |
-| subject_race:visit_number_num                   | NA       | NA        | 0.175     | 8.40e-1    |
+| Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
+| ---------------------------------------------------- | -------- | --------- | --------- | -------- |
+| (Intercept)                                          | 2.59     | 0.204     | 12.7      | 5.13e-27 |
+| subject\_racecaucasian                               | 0.214    | 0.231     | 0.928     | 3.55e-1  |
+| subject\_racehispanic\_or\_latino                    | 0.197    | 0.441     | 0.446     | 6.56e-1  |
+| visit\_number\_num                                   | -0.00852 | 0.0547    | -0.156    | 8.76e-1  |
+| subject\_racecaucasian:visit\_number\_num            | -0.0105  | 0.0617    | -0.170    | 8.65e-1  |
+| subject\_racehispanic\_or\_latino:visit\_number\_num | 0.0515   | 0.116     | 0.443     | 6.58e-1  |
+| subject\_race:visit\_number\_num                     | NA       | NA        | 0.175     | 8.40e-1  |
 
 **Observed Species Diversity**
 
-| Term                                            | Estimate | Std.Error | Statistic | P.Value    |
-|-------------------------------------------------|----------|-----------|-----------|------------|
-| (Intercept)                                     | 118      | 16.1      | 7.36      | 3.22e-12   |
-| subject_racecaucasian                           | 23.2     | 18.2      | 1.28      | 2.02e-1    |
-| subject_racehispanic_or_latino                  | 20.1     | 34.6      | 0.580     | 5.62e-1    |
-| visit_number_num                                | -0.152   | 4.35      | -0.0349   | 9.72e-1    |
-| subject_racecaucasian:visit_number_num          | -0.792   | 4.90      | -0.162    | 8.72e-1    |
-| subject_racehispanic_or_latino:visit_number_num | 2.71     | 9.28      | 0.292     | 7.70e-1    |
-| subject_race:visit_number_num                   | NA       | NA        | 0.0910    | 9.13e-1    |
+| Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
+| ---------------------------------------------------- | -------- | --------- | --------- | -------- |
+| (Intercept)                                          | 118      | 16.1      | 7.36      | 3.22e-12 |
+| subject\_racecaucasian                               | 23.2     | 18.2      | 1.28      | 2.02e-1  |
+| subject\_racehispanic\_or\_latino                    | 20.1     | 34.6      | 0.580     | 5.62e-1  |
+| visit\_number\_num                                   | -0.152   | 4.35      | -0.0349   | 9.72e-1  |
+| subject\_racecaucasian:visit\_number\_num            | -0.792   | 4.90      | -0.162    | 8.72e-1  |
+| subject\_racehispanic\_or\_latino:visit\_number\_num | 2.71     | 9.28      | 0.292     | 7.70e-1  |
+| subject\_race:visit\_number\_num                     | NA       | NA        | 0.0910    | 9.13e-1  |
 
 In the trend test, our primary focus is on the interaction term between `group.var` and `time.var`. When the levels of `group.var` are greater than 2, an ANOVA is performed, which is represented in the last row of the table.
 
 Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
+
+Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
+
+Another useful function is `generate_alpha_volatility_test_long`. This function calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
+
+In mathematical terms, volatility (V) can be represented like this:
+
+First, let's define a few terms:
+
+* "alpha\_i" is the alpha diversity measure at time "i".
+* "delta\_t\_i" is the time difference between time "i" and "i+1".
+
+With these terms, the volatility for a subject is calculated as:
+
+$$
+V = \frac{1}{N} \sum \left| \frac{\alpha_{i+1} - \alpha_i}{\Delta t_i} \right|
+$$
+
+Here:
+
+* "N" is the total number of time points for the subject.
+* The summation "sum" is over all time points for which "alpha\_(i+1)" is defined.
 
 ```r
 data("subset_T2D.obj") 
