@@ -55,15 +55,15 @@ generate_taxa_trend_test_long(
 
 The function `generate_taxa_volatility_test_long()` is designed to analyze longitudinal microbiome data by calculating the volatility of taxa abundances and testing for an association with a grouping variable. Prior to the calculation of volatility, a centered log-ratio (CLR) transformation is performed on the data.
 
-After the transformation, the volatility, $V$, is computed as the mean rate of change in abundance over time, defined as:
+After the transformation, the volatility, denoted as 'V', is computed as the mean rate of change in abundance over time, defined as:
 
 $$
 V = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{A(t_{i+1}) - A(t_i)}{t_{i+1} - t_i} \right|
 $$
 
-where $A(t)$ is the abundance at time $t$ and $Δt = t_{i+1} - t_i$ is the time difference.
+where 'A(t)' is the abundance at time 't' and 'Δt = t_{i+1} - t_i' is the time difference.
 
-This function fits a linear model to the volatility data with the formula $V = β_0 + β_1*G + β_2*X + ε$, where $V$ is the volatility, $G$ is the group variable, $X$ represents adjustment variables, and $ε$ is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
+This function fits a linear model to the volatility data with the formula 'V = β_0 + β_1*G + β_2*X + ε', where 'V' is the volatility, 'G' is the group variable, 'X' represents adjustment variables, and 'ε' is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
 
 The function is applied as follows:
 
