@@ -137,44 +137,6 @@ generate_taxa_barplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.33.16.png" alt=""><figcaption><p>Longitudinal Stacked Bar Plot of Taxonomic Composition: This bar plot visualizes the longitudinal changes in microbiome composition at the family level within groups stratified by delivery mode. Generated using the <code>generate_taxa_barplot_long()</code> function, the stacked bars showcase the taxonomic shift over time. Limiting to the top 10 most abundant families maintains clarity. The plot provides an intuitive snapshot of community dynamics.</p></figcaption></figure>
 
-Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
-
-* `"identity"`: No transformation (default)
-* `"sqrt"`: Square root transformation
-* `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
-
-Now, for an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:
-
-```r
-generate_taxa_boxplot_long(
-  data.obj = subset_T2D.obj,
-  subject.var = "subject_id",
-  time.var = "visit_number_num",
-  t0.level = NULL,
-  ts.levels = NULL,  
-  group.var = "subject_race",
-  strata.var = NULL,
-  feature.level = c("Family"),
-  features.plot = NULL,
-  top.k.plot = 8,
-  top.k.func = "sd",
-  feature.dat.type = "count",
-  transform = "sqrt",
-  prev.filter = 0.01,
-  abund.filter = 0.001,
-  base.size = 12,
-  theme.choice = "bw",
-  custom.theme = NULL,
-  palette = NULL,
-  pdf = TRUE,  
-  file.ann = NULL,
-  pdf.wid = 11,
-  pdf.hei = 8.5
-)
-```
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 18.56.27.png" alt=""><figcaption><p>Longitudinal Distribution of Phylum Abundance: This longitudinal boxplot visualizes the distribution of abundance over time for a specific phylum of interest. Generated via <code>generate_taxa_boxplot_long()</code>, it displays changes in central tendency and dispersion. Log transformation and filtering enable focused insights. The plot enables in-depth analysis of phylum-level abundance shifts across the timeline.</p></figcaption></figure>
-
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
 * `cluster.rows`: By default, the `generate_taxa_heatmap_pair()` function will cluster rows (features or taxa) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
@@ -236,6 +198,100 @@ generate_taxa_heatmap_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.00.58.png" alt=""><figcaption><p>Longitudinal Microbiome Composition Heatmap: This heatmap visualizes the longitudinal taxonomic composition at the family level. Generated via <code>generate_taxa_heatmap_long()</code>, color intensity represents abundance. It provides an intuitive overview of community dynamics over time, stratified by delivery mode and diet. Filtering focuses the analysis on relevant families. The plot enables visualization of temporal abundance patterns.</p></figcaption></figure>
 
+For spaghetti plots showcasing individual trajectories, `generate_taxa_indiv_spaghettiplot_long()` can be used:
+
+```R
+generate_taxa_indiv_spaghettiplot_long(
+  data.obj = ecam.obj,
+  subject.var = "studyid",
+  time.var = "month_num", 
+  t0.level = NULL,
+  ts.levels = NULL,
+  group.var = "diet",
+  strata.var = "antiexposedall",
+  feature.level = c("Phylum"),
+  features.plot = NULL,
+  feature.dat.type = "proportion",
+  top.k.plot = 5,
+  top.k.func = "mean",
+  prev.filter = 0.01,
+  abund.filter = 0.01,
+  base.size = 16,
+  theme.choice = "bw",  
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL
+)
+```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.03.29.png" alt=""><figcaption><p>Individual Phylum Abundance Spaghetti Plots: This function generates spaghetti plots showing longitudinal abundance trajectories for specific phyla within each individual. It focuses on the top 5 phyla by mean abundance. Each line represents one subject's phylum abundance over time. These plots enable analysis of individual temporal dynamics.</p></figcaption></figure>
+
+To assess group changes, `generate_taxa_spaghettiplot_long()` can be used:
+
+```R
+generate_taxa_spaghettiplot_long(
+  data.obj = ecam.obj,
+  subject.var = "studyid",
+  time.var = "month_num",
+  t0.level = NULL,
+  ts.levels = NULL,
+  group.var = "diet",
+  strata.var = "antiexposedall",
+  feature.level = c("Phylum"),
+  features.plot = NULL,
+  feature.dat.type = "proportion",
+  top.k.plot = 3,
+  top.k.func = "mean",
+  prev.filter = 0,
+  abund.filter = 0,
+  base.size = 16,
+  theme.choice = "bw",
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL  
+)
+```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.04.49.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Spaghetti Plots: This function generates stacked spaghetti plots showing longitudinal abundance trajectories for specific phyla. It focuses on the top 3 phyla by mean abundance and overlays individual trajectories to highlight group changes. Filtering enables focused insights into temporal dynamics. These plots enable analysis of phylum abundance shifts over time.</p></figcaption></figure>
+
+Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
+
+* `"identity"`: No transformation (default)
+* `"sqrt"`: Square root transformation
+* `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
+
+Now, for an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:
+
+```r
+generate_taxa_boxplot_long(
+  data.obj = subset_T2D.obj,
+  subject.var = "subject_id",
+  time.var = "visit_number_num",
+  t0.level = NULL,
+  ts.levels = NULL,  
+  group.var = "subject_race",
+  strata.var = NULL,
+  feature.level = c("Family"),
+  features.plot = NULL,
+  top.k.plot = 8,
+  top.k.func = "sd",
+  feature.dat.type = "count",
+  transform = "sqrt",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  base.size = 12,
+  theme.choice = "bw",
+  custom.theme = NULL,
+  palette = NULL,
+  pdf = TRUE,  
+  file.ann = NULL,
+  pdf.wid = 11,
+  pdf.hei = 8.5
+)
+```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 18.56.27.png" alt=""><figcaption><p>Longitudinal Distribution of Phylum Abundance: This longitudinal boxplot visualizes the distribution of abundance over time for a specific phylum of interest. Generated via <code>generate_taxa_boxplot_long()</code>, it displays changes in central tendency and dispersion. Log transformation and filtering enable focused insights. The plot enables in-depth analysis of phylum-level abundance shifts across the timeline.</p></figcaption></figure>
+
 To construct detailed individual boxplots, `generate_taxa_indiv_boxplot_long()` can be used:
 
 ```R
@@ -267,63 +323,5 @@ generate_taxa_indiv_boxplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Transformations and filtering enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
-
-For spaghetti plots showcasing individual trajectories, `generate_taxa_indiv_spaghettiplot_long()` can be used:
-
-```R
-generate_taxa_indiv_spaghettiplot_long(
-  data.obj = ecam.obj,
-  subject.var = "studyid",
-  time.var = "month_num", 
-  t0.level = NULL,
-  ts.levels = NULL,
-  group.var = "diet",
-  strata.var = "antiexposedall",
-  feature.level = c("Phylum"),
-  features.plot = NULL,
-  feature.dat.type = "proportion",
-  top.k.plot = 5,
-  top.k.func = "mean",
-  prev.filter = 0.01,
-  abund.filter = 0.01,
-  base.size = 16,
-  theme.choice = "bw",  
-  palette = NULL,
-  pdf = TRUE,
-  file.ann = NULL
-)
-```
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.03.29.png" alt=""><figcaption><p>Individual Phylum Abundance Spaghetti Plots: This function generates spaghetti plots showing longitudinal abundance trajectories for specific phyla within each individual. It focuses on the top 5 phyla by mean abundance. Each line represents one subject's phylum abundance over time. These plots enable analysis of individual temporal dynamics.</p></figcaption></figure>
-
-These individual spaghetti plots trace each subject's journey over time for specific phyla. The top 5 phyla by mean abundance are displayed for clarity.
-
-To assess group changes, `generate_taxa_spaghettiplot_long()` can be used:
-
-```R
-generate_taxa_spaghettiplot_long(
-  data.obj = ecam.obj,
-  subject.var = "studyid",
-  time.var = "month_num",
-  t0.level = NULL,
-  ts.levels = NULL,
-  group.var = "diet",
-  strata.var = "antiexposedall",
-  feature.level = c("Phylum"),
-  features.plot = NULL,
-  feature.dat.type = "proportion",
-  top.k.plot = 3,
-  top.k.func = "mean",
-  prev.filter = 0,
-  abund.filter = 0,
-  base.size = 16,
-  theme.choice = "bw",
-  palette = NULL,
-  pdf = TRUE,
-  file.ann = NULL  
-)
-```
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.04.49.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Spaghetti Plots: This function generates stacked spaghetti plots showing longitudinal abundance trajectories for specific phyla. It focuses on the top 3 phyla by mean abundance and overlays individual trajectories to highlight group changes. Filtering enables focused insights into temporal dynamics. These plots enable analysis of phylum abundance shifts over time.</p></figcaption></figure>
 
 With these powerful tools at our disposal, we can now uncover intricate taxonomic changes and gain deeper insights into the dynamics of the microbiome in longitudinal studies. We can proceed with the MicrobiomeStat functions to unravel the mysteries within the data.
