@@ -6,187 +6,163 @@ description: >-
 
 # Longitudinal Reporting: Microbiome Analysis Automation with MicrobiomeStat
 
-Longitudinal Reporting: Microbiome Analysis Automation with MicrobiomeStat
+Microbiome research generates complex multidimensional datasets. These datasets often include:
 
-The `mStat_generate_report_long()` function in the MicrobiomeStat package is a comprehensive tool designed for automated analysis and reporting of longitudinal microbiome studies. This wiki page dives deep into the function's features, parameters, and how they integrate to provide a streamlined workflow.
+* Alpha diversity: This measures the taxonomic diversity within each sample.
+* Beta diversity: This quantifies the taxonomic dissimilarity between samples.
+* Differential abundance: This identifies taxa whose abundance varies significantly across experimental conditions.
 
-## mStat\_generate\_report\_long()
+Manual analysis of these datasets can be time-consuming and may introduce inconsistencies.
 
-The `mStat_generate_report_long()` function performs a comprehensive longitudinal microbiome analysis and generates a report PDF containing:
+MicrobiomeStat provides an efficient solution by generating integrated reports for paired sample studies. These reports include:
 
-### Alpha diversity analysis
+* Visualizations to illustrate key findings
+* Statistical summaries that highlight significant outcomes
 
-* Alpha diversity boxplots colored by time and groups
-  * Using `generate_alpha_boxplot_long()`
-* Alpha diversity spaghetti plots showing trajectories
-  * Using `generate_alpha_spaghettiplot_long()`
-* Linear mixed effects model results for alpha diversity trends
-  * Using `generate_alpha_trend_test_long()`
-* Linear model results for alpha diversity volatility
-  * Using `generate_alpha_volatility_test_long()`
+This approach ensures a consistent and thorough interpretation of data.
 
-### Beta diversity analysis
+* **Alpha diversity**: Functions used include `generate_alpha_boxplot_long()`, `generate_alpha_spaghettiplot_long()`, `generate_alpha_trend_test_long()`, and `generate_alpha_volatility_test_long()`.
 
-* PCoA plots colored by time and groups
-  * Using `generate_beta_ordination_long()`
-* Boxplots of PCoA coordinates vs time
-  * Using `generate_beta_pc_boxplot_long()`
-* Distance from baseline spaghetti plots
-  * Using `generate_beta_change_spaghettiplot_long()`
-* Linear mixed effects models for beta diversity distance trends
-  * Using `generate_beta_trend_test_long()`
-* Linear models for beta diversity volatility
-  * Using `generate_beta_volatility_test_long()`
+* **Beta diversity**: Functions used include `generate_beta_ordination_long()`, `generate_beta_pc_boxplot_long()`, `generate_beta_change_spaghettiplot_long()`, `generate_beta_trend_test_long()`, and `generate_beta_volatility_test_long()`.
 
-### Taxonomic composition analysis
-
-* Stacked area plots showing average composition
-  * Using `generate_taxa_areaplot_long()`
-* Heatmaps colored by relative abundance
-  * Using `generate_taxa_heatmap_long()`
-* Volcano plots highlighting significant taxa
-  * Using `generate_taxa_trend_test_long()` and `generate_taxa_volatility_test_long()`
-* Boxplots of significant taxa
-  * Using `generate_taxa_boxplot_long()`
-* Spaghetti plots for significant taxa
-  * Using `generate_taxa_spaghettiplot_long()`
-
-In summary, `mStat_generate_report_long()` provides extensive longitudinal microbiome analysis and visualization using core MicrobiomeStat functions.
+* **Feature-level**: Functions used include `generate_taxa_areaplot_long()`, `generate_taxa_heatmap_long()`, `generate_taxa_trend_test_long()`, `generate_taxa_volatility_test_long()`, `generate_taxa_boxplot_long()`, `generate_taxa_spaghettiplot_long()`, `generate_taxa_trend_volcano_long()`, `generate_taxa_volatility_volcano_long()`, `generate_taxa_barplot_long()`, `generate_taxa_change_heatmap_long()`, `generate_taxa_indiv_spaghettiplot_long()`, and `generate_taxa_indiv_boxplot_long()`.
 
 It then compiles the results into a publication-ready PDF report containing:
 
-* Summary statistics
-  * Sample size, number of timepoints, covariates
-* Plots like boxplots, heatmaps
-  * Alpha diversity boxplots
-  * Beta diversity PCoA plots
-  * Taxa composition heatmaps
-* Statistical test results in tables
-  * Linear mixed effects model results
-  * General linear model results
-  * Tables with p-values
-* Interpretation of findings
-  * Description of significant results
-  * Summary of important findings
+The function then compiles these analyses into a comprehensive PDF report. The report includes:
 
-In particular, the generated report includes:
+* A data summary from `mStat_summarize_data_obj()`
+* Visual representations like alpha diversity boxplots, beta diversity ordination plots, and taxa composition visualizations
+* Tables detailing statistical test results
+* Commentary on key findings
 
-* Alpha diversity analysis
-  * Boxplots, spaghetti plots
-  * Trend and volatility test tables
-* Beta diversity analysis
-  * PCoA plots, distance plots
-  * Trend and volatility test tables
-* Taxonomic composition analysis
-  * Composition plots
-  * Significant taxa tables
-  * Volcano plots
+Before using the function, it's important to understand the parameters:
 
-So in summary, the report provides extensive visualization, statistical results, and interpretation to facilitate analysis and dissemination of longitudinal microbiome studies.
+Before using the function, it's important to understand the parameters:
 
-We provide the longitudinal data and analysis parameters:
+* `data.obj`: A list object in a specific format to MicrobiomeStat, which can include components such as feature.tab (matrix), feature.ann (matrix), meta.dat (data.frame), tree, and feature.agg.list (list). This object can be converted from other formats using several functions from the MicrobiomeStat package, or constructed manually. For more detailed information on how to convert data from other formats or how to construct the `data.obj` manually, please refer to the following page.
+
+{% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
+[laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
+{% endcontent-ref %}
+
+* `group.var`: Variable name used for grouping samples.
+* `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
+* `vis.adj.vars`: Names of columns in the metadata containing covariates to visualize in plots, in addition to the primary variables of interest such as groups. Default is NULL, which indicates only the primary variables of interest will be visualized without additional covariates.
+* `strata.var`: Variable to stratify the analysis by (optional).
+* `subject.var`: Variable name used for subject identification.
+* `time.var`: This parameter represents the time variable in your data. It can take three forms:
+  * Numeric: When `time.var` is numeric, you don't need to set `t0.level` and `ts.levels`, as they will be automatically arranged in ascending order.
+  * Factor: If `time.var` is a factor, and if `t0.level` and `ts.levels` are not set, they will be automatically arranged according to the levels of the factor. However, if you have specific needs for the order of the levels, you can manually adjust `t0.level` and `ts.levels`.
+  * Character: If `time.var` is character, it's recommended to manually set `t0.level` and `ts.levels`, as the automatic arrangement might not reflect the correct order.
+
+* `t0.level`: This parameter represents the first time point in your data.
+* `ts.levels`: This parameter represents the other time points in your data, arranged in the order you desire, excluding `t0.level`.
+* `alpha.obj`: An optional list containing pre-calculated alpha diversity indices. If NULL (default), alpha diversity indices will be calculated using `mStat_calculate_alpha_diversity` function.
+* `alpha.name`: The alpha diversity index to be plotted. Supported indices include "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou".
+* `depth`: An integer. The sequencing depth to be used for the "Rarefy" and "Rarefy-TSS" methods. If NULL, the smallest total count across samples is used as the rarefaction depth.
+* `dist.obj`: Distance matrix between samples, usually calculated using `mStat_calculate_beta_diversity` function. If NULL, beta diversity will be automatically computed from `data.obj` using `mStat_calculate_beta_diversity`.
+* `dist.name`: A character vector specifying which beta diversity indices to calculate. Supported indices are "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence).
+* `pc.obj`: A list containing the results of dimension reduction/Principal Component Analysis. This should be the output from functions like `mStat_calculate_PC`, containing the PC coordinates and other metadata. If NULL (default), dimension reduction will be automatically performed using metric multidimensional scaling (MDS) via `mStat_calculate_PC`. The `pc.obj` list structure should contain:
+  * `$points`: A matrix with samples as rows and PCs as columns containing the coordinates.
+  * `$eig`: Eigenvalues for each PC dimension.
+  * `$vectors`: Loadings vectors for features onto each PC.
+  * Other metadata like `$method`, `$dist.name`, etc. See `mStat_calculate_PC` function for details on output format.
+* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
+* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
+* `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
+* `feature.change.func`: A function or character string specifying how to calculate the change from baseline value. This allows flexible options:
+  * If a function is provided, it will be applied to each row to calculate change. The function should take 2 arguments: value at timepoint t and value at baseline t0.
+  * If a character string is provided, following options are supported:
+    * 'relative change': (value\_t - value\_t0) / (value\_t + value\_t0)
+    * 'absolute change': value\_t - value\_t0
+    * 'log fold change': log2(value\_t + 1e-5) - log2(value\_t0 + 1e-5)
+  * Default is 'relative change'.
+  * If none of the above options are matched, an error will be thrown indicating the acceptable options or prompting the user to provide a custom function.
+* `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are:
+  * "identity": No transformation (default),
+  * "sqrt": Square root transformation,
+  * "log": Logarithmic transformation.
+* `feature.analysis.rarafy`: Logical, indicating whether to rarefy the data at the feature-level for analysis. If TRUE, the feature data will be rarefied before analysis. Default is TRUE.
+* `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
+* `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
+* `dotplot.feature.no`: A numeric value indicating the number of top abundant features to retain in the dotplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 40.
+* `feature.mt.method`: Character, multiple testing method for features, "fdr" or "none", default is "fdr".
+* `feature.sig.level`: Numeric, significance level cutoff for highlighting features, default is 0.1.
+* `base.size`: Base font size for the generated plots.
+* `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
+* `output.file`: A character string specifying the output file name for the report. This will also determine the title of the generated report. For example, if you set it to "path\_to\_your\_location/report.pdf", the title of the report will be "report".
+
+Now, let's see how we can implement the function:
 
 ```r
-
 # Load the data
 data(subset_T2D.obj)
+data.obj = subset_T2D.obj
 
-# Generate the report
+# Specify variable names
+group.var = "subject_race" # Variable used for grouping samples
+subject.var = "subject_id" # Variable used for subject identification
+time.var = "visit_number_num" # Variable used for time points
+strata.var = "subject_gender" # Variable to stratify by in diversity calculations and statistical tests
+
+# Specify diversity indices
+alpha.name = c("shannon", "observed_species") # Alpha diversity indices to calculate
+dist.name = c("BC",'Jaccard') # Beta diversity indices to calculate
+
+# Specify feature levels for visualization and testing
+vis.feature.level = c("Family","Genus") # Feature levels to use for visualization
+test.feature.level = c("Family") # Feature level to use for testing
+
+# Specify other parameters
+feature.dat.type = "count" # Type of the feature data
+theme.choice = "bw" # Theme choice for the plots
+base.size = 20 # Base size for the plots
+feature.mt.method = "none" # Multiple testing method for features
+feature.sig.level = 0.3 # Significance level cutoff for highlighting features
+feature.box.axis.transform = "sqrt"
+
+# Specify output file
+output.file = "path/to/Omics Analysis Report.pdf" # Replace with your own file path for the output report
+
+# Specify parameters for feature retention
+bar.area.feature.no = 40 # Number of top abundant features to retain in barplot and areaplot
+heatmap.feature.no = 40 # Number of top abundant features to retain in heatmap
+
+# Specify optional parameters
+dist.obj = NULL # Replace with a pre-computed distance matrix if available
+alpha.obj = NULL # Replace with a pre-computed alpha diversity matrix if available
+feature.change.func = "relative change" # Function for calculating feature change
+
+# Run the function
 mStat_generate_report_long(
-   # Assigning the longitudinal microbiome data object
-   data.obj = subset_T2D.obj,
-   
-   # Setting distance object and other objects to NULL
-   dist.obj = NULL,
-   alpha.obj = NULL,
-   pc.obj = NULL,
-   
-   # Grouping variable is 'subject_race'
-   group.var = "subject_race",
-   
-   # Stratification variable is 'subject_gender'
-   strata.var = "subject_gender",
-   
-   # No additional adjustment variables for statistical tests
-   test.adj.vars = NULL,
-   
-   # No additional visualization variables
-   vis.adj.vars = NULL,
-   
-   # Subject IDs are in 'subject_id' column
-   subject.var = "subject_id",
-   
-   # Time variable is 'visit_number_num'
-   time.var = "visit_number_num",
-   
-   # Analyzing 'shannon' and 'observed_species' alpha diversity indices
-   alpha.name = c("shannon","observed_species"),
-   
-   # Analyzing 'BC' and 'Jaccard' beta diversity indices
-   dist.name = c("BC",'Jaccard'),
-   
-   # No baseline and follow-up times provided
-   t0.level = NULL,
-   ts.levels = NULL,
-   
-   # Using 'none' for multiple testing method
-   feature.mt.method = "none",
-   
-   # Setting significance level to 0.3
-   feature.sig.level = 0.3,
-   
-   # Visualizing 'Family' and 'Genus' taxonomic levels
-   vis.feature.level = c("Family","Genus"),
-   
-   # Testing 'Family' taxonomic level
-   test.feature.level = c("Family"),
-   
-   # Using 'relative change' for feature change calculation
-   feature.change.func = "relative change",
-   
-   # Feature data type is 'count'
-   feature.dat.type = "count",
-   
-   # Setting prevalence filter to 0.1
-   prev.filter = 0.1,
-   
-   # Setting abundance filter to 1e-4
-   abund.filter = 1e-4,
-   
-   # Retaining top 40 features for barplot and areaplot
-   bar.area.feature.no = 40,
-   
-   # Retaining top 40 features for heatmap
-   heatmap.feature.no = 40,
-   
-   # Applying square root transformation to feature's boxplot y-axis
-   feature.box.axis.transform = "sqrt",
-   
-   # Using 'bw' theme
-   theme.choice = "bw",
-   
-   # Setting base font size to 20
-   base.size = 20,
-   
-   # Output report filename
-   output.file = "path/to/Omics Analysis Report.pdf"
+  data.obj = data.obj,
+  group.var = group.var,
+  test.adj.vars = NULL,
+  vis.adj.vars = NULL,
+  strata.var = strata.var,
+  subject.var = subject.var,
+  time.var = time.var,
+  t0.level = NULL,
+  ts.levels = NULL,
+  alpha.obj = alpha.obj,
+  alpha.name = alpha.name,
+  dist.obj = dist.obj,
+  dist.name = dist.name,
+  feature.change.func = feature.change.func,
+  vis.feature.level = vis.feature.level,
+  test.feature.level = test.feature.level,
+  bar.area.feature.no = bar.area.feature.no,
+  heatmap.feature.no = heatmap.feature.no,
+  feature.dat.type = feature.dat.type,
+  feature.mt.method = feature.mt.method,
+  feature.sig.level = feature.sig.level,
+  feature.box.axis.transform = feature.box.axis.transform,
+  theme.choice = theme.choice,
+  base.size = base.size,
+  output.file = output.file
 )
-
-
 ```
-
-Key Parameters Explanation:
-
-- `data.obj`: Contains the longitudinal microbiome data object.
-- `group.var`: Specifies the grouping variable, here set as "subject_race".
-- `subject.var`: Column name in metadata containing subject IDs, here "subject_id".
-- `time.var`: Column name in metadata containing time variable, here "visit_number_num".
-- `alpha.name`, `dist.name`: Diversity indices to be analyzed, here "shannon", "observed_species", "BC", and "Jaccard".
-- `vis.feature.level`, `test.feature.level`: Specifies the taxonomic levels for visualization and testing, "Family" and "Genus" for visualization, "Family" for testing.
-- `feature.change.func`: Specifies how to calculate the change from baseline value, here "relative change".
-- `output.file`: Specifies the output PDF report filename.
-
-mStat\_generate\_report\_long() then performs extensive longitudinal analysis and generates a report PDF containing all results.
 
 <figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0001.jpg" alt=""><figcaption></figcaption></figure>
 
@@ -260,13 +236,3 @@ mStat\_generate\_report\_long() then performs extensive longitudinal analysis an
 
 
 {% file src="../.gitbook/assets/Omics Analysis Report 69 subjects.pdf" %}
-
-#### Benefits of Using `mStat_generate_report_long`
-
-* **Comprehensive**: Conducts a wide array of analyses including alpha diversity, beta diversity, taxonomic composition, and compiles them into a single, easy-to-read report.
-* **Customizable**: Numerous parameters for customizing the analysis as per the study's needs, such as specifying diversity indices, taxonomic levels, data transformations, color palettes, etc.
-* **Automated Workflow**: Reduces manual errors and saves time compared to running each analysis individually. Streamlines the workflow from raw data to final report.
-* **Simplified Interpretation**: Provides interpretations of key results, significantly easing understanding of the findings.
-* **Publication-ready**: Generates a professionally formatted report that can be directly used for publications or presentations.
-
-Overall, `mStat_generate_report_long()` automates the end-to-end longitudinal microbiome analysis process, making it easy to go from raw data to interpretable and shareable findings. This saves researchers time while also reducing errors and improving reproducibility.
