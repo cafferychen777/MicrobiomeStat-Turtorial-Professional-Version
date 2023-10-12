@@ -1,28 +1,18 @@
 ---
 description: >-
-  Discover MicrobiomeStat's offerings: a user-centric approach, adaptability,
-  and a supportive environment for insightful microbiome research and data
-  illustration.
+  MicrobiomeStat provides a user-centric, adaptable, and supportive environment for insightful microbiome research and data illustration.
 ---
 
 # Exploring MicrobiomeStat: A Consideration for Your Research Toolkit
 
-**High-Quality Graphics**: One of the major advantages of **MicrobiomeStat** is its ability to generate charts of **exceptional quality** that are **publication-ready**. Our aesthetically pleasing and informative visualizations aid effective data interpretation.
+MicrobiomeStat provides comprehensive support for a wide array of input and conversion formats, accommodating the majority of formats utilized in microbiome research, including but not limited to qiime2, dada2, biom, mothur, phyloseq, DGEList, DESeqDataSet, and SummarizedExperiment. This compatibility facilitates a seamless data import process. We encourage users to contact us if they encounter a format used in microbiome research that is not currently supported.
 
-**Customization**: Despite its advanced capabilities, **MicrobiomeStat** offers **numerous customizable parameters**, giving you the flexibility to tailor the analysis outputs to your unique research requirements.
+MicrobiomeStat offers a wide array of visualization styles, tailored for microbiome research, including boxplots, violin plots, heatmaps, and more. It optimizes data representation for paired and longitudinal studies, and generates high-quality, publication-ready charts. Beyond its comprehensive support for longitudinal data analysis and visualization, MicrobiomeStat offers the flexibility to analyze and visualize data from individual time points. This allows users to focus on specific moments in their study, providing a more detailed perspective. Furthermore, it also includes a design for analyzing paired samples, adding another layer of depth to the insights that can be derived from the data.
 
-**Broad Input Format Support**: **MicrobiomeStat** supports an impressive range of input and conversion formats, accommodating virtually all commonly used formats in microbiome research. This includes - but is not limited to - **qiime2**, **dada2**, **biom**, **mothur**, **phyloseq**, **DGEList**, **DESeqDataSet**, and **SummarizedExperiment**. This broad compatibility makes the data importing process smooth and hassle-free. If there's a format used in microbiome research that is not yet supported, please feel free to contact us!
+Despite its advanced features, MicrobiomeStat provides customizable parameters, allowing users to adapt analysis outputs to their research needs. Built with a high degree of flexibility, MicrobiomeStat is not confined to the analysis of microbiome data alone. Its versatile design extends its capabilities to accommodate and effectively analyze a variety of other omics data, making it a comprehensive tool for multi-omics research and data interpretation.
 
-**Comprehensive Visualization Capabilities**: MicrobiomeStat boasts a plethora of visualization styles, effectively catering to all current forms used in microbiome research. Our offerings include specific chart types such as **boxplot**, **violinplot**, **scatterplot**, **barplot**, **heatmap**, **dotplot**, **ordinationplot**, **areaplot**, and **spaghettiplot**. Moreover, our designs for **paired and longitudinal studies have been specially optimized** to highlight the unique characteristics and insights of your data. With MicrobiomeStat, your data will tell its story in the most impactful way possible!
+MicrobiomeStat supports LinDA, recognized as one of the optimal Differential Abundance Analysis (DAA) methods in 2023. Our team, with over 15 years of expertise in statistical methods for microbiome research, is committed to delivering replicable and rigorous results, guided by our extensive experience and meticulous approach to data analysis.
 
-**Multi-Omics Data Analysis**: As we continually expand **MicrobiomeStat**, it's evolving into a comprehensive package for multi-omics data analysis. Data analyzed using **MicrobiomeStat** will have an edge in **multi-omics data integration**.
-
-**Support for LinDA**: **MicrobiomeStat** supports **LinDA**, recognized as one of the optimal Differential Abundance Analysis (DAA) methods in 2023.
-
-**Experienced Team**: Our team brings over **15 years of expertise** in statistical methods for microbiome research. We aim to deliver **replicable and rigorous** results, guided by our rich experience and rigorous spirit of data analysis.
-
-**Outputs as ggplot objects**: Unique to **MicrobiomeStat**, it provides outputs as **ggplot objects**, allowing users to further manipulate and customize their graphs post-analysis.
-
-**MicrobiomeStat** isn't just a tool—it's your companion in the exciting journey of microbiome research!
+Distinctively, MicrobiomeStat's outputs are compatible with the 'aplot' package, enabling users to create interactive graphics for further manipulation and customization post-analysis. This unique combination of overall and individual time point analysis, along with paired sample analysis, makes MicrobiomeStat a versatile tool for comprehensive and nuanced microbiome research.
 
 <figure><img src="../.gitbook/assets/DALL·E 2023-10-07 17.57.44 - Illustration of a collaborative research environment. A male scientist with European descent and a female scientist with South Asian descent are discu.png" alt=""><figcaption></figcaption></figure>
