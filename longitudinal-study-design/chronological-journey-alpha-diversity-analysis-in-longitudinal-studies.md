@@ -31,8 +31,6 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
 )
 ```
 
-**Alpha Diversity Trend Test Results**
-
 **Shannon Diversity**
 
 | Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
@@ -95,6 +93,27 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
   adj.vars = "sample_body_site"
 )
 ```
+
+**Shannon**
+
+| Term                          | Estimate | Std.Error | Statistic | P.Value     |
+|-------------------------------|---------:|----------:|----------:|------------:|
+| (Intercept)                   |    0.544 |    0.0959 |     5.67  | 0.000000423 |
+| subject_racecaucasian         |   0.0222 |    0.108  |     0.205 | 0.838       |
+| subject_racehispanic_or_latino|  -0.0705 |    0.222  |    -0.318 | 0.752       |
+| subject_race                  |      NA  |      NA   |     0.114 | 0.893       |
+| Residuals                     |      NA  |      NA   |      NA   | NA          |
+
+**Observed Species**
+
+| Term                          | Estimate | Std.Error | Statistic | P.Value |
+|-------------------------------|---------:|----------:|----------:|--------:|
+| (Intercept)                   |    40.6  |    5.82   |    6.98   | 2.51e-9 |
+| subject_racecaucasian         |   -1.95  |    6.56   |   -0.297  | 7.67e-1 |
+| subject_racehispanic_or_latino|   -7.04  |   13.4    |   -0.524  | 6.02e-1 |
+| subject_race                  |     NA   |     NA    |    0.143  | 8.67e-1 |
+| Residuals                     |     NA   |     NA    |    NA     | NA      |
+
 
 We can then visualize the alpha diversity changes over time for each individual in the study, grouped by race, using a spaghetti plot.
 
