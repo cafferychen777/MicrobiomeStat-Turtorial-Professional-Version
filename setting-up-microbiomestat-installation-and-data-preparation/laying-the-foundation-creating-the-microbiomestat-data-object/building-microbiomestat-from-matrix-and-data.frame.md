@@ -1,10 +1,10 @@
 ---
 description: >-
-  description: >-
-  Discover how to craft the MicrobiomeStat data object using matrices and data frames from your R environment or by importing data from external CSV files.
+  Discover how to craft the MicrobiomeStat data object using matrices and data
+  frames from your R environment or by importing data from external CSV files.
 ---
 
-# Constructing the MicrobiomeStat Data Object from Matrix, Dataframe, and CSV Files
+# Building MicrobiomeStat from Matrix and Data.frame
 
 The MicrobiomeStat data object consists of the following components:
 
@@ -81,7 +81,7 @@ MicrobiomeData <- list(
 
 To facilitate your understanding and to ease the process of setting up your data, we have provided sample CSV files that can be used as templates. By analyzing these sample files, you can structure your data similarly and ensure it's compatible with our tool.
 
-For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`. 
+For this demonstration, we'll import data from three external CSV files: `feature_tab.csv`, `meta_dat.csv`, and `feature_ann.csv`.
 
 #### Download Sample Data Files
 
@@ -120,5 +120,3 @@ MicrobiomeData <- list(
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.28.16.png" alt=""><figcaption><p>This visualization presents the structure of the imported <code>MicrobiomeStat</code> data object using R's <code>str</code> function, illustrating the organization of the components sourced from external CSV files.</p></figcaption></figure>
 
 With either the provided sample data or your own structured data, you now have a complete MicrobiomeStat data object ready for subsequent analysis and visualization.
-
-
