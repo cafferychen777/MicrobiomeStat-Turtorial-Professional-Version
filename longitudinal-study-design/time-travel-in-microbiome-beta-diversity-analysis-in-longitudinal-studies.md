@@ -7,33 +7,65 @@ description: >-
 
 # Beta Diversity Analysis in Longitudinal Data with MicrobiomeStat
 
-In the exploration of longitudinal microbiome data, understanding the **patterns and shifts in beta diversity over time** is crucial. `MicrobiomeStat` offers sophisticated and robust tools to dissect these temporal intricacies in beta diversity.
+This guide outlines how to use MicrobiomeStat for beta diversity analysis, specifically focusing on visualizing and quantifying temporal changes in microbial community composition. MicrobiomeStat offers tools for examining longitudinal patterns in beta diversity.
 
-## Generate Beta Diversity Trend Test for Longitudinal Data
+Before starting with pre-computed data objects, it's beneficial to grasp the utility of `dist.obj` and `pc.obj` in the context of this toolkit. By design, if these aren't provided, `MicrobiomeStat` auto-generates them. The `dist.obj` is computed using the `mStat_calculate_beta_diversity` function. When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_distance` function refines the microbial community dissimilarities using a method based on linear models and multidimensional scaling. This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
-The function `generate_beta_trend_test_long()` conducts a comprehensive examination utilizing a **linear mixed effects model** to discern the longitudinal trend in beta diversity. It processes the distance matrix as the response, taking time as a fixed effect and subject as a random effect.
+`pc.obj`, in its essence, is derived from the `mStat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers with a penchant for advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. Subsequently, these results can be reformatted to align with the `pc.obj` structure, facilitating effortless integration with `MicrobiomeStat`.
 
-### **Usage:**
+The range of distance measures (`dist.name`) supported by MicrobiomeStat includes "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence). It's important to note that some methods, particularly "UniFrac", require a phylogenetic tree. Therefore, before using these metrics, ensure that the `tree` component is included in the `data.obj`.
+
+Building on these distance measures, the `generate_beta_trend_test_long()` function in MicrobiomeStat utilizes a linear mixed effects model for longitudinal beta diversity trend analysis. This function uses the distance matrix as the response, time as a fixed effect, and subject as a random effect. It also supports interaction with a grouping variable and inclusion of covariates for model refinement.
+
 ```r
 data(subset_T2D.obj)
 generate_beta_trend_test_long(
   data.obj = subset_T2D.obj,
   dist.obj = NULL,
   subject.var = "subject_id",
-  time.var = "visit_number",
+  time.var = "visit_number_num",
   group.var = "subject_race",
   adj.vars = c("subject_gender", "sample_body_site"),
   dist.name = c("BC", "Jaccard")
 )
 ```
 
-In this application, the function evaluates the **impact of time on beta diversity**, returning estimated coefficients that portray the **trends over time** and **differences between groups**.
+| Term | Estimate | Std.Error | Statistic | P.Value |
+| --- | --- | --- | --- | --- |
+| (Intercept) | 1.95 | 0.142 | 13.8 | 1.59e-20 |
+| subject_racecaucasian | -0.280 | 0.162 | -1.73 | 8.90e-2 |
+| subject_racehispanic_or_latino | 0.248 | 0.308 | 0.805 | 4.25e-1 |
+| visit_number_num | -0.0235 | 0.0245 | -0.959 | 3.44e-1 |
+| subject_racecaucasian:visit_number_num | 0.0490 | 0.0280 | 1.75 | 8.88e-2 |
+| subject_racehispanic_or_latino:visit_number_num | 0.0264 | 0.0484 | 0.545 | 5.90e-1 |
+| subject_race:visit_number_num | NA | NA | 1.56 | 2.27e-1 |
 
-## Generate Beta Diversity Volatility Test for Longitudinal Data
+The `generate_beta_volatility_test_long()` function performs a volatility test for beta diversity in longitudinal data. This function calculates the beta diversity volatility by determining the average rate of change in beta diversity over time for each subject. 
 
-Another paramount function, `generate_beta_volatility_test_long()`, calculates a **volatility test for beta diversity** in longitudinal data, testing the relationship between beta diversity volatility and the specified group variable.
+In mathematical terms, the volatility (V) can be calculated as follows:
 
-### **Usage:**
+First, let's define a few terms:
+
+* "d_i" represents the beta diversity (distance) between time "i" and "i+1".
+* "delta_t_i" is the time difference between time "i" and "i+1".
+
+With these terms, the volatility for a subject is calculated as:
+
+$$
+V = \frac{1}{N-1} \sum \left| \frac{d_i}{\Delta t_i} \right|
+$$
+
+Here:
+
+* "N" is the total number of time points for the subject.
+* The summation "sum" is over all time points for which "d_i" is defined.
+
+This formula calculates the average rate of change in distance per unit time, which is an appropriate measure of volatility in this context. 
+
+To account for the adjustment variables in the distance calculation, the function employs Multidimensional Scaling (MDS). This technique transforms the distance matrix into a set of coordinates. These coordinates are then adjusted to account for the influence of the covariates, and the adjusted coordinates are used to compute the adjusted distances.
+
+After the volatility is calculated, the function tests the relationship between the calculated volatility and a specified group variable. This is done using linear regression or ANOVA for multi-category variables, allowing for the exploration of how beta diversity volatility differs across different groups.
+
 ```r
 data(subset_T2D.obj)
 generate_beta_volatility_test_long(
@@ -42,18 +74,24 @@ generate_beta_volatility_test_long(
   subject.var = "subject_id",
   time.var = "visit_number_num",
   group.var = "subject_race",
-  adj.vars = NULL,
+  adj.vars = "sample_body_site",
   dist.name = c("BC", "Jaccard")
 )
 ```
 
-This function computes the **volatility of the beta diversity** for each subject and fits linear models to test the association. The output is a clear portrayal of the **associations and patterns in beta diversity volatility over time**, aiding in the profound understanding of the microbiome's temporal dynamics.
+| Term                        | Estimate | Std.Error | Statistic | P.Value     |
+|-----------------------------|----------|-----------|-----------|-------------|
+| (Intercept)                 | 0.956    | 0.161     | 5.93      | 0.000000164 |
+| subject_racecaucasian       | -0.104   | 0.182     | -0.571    | 0.570       |
+| subject_racehispanic_or_latino | -0.502  | 0.372     | -1.35     | 0.183       |
+| subject_race                | NA       | NA        | 0.909     | 0.408       |
+| Residuals                   | NA       | NA        | NA        | NA          |
 
-Leverage these **advanced tools by MicrobiomeStat** to delve deeper into the temporal landscape of beta diversity in your longitudinal microbiome studies. Your pathway to uncovering the **underlying patterns and shifts in microbial communities** over time is now more straightforward and insightful than ever before.
 
-Now let's **visualize these temporal journeys using `generate_beta_pc_boxplot_long()`**. This function traces individual trajectories across ordination Axes, connecting the dots from one timepoint to the next.
+In addition to these statistical analyses, MicrobiomeStat also provides visualization tools for beta diversity. For instance, the `generate_beta_pc_boxplot_long()` function creates a plot that shows individual trajectories across ordination axes, connecting data points from one timepoint to the next.
 
 ```{r
+data(ecam.obj)
 generate_beta_pc_boxplot_long(
   data.obj = ecam.obj,
   dist.obj = NULL,
@@ -78,9 +116,7 @@ generate_beta_pc_boxplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 11.39.22.png" alt=""><figcaption><p>Generated by the <code>generate_beta_pc_boxplot_long()</code> function, this plot illustrates the temporal trajectories of beta diversity for each individual subject. It specifically displays the changes along the first two principal coordinate axes calculated from Bray-Curtis dissimilarity matrices. Each line represents an individual subject in the study, connecting their baseline microbiome position to subsequent timepoints.</p></figcaption></figure>
 
-The resulting plot maps each subject's unique path across the ordination landscape, **telling the story of their microbiome's evolution**. By connecting the dots from one timepoint to the next, we trace out individual trajectories of change.
-
-Now let's glimpse the big picture using `generate_beta_ordination_long()`. This paints a landscape where samples cluster based on similarity, **illuminating global patterns**.
+Expanding on this, the `generate_beta_ordination_long()` function creates a plot where samples cluster based on similarity, providing a global overview of the data.
 
 ```{r
 generate_beta_ordination_long(
@@ -107,9 +143,7 @@ generate_beta_ordination_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 11.45.10.png" alt=""><figcaption><p>Generated by the <code>generate_beta_ordination_long()</code> function, this PCoA plot illustrates the temporal trajectories of microbiome beta diversity for each individual subject. It specifically displays sample positioning along the first two ordination axes calculated from Bray-Curtis dissimilarity matrices. Each point represents one subject's microbial community at a given timepoint.</p></figcaption></figure>
 
-The resulting ordination plot visualizes the relationships between samples, with **proximity indicating similarity**. We observe intricate patterns as samples shift across the terrain over time.
-
-Finally, `generate_beta_change_spaghettiplot_long()` **connects the dots for each subject**, tracing individual trajectories of microbial change.
+Lastly, the `generate_beta_change_spaghettiplot_long()` function creates a plot that shows individual trajectories of microbial change, providing a detailed view of each subject's journey through time.
 
 ```{r
 generate_beta_change_spaghettiplot_long(
@@ -120,7 +154,7 @@ generate_beta_change_spaghettiplot_long(
   t0.level = NULL,
   ts.levels = NULL,
   group.var = "diet",
-  strata.var = NULL,
+  strata.var = "antiexposedall",
   dist.name = c("BC"),
   base.size = 20,
   theme.choice = "bw",
@@ -134,6 +168,4 @@ generate_beta_change_spaghettiplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 11.48.32.png" alt=""><figcaption><p>Generated by the <code>generate_beta_change_spaghettiplot_long()</code> function, this spaghetti plot illustrates the temporal trajectories of microbiome beta diversity for each individual subject. It specifically displays changes in Bray-Curtis dissimilarity from baseline over subsequent months. Each line represents one subject's microbial community moving through time.</p></figcaption></figure>
 
-The resulting spaghetti plot **visualizes each subject's journey through time**, elucidating the unique twists and turns of their microbial narrative.
-
-And with that, we conclude our expedition through the dimensional shifts of beta diversity over time. From statistical tests to ordination plots, MicrobiomeStat furnished an illuminating travelogue of this intricate terrain. What an adventure!
+In conclusion, the tools provided by MicrobiomeStat offer a comprehensive approach to analyzing and visualizing the temporal dynamics of the microbiome in longitudinal studies.
