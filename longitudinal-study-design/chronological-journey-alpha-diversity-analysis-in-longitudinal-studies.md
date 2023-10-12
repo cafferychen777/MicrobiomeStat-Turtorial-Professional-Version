@@ -57,10 +57,6 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
 
 In the trend test, our primary focus is on the interaction term between `group.var` and `time.var`. When the levels of `group.var` are greater than 2, an ANOVA is performed, which is represented in the last row of the table.
 
-Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
-
-Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
-
 Another useful function is `generate_alpha_volatility_test_long`. This function calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
 
 In mathematical terms, volatility (V) can be represented like this:
@@ -96,24 +92,23 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
 
 **Shannon**
 
-| Term                          | Estimate | Std.Error | Statistic | P.Value     |
-|-------------------------------|---------:|----------:|----------:|------------:|
-| (Intercept)                   |    0.544 |    0.0959 |     5.67  | 0.000000423 |
-| subject_racecaucasian         |   0.0222 |    0.108  |     0.205 | 0.838       |
-| subject_racehispanic_or_latino|  -0.0705 |    0.222  |    -0.318 | 0.752       |
-| subject_race                  |      NA  |      NA   |     0.114 | 0.893       |
-| Residuals                     |      NA  |      NA   |      NA   | NA          |
+| Term                              | Estimate | Std.Error | Statistic |     P.Value |
+| --------------------------------- | -------: | --------: | --------: | ----------: |
+| (Intercept)                       |    0.544 |    0.0959 |      5.67 | 0.000000423 |
+| subject\_racecaucasian            |   0.0222 |     0.108 |     0.205 |       0.838 |
+| subject\_racehispanic\_or\_latino |  -0.0705 |     0.222 |    -0.318 |       0.752 |
+| subject\_race                     |       NA |        NA |     0.114 |       0.893 |
+| Residuals                         |       NA |        NA |        NA |          NA |
 
 **Observed Species**
 
-| Term                          | Estimate | Std.Error | Statistic | P.Value |
-|-------------------------------|---------:|----------:|----------:|--------:|
-| (Intercept)                   |    40.6  |    5.82   |    6.98   | 2.51e-9 |
-| subject_racecaucasian         |   -1.95  |    6.56   |   -0.297  | 7.67e-1 |
-| subject_racehispanic_or_latino|   -7.04  |   13.4    |   -0.524  | 6.02e-1 |
-| subject_race                  |     NA   |     NA    |    0.143  | 8.67e-1 |
-| Residuals                     |     NA   |     NA    |    NA     | NA      |
-
+| Term                              | Estimate | Std.Error | Statistic | P.Value |
+| --------------------------------- | -------: | --------: | --------: | ------: |
+| (Intercept)                       |     40.6 |      5.82 |      6.98 | 2.51e-9 |
+| subject\_racecaucasian            |    -1.95 |      6.56 |    -0.297 | 7.67e-1 |
+| subject\_racehispanic\_or\_latino |    -7.04 |      13.4 |    -0.524 | 6.02e-1 |
+| subject\_race                     |       NA |        NA |     0.143 | 8.67e-1 |
+| Residuals                         |       NA |        NA |        NA |      NA |
 
 We can then visualize the alpha diversity changes over time for each individual in the study, grouped by race, using a spaghetti plot.
 
@@ -121,13 +116,13 @@ We can then visualize the alpha diversity changes over time for each individual 
 # Generate a spaghetti plot of alpha diversity over time
 generate_alpha_spaghettiplot_long(
   data.obj = subset_T2D.obj,
-  alpha.obj = T2D.alpha.obj,
+  alpha.obj = NULL,
   alpha.name = c("shannon"),
   depth = NULL,
   subject.var = "subject_id",
   time.var = "visit_number",
-  t0.level = sort(unique(T2D.obj$meta.dat$visit_number))[1],
-  ts.levels = sort(unique(T2D.obj$meta.dat$visit_number))[-1],
+  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number))[1],
+  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number))[-1],
   group.var = "subject_race",
   strata.var = NULL,
   theme.choice = "bw",
@@ -139,7 +134,7 @@ generate_alpha_spaghettiplot_long(
 )
 ```
 
-This plot illustrates the temporal changes in the alpha diversity of each individual, stratified by subject race. This provides insights into the impact of race on microbiome diversity trends over time.
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 09.38.19.png" alt=""><figcaption><p>This plot illustrates the temporal changes in the alpha diversity of each individual, stratified by subject race. This provides insights into the impact of race on microbiome diversity trends over time.</p></figcaption></figure>
 
 Next, we use the `generate_alpha_boxplot_long()` function to visualize alpha diversity over time.
 
@@ -147,13 +142,13 @@ Next, we use the `generate_alpha_boxplot_long()` function to visualize alpha div
 # Render a boxplot encapsulating alpha diversity across chosen time points
 generate_alpha_boxplot_long(
   data.obj = subset_T2D.obj,
-  alpha.obj = T2D.alpha.obj,
+  alpha.obj = NULL,
   alpha.name = c("shannon"),
   depth = NULL,
   subject.var = "subject_id",
-  time.var = "visit_number",
-  t0.level = sort(unique(T2D.obj$meta.dat$visit_number))[1],
-  ts.levels = sort(unique(T2D.obj$meta.dat$visit_number))[2:6],
+  time.var = "visit_number_num",
+  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number_num))[1],
+  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number_num))[2:4],
   group.var = "subject_race",
   strata.var = NULL,
   base.size = 20,
@@ -166,6 +161,6 @@ generate_alpha_boxplot_long(
 )
 ```
 
-This boxplot displays the distribution of Shannon diversity over selected time points, segmented by subject race. This plot provides insights into the influence of race on shifts in microbiome diversity over time.
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 09.42.30.png" alt=""><figcaption><p>This boxplot displays the distribution of Shannon diversity over selected time points, segmented by subject race. This plot provides insights into the influence of race on shifts in microbiome diversity over time.</p></figcaption></figure>
 
-In the following sections, we will continue to explore the temporal intricacies of microbiome data using more advanced methods provided by MicrobiomeStat.
+In the following sections, we will continue to explore the temporal intricacies of microbiome data using more methods provided by MicrobiomeStat.
