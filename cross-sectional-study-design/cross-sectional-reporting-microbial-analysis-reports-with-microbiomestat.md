@@ -23,9 +23,9 @@ This approach ensures a consistent and thorough interpretation of data.
 
 The `mStat_generate_report_single()` function is central to this process. It performs:
 
-* **Alpha diversity** analyses: This uses functions like `mStat_calculate_alpha_diversity()`, `generate_alpha_boxplot_single()`, and `generate_alpha_test_single()`.
-* **Beta diversity** analyses: This involves functions such as `mStat_calculate_beta_diversity()`, `generate_beta_ordination_single()`, and `generate_beta_test_single()`.
-* **Taxonomic composition** analyses: This employs `generate_taxa_barplot_single()`, `generate_taxa_dotplot_single()`, `generate_taxa_heatmap_single()`, `generate_taxa_test_single()` and `generate_taxa_volcano_single()`.
+* **Alpha diversity**: This uses functions like `mStat_calculate_alpha_diversity()`, `generate_alpha_boxplot_single()`, and `generate_alpha_test_single()`.
+* **Beta diversity**: This involves functions such as `mStat_calculate_beta_diversity()`, `generate_beta_ordination_single()`, and `generate_beta_test_single()`.
+* **Feature-level**: This employs `generate_taxa_barplot_single()`, `generate_taxa_dotplot_single()`, `generate_taxa_heatmap_single()`, `generate_taxa_test_single()` and `generate_taxa_volcano_single()`.
 
 The function then compiles these analyses into a comprehensive PDF report. The report includes:
 
