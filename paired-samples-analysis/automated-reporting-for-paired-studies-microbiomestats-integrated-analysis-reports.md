@@ -23,9 +23,9 @@ This approach ensures a consistent and thorough interpretation of data.
 
 The `mStat_generate_report_pair()` function is central to this process. It performs:
 
-* **Alpha diversity** analyses: The functions `generate_alpha_test_pair()`, `generate_alpha_change_test_pair()`, `generate_alpha_boxplot_long()`, and `generate_alpha_change_boxplot_pair()` are used for this purpose.
-* **Beta diversity** analyses: This is achieved through functions including `generate_beta_change_test_pair()`, `generate_beta_ordination_pair()`, `generate_beta_change_boxplot_pair()`, `generate_beta_pc_change_boxplot_pair()`, and `generate_beta_pc_boxplot_long()`.
-* **Feature-level** analyses: This involves the use of `generate_taxa_test_pair()`, `generate_taxa_change_test_pair()`, `generate_taxa_indiv_boxplot_long()`, `generate_taxa_boxplot_long()`, `generate_taxa_indiv_change_boxplot_pair()`, `generate_taxa_change_boxplot_pair()`, `generate_taxa_barplot_pair()`, `generate_taxa_dotplot_pair()`, `generate_taxa_change_dotplot_pair()`, `generate_taxa_heatmap_pair()`, and `generate_taxa_change_heatmap_pair()`.
+* **Alpha diversity**: The functions `generate_alpha_test_pair()`, `generate_alpha_change_test_pair()`, `generate_alpha_boxplot_long()`, and `generate_alpha_change_boxplot_pair()` are used for this purpose.
+* **Beta diversity**: This is achieved through functions including `generate_beta_change_test_pair()`, `generate_beta_ordination_pair()`, `generate_beta_change_boxplot_pair()`, `generate_beta_pc_change_boxplot_pair()`, and `generate_beta_pc_boxplot_long()`.
+* **Feature-level**: This involves the use of `generate_taxa_test_pair()`, `generate_taxa_change_test_pair()`, `generate_taxa_indiv_boxplot_long()`, `generate_taxa_boxplot_long()`, `generate_taxa_indiv_change_boxplot_pair()`, `generate_taxa_change_boxplot_pair()`, `generate_taxa_barplot_pair()`, `generate_taxa_dotplot_pair()`, `generate_taxa_change_dotplot_pair()`, `generate_taxa_heatmap_pair()`, and `generate_taxa_change_heatmap_pair()`.
 
 The function then compiles these analyses into a comprehensive PDF report. The report includes:
 
@@ -254,3 +254,9 @@ mStat_generate_report_pair(
 <figure><img src="../.gitbook/assets/mStat_generate_report_pair_example_page-0047.jpg" alt=""><figcaption></figcaption></figure>
 
 {% file src="../.gitbook/assets/mStat_generate_report_pair_example (1).pdf" %}
+
+The automated report reduces the need for manual analysis and ensures consistency. By integrating results from different analytical dimensions, it provides a comprehensive view of the data.
+
+MicrobiomeStat equips researchers with automated workflows to quickly synthesize and report findings from cross-sectional studies. The standardized reports integrate multidimensional perspectives, including alpha diversity, beta diversity, and differential abundance analysis, for comprehensive insights.
+
+The reports contain clear visualizations and statistical summaries to aid in biological interpretation and facilitate result dissemination. By automating time-consuming manual analytical tasks, MicrobiomeStat enables rapid, reproducible, and robust reporting to advance microbiome research.

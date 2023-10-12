@@ -22,9 +22,7 @@ MicrobiomeStat provides an efficient solution by generating integrated reports f
 This approach ensures a consistent and thorough interpretation of data.
 
 * **Alpha diversity**: Functions used include `generate_alpha_boxplot_long()`, `generate_alpha_spaghettiplot_long()`, `generate_alpha_trend_test_long()`, and `generate_alpha_volatility_test_long()`.
-
 * **Beta diversity**: Functions used include `generate_beta_ordination_long()`, `generate_beta_pc_boxplot_long()`, `generate_beta_change_spaghettiplot_long()`, `generate_beta_trend_test_long()`, and `generate_beta_volatility_test_long()`.
-
 * **Feature-level**: Functions used include `generate_taxa_areaplot_long()`, `generate_taxa_heatmap_long()`, `generate_taxa_trend_test_long()`, `generate_taxa_volatility_test_long()`, `generate_taxa_boxplot_long()`, `generate_taxa_spaghettiplot_long()`, `generate_taxa_trend_volcano_long()`, `generate_taxa_volatility_volcano_long()`, `generate_taxa_barplot_long()`, `generate_taxa_change_heatmap_long()`, `generate_taxa_indiv_spaghettiplot_long()`, and `generate_taxa_indiv_boxplot_long()`.
 
 It then compiles the results into a publication-ready PDF report containing:
@@ -55,7 +53,6 @@ Before using the function, it's important to understand the parameters:
   * Numeric: When `time.var` is numeric, you don't need to set `t0.level` and `ts.levels`, as they will be automatically arranged in ascending order.
   * Factor: If `time.var` is a factor, and if `t0.level` and `ts.levels` are not set, they will be automatically arranged according to the levels of the factor. However, if you have specific needs for the order of the levels, you can manually adjust `t0.level` and `ts.levels`.
   * Character: If `time.var` is character, it's recommended to manually set `t0.level` and `ts.levels`, as the automatic arrangement might not reflect the correct order.
-
 * `t0.level`: This parameter represents the first time point in your data.
 * `ts.levels`: This parameter represents the other time points in your data, arranged in the order you desire, excluding `t0.level`.
 * `alpha.obj`: An optional list containing pre-calculated alpha diversity indices. If NULL (default), alpha diversity indices will be calculated using `mStat_calculate_alpha_diversity` function.
@@ -234,5 +231,10 @@ mStat_generate_report_long(
 
 <figure><img src="../.gitbook/assets/Omics Analysis Report 69 subjects_page-0035.jpg" alt=""><figcaption></figcaption></figure>
 
-
 {% file src="../.gitbook/assets/Omics Analysis Report 69 subjects.pdf" %}
+
+The automated report reduces the need for manual analysis and ensures consistency. By integrating results from different analytical dimensions, it provides a comprehensive view of the data.
+
+MicrobiomeStat equips researchers with automated workflows to quickly synthesize and report findings from cross-sectional studies. The standardized reports integrate multidimensional perspectives, including alpha diversity, beta diversity, and differential abundance analysis, for comprehensive insights.
+
+The reports contain clear visualizations and statistical summaries to aid in biological interpretation and facilitate result dissemination. By automating time-consuming manual analytical tasks, MicrobiomeStat enables rapid, reproducible, and robust reporting to advance microbiome research.
