@@ -15,7 +15,9 @@ Before delving further, it's pivotal to comprehend the significance of `alpha.ob
 
 Additionally, the alpha functions in MicrobiomeStat, by default, undertake data rarefaction. This process ensures the datasets are rendered more comparable by harmonizing the sequencing depth across samples. Such standardization is vital for comparative analyses. However, if you're aiming to work with the original, non-rarefied data when determining alpha diversity, it's imperative to pre-calculate `alpha.obj`. By doing so, the intrinsic rarefaction process is sidestepped, thereby maintaining the data's originality.
 
-After the initial preparation, we can use MicrobiomeStat's functions to test for differences in alpha diversity across timepoints. One such function is `generate_alpha_trend_test_long`, which uses a linear mixed-effects model to analyze longitudinal alpha diversity data. It tests whether alpha diversity changes significantly over time, while taking into account individual variability and other potential confounding factors. The mixed-effects model allows for within-subject and between-subject variability, making it suitable for unbalanced data and repeated measures. The trend test checks if the association between alpha diversity and time is statistically significant, providing insights into temporal dynamics in microbiome diversity.
+To account for potential confounding factors that may influence the relationship between alpha diversity and time, the function allows for the inclusion of additional variables (`adj.vars`) in the model. These variables are adjusted for in the linear mixed-effects model, ensuring that the influence of time on alpha diversity is evaluated more accurately.
+
+After the initial preparation, we can use MicrobiomeStat's functions to test for differences in alpha diversity across timepoints. One such function is `generate_alpha_trend_test_long`, which uses a linear mixed-effects model to analyze longitudinal alpha diversity data. It tests whether alpha diversity changes significantly over time, while taking into account individual variability and other potential confounding factors. The mixed-effects model allows for within-subject and between-subject variability, making it suitable for unbalanced data and repeated measures. The trend test checks if the association between alpha diversity and time is statistically significant, providing insights into temporal dynamics in microbiome diversity."
 
 ```r
 data("subset_T2D.obj") 
@@ -28,6 +30,33 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
   adj.vars = NULL
 )
 ```
+**Alpha Diversity Trend Test Results**
+
+**Shannon Diversity**
+
+| Term                                            | Estimate | Std.Error | Statistic | P.Value    |
+|-------------------------------------------------|----------|-----------|-----------|------------|
+| (Intercept)                                     | 2.59     | 0.204     | 12.7      | 5.13e-27   |
+| subject_racecaucasian                           | 0.214    | 0.231     | 0.928     | 3.55e-1    |
+| subject_racehispanic_or_latino                  | 0.197    | 0.441     | 0.446     | 6.56e-1    |
+| visit_number_num                                | -0.00852 | 0.0547    | -0.156    | 8.76e-1    |
+| subject_racecaucasian:visit_number_num          | -0.0105  | 0.0617    | -0.170    | 8.65e-1    |
+| subject_racehispanic_or_latino:visit_number_num | 0.0515   | 0.116     | 0.443     | 6.58e-1    |
+| subject_race:visit_number_num                   | NA       | NA        | 0.175     | 8.40e-1    |
+
+**Observed Species Diversity**
+
+| Term                                            | Estimate | Std.Error | Statistic | P.Value    |
+|-------------------------------------------------|----------|-----------|-----------|------------|
+| (Intercept)                                     | 118      | 16.1      | 7.36      | 3.22e-12   |
+| subject_racecaucasian                           | 23.2     | 18.2      | 1.28      | 2.02e-1    |
+| subject_racehispanic_or_latino                  | 20.1     | 34.6      | 0.580     | 5.62e-1    |
+| visit_number_num                                | -0.152   | 4.35      | -0.0349   | 9.72e-1    |
+| subject_racecaucasian:visit_number_num          | -0.792   | 4.90      | -0.162    | 8.72e-1    |
+| subject_racehispanic_or_latino:visit_number_num | 2.71     | 9.28      | 0.292     | 7.70e-1    |
+| subject_race:visit_number_num                   | NA       | NA        | 0.0910    | 9.13e-1    |
+
+In the trend test, our primary focus is on the interaction term between `group.var` and `time.var`. When the levels of `group.var` are greater than 2, an ANOVA is performed, which is represented in the last row of the table.
 
 Another useful function is `generate_alpha_volatility_test_long`, which calculates the volatility of alpha diversity measures in longitudinal data and tests the association between the volatility and a group variable. Volatility is calculated as the mean of absolute differences between consecutive alpha diversity measures, normalized by the time difference.
 
