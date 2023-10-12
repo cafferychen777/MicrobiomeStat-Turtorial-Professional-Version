@@ -54,4 +54,4 @@ It synchronizes sample names in `meta.dat`, `feature.tab`, and `feature.agg.list
 
 This maintains data consistency when updating sample identifiers.
 
-**Proper metadata management ensures high-quality integrated analyses.** MicrobiomeStat empowers seamless metadata updates to enable robust microbiome discoveries.
+Proper metadata management ensures high-quality integrated analyses. MicrobiomeStat empowers seamless metadata updates to enable robust microbiome discoveries.

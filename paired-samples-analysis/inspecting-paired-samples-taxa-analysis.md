@@ -7,7 +7,7 @@ description: >-
 
 # Inspecting Paired Samples: Feature-level Analysis
 
-In this section, we focus on the variations within microbial ecosystems, particularly taxa variations. **MicrobiomeStat** provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
+In this section, we focus on the variations within microbial ecosystems, particularly taxa variations. MicrobiomeStat provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
 
 Our goal is to understand patterns in taxa composition, prevalence, abundance, and changes, and to identify samples with similar trends of taxa variation. The tutorial will guide you through the process of analyzing your microbial data and understanding the complexity of microbial communities.
 
@@ -115,7 +115,7 @@ plot.list
 
 The outcomes enable researchers to recognize taxa that exhibit notable changes in abundance across timepoints, and to determine whether these changes are associated with group affiliations. In the following sections, we will demonstrate how to visualize features of interest from the differential abundance analysis, or other specific features, using various methods.
 
-In the analysis of large-scale microbiome datasets, it's often necessary to concentrate on a subset of taxa that are either most abundant or exhibit significant variability. This focus is facilitated by two parameters, `top.k.plot` and `top.k.func`, which are particularly useful when creating boxplot visualizations. 
+In the analysis of large-scale microbiome datasets, it's often necessary to concentrate on a subset of taxa that are either most abundant or exhibit significant variability. This focus is facilitated by two parameters, `top.k.plot` and `top.k.func`, which are particularly useful when creating boxplot visualizations.
 
 The `top.k.plot` parameter limits the number of taxa visualized. For instance, setting it to 10 will visualize only the top 10 taxa. The criteria for this selection is defined by `top.k.func`, which can be set to `"mean"` to prioritize taxa with the highest mean abundances across samples, or `"sd"` to emphasize taxa with the greatest standard deviation across samples. This is especially beneficial when studying taxa with substantial differences across conditions or time frames.
 
@@ -195,9 +195,9 @@ generate_taxa_boxplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.52.12.png" alt=""><figcaption><p>Comprehensive Boxplot of Individual Taxa: The <code>generate_taxa_boxplot_long()</code> function generates a combined boxplot of all taxa, allowing an immediate comparison of abundance variations across paired samples over time. This visualization is particularly useful in highlighting taxa with significant differential abundance, offering a clear overview of the microbiome dynamics within paired samples.</p></figcaption></figure>
 
-This function places all taxa onto a single page, providing an overview of all your taxa at once.&#x20;
+This function places all taxa onto a single page, providing an overview of all your taxa at once.
 
-We present two key functions for conducting paired taxa analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`. 
+We present two key functions for conducting paired taxa analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`.
 
 The initial function, `generate_taxa_indiv_change_boxplot_pair()`, is utilized as follows:
 
@@ -388,7 +388,7 @@ generate_taxa_heatmap_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption><p>Individual Taxa Heatmap: This detailed heatmap, created using the <code>generate_taxa_heatmap_pair()</code> function, provides a vibrant visual display of taxa changes at the Family level within individual samples over time. The color intensity indicates the relative abundance of each taxon, revealing shared abundance patterns among different taxa and offering insights into the intricate ecology of the microbiome.</p></figcaption></figure>
 
-The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of change. 
+The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of change.
 
 The function demonstrated here:
 

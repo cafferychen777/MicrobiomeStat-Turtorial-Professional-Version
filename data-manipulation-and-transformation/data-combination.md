@@ -9,7 +9,7 @@ description: >-
 
 ## Data Combination
 
-**Combining multiple microbiome datasets** is a crucial step in many research projects. The `mStat_combine_data()` function in MicrobiomeStat provides a straightforward way to **merge two datasets** into one object for integrated analysis.
+Combining multiple microbiome datasets is a crucial step in many research projects. The `mStat_combine_data()` function in MicrobiomeStat provides a straightforward way to merge two datasets into one object for integrated analysis.
 
 ### Overview
 
@@ -27,7 +27,7 @@ description: >-
 * Row-bind the two `feature.ann` matrices
 * Row-bind the two `meta.dat` data frames
 
-**The output is a single merged data object** ready for integrated analysis.
+The output is a single merged data object ready for integrated analysis.
 
 ### Usage
 
@@ -47,14 +47,14 @@ Here is how `mStat_combine_data()` works under the hood:
 
 First it checks that both input objects are in the raw MicrobiomeStat format.
 
-It then identifies **common features and samples** between the two objects.
+It then identifies common features and samples between the two objects.
 
-* For **common features**, it checks that the data values are consistent between the two objects.
+* For common features, it checks that the data values are consistent between the two objects.
 * If no common features or samples are found, it will print a warning message.
 
 Next, it performs:
 
-* A **full join** of the two `feature.tab` matrices by feature IDs
+* A full join of the two `feature.tab` matrices by feature IDs
 * Replaces any NA values with 0
 * Gathers into a long format
 * Spreads back to wide format
@@ -75,4 +75,4 @@ Key applications of this function include:
 * Compile temporal datasets for longitudinal analysis
 * Create one large dataset from multiple studies of a population
 
-**Proper dataset integration** is crucial for maximizing the potential of your microbiome research. `mStat_combine_data()` lets you seamlessly merge compatible data objects, enabling more powerful integrated analysis.
+Proper dataset integration is crucial for maximizing the potential of your microbiome research. `mStat_combine_data()` lets you seamlessly merge compatible data objects, enabling more powerful integrated analysis.
