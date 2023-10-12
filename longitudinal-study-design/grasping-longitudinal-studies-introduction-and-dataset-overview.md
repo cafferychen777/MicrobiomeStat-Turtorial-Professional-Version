@@ -4,8 +4,6 @@ description: >-
   research and an overview of the example dataset used for the purpose.
 ---
 
-# Grasping Longitudinal Studies: Introduction and Dataset Overview
-
 ## Longitudinal Studies in Microbiome Research: Introduction and Dataset Overview
 
 Longitudinal studies are a prevalent methodology in microbiome research. They enable the observation of temporal changes and complexities that are not accessible through cross-sectional measurements. These studies facilitate the examination of the interactions between the microbiome and various influencing factors such as the environment, medical interventions, and disease progression over time.
