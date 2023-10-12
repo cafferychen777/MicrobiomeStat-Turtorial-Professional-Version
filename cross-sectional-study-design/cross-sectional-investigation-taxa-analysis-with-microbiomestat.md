@@ -15,9 +15,9 @@ The `generate_taxa_test_single` function employs the LinDA method to facilitate 
 
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
-* **"count"**: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
-* **"proportion"**: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
-* **"other"**: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+* `count`: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
+* `proportion`: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
+* `other`: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to "other", the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
 
 Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
 
@@ -30,8 +30,8 @@ For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don'
 
 Furthermore, when interpreting the results, it's essential to understand the role of `feature.sig.level` and `feature.mt.method` parameters:
 
-* **`feature.sig.level`**: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
-* **`feature.mt.method`**: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
+* `feature.sig.level`: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
+* `feature.mt.method`: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot, guiding how p-values are adjusted in that context.
 
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
@@ -66,11 +66,11 @@ Subsequently, the provided table offers a comprehensive overview of various taxa
 
 In the context of this table:
 
-* **Variable**: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
-* **Coefficient**: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
-* **SE**: This stands for lfcSE, the standard errors of the coefficients. It measures the variability or dispersion of the coefficient values.
-* **Mean Abundance**: This signifies the average abundance of a particular taxon (variable) across all samples.
-* **Prevalence**: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
+* `Variable`: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
+* `Coefficient`: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
+* `SE`: This stands for lfcSE, the standard errors of the coefficients. It measures the variability or dispersion of the coefficient values.
+* `Mean Abundance`: This signifies the average abundance of a particular taxon (variable) across all samples.
+* `Prevalence`: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
 
 #### Differential abundance results at Genus level
 
@@ -92,14 +92,14 @@ By inspecting these metrics, researchers can gain insights into the relative imp
 Before we delve into the detailed examination of the `generate_taxa_boxplot_single` function, it's essential to first understand some critical parameters that play a pivotal role in shaping the visualization:
 
 * `transform`: This parameter is a string indicating the transformation to apply to the axis when plotting. The options include:
-    * `"identity"`: No transformation (default)
-    * `"sqrt"`: Square root transformation
-    * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
+  * `"identity"`: No transformation (default)
+  * `"sqrt"`: Square root transformation
+  * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
 * `features.plot`: This parameter dictates which features (or taxa) should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
 * `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
-    * `top.k.func` assists in determining the criteria for this selection, offering two choices:
-      * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-      * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
+  * `top.k.func` assists in determining the criteria for this selection, offering two choices:
+    * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+    * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
 
 With this foundational understanding in place, let's proceed with the function:
 
