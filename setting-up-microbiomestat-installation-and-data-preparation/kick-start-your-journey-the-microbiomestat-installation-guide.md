@@ -4,22 +4,26 @@ description: >-
   for installing MicrobiomeStat, setting you up for your exploration journey.
 ---
 
-# MicrobiomeStat Installation Guide
+# Begin Your Journey: The MicrobiomeStat Installation Guide
 
 ## Objective: Install MicrobiomeStat
 
 This document will guide you through the installation process of the MicrobiomeStat package.
 
 ### Option 1: Installation via CRAN
+
 MicrobiomeStat is available on the CRAN repository. To install it, run the following command in your R console:
 
 ```R
 install.packages("MicrobiomeStat")
 ```
 
+{% hint style="info" %}
 **Note:** The current version of MicrobiomeStat on CRAN supports only the `linda` and `linda.plot` functions. For a complete set of functionalities, especially for analyzing longitudinal data, consider installing the development version from GitHub.
+{% endhint %}
 
 ### Option 2: Installation via GitHub (Development Version)
+
 The development version of MicrobiomeStat is hosted on GitHub. To install it, you will first need the 'devtools' package. If you haven't installed it yet, you can do so using the command:
 
 ```R
@@ -33,6 +37,7 @@ devtools::install_github("cafferychen777/MicrobiomeStat")
 ```
 
 ### Dependencies
+
 To ensure the proper functioning of MicrobiomeStat, ensure that you have the following packages installed:
 
 **Required CRAN Packages**:
