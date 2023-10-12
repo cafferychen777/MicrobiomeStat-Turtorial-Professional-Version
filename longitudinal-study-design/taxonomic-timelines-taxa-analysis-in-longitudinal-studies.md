@@ -41,7 +41,7 @@ By understanding and appropriately setting these parameters, users can ensure a 
 
 ```r
 data("subset_T2D.obj")
-generate_taxa_trend_test_long(
+test.list <- generate_taxa_trend_test_long(
   data.obj = subset_T2D.obj,
   subject.var = "subject_id",
   time.var = "visit_number_num",
@@ -49,10 +49,14 @@ generate_taxa_trend_test_long(
   adj.vars = "sample_body_site",
   prev.filter = 0.1,
   abund.filter = 0.001,
-  feature.level = c("Genus","Family"),
+  feature.level = c("Family"),
   feature.dat.type = c("count")
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.37.52.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.38.25.png" alt=""><figcaption></figcaption></figure>
 
 The function `generate_taxa_volatility_test_long()` is designed to analyze longitudinal microbiome data by calculating the volatility of taxa abundances and testing for an association with a grouping variable. Prior to the calculation of volatility, a centered log-ratio (CLR) transformation is performed on the data.
 
@@ -64,7 +68,7 @@ $$
 
 where 'A(t)' is the abundance at time 't' and 'Δt = t\_{i+1} - t\_i' is the time difference.
 
-This function fits a linear model to the volatility data with the formula 'V = β\_0 + β\_1_G + β\_2_X + ε', where 'V' is the volatility, 'G' is the group variable, 'X' represents adjustment variables, and 'ε' is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
+This function fits a linear model to the volatility data with the formula 'V = β\_0 + β\_1\_G + β\_2\_X + ε', where 'V' is the volatility, 'G' is the group variable, 'X' represents adjustment variables, and 'ε' is the error term. If the group variable is multi-categorical, an ANOVA test is also performed to test the overall significance of the group variable, while considering the adjustment variables.
 
 The function is applied as follows:
 
@@ -85,6 +89,10 @@ generate_taxa_volatility_test_long(
   transform = "CLR"
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.47.34.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.48.02.png" alt=""><figcaption></figcaption></figure>
 
 To visualize the abundance trajectories of specific taxa across multiple timepoints, the function `generate_taxa_areaplot_long()` can be used. Let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
 
@@ -221,14 +229,14 @@ generate_taxa_indiv_spaghettiplot_long(
   palette = NULL,
   pdf = TRUE,
   file.ann = NULL
-)
+)R
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.03.29.png" alt=""><figcaption><p>Individual Phylum Abundance Spaghetti Plots: This function generates spaghetti plots showing longitudinal abundance trajectories for specific phyla within each individual. It focuses on the top 5 phyla by mean abundance. Each line represents one subject's phylum abundance over time. These plots enable analysis of individual temporal dynamics.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.19.32.png" alt=""><figcaption><p>Individual Phylum Abundance Spaghetti Plots: This function generates spaghetti plots showing longitudinal abundance trajectories for specific phyla within each individual. It focuses on the top 5 phyla by mean abundance. Each line represents one subject's phylum abundance over time. These plots enable analysis of individual temporal dynamics.</p></figcaption></figure>
 
 To assess group changes, `generate_taxa_spaghettiplot_long()` can be used:
 
-```R
+```r
 generate_taxa_spaghettiplot_long(
   data.obj = ecam.obj,
   subject.var = "studyid",
@@ -237,11 +245,11 @@ generate_taxa_spaghettiplot_long(
   ts.levels = NULL,
   group.var = "diet",
   strata.var = "antiexposedall",
-  feature.level = c("Phylum"),
+  feature.level = c("Genus"),
   features.plot = NULL,
   feature.dat.type = "proportion",
-  top.k.plot = 3,
-  top.k.func = "mean",
+  top.k.plot = 8,
+  top.k.func = "sd",
   prev.filter = 0,
   abund.filter = 0,
   base.size = 16,
@@ -252,7 +260,7 @@ generate_taxa_spaghettiplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 15.04.49.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Spaghetti Plots: This function generates stacked spaghetti plots showing longitudinal abundance trajectories for specific phyla. It focuses on the top 3 phyla by mean abundance and overlays individual trajectories to highlight group changes. Filtering enables focused insights into temporal dynamics. These plots enable analysis of phylum abundance shifts over time.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.22.46.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Spaghetti Plots: This function generates stacked spaghetti plots showing longitudinal abundance trajectories for specific phyla. It focuses on the top 8 phyla by mean abundance and overlays individual trajectories to highlight group changes. Filtering enables focused insights into temporal dynamics. These plots enable analysis of phylum abundance shifts over time.</p></figcaption></figure>
 
 Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
 
@@ -322,6 +330,6 @@ generate_taxa_indiv_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Transformations and filtering enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 19.30.33.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Transformations and filtering enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
 
 With these powerful tools at our disposal, we can now uncover intricate taxonomic changes and gain deeper insights into the dynamics of the microbiome in longitudinal studies. We can proceed with the MicrobiomeStat functions to unravel the mysteries within the data.
