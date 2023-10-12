@@ -160,6 +160,15 @@ generate_taxa_barplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.33.16.png" alt=""><figcaption><p>Longitudinal Stacked Bar Plot of Taxonomic Composition: This bar plot visualizes the longitudinal changes in microbiome composition at the family level within groups stratified by delivery mode. Generated using the <code>generate_taxa_barplot_long()</code> function, the stacked bars showcase the taxonomic shift over time. Limiting to the top 10 most abundant families maintains clarity. The plot provides an intuitive snapshot of community dynamics.</p></figcaption></figure>
 
+In the context of large-scale microbiome datasets, it is often beneficial to focus on a subset of taxa that are either abundant or exhibit significant variability. The parameters `top.k.plot` and `top.k.func` facilitate this focus:
+
+* `top.k.plot`: Limits the number of taxa visualized. For example, setting it to 10 will visualize only the top 10 taxa, as determined by the criteria in `top.k.func`.
+* `top.k.func`: Defines the selection criteria, with two options:
+  * `"mean"`: Focuses on taxa with the highest mean abundances across samples.
+  * `"sd"`: Highlights taxa with the greatest standard deviation across samples, useful for examining taxa with significant differences across conditions or time frames.
+
+These parameters are particularly effective when generating heatmaps, as they enable concentration on the most pertinent taxa for the research question at hand.
+
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
 * `cluster.rows`: By default, the `generate_taxa_heatmap_pair()` function will cluster rows (features or taxa) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
