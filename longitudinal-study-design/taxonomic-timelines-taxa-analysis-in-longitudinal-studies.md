@@ -136,7 +136,17 @@ generate_taxa_barplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.33.16.png" alt=""><figcaption><p>Longitudinal Stacked Bar Plot of Taxonomic Composition: This bar plot visualizes the longitudinal changes in microbiome composition at the family level within groups stratified by delivery mode. Generated using the <code>generate_taxa_barplot_long()</code> function, the stacked bars showcase the taxonomic shift over time. Limiting to the top 10 most abundant families maintains clarity. The plot provides an intuitive snapshot of community dynamics.</p></figcaption></figure>
 
-For an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:
+Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
+
+- `"identity"`: No transformation (default)
+- `"sqrt"`: Square root transformation
+- `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
+
+This transformation is crucial as it helps to normalize the data, making patterns and trends easier to identify, especially when dealing with skewed data distributions often found in microbiome data. 
+
+Additionally, three other parameters play significant roles in this function:
+
+Now, for an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:
 
 ```R
 generate_taxa_boxplot_long(
@@ -227,8 +237,6 @@ generate_taxa_heatmap_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 14.41.20.png" alt=""><figcaption><p>Longitudinal Microbiome Composition Heatmap: This heatmap visualizes the longitudinal taxonomic composition at the family level. Generated via <code>generate_taxa_heatmap_long()</code>, color intensity represents abundance. It provides an intuitive overview of community dynamics over time, stratified by delivery mode and diet. Filtering focuses the analysis on relevant families. The plot enables visualization of temporal abundance patterns.</p></figcaption></figure>
 
-This heatmap provides an overview of microbiome composition over time, with abundance represented by color intensity. Filtering focuses the heatmap on meaningful families.
-
 To construct detailed individual boxplots, `generate_taxa_indiv_boxplot_long()` can be used:
 
 ```R
@@ -260,8 +268,6 @@ generate_taxa_indiv_boxplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Transformations and filtering enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
-
-These individual boxplots provide focused insights into each phylum's abundance changes over time, with customized color schemes for enhanced visualization.
 
 For spaghetti plots showcasing individual trajectories, `generate_taxa_indiv_spaghettiplot_long()` can be used:
 
