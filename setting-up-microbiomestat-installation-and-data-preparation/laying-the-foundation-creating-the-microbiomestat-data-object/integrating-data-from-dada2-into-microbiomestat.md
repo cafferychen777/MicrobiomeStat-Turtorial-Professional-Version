@@ -25,6 +25,10 @@ Sample metadata table (\`sam\_tab\`) - This table offers detailed metadata for e
 ### Code to Integrate Data
 
 ```r
+# This function requires the `Biostrings` and `yaml` packages. 
+# If you encounter issues when running the example code, please ensure that you have installed and loaded these packages.
+library(Biostrings)
+library(yaml)
 # Read the sequence table from the downloaded RDS file
 seq_tab <- readRDS("path_to_your_downloaded_folder/dada2_seqtab.rds")
 
