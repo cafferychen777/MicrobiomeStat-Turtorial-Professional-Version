@@ -57,9 +57,9 @@ The table above elucidates the detailed outcomes of the PERMANOVA analysis, enco
 
 Transitioning from the quantitative to the qualitative, the `generate_beta_ordination_single` function provides the necessary visualization tools:
 
-```r
-generate_beta_ordination_single(
-  data.obj = peerj32.obj,
+<pre class="language-r"><code class="lang-r">library(aplot)
+<strong>generate_beta_ordination_single(
+</strong>  data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
   subject.var = "subject",
@@ -77,7 +77,7 @@ generate_beta_ordination_single(
   pdf.wid = 11,
   pdf.hei = 8.5
 )
-```
+</code></pre>
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption><p>Illustration of Beta Diversity Ordination for the entire dataset, offering a broad perspective on microbial community structures without temporal or strata distinctions.</p></figcaption></figure>
 
@@ -130,8 +130,6 @@ generate_beta_ordination_single(
   pdf.hei = 8.5
 )
 ```
-
-
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.56.17.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
 
