@@ -25,8 +25,13 @@ Phylogenetic tree file representing the evolutionary relationships among OTUs.
 {% endfile %}
 
 ```r
-# Load plyr package
-library(plyr)
+# Make sure the plyr package is installed
+if (!require(plyr)) {
+    install.packages("plyr")
+    library(plyr)
+} else {
+    library(plyr)
+}
 
 # Specify the paths to your Mothur files
 path_to_list_file <- "/path_to_your_files/esophagus.fn.list.gz"
