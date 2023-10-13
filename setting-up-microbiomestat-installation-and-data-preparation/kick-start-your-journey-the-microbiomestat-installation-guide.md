@@ -49,8 +49,6 @@ packages_to_install <- c(
   "tibble",
   "ggplot2",
   "matrixStats",
-  "parallel",
-  "ggrepel",
   "lmerTest",
   "foreach",
   "modeest",
@@ -63,15 +61,19 @@ packages_to_install <- c(
   "GUniFrac",
   "scales",
   "stringr",
-  "broom",
   "rmarkdown",
   "knitr",
+  "pander",
+  "tinytex",
+  "ggrepel",
+  "parallel",
   "ggprism",
   "aplot",
   "philentropy",
   "forcats",
-  "pander",
-  "tinytex"
+  "yaml",
+  "biomformat",
+  "Biostrings"
 )
 
 # Installing packages
