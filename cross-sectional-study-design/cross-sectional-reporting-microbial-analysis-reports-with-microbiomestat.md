@@ -76,6 +76,8 @@ Before using the function, it's important to understand the parameters:
 * `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
 * `output.file`: A character string specifying the output file name for the report. This will also determine the title of the generated report. For example, if you set it to "path\_to\_your\_location/report.pdf", the title of the report will be "report".
 
+Note: Before running the function, please be aware of potential compatibility issues between RStudio and LaTeX. These issues can lead to problems such as images from the RStudio Viewer appearing in unexpected locations in the PDF report. To avoid this, it's recommended to clear the current images in the RStudio Viewer before running the function. You can do this by clicking on the broom icon in the RStudio Viewer.
+
 Now, let's see how we can implement the function:
 
 ```r
