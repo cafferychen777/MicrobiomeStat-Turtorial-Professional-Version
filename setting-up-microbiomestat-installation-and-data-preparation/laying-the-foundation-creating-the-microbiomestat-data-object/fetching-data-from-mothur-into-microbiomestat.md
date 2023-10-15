@@ -46,6 +46,12 @@ data_obj <- mStat_import_mothur_as_data_obj(
     mothur_tree_file = path_to_tree_file,
     mothur_shared_file = path_to_shared_file
 )
+
+# After constructing data_obj, detach the plyr package to avoid conflicts with dplyr
+if ("package:plyr" %in% search()) {
+    detach("package:plyr", unload = TRUE)
+    message("Detached plyr package to avoid potential conflicts with dplyr.")
+}
 ```
 
 The `mStat_import_mothur_as_data_obj` function facilitates the conversion of the Mothur datasets to a structured format suitable for MicrobiomeStat. Here are the key components:
