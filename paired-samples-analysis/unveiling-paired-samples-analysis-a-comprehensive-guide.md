@@ -17,4 +17,12 @@ For an in-depth introduction and generation process of the peerj32 dataset, plea
 [unraveling-cross-sectional-studies-with-microbiomestat.md](../cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
 {% endcontent-ref %}
 
+For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+
+{% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
+[laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
+{% endcontent-ref %}
+
+This section explains how to convert your data into the `mStat` format, enabling you to use MicrobiomeStat for your research.
+
 This guide is designed to provide a thorough introduction to paired samples analysis in microbiome research using MicrobiomeStat. By following the steps outlined here, you can gain a deeper understanding of the dynamics of microbial communities in your research.
