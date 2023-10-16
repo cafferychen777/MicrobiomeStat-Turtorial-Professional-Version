@@ -7,7 +7,7 @@ description: >-
 
 # Unveiling MicrobiomeStat: A Glimpse into Diverse Microbiome Analysis Solutions
 
-In the intricate domain of microbiome data analysis, the choice of an optimal tool that aligns with specific research objectives is a critical factor. The field is enriched by a multitude of packages, each with its distinctive functionalities that enable a more profound interpretation of microbiome data. Notable packages such as q2-longitudinal, SplinectomeR, coda4microbiome, microbiomeutilities, phyloseq, microbiomemarker, MicrobiomeAnalyst, microbiomeeco, EasyAmplicon, STAMP, and qiime2 have significantly propelled the field forward, and their contributions are duly recognized.
+In the intricate domain of microbiome data analysis, the choice of an optimal tool that aligns with specific research objectives is a critical factor. The field is enriched by a multitude of packages, each with its distinctive functionalities that enable a more profound interpretation of microbiome data. Notable packages such as q2-longitudinal, SplinectomeR, coda4microbiome, microbiomeutilities, phyloseq, microbiomemarker, MicrobiomeAnalyst, microeco, EasyAmplicon, STAMP, and qiime2 have significantly propelled the field forward, and their contributions are duly recognized.
 
 Amidst this dynamic and collaborative environment, we present MicrobiomeStat, a novel tool designed for microbiome data analysis. MicrobiomeStat leverages the robust foundation laid by its predecessors and strives to offer supplementary or complementary functionalities, thereby broadening the scope of research in this intriguing domain.
 
