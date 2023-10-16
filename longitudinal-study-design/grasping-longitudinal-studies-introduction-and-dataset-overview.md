@@ -22,4 +22,12 @@ The second dataset originates from the "T2D16S" study, which tracked a cohort of
 
 These datasets offer insights into how early-life experiences and health conditions like diabetes can influence the microbiome. Using our analytical tool, we aim to analyze these datasets to explore the longitudinal dynamics of the microbiome, contributing to a better understanding of the temporal intricacies of microbiome development and its susceptibilities.
 
+For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+
+{% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
+[laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
+{% endcontent-ref %}
+
+This section explains how to convert your data into the `mStat` format, enabling you to use MicrobiomeStat for your research.
+
 In the following sections, we will delve into the analysis of these longitudinal datasets using advanced analytical tools. Stay tuned as we explore the complexities of the microbiome over time.
