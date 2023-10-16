@@ -34,4 +34,12 @@ With MicrobiomeStat, users can adeptly manage, process, and analyze this dataset
 
 As we proceed, we will further dissect the `peerj32` dataset, understanding its intricate details and harnessing its data for robust conclusions.
 
+For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+
+{% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
+[laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
+{% endcontent-ref %}
+
+This section explains how to convert your data into the `mStat` format, enabling you to use MicrobiomeStat for your research.
+
 Harness the capabilities of MicrobiomeStat to derive meaningful conclusions from cross-sectional microbiome datasets and advance your research endeavors.
