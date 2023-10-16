@@ -4,7 +4,6 @@ description: >-
   cross-sectional microbiome studies by offering computational tools for
   distance calculation and dissimilarity visualization.
 ---
-
 # Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat
 
 In cross-sectional studies, beta diversity serves as a pivotal metric to discern differences in microbial community composition across samples. The `MicrobiomeStat` toolkit is specifically designed to guide researchers through this intricate analysis.
@@ -107,10 +106,11 @@ Shifting our gaze to a specific temporal frame by setting `t.level` to "2", we p
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'. This delineation unveils the microbial community structures' intricacies at this particular instance.</p></figcaption></figure>
 
-Incorporating a stratifying dimension, such as `sex`, augments the depth of the analysis:
+Incorporating a stratifying dimension, such as `sex`, augments the depth of the analysis. We also add a p-value annotation to the plot, derived from a PERMANOVA test, to highlight significant differences between groups:
 
 ```r
-generate_beta_ordination_single(
+
+p <- generate_beta_ordination_single(
   data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
@@ -119,7 +119,8 @@ generate_beta_ordination_single(
   t.level = "2",
   group.var = "group",
   strata.var = "sex",
-  dist.name = c("BC","Jaccard"),
+  adj.vars = "sex",
+  dist.name = c("BC"),
   base.size = 20,
   theme.choice = "bw",
   custom.theme = NULL,
@@ -129,6 +130,9 @@ generate_beta_ordination_single(
   pdf.wid = 11,
   pdf.hei = 8.5
 )
+
+# Add a p-value annotation to the plot. The p-value is calculated from a PERMANOVA test.
+p <- p + annotate("text", x = 0.3, y = 0.8, label = paste("italic(p) == ", format(pvalue, digits = 2)), parse = TRUE, size = 5)
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.56.17.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
