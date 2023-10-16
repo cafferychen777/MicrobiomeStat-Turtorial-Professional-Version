@@ -42,6 +42,12 @@ Before using the function, it's important to understand the parameters:
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
 {% endcontent-ref %}
 
+* Once the data has been successfully constructed, users may wish to perform minor adjustments to the data, such as removing levels with few subjects from the group.var. In such cases, you can refer to this document for guidance.
+
+{% content-ref url="../data-manipulation-and-transformation/data-filtering.md" %}
+[data-filtering.md](../data-manipulation-and-transformation/data-filtering.md)
+{% endcontent-ref %}
+
 * `group.var`: Variable name used for grouping samples.
 * `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
 * `vis.adj.vars`: Names of columns in the metadata containing covariates to visualize in plots, in addition to the primary variables of interest such as groups. Default is NULL, which indicates only the primary variables of interest will be visualized without additional covariates.
