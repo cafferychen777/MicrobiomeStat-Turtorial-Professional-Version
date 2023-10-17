@@ -20,7 +20,9 @@ The second dataset originates from the "T2D16S" study, which tracked a cohort of
 
 > Stansfield J, Smirnova E, Zhao N, Fettweis J, Waldron L, Dozmorov M (2023). _HMP2Data: 16s rRNA sequencing data from the Human Microbiome Project 2_. R package version 1.14.0, [https://github.com/jstansfield0/HMP2Data](https://github.com/jstansfield0/HMP2Data).
 
-These datasets offer insights into how early-life experiences and health conditions like diabetes can influence the microbiome. Using our analytical tool, we aim to analyze these datasets to explore the longitudinal dynamics of the microbiome, contributing to a better understanding of the temporal intricacies of microbiome development and its susceptibilities.
+These datasets provide valuable insights into how early-life experiences and health conditions, such as diabetes, can influence the microbiome. Our goal is to leverage our analytical tool to explore the longitudinal dynamics of the microbiome presented in these datasets. This exploration will contribute to a more comprehensive understanding of the temporal intricacies of microbiome development and its susceptibilities.
+
+To achieve this, it's important to note some constraints of our current development progress. Specifically, our group.var, strata.var, and adj.vars are all currently assumed to have temporal consistency. In other words, for a given subject, these states do not change over time. However, we are aware of the dynamic nature of microbiome and its potential time-varying properties. Therefore, if there are functions within the tutorial that are applicable to such time-varying properties, we will make sure to specifically highlight them.
 
 For users wishing to apply our tutorial to their own datasets, please see the following guide. 
 
