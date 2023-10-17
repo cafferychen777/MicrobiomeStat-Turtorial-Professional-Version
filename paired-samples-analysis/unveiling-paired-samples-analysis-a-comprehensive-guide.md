@@ -17,6 +17,8 @@ For an in-depth introduction and generation process of the peerj32 dataset, plea
 [unraveling-cross-sectional-studies-with-microbiomestat.md](../cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
 {% endcontent-ref %}
 
+Due to the constraints of development progress, our current group.var, strata.var, adj.vars are all assumed to have temporal consistency. That is, for the same subject, these states do not change over time. If there are functions applicable to time-varying properties in the tutorial, we will specifically mark them out.
+
 For users wishing to apply our tutorial to their own datasets, please see the following guide. 
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
