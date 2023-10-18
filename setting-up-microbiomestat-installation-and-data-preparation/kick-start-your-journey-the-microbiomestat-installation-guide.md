@@ -64,7 +64,7 @@ packages_to_install <- c(
   "tinytex",
   "vegan",
   "scales",
-   "ape",
+   "ape",          # Used only in mStat_convert_phyloseq_to_data_obj and mStat_import_mothur_as_data_obj
   "ggrepel",       # Used only in the linda.plot function
   "parallel",      # Utilized only when setting parallel in linda
   "ggprism",       # Active only when theme.choice is set to “prism”
