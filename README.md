@@ -16,3 +16,7 @@ MicrobiomeStat is a specialized tool for analyzing longitudinal and paired micro
 It depends on packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `rmarkdown`, `knitr`, `pander`, and `tinytex`. We thank the authors of these packages, whose work has greatly facilitated the development of MicrobiomeStat.
 
 We also acknowledge the work by the developers of `microbiomeutilities`, `phyloseq`, `microbiomemarker`, `MicrobiomeAnalyst`, `microeco`, `EasyAmplicon`, `STAMP`, `qiime2`, `MicrobiotaProcess`, `q2-longitudinal`, `SplinectomeR`, and `coda4microbiome`. Their contributions have significantly advanced the field and inspired us in creating MicrobiomeStat.
+
+## News
+
+**October 20th, 2023** - We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now officially available. This interface provides an interactive platform for microbiome data analysis. The Shiny application can be accessed directly at [this link](https://a95dps-caffery-chen.shinyapps.io/MicrobiomeStat_Shiny/). For users who prefer a local setup or require more customization, the Shiny application files and instructions are available on its dedicated [GitHub repository](https://github.com/cafferychen777/MicrobiomeStat-Shiny).
