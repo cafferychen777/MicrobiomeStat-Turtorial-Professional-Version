@@ -1,5 +1,7 @@
 ---
-description: A guide on importing data from DESeqDataSet format into the MicrobiomeStat framework.
+description: >-
+  A guide on converting data from DESeqDataSet format into the MicrobiomeStat
+  framework.
 ---
 
 # Converting DESeqDataSet into MicrobiomeStat

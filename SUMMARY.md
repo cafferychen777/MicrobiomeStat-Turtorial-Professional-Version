@@ -8,17 +8,17 @@
 
 ## Setting Up MicrobiomeStat: Installation and Data Preparation
 
-* [Begin Your Journey: The MicrobiomeStat Installation Guide](setting-up-microbiomestat-installation-and-data-preparation/kick-start-your-journey-the-microbiomestat-installation-guide.md)
-* [Building the Foundation: Creating the MicrobiomeStat Data Object](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/README.md)
+* [Installation Guide](setting-up-microbiomestat-installation-and-data-preparation/kick-start-your-journey-the-microbiomestat-installation-guide.md)
+* [Creating the mStat Data Object](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/README.md)
   * [Building MicrobiomeStat from Matrix and Data.frame](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/building-microbiomestat-from-matrix-and-data.frame.md)
-  * [Navigating Data from Phyloseq into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/navigating-data-from-phyloseq-into-microbiomestat.md)
+  * [Converting Data from Phyloseq into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/navigating-data-from-phyloseq-into-microbiomestat.md)
   * [Importing Data from QIIME2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/importing-data-from-qiime2-into-microbiomestat.md)
-  * [Transferring Data from BIOM into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/transferring-data-from-biom-into-microbiomestat.md)
-  * [Inputting SummarizedExperiment into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/inputting-summarizedexperiment-into-microbiomestat.md)
-  * [Loading DGEList Data into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/loading-dgelist-data-into-microbiomestat.md)
-  * [Incorporating DESeqDataSet into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/incorporating-deseqdataset-into-microbiomestat.md)
-  * [Integrating Data from DADA2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/integrating-data-from-dada2-into-microbiomestat.md)
-  * [Fetching Data from Mothur into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/fetching-data-from-mothur-into-microbiomestat.md)
+  * [Importing Data from BIOM into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/transferring-data-from-biom-into-microbiomestat.md)
+  * [Converting SummarizedExperiment into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/inputting-summarizedexperiment-into-microbiomestat.md)
+  * [Converting DGEList Data into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/loading-dgelist-data-into-microbiomestat.md)
+  * [Converting DESeqDataSet into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/incorporating-deseqdataset-into-microbiomestat.md)
+  * [Importing Data from DADA2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/integrating-data-from-dada2-into-microbiomestat.md)
+  * [Importing Data from Mothur into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/fetching-data-from-mothur-into-microbiomestat.md)
 
 ## Cross-Sectional Study Design
 
