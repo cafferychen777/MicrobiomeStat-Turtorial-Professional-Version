@@ -4,7 +4,7 @@ description: >-
   compatibility with MicrobiomeStat.
 ---
 
-# Inputting SummarizedExperiment into MicrobiomeStat
+# Converting SummarizedExperiment into MicrobiomeStat
 
 The Bioconductor package `SummarizedExperiment` provides a convenient representation of experimental data. To facilitate researchers using this format, MicrobiomeStat provides a straightforward method for converting SummarizedExperiment objects.
 
