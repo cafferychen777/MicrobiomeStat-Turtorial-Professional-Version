@@ -2,9 +2,7 @@
 description: Guide to importing data in BIOM format into MicrobiomeStat's structure.
 ---
 
-# Transferring Data from BIOM into MicrobiomeStat
-
-## Importing BIOM Data to MicrobiomeStat
+# Importing Data from BIOM into MicrobiomeStat
 
 Follow the instructions below to convert your BIOM data into a format suitable for MicrobiomeStat.
 
@@ -44,4 +42,3 @@ By employing the `mStat_import_biom_as_data_obj` function, the BIOM data, along 
 * **treefilename** (Optional): The file path to your phylogenetic tree.
 * **parseFunction** (Optional): A user-defined function to interpret the taxonomy from the BIOM file metadata.
 
-With the conversion complete, the data is now ready to be analyzed using the various tools provided by MicrobiomeStat.
