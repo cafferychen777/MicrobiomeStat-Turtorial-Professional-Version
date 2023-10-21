@@ -1,12 +1,8 @@
 ---
 description: >-
-  Start your microbiome data analysis with this guide. It provides instructions
-  for installing MicrobiomeStat, setting you up for your exploration journey.
 ---
 
-# Begin Your Journey: The MicrobiomeStat Installation Guide
-
-## Objective: Install MicrobiomeStat
+# Installation Guide
 
 This document will guide you through the installation process of the MicrobiomeStat package.
 
