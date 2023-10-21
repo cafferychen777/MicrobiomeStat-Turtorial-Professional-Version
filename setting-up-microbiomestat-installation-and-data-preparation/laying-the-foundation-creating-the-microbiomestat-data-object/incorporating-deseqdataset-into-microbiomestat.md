@@ -2,7 +2,7 @@
 description: A guide on importing data from DESeqDataSet format into the MicrobiomeStat framework.
 ---
 
-# Incorporating DESeqDataSet into MicrobiomeStat
+# Converting DESeqDataSet into MicrobiomeStat
 
 This guide provides a systematic approach for importing data from the DESeqDataSet format to MicrobiomeStat.
 
@@ -41,5 +41,3 @@ After the conversion, the **MicrobiomeStat data object** consists of:
 * **feature.ann**: A matrix presenting feature annotations.
 
 For data integrity and relevance, the function ensures only features with a sum > 0 from the counts data are retained.
-
-By adopting this conversion process, researchers can smoothly integrate their DESeqDataSet data into MicrobiomeStat, availing the extensive analytical capabilities of the platform. This sets the foundation for comprehensive microbiome data analysis.
