@@ -3,13 +3,13 @@ description: >-
   Dive into MicrobiomeStat's offerings for longitudinal data exploration in microbiome research. It is designed for ease, collaboration, and openness to the scientific community.
 ---
 
-# Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Tale with MicrobiomeStat.
+# Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Pattern with MicrobiomeStat.
 
 ## **MicrobiomeStat:** Supporting Longitudinal Microbiome Analysis in R
 
 <figure><img src=".gitbook/assets/cover.png" alt=""><figcaption></figcaption></figure>
 
-MicrobiomeStat is a specialized tool for analyzing longitudinal and paired microbiome data. It can also be used for longitudinal analysis of other omics datatypes as long as the data are properly normalized and transformed. As a special case, cross-sectional and case-control microbiome data analysis will also be supported.
+MicrobiomeStat is a specialized tool for analyzing longitudinal and paired microbiome data. It can also be used for longitudinal analysis of other omics datatypes as long as the data are properly normalized and transformed. As a special case, cross-sectional and case-control microbiome data analysis is also supported.
 
 It depends on packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `rmarkdown`, `knitr`, `pander`, and `tinytex`. We thank the authors of these packages, whose work has greatly facilitated the development of MicrobiomeStat.
 
