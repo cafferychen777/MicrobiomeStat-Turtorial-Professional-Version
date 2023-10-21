@@ -4,7 +4,7 @@ description: >-
   structure.
 ---
 
-# Integrating Data from DADA2 into MicrobiomeStat
+# Importing Data from DADA2 into MicrobiomeStat
 
 This guide will walk you through the steps required to convert and integrate data from DADA2 into MicrobiomeStat.
 
@@ -22,10 +22,11 @@ Taxonomy assignment table (`tax_tab`) - This table provides taxonomic classifica
 Sample metadata table (\`sam\_tab\`) - This table offers detailed metadata for each sample, enriching the context and facilitating more in-depth analyses.
 {% endfile %}
 
-### Code to Integrate Data
+### Code to Import Data
 
 ```r
-# This function requires the `Biostrings` and `yaml` packages. 
+# This function requires the `Biostrings` and `yaml` packages.
+ 
 # If you encounter issues when running the example code, please ensure that you have installed and loaded these packages.
 library(Biostrings)
 library(yaml)
@@ -56,5 +57,3 @@ data_obj <- mStat_import_dada2_as_data_obj(
 {% hint style="info" %}
 Note: Ensure to replace `"path_to_your_downloaded_folder"` with the actual path where you've saved the downloaded files.
 {% endhint %}
-
-By following the above steps, the DADA2 data gets structured into a MicrobiomeStat data object. This object is now ready to be used with the various analysis functionalities provided by MicrobiomeStat.
