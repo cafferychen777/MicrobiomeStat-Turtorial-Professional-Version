@@ -35,7 +35,7 @@ sample_file <- "path_to_your_directory/sample-metadata.tsv"
 treeqza_file <- "path_to_your_directory/tree.qza"
 
 # Import QIIME2 data into a MicrobiomeStat data object
-data_obj <- mStat_import_qiime2_as_data_obj(
+data.obj <- mStat_import_qiime2_as_data_obj(
     otu_qza = otuqza_file, 
     taxa_qza = taxaqza_file,
     sam_tab = sample_file, 
@@ -51,7 +51,5 @@ The function `mStat_import_qiime2_as_data_obj` efficiently transforms QIIME2 dat
 * **taxa\_qza** (Optional): This is the taxonomy assignment table which provides taxonomic classifications for the microbial entities.
 * **sam\_tab** (Optional): The sample metadata table offers details about the conditions, treatments, or any other pertinent annotations related to the samples.
 * **tree\_qza** (Optional): A phylogenetic tree depicting the evolutionary relationships of the microbial entities.
-
-Upon successful conversion, the generated MicrobiomeStat data object can be directly used with the suite of analysis tools provided by MicrobiomeStat, ensuring a seamless and efficient analytical workflow.
 
 Ensure that you have the correct file paths and all required dependencies installed before initiating the conversion process.
