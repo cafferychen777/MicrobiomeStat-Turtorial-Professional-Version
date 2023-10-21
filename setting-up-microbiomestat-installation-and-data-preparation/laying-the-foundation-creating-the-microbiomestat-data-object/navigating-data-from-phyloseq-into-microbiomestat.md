@@ -4,7 +4,7 @@ description: >-
   with MicrobiomeStat.
 ---
 
-# Navigating Data from Phyloseq into MicrobiomeStat
+# Converting Data from Phyloseq into MicrobiomeStat
 
 This guide is tailored for users who already possess a Phyloseq object. If you haven't yet successfully constructed a Phyloseq object, we recommend reviewing this tutorial for guidance.&#x20;
 
@@ -47,7 +47,7 @@ During the conversion, there might be changes in the levels of factors in the me
 data.obj$meta.dat$sex <- factor(as.factor(data.obj$meta.dat$sex), levels = c("male", "female"))
 ```
 
-Replace `'sex'` with the appropriate metadata column and set the factor levels as required.
+Reorder the factor levels of the `sex` column。
 
 The function `mStat_convert_phyloseq_to_data_obj` returns a MicrobiomeStat data object, which includes:
 
@@ -57,5 +57,3 @@ The function `mStat_convert_phyloseq_to_data_obj` returns a MicrobiomeStat data 
 * **tree**: A rooted phylogenetic tree. If the tree is not rooted, it will be rooted using the midpoint method. Tips not present in the OTU table are pruned.
 
 After converting the Phyloseq object to the MicrobiomeStat format, the data is now compatible with MicrobiomeStat's analysis tools.
-
-With the data object set up, you can now proceed with MicrobiomeStat's microbiome data analysis functions.
