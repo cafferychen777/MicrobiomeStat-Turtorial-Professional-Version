@@ -4,7 +4,7 @@ description: >-
   MicrobiomeStat for streamlined analysis.
 ---
 
-# Loading DGEList Data into MicrobiomeStat
+# Converting DGEList Data into MicrobiomeStat
 
 This guide will assist you in transferring data from the DGEList format to MicrobiomeStat.
 
@@ -43,5 +43,3 @@ The resultant **MicrobiomeStat data object** encompasses:
 * **meta.dat**: A data frame detailing the sample information.
 
 As part of the conversion process, features with a sum of zero from the counts data are filtered out to maintain data relevance and accuracy.
-
-By integrating DGEList data into the MicrobiomeStat framework, researchers can harness the comprehensive analysis tools provided by MicrobiomeStat, further enhancing their data-driven insights and findings.
