@@ -8,17 +8,17 @@ description: >-
 
 The MicrobiomeStat data object consists of the following components:
 
-* **feature.tab (Matrix)**: A matrix displaying the connection between research entities (like OTUs, ASVs, genes) as rows and samples as columns. Ensure row names are the names of the research entities, and column names match the samples.
-* **meta.dat (Dataframe)**: Holds metadata for samples, where rows correlate with samples, and columns denote annotations. Examples of annotations include disease severity (mild, moderate, severe), treatment status (treated, untreated), and study phases (phase 1, phase 2, etc). Ensure the row names match the feature.tab columns. Tibbles are not permitted; use a standard R data frame.
-* **feature.ann (Matrix)**: An annotation matrix with research entities as rows. Columns might provide taxonomic details for microbiome data, cell types for single-cell data, or pathway levels for KEGG data. Ensure row names match those in feature.tab.
-* **tree (optional)**: Depicts evolutionary relationships among research entities. It's essential for specific beta-diversity calculations but isn't required for the majority (\~99%) of MicrobiomeStat analyses.
-* **feature.agg.list (List, optional)**: Generated using the `mStat_aggregate_by_taxonomy()` function, this list contains matrices of aggregated data based on taxonomy or cell type, with each matrix's columns representing sample names and rows representing the aggregation level (e.g., Phylum, CellType).
+* **feature.tab (matrix)**: A matrix displaying the connection between research entities (like OTUs, ASVs, genes) as rows and samples as columns. Ensure row names are the names of the research entities, and column names match the samples.
+* **meta.dat (data.frame)**: Holds metadata for samples, where rows correlate with samples, and columns denote annotations. Examples of annotations include disease severity (mild, moderate, severe), treatment status (treated, untreated), and study phases (phase 1, phase 2, etc). Ensure the row names match the feature.tab columns. Tibbles are not permitted; use a standard R data frame.
+* **feature.ann (matrix)**: An annotation matrix with research entities as rows. Columns might provide taxonomic details for microbiome data, cell types for single-cell data, or pathway levels for KEGG data. Ensure row names match those in feature.tab.
+* **tree (phylo, optional)**: Depicts evolutionary relationships among research entities. It's essential for specific beta-diversity calculations but isn't required for the majority of MicrobiomeStat analyses.
+* **feature.agg.list (list, optional)**: Generated using the `mStat_aggregate_by_taxonomy()` function, this list contains matrices of aggregated data based on taxonomy or cell type, with each matrix's columns representing sample names and rows representing the aggregation level (e.g., Phylum, CellType).
 
-Here is how to construct the MicrobiomeStat data object directly from matrix and dataframe:
+Here is how to construct the MicrobiomeStat data object directly from matrix and data.frame:
 
 ### 1. Using Existing Data in R Environment
 
-#### Starting from Matrix and Dataframe
+#### Starting from matrix and data.frame
 
 Assuming we already have the expression matrix and sample metadata:
 
@@ -40,13 +40,18 @@ colnames(Feature.tab) <- samplenames
 
 # Step 4: Create the Meta.dat data frame.
 # We want a data frame with two columns: "group" and "weight".
-# The "group" column should have 10 "A"s followed by 10 "B"s.
+# The "group" column should have 10 "case"s followed by 10 "control"s.
 # The "weight" column should have 20 random numbers from a normal distribution with mean 70 and standard deviation 5.
 # We then set the row names of this data frame to the sample names we created earlier.
+# Create the Meta.dat dataframe
 Meta.dat <- data.frame(
-  group = rep(c("A","B"),each=10),
-  weight = rnorm(20,70,5)  
+  group = rep(c("control","case"), each=10),
+  weight = rnorm(20,70,5)
 )
+
+# Convert the "group" column to a factor and set "control" as the reference level
+Meta.dat$group <- relevel(as.factor(Meta.dat$group), ref="control")
+
 rownames(Meta.dat) <- samplenames
 ```
 
