@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Tale with MicrobiomeStat.](README.md)
+* [Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Pattern with MicrobiomeStat.](README.md)
 
 ## INTRODUCTION
 
