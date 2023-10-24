@@ -85,7 +85,8 @@ For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main E
 If the aim is to specifically investigate the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is advantageous. This function employs a linear model (lm) to evaluate the changes in taxa abundance and to distinguish the differences between groups.
 
 ```r
-generate_taxa_change_test_pair(
+# Generate taxa change test pair
+test.list <- generate_taxa_change_test_pair(
   data.obj = peerj32.obj,
   subject.var = "subject",
   time.var = "time",
@@ -99,7 +100,7 @@ generate_taxa_change_test_pair(
   feature.dat.type = "count"
 )
 
-#' Generate the volcano plot
+# Generate the volcano plot
 plot.list <- generate_taxa_volcano_single(
   data.obj = peerj32.obj,
   group.var = "group",
@@ -107,8 +108,6 @@ plot.list <- generate_taxa_volcano_single(
   feature.sig.level = 0.1,
   feature.mt.method = "none"
 )
-
-plot.list
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.37.16.png" alt=""><figcaption><p>Volcano plot visualizing the taxa changes between groups. Each point represents a taxon, plotted according to its log2 fold change (x-axis) and -log10 adjusted p-value (y-axis) derived from the <code>generate_taxa_change_test_pair()</code>function. The plot helps to identify taxa with significant differences in abundance across timepoints. The horizontal line indicates the threshold for statistical significance (p=0.1). Taxa that pass this threshold are considered significantly different between groups.</p></figcaption></figure>
