@@ -36,7 +36,10 @@ Furthermore, when interpreting the results, it's essential to understand the rol
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
 ```r
+# Load data
 data(peerj32.obj)
+
+# Generate taxa test
 test.list <- generate_taxa_test_single(
     data.obj = peerj32.obj,
     time.var = "time",
@@ -48,12 +51,15 @@ test.list <- generate_taxa_test_single(
     prev.filter = 0.1,
     abund.filter = 0.0001
 )
-volcano_plots <- generate_taxa_volcano_single(data.obj = peerj32.obj,
-                                              group.var = "group",
-                                              test.list = test.list,
-                                              feature.sig.level = 0.1,
-                                              feature.mt.method = "none")
-volcano_plots
+
+# Generate volcano plots
+volcano_plots <- generate_taxa_volcano_single(
+    data.obj = peerj32.obj,
+    group.var = "group",
+    test.list = test.list,
+    feature.sig.level = 0.1,
+    feature.mt.method = "none"
+)
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-07 at 15.18.08.png" alt=""><figcaption></figcaption></figure>
@@ -72,7 +78,7 @@ In the context of this table:
 * `Mean Abundance`: This signifies the average abundance of a particular taxon (variable) across all samples.
 * `Prevalence`: This metric represents the proportion of samples where a specific taxon is present, reflecting its widespread occurrence across the dataset.
 
-#### Differential abundance results at Genus level
+#### First 10 Rows of Differential Abundance Results at Genus Level
 
 | Variable                          | Coefficient | SE        | P.Value    | Adjusted.P.Value | Mean.Abundance | Prevalence |
 | --------------------------------- | ----------- | --------- | ---------- | ---------------- | -------------- | ---------- |
