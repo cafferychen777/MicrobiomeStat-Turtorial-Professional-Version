@@ -57,9 +57,10 @@ The table above elucidates the detailed outcomes of the PERMANOVA analysis, enco
 
 Transitioning from the quantitative to the qualitative, the `generate_beta_ordination_single` function provides the necessary visualization tools:
 
-<pre class="language-r"><code class="lang-r">library(aplot)
-<strong>generate_beta_ordination_single(
-</strong>  data.obj = peerj32.obj,
+```r
+library(aplot)
+generate_beta_ordination_single(
+  data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
   subject.var = "subject",
@@ -77,7 +78,7 @@ Transitioning from the quantitative to the qualitative, the `generate_beta_ordin
   pdf.wid = 11,
   pdf.hei = 8.5
 )
-</code></pre>
+```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption><p>Illustration of Beta Diversity Ordination for the entire dataset, offering a broad perspective on microbial community structures without temporal or strata distinctions.</p></figcaption></figure>
 
@@ -109,7 +110,10 @@ Shifting our gaze to a specific temporal frame by setting `t.level` to "2", we p
 
 Incorporating a stratifying dimension, such as `sex`, augments the depth of the analysis. We also add a p-value annotation to the plot, derived from a PERMANOVA test, to highlight significant differences between groups:
 
-<pre class="language-r"><code class="lang-r">p &#x3C;- generate_beta_ordination_single(
+```r
+library(MicrobiomeStat)
+data(peerj32.obj)
+p <- generate_beta_ordination_single(
   data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
@@ -131,12 +135,12 @@ Incorporating a stratifying dimension, such as `sex`, augments the depth of the 
 )
 
 # Add a p-value annotation to the plot. The p-value is calculated from a PERMANOVA test.
-p &#x3C;- p + annotate("text", x = 0.3, y = 0.8, 
+p <- p + annotate("text", x = 0.3, y = 0.8, 
   label = paste("italic(p) == ", 
-<strong>  format(pvalue, digits = 2)), 
-</strong>  parse = TRUE, 
+  format(pvalue, digits = 2)), 
+  parse = TRUE, 
   size = 5)
-</code></pre>
+```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-16 at 18.48.19.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
 
