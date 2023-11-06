@@ -31,7 +31,7 @@ If one wishes to focus on a specific time point, values for `time.var` and `t.le
 
 For each specified index in `alpha.name`, a linear model is applied, designating `group.var` as the primary predictor. Covariates are integrated through `adj.vars`. The function's output consists of model results that enumerate coefficients, standard errors, test statistics, and p-values.
 
-In scenarios where `group.var` encapsulates multiple categories, ANOVA gets employed to statistically validate alpha diversity disparities between the groups, considering potential confounding elements.
+In scenarios where `group.var` encapsulates multiple categories, ANOVA will be employed to test the global hypothesis of no difference in means between all the groups.
 
 ### Shannon Index Results
 
@@ -49,7 +49,7 @@ In scenarios where `group.var` encapsulates multiple categories, ANOVA gets empl
 | sexmale      | 2.29     | 4.35      | 0.528     | 6.04e-1  |
 | groupPlacebo | 1.99     | 4.21      | 0.473     | 6.42e-1  |
 
-The visualization of these findings is made possible through the `generate_alpha_boxplot_single` function. Initially, to gain an overarching perspective, we'll sidestep the time-based and strata variables.
+The visualization of these findings can be performed using `generate_alpha_boxplot_single` function. First, plot all observations and ignore the time.var and strata.var.
 
 ```r
 generate_alpha_boxplot_single(
@@ -73,7 +73,7 @@ generate_alpha_boxplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.16.07.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index across all samples, disregarding the time and strata variables. The boxplot provides an overview of the species complexity within the samples from the two groups: Probiotic LGG and Placebo.</p></figcaption></figure>
 
-Zooming into the particular time point, `t.level = "2`, provides a more nuanced understanding.
+Next, we will plot the particular time point (time point 2 in this example) by setting t.level = '2'.
 
 ```r
 generate_alpha_boxplot_single(
@@ -97,7 +97,7 @@ generate_alpha_boxplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.17.06.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at the specific time point '2'. The plot shows the species complexity for each group at this particular time point, offering insights into the potential impact of the probiotic intervention.</p></figcaption></figure>
 
-For a detailed inspection, we can further stratify the analysis using the variable `sex`.
+For a detailed inspection, we can further stratify the analysis based on sex by specifying "strata.var = "sex".
 
 ```r
 generate_alpha_boxplot_single(
