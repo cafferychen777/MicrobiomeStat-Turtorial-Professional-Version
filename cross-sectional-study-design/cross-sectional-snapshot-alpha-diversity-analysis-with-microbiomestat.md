@@ -5,15 +5,19 @@ description: >-
   microbiome dataset insights.
 ---
 
-Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples. Utilizing MicrobiomeStat, we're equipped to delve deep into these metrics using the `peerj32.obj` dataset. For an encompassing perspective, our initial approach will be to scrutinize the dataset in its entirety, eschewing time-based and strata considerations.
+# Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat
 
-It's worth noting that while our primary focus here lies on the Shannon index and Observed Species, MicrobiomeStat is versatile, supporting a variety of indices. These encompass "shannon", "simpson", "observed_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples.
+Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples.&#x20;
 
-Before delving further, it's pivotal to comprehend the significance of `alpha.obj`. This parameter encapsulates pre-computed alpha diversity indices, a byproduct of the `mStat_calculate_alpha_diversity` function. If this element isn't pre-processed and integrated into the alpha-centric functions, those functions default to invoking `mStat_calculate_alpha_diversity` autonomously.
+MicrobiomeStat supports a variety of indices including "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness inherent in the microbiome samples. The alpha diversity indices can be conveniently calculated using `mStat_calculate_alpha_diversity` function.
 
-Additionally, the alpha functions in MicrobiomeStat, by default, undertake data rarefaction. This process ensures the datasets are rendered more comparable by harmonizing the sequencing depth across samples. Such standardization is vital for comparative analyses. However, if you're aiming to work with the original, non-rarefied data when determining alpha diversity, it's imperative to pre-calculate `alpha.obj`. By doing so, the intrinsic rarefaction process is sidestepped, thereby maintaining the data's originality.
+For those functions performing alpha diversity analysis, they all include an alpha.obj parameter, which is a list output from calling `mStat_calculate_alpha_diversity` If alpha.obj parameter is NULL, `mStat_calculate_alpha_diversity` will be called autonomously. To speed up computation, we recommend calling `mStat_calculate_alpha_diversity` once and store the alpha diversity indices in the alpha.obj, which can be used later repeatedly.
 
-Lastly, ascertaining pronounced variations in alpha diversity across distinct groups necessitates rigorous statistical scrutiny. The `generate_alpha_test_single` function serves this purpose, executing association tests that compare the indices with a specified grouping variable, all under the ambit of linear models.
+To note, `mStat_calculate_alpha_diversity` by deafult, undertakes data rarefaction. This process ensures the datasets are rendered more comparable by equalizing the sequencing depth across samples. Such standardization is vital for comparative analyses. You can set the desired rarefaction depth in `mStat_calculate_alpha_diversity` or if not specified, the minimum sequencing depth will be used. If you aim to work with non-rarefied data when determining alpha diversity. You can pre-calculate your own alpha diversity indices and pass them to the alpha.obj parameter in these alpha diversity analysis functions.
+
+Next, we will illustrate how to perform alpha diversity analysis for cross-sectional data (or case-control data) using peerj32.obj. \[We may describe the content first time we mention it]
+
+The first task is to test the association between the alpha diversity and a variable of interest, while adjusting for other variables (such as confounders, independent predictors). We achieve this use `generate_alpha_test_single`, which is based on multiple linear models.
 
 ```r
 generate_alpha_test_single(
@@ -27,13 +31,13 @@ generate_alpha_test_single(
   adj.vars = "sex")
 ```
 
-If one wishes to focus on a specific time point, values for `time.var` and `t.level` should be specified. In the absence of `alpha.obj`, the function derives alpha diversity indices from the OTU table.
+If one wishes to focus on a specific time point, values for `time.var` (name of time variable) and `t.level`(the name of the specific time point) should be specified. In this example, we did not provide a pre-caluclated alpha.obj (alpha.obj = NULL). Thus, `mStat_calculate_alpha_diversity` will be automatically called.
 
-For each specified index in `alpha.name`, a linear model is applied, designating `group.var` as the primary predictor. Covariates are integrated through `adj.vars`. The function's output consists of model results that enumerate coefficients, standard errors, test statistics, and p-values.
+For each specified index in `alpha.name`, a linear model is fit, with `group.var` as the primary predictor, covariates are adjusted through `adj.vars`. The function's output consists of model output that contains coefficients, standard errors, test statistics, and p-values.
 
 In scenarios where `group.var` encapsulates multiple categories, ANOVA will be employed to test the global hypothesis of no difference in means between all the groups.
 
-### Shannon Index Results
+#### Shannon Index Results
 
 | Term         | Estimate | Std.Error | Statistic | P.Value  |
 | ------------ | -------- | --------- | --------- | -------- |
@@ -41,7 +45,7 @@ In scenarios where `group.var` encapsulates multiple categories, ANOVA will be e
 | sexmale      | -0.0633  | 0.0451    | -1.40     | 1.77e-1  |
 | groupPlacebo | 0.0415   | 0.0437    | 0.950     | 3.54e-1  |
 
-### Observed Species Results
+#### Observed Species Results
 
 | Term         | Estimate | Std.Error | Statistic | P.Value  |
 | ------------ | -------- | --------- | --------- | -------- |
@@ -73,7 +77,7 @@ generate_alpha_boxplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.16.07.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index across all samples, disregarding the time and strata variables. The boxplot provides an overview of the species complexity within the samples from the two groups: Probiotic LGG and Placebo.</p></figcaption></figure>
 
-Next, we will plot the particular time point (time point 2 in this example) by setting t.level = '2'.
+Next, we will plot the particular time point (time point 2 in this example) by setting `t.level = '2'`.
 
 ```r
 generate_alpha_boxplot_single(
