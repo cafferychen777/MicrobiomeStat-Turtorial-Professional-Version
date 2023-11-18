@@ -13,11 +13,11 @@ MicrobiomeStat supports a variety of indices including "shannon", "simpson", "ob
 
 For those functions performing alpha diversity analysis, they all include an alpha.obj parameter, which is a list output from calling `mStat_calculate_alpha_diversity` If alpha.obj parameter is NULL, `mStat_calculate_alpha_diversity` will be called autonomously. To speed up computation, we recommend calling `mStat_calculate_alpha_diversity` once and store the alpha diversity indices in the alpha.obj, which can be used later repeatedly.
 
-To note, `mStat_calculate_alpha_diversity` by deafult, undertakes data rarefaction. This process ensures the datasets are rendered more comparable by equalizing the sequencing depth across samples. Such standardization is vital for comparative analyses. You can set the desired rarefaction depth in `mStat_calculate_alpha_diversity` or if not specified, the minimum sequencing depth will be used. If you aim to work with non-rarefied data when determining alpha diversity. You can pre-calculate your own alpha diversity indices and pass them to the alpha.obj parameter in these alpha diversity analysis functions.
+To note, `mStat_calculate_alpha_diversity` by deafult, undertakes data rarefaction. This process ensures the datasets are rendered more comparable by equalizing the sequencing depth across samples. Such standardization is vital for comparative analyses. You can set the desired rarefaction depth in `mStat_calculate_alpha_diversity` or if not specified, the minimum sequencing depth will be used. If you aim to work with non-rarefied data when determining alpha diversity, You can pre-calculate your own alpha diversity indices and pass them to the alpha.obj parameter in these alpha diversity analysis functions.
 
-Next, we will illustrate how to perform alpha diversity analysis for cross-sectional data (or case-control data) using peerj32.obj. \[We may describe the content first time we mention it]
+Next, we will illustrate how to perform alpha diversity analysis for cross-sectional data (or case-control data) using peerj32.obj.&#x20;
 
-The first task is to test the association between the alpha diversity and a variable of interest, while adjusting for other variables (such as confounders, independent predictors). We achieve this use `generate_alpha_test_single`, which is based on multiple linear models.
+The first task is to test the association between alpha diversity and a variable of interest while adjusting for other variables (such as confounders and independent predictors). We achieve this use`generate_alpha_test_single`, which is based on multiple linear models.
 
 ```r
 generate_alpha_test_single(
