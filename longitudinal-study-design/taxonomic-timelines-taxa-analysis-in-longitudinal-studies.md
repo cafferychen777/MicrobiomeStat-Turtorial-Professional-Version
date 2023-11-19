@@ -166,6 +166,7 @@ In the context of large-scale microbiome datasets, it is often beneficial to foc
 * `top.k.func`: Defines the selection criteria, with two options:
   * `"mean"`: Focuses on taxa with the highest mean abundances across samples.
   * `"sd"`: Highlights taxa with the greatest standard deviation across samples, useful for examining taxa with significant differences across conditions or time frames.
+  * Custom function: Users can also pass their own function, which should take a matrix as input (rows as taxa and columns as samples) and return a numeric vector with values for each taxon. The function is applied to the abundance data, and taxa are then ranked based on the values returned by this function. For example, if a user wants to focus on taxa with a specific pattern or statistical property not covered by "mean" or "sd", they can define a function that calculates this property and pass it to `top.k.func`.
 
 These parameters are particularly effective when generating heatmaps, as they enable concentration on the most pertinent taxa for the research question at hand.
 
