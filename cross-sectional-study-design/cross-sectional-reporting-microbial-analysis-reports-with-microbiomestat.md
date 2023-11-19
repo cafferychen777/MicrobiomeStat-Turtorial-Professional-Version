@@ -1,27 +1,17 @@
 ---
 description: >-
-  MicrobiomeStat provides automated report generation for cross-sectional
-  studies in microbiome research.
+  MicrobiomeStat provides automated report generation for cross-sectional or
+  case/control studies in microbiome research.
 ---
 
 # Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat
 
-Microbiome research generates complex multidimensional datasets. These datasets often include:
-
-* Alpha diversity: This measures the taxonomic diversity within each sample.
-* Beta diversity: This quantifies the taxonomic dissimilarity between samples.
-* Differential abundance: This identifies taxa whose abundance varies significantly across experimental conditions.
-
-Manual analysis of these datasets can be time-consuming and may introduce inconsistencies.
-
 MicrobiomeStat provides an efficient solution by generating integrated reports for cross-sectional studies. These reports include:
 
 * Visualizations to illustrate key findings
-* Statistical summaries that highlight significant outcomes
+* Statistical summaries that highlight significant results
 
-This approach ensures a consistent and thorough interpretation of data.
-
-The `mStat_generate_report_single()` function is central to this process. It performs:
+The `mStat_generate_report_single()` function generates an integrated reports. It performs:
 
 * **Alpha diversity**: This uses functions like `mStat_calculate_alpha_diversity()`, `generate_alpha_boxplot_single()`, and `generate_alpha_test_single()`.
 * **Beta diversity**: This involves functions such as `mStat_calculate_beta_diversity()`, `generate_beta_ordination_single()`, and `generate_beta_test_single()`.
@@ -48,10 +38,10 @@ Before using the function, it's important to understand the parameters:
 [data-filtering.md](../data-manipulation-and-transformation/data-filtering.md)
 {% endcontent-ref %}
 
-* `group.var`: Variable name used for grouping samples.
+* `group.var`: The name of the variable of primary interest.
 * `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
 * `vis.adj.vars`: Names of columns in the metadata containing covariates to visualize in plots, in addition to the primary variables of interest such as groups. Default is NULL, which indicates only the primary variables of interest will be visualized without additional covariates.
-* `strata.var`: Variable to stratify the analysis by (optional).
+* `strata.var`: Variable to stratify the data in visualization by (optional).
 * `subject.var`: Variable name used for subject identification.
 * `time.var`: Variable name used for time points.
 * `t.level`: Character string specifying the time level/value to subset data to, if a time variable is provided. Default NULL does not subset data. Note that data will be subset based on a single time point only if both `time.var` and `t.level` are set.
@@ -65,9 +55,9 @@ Before using the function, it's important to understand the parameters:
   * `$eig`: Eigenvalues for each PC dimension.
   * `$vectors`: Loadings vectors for features onto each PC.
   * Other metadata like `$method`, `$dist.name`, etc. See `mStat_calculate_PC` function for details on output format.
-* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
-* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
-* `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
+* `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
+* `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
+* `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized innerally. "proportion": Data that has already been normalized to proportions/percentages. "other": Other data types such as transcriptomic and metabolomic data, where the user will decide the QC, normalization, and transformation. If the user wants to normalize/transform the abundance data on his own way, he can also use this option.
 * `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are:
   * "identity": No transformation (default),
   * "sqrt": Square root transformation,
