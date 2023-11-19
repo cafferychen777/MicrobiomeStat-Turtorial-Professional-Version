@@ -84,7 +84,7 @@ By inspecting these metrics, researchers can gain insights into the relative imp
 
 Next, we will introduce functions to plot the taxa (features) data. They can be used to visualize specific taxa (features), for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which has the following relevant parameters:
 
-* `transform`: This parameter indicates the transformation to apply to the axis when plotting. The options include:
+* `transform`: This parameter indicates the transformation to apply to the axis when plotting. Transformations are only applied when the `feature.dat.type` is set to either `"count"` or `"proportion"`. The available options for `transform` include:
   * `"identity"`: No transformation (default)
   * `"sqrt"`: Square root transformation
   * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
