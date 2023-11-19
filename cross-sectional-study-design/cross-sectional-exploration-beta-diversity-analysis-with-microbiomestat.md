@@ -15,7 +15,7 @@ Before starting with pre-computed data objects, it's beneficial to grasp the uti
 
 Further, it's worth noting that the range of distance measures (`dist.name`) supported includes "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted UniFrac), "GUniFrac" (generalized UniFrac), "WUniFrac" (weighted UniFrac), and "JS" (Jensen-Shannon divergence). It's pivotal to understand that some of these methods, especially those like "UniFrac", necessitate the presence of a phylogenetic tree. Thus, prior to leveraging these metrics, ensure that the `tree` component exists within the `data.obj`.
 
-Venturing forth, before plunging into the visual realms of beta diversity with `generate_beta_ordination_single`, it's prudent to quantify the underlying patterns. The `generate_beta_test_single` function is primed for this, employing PERMANOVA on the designated distance matrices to pinpoint significant compositional variations across groups, all while accommodating specified covariates.
+To rigorously test the association between the compositional variation and a covariate of interest while adjusting for other covariates, we can use `generate_beta_test_single`, which is based PERMANOVA on beta diversity measures (distance matrices).
 
 ```r
 generate_beta_test_single(
@@ -28,6 +28,8 @@ generate_beta_test_single(
   dist.name = c('BC', 'Jaccard') 
 )
 ```
+
+In this example, we test the compositional association with the `group` variable, adjusting for the `sex` variable, at the time point `"2"`. We investigate both the "BC" and "Jaccard" beta diversity measures. The function will output the R2 (percent of compositional variation explained) and association p-value for each beta diversity measure. To be noted, the association statistics for `sex` in the table is not adjusted for the `group` effect.
 
 #### Omnibus test results
 
