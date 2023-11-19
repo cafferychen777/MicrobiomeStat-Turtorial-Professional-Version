@@ -93,6 +93,7 @@ Next, we will introduce functions to plot the taxa (features) data. They can be 
   * `top.k.func` assists in determining the criteria for this selection, offering two choices:
     * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
     * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
+    * Custom function: Users can also pass their own function, which should take a matrix as input (rows as taxa and columns as samples) and return a numeric vector with values for each taxon. The function is applied to the abundance data, and taxa are then ranked based on the values returned by this function. For example, if a user wants to focus on taxa with a specific pattern or statistical property not covered by "mean" or "sd", they can define a function that calculates this property and pass it to `top.k.func`.
 
 The following shows the usage and output of the function `generate_taxa_boxplot_single`. All the taxa are plotted together.
 
