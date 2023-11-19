@@ -48,7 +48,7 @@ It's also noteworthy that in practical scenarios, the nature of microbial change
 
 The table above provides the detailed outcomes of the PERMANOVA analysis, including metrics like the sum of squares, mean squares, and corresponding p-values.&#x20;
 
-Transitioning from the quantitative to the qualitative, the `generate_beta_ordination_single` function provides the necessary visualization tools:
+\[Please move before the statistical tests] We will first use beta diversity-based visualizations to study the relationship between the community-level composition and variables of interest. Later, we will perform more rigorous statistical tests. The `generate_beta_ordination_single` function provides the necessary visualizaiton tools.
 
 ```r
 library(aplot)
