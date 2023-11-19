@@ -7,7 +7,7 @@ description: >-
 
 # Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat
 
-In cross-sectional studies, beta diversity serves as a pivotal metric to discern differences in microbial community composition across samples. The `MicrobiomeStat` toolkit is specifically designed to guide researchers through this intricate analysis.
+Beta diversity analysis is instrumental in revealing the difference in microbial community composition across samples.&#x20;
 
 Before starting with pre-computed data objects, it's beneficial to grasp the utility of `dist.obj` and `pc.obj` in the context of this toolkit. By design, if these aren't provided, `MicrobiomeStat` auto-generates them. The `dist.obj` is computed using the `mStat_calculate_beta_diversity` function. When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_distance` function refines the microbial community dissimilarities using a method based on linear models and multidimensional scaling. This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
