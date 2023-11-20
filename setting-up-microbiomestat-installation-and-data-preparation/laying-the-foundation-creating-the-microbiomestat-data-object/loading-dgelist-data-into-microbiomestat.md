@@ -37,7 +37,7 @@ By using the `mStat_convert_DGEList_to_data_obj` function, you can effectively c
 
 * **dge.obj**: Your existing DGEList object.
 
-The resultant **MicrobiomeStat data object** encompasses:
+The resultant **MicrobiomeStat data object** includes:
 
 * **feature.tab**: A matrix populated with counts data.
 * **meta.dat**: A data frame detailing the sample information.
