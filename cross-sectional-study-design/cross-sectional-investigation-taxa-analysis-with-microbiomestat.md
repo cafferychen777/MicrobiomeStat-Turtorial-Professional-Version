@@ -157,7 +157,7 @@ Heatmaps are particularly insightful for discerning clusters of microbial famili
 
 The function also allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions.
 
-Let's dive into the function's implementation:
+We can generate of the heatmap of the selected taxa using:
 
 ```r
 generate_taxa_heatmap_single(

@@ -6,12 +6,12 @@ description: >-
 
 # Reports Generation
 
-MicrobiomeStat provides an efficient solution by generating integrated reports for paired sample studies. These reports include:
+MicrobiomeStat provides an efficient solution by generating integrated reports for cross-sectional studies. These reports include:
 
 * Visualizations to illustrate key findings
-* Statistical summaries that highlight significant outcomes
+* Statistical summaries that highlight significant results
 
-This approach ensures a consistent and thorough interpretation of data.
+The `mStat_generate_report_long()` function generates an integrated reports. It performs:
 
 * **Alpha diversity**: Functions used include `generate_alpha_boxplot_long()`, `generate_alpha_spaghettiplot_long()`, `generate_alpha_trend_test_long()`, and `generate_alpha_volatility_test_long()`.
 * **Beta diversity**: Functions used include `generate_beta_ordination_long()`, `generate_beta_pc_boxplot_long()`, `generate_beta_change_spaghettiplot_long()`, `generate_beta_trend_test_long()`, and `generate_beta_volatility_test_long()`.
@@ -40,7 +40,7 @@ Before using the function, it's important to understand the parameters:
 [data-filtering.md](../data-manipulation-and-transformation/data-filtering.md)
 {% endcontent-ref %}
 
-* `group.var`: Variable name used for grouping samples.
+* `group.var`: The name of the variable of primary interest.
 * `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
 * `vis.adj.vars`: For alpha and beta diversity visualization functions, the `vis.adj.vars` parameter designates the column names in the metadata that correspond to covariates. When covariates are specified, `vis.adj.vars` will adjust the `alpha.obj` and `dist.obj` accordingly, resulting in an alpha diversity index and a distance matrix that have been modified to account for the additional covariates.
 * `strata.var`: Variable to stratify the analysis by (optional).
@@ -63,7 +63,7 @@ Before using the function, it's important to understand the parameters:
   * Other metadata like `$method`, `$dist.name`, etc. See `mStat_calculate_PC` function for details on output format.
 * `vis.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for visualization and plotting. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level in the generated visualizations.
 * `test.feature.level`: The column name in the feature annotation matrix (feature.ann) of data.obj to use for testing or analytical purposes. This can be a taxonomic level like "Phylum" or "Genus" for microbiome data. For single-cell data, this could be a cell type identifier such as "CellType". For KEGG data, this could be a pathway level such as "Pathway\_L1", "Pathway\_L2", or "Pathway\_L3". If you want to avoid aggregation, you can set it to "original", and no aggregation will be performed. The selected feature level will be used to aggregate the data at the specified level for statistical tests and models.
-* `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized by the function. "proportion": Data that has already been normalized to proportions/percentages. "other": Custom abundance data that has unknown scaling. No normalization applied.
+* `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data, will be normalized innerally. "proportion": Data that has already been normalized to proportions/percentages. "other": Other data types such as transcriptomic and metabolomic data, where the user will decide the QC, normalization, and transformation. If the user wants to normalize/transform the abundance data on his own way, he can also use this option.
 * `feature.change.func`: A function or character string specifying how to calculate the change from baseline value. This allows flexible options:
   * If a function is provided, it will be applied to each row to calculate change. The function should take 2 arguments: value at timepoint t and value at baseline t0.
   * If a character string is provided, following options are supported:
