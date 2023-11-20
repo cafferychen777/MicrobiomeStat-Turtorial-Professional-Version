@@ -12,7 +12,7 @@ The `feature.dat.type` parameter plays a crucial role in the data preprocessing 
 
 * `"count"`: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
 * `"proportion"`: Data presented as proportions remains unaltered.However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
-* `"other"`: In scenarios where the data originates from non-microbiome sources, like single-cell studies, spatial transcriptomics, KEGG pathways, or gene data, a different data transformation approach might be more apt. When `feature.dat.type` is set to `"other"`, the function refrains from any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+* `"other"`: In scenarios where the data originates from non-compositional sources, like transcriptomics and metabolomics, a different data transformation approach might be more appropriate. When `feature.dat.type` is set to "other", the function does not perform any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
 
 Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
 
@@ -66,9 +66,9 @@ plot.list <- generate_taxa_volcano_single(
 plot.list
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.07.17.png" alt=""><figcaption><p>Volcano plot for main effect presents the volcano plot for the Main Effect, reflecting the primary differences in taxa abundance between the compared groups, excluding the influence of other factors. Each point represents a genus, with its position on the x-axis indicating the log fold change and on the y-axis indicating the adjusted p-value (-log10). Points located at the top and on either side of the vertical line represent genera with statistically significant differences in abundance.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.07.17.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.07.38.png" alt=""><figcaption><p>Volcano plot for interaction effect displays the volcano plot for the Interaction Effect, revealing the relationship between group differences and the time variable. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model. Each point represents a genus, with its position on the x-axis indicating the log fold change and on the y-axis indicating the adjusted p-value (-log10). Points located at the top and on either side of the vertical line represent genera with statistically significant differences in abundance.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.07.38.png" alt=""><figcaption></figcaption></figure>
 
 For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]` may appear.
 
@@ -103,7 +103,7 @@ plot.list <- generate_taxa_volcano_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.37.16.png" alt=""><figcaption><p>Volcano plot visualizing the taxa changes between groups. Each point represents a taxon, plotted according to its log2 fold change (x-axis) and -log10 adjusted p-value (y-axis) derived from the <code>generate_taxa_change_test_pair()</code>function. The plot helps to identify taxa with significant differences in abundance across timepoints. The horizontal line indicates the threshold for statistical significance (p=0.1). Taxa that pass this threshold are considered significantly different between groups.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.37.16.png" alt=""><figcaption></figcaption></figure>
 
 The outcomes enable researchers to recognize taxa that exhibit notable changes in abundance across timepoints, and to determine whether these changes are associated with group affiliations. In the following sections, we will demonstrate how to visualize features of interest from the differential abundance analysis, or other specific features, using various methods.
 
@@ -112,9 +112,10 @@ In the analysis of large-scale microbiome datasets, it's often necessary to conc
 To include a description of the custom function within the context of the `top.k.plot` parameter, you can modify the paragraph as follows:
 
 The `top.k.plot` parameter specifies the maximum number of taxa to be displayed in visualizations. For instance, setting it to 10 means only the top 10 taxa, as determined by the criteria specified in `top.k.func`, will be visualized. The `top.k.func` parameter offers several predefined choices:
-- `"mean"`: Highlights taxa with the highest average abundances across samples.
-- `"sd"`: Focuses on taxa with the greatest variability in abundance, useful for identifying taxa with significant differences under various conditions or over time.
-- `"prevalence"`: Selects taxa with the highest occurrence across samples, ideal for pinpointing consistently present taxa.
+
+* `"mean"`: Highlights taxa with the highest average abundances across samples.
+* `"sd"`: Focuses on taxa with the greatest variability in abundance, useful for identifying taxa with significant differences under various conditions or over time.
+* `"prevalence"`: Selects taxa with the highest occurrence across samples, ideal for pinpointing consistently present taxa.
 
 Additionally, `top.k.func` can accept a custom function defined by the user. This function should take a matrix of taxa abundances as input and return a numeric vector of values. By using a custom function, researchers can apply unique criteria to rank and select taxa based on specialized research questions or distinct patterns of interest. The top taxa, according to the output of this custom function or the predefined options, will then be selected for visualization up to the number specified by `top.k.plot`.
 
@@ -160,7 +161,7 @@ generate_taxa_indiv_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.50.17.png" alt=""><figcaption><p>Longitudinal Boxplot of Individual Taxa: The <code>generate_taxa_indiv_boxplot_long()</code> function enables an in-depth investigation of the variation in abundance for each taxon within paired samples across time. Each page of the multi-page PDF represents a single taxon, providing a focused perspective on the dynamic changes under paired conditions.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.50.17.png" alt=""><figcaption></figcaption></figure>
 
 This function creates a series of boxplots, one for each taxon, and outputs them into a multi-page PDF.
 
@@ -194,7 +195,7 @@ generate_taxa_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.52.12.png" alt=""><figcaption><p>Comprehensive Boxplot of Individual Taxa: The <code>generate_taxa_boxplot_long()</code> function generates a combined boxplot of all taxa, allowing an immediate comparison of abundance variations across paired samples over time. This visualization is particularly useful in highlighting taxa with significant differential abundance, offering a clear overview of the microbiome dynamics within paired samples.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.52.12.png" alt=""><figcaption></figcaption></figure>
 
 This function places all taxa onto a single page, providing an overview of all your taxa at once.
 
@@ -229,7 +230,7 @@ generate_taxa_indiv_change_boxplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.18.32.png" alt=""><figcaption><p>Individual Taxa Change Boxplot Pair: Created by the <code>generate_taxa_indiv_change_boxplot_pair()</code> function, this plot visualizes changes in taxonomic composition at the family level. The log-fold-change metric provides a clear depiction of the shifts in abundance over time, offering a more detailed understanding of the dynamics between different conditions.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.18.32.png" alt=""><figcaption></figcaption></figure>
 
 Next, we move onto the second function `generate_taxa_change_boxplot_pair()`:
 
@@ -260,7 +261,7 @@ generate_taxa_change_boxplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.20.52.png" alt=""><figcaption><p>Individual Taxa Change Boxplot Pair with Standard Deviation: Generated by the <code>generate_taxa_change_boxplot_pair()</code> function, this plot also illustrates changes in abundance within paired samples. However, the focus is on the top six taxa based on their standard deviation, providing a unique perspective on the microbial dynamics.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.20.52.png" alt=""><figcaption></figcaption></figure>
 
 Before we dive into the visual interpretation offered by the `generate_taxa_barplot_pair` function, let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
 
@@ -289,9 +290,9 @@ generate_taxa_barplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.23.36.png" alt=""><figcaption><p>Individual Stacked Bar Plot of Taxa Composition: Created by the <code>generate_taxa_barplot_pair()</code> function, this visualization displays the changes in taxonomic composition within each subject over time. Connecting lines across the stacked bars emphasize the individual longitudinal journey of the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.23.36.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.24.47.png" alt=""><figcaption><p>Average Group Stacked Bar Plot of Taxa Composition: Also produced by the <code>generate_taxa_barplot_pair()</code> function, this plot illustrates the average changes in taxonomic composition within groups over time. This representation sheds light on the broader microbial dynamics across different subject groups.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.24.47.png" alt=""><figcaption></figcaption></figure>
 
 The function `generate_taxa_dotplot_pair()` visually evaluates variations in mean abundance and prevalence across distinct groups. In the context of paired samples, this function produces dotplots of each feature's mean abundance and prevalence.
 
@@ -320,7 +321,7 @@ generate_taxa_dotplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 20.34.39.png" alt=""><figcaption><p>Dotplot of Mean Abundance and Prevalence Between Paired Groups: Generated by the <code>generate_taxa_dotplot_pair()</code> function, this comprehensive dotplot displays the variation in mean abundance (represented by the size of the dots) and prevalence (indicated by the color intensity) of each taxon at the Family level across different paired groups. This visualization enables a nuanced understanding of significant changes in taxa abundance and prevalence across conditions, highlighting the complex dynamics within the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 20.34.39.png" alt=""><figcaption></figcaption></figure>
 
 The `generate_taxa_change_dotplot_pair()` function visualizes microbiome fluctuations within your dataset. This function allows for the tracking of dynamic changes in taxa abundance across different time points.
 
@@ -352,7 +353,7 @@ generate_taxa_change_dotplot_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.12.29.png" alt=""><figcaption><p>Dotplot of Taxa Change Between Paired Groups: Crafted by the <code>generate_taxa_change_dotplot_pair()</code> function, this visualization emphasizes the significant shifts in taxa abundance at the Family level across different time points. The size of the dots corresponds to the change magnitude, dictated by log 2 fold change, while the color intensity indicates the prevalence of each taxon. This detailed depiction accentuates the differing microbial dynamics between groups, inviting a thorough exploration of the complex interactions within the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.12.29.png" alt=""><figcaption></figcaption></figure>
 
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
@@ -387,7 +388,7 @@ generate_taxa_heatmap_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption><p>Individual Taxa Heatmap: This detailed heatmap, created using the <code>generate_taxa_heatmap_pair()</code> function, provides a vibrant visual display of taxa changes at the Family level within individual samples over time. The color intensity indicates the relative abundance of each taxon, revealing shared abundance patterns among different taxa and offering insights into the intricate ecology of the microbiome.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption></figcaption></figure>
 
 The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of change.
 
@@ -420,4 +421,4 @@ generate_taxa_change_heatmap_pair(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.30.23.png" alt=""><figcaption><p>Taxa Change Heatmap: Generated with the <code>generate_taxa_change_heatmap_pair()</code> function, this heatmap reveals the relative changes in taxa abundance at the Family level. The color intensity signifies the magnitude of change, providing an in-depth look at how microbial populations shift over time. Clustering reveals groups of taxa with similar abundance change patterns, shedding light on potential functional or ecological relationships.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.30.23.png" alt=""><figcaption></figcaption></figure>

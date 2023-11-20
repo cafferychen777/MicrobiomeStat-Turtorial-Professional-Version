@@ -41,7 +41,7 @@ generate_beta_ordination_single(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption><p>Illustration of Beta Diversity Ordination for the entire dataset, offering a broad perspective on microbial community structures without temporal or strata distinctions.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption></figcaption></figure>
 
 After visually exploring the data, we proceed to more rigorous statistical tests. To rigorously test the association between the compositional variation and a covariate of interest while adjusting for other covariates, we can use `generate_beta_test_single`, which is based on PERMANOVA using beta diversity measures (distance matrices).
 
@@ -100,7 +100,7 @@ In the PCoA plot above, we plot all the observations regardless of time points a
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption></figcaption></figure>
 
 We can also stratify on a specific variable, such as `sex`. And we also add a p-value annotation to the plot, derived from a PERMANOVA test, to highlight significant differences between groups:
 
@@ -136,4 +136,4 @@ p <- p + annotate("text", x = 0.3, y = 0.8,
   size = 5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-16 at 18.48.19.png" alt=""><figcaption><p>Delving deeper, this illustration elucidates the Beta Diversity Ordination at Time Point '2', with a stratification based on gender. This overlay permits a more detailed inspection of microbial community variations across both time and gender spectra.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-16 at 18.48.19.png" alt=""><figcaption></figcaption></figure>

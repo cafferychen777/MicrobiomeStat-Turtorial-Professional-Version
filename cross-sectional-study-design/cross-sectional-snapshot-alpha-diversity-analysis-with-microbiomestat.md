@@ -32,19 +32,11 @@ In scenarios where `group.var` encapsulates multiple categories, ANOVA will be e
 
 #### Shannon Index Results
 
-| Term         | Estimate | Std.Error | Statistic | P.Value  |
-| ------------ | -------- | --------- | --------- | -------- |
-| (Intercept)  | 3.60     | 0.0386    | 93.2      | 9.47e-27 |
-| sexmale      | -0.0633  | 0.0451    | -1.40     | 1.77e-1  |
-| groupPlacebo | 0.0415   | 0.0437    | 0.950     | 3.54e-1  |
+<table><thead><tr><th>Term</th><th width="111">Estimate</th><th width="118">Std.Error</th><th width="102">Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>3.60</td><td>0.0386</td><td>93.2</td><td>9.47e-27</td></tr><tr><td>sexmale</td><td>-0.0633</td><td>0.0451</td><td>-1.40</td><td>1.77e-1</td></tr><tr><td>groupPlacebo</td><td>0.0415</td><td>0.0437</td><td>0.950</td><td>3.54e-1</td></tr></tbody></table>
 
 #### Observed Species Results
 
-| Term         | Estimate | Std.Error | Statistic | P.Value  |
-| ------------ | -------- | --------- | --------- | -------- |
-| (Intercept)  | 100.     | 3.72      | 26.9      | 1.36e-16 |
-| sexmale      | 2.29     | 4.35      | 0.528     | 6.04e-1  |
-| groupPlacebo | 1.99     | 4.21      | 0.473     | 6.42e-1  |
+<table><thead><tr><th>Term</th><th width="81">Estimate</th><th width="122">Std.Error</th><th width="110">Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>100.</td><td>3.72</td><td>26.9</td><td>1.36e-16</td></tr><tr><td>sexmale</td><td>2.29</td><td>4.35</td><td>0.528</td><td>6.04e-1</td></tr><tr><td>groupPlacebo</td><td>1.99</td><td>4.21</td><td>0.473</td><td>6.42e-1</td></tr></tbody></table>
 
 The visualization of these findings can be performed using `generate_alpha_boxplot_single` function. First, plot all observations and ignore the time.var and strata.var.
 
@@ -68,7 +60,7 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.16.07.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index across all samples, disregarding the time and strata variables. The boxplot provides an overview of the species complexity within the samples from the two groups: Probiotic LGG and Placebo.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.16.07.png" alt=""><figcaption></figcaption></figure>
 
 Next, we will plot the particular time point (time point 2 in this example) by setting `t.level = '2'`.
 
@@ -92,7 +84,7 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.17.06.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at the specific time point '2'. The plot shows the species complexity for each group at this particular time point, offering insights into the potential impact of the probiotic intervention.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.17.06.png" alt=""><figcaption></figcaption></figure>
 
 For a detailed inspection, we can further stratify the analysis based on sex by specifying "strata.var = "sex".
 
@@ -116,4 +108,4 @@ generate_alpha_boxplot_single(
   pdf.hei = 8.5)
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.18.43.png" alt=""><figcaption><p>Boxplot of the Shannon alpha diversity index for samples at time point '2', considering the strata variable 'sex'. The plot provides an added layer of understanding by showcasing the species complexity stratified by sex and group. This helps to identify any sex-specific effects of the intervention on the microbiome's species complexity.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.18.43.png" alt=""><figcaption></figcaption></figure>
