@@ -25,17 +25,9 @@ generate_beta_change_test_pair(
 
 The function returns coefficient tables with p-values for assessing variable associations with each beta diversity metric. These tables enable rigorous hypothesis testing before visualizing beta diversity changes in paired designs.
 
-| Distance | Term         | Estimate | Std.Error | Statistic | P.Value  |
-| -------- | ------------ | -------- | --------- | --------- | -------- |
-| BC       | (Intercept)  | 0.175    | 0.0186    | 9.42      | 8.24e-12 |
-| BC       | sexmale      | 0.0671   | 0.0217    | 3.09      | 3.58e-3  |
-| BC       | groupPlacebo | -0.0157  | 0.0210    | -0.746    | 4.60e-1  |
+<table><thead><tr><th width="134">Distance</th><th>Term</th><th>Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>BC</td><td>(Intercept)</td><td>0.175</td><td>0.0186</td><td>9.42</td><td>8.24e-12</td></tr><tr><td>BC</td><td>sexmale</td><td>0.0671</td><td>0.0217</td><td>3.09</td><td>3.58e-3</td></tr><tr><td>BC</td><td>groupPlacebo</td><td>-0.0157</td><td>0.0210</td><td>-0.746</td><td>4.60e-1</td></tr></tbody></table>
 
-| Distance | Term         | Estimate | Std.Error | Statistic | P.Value  |
-| -------- | ------------ | -------- | --------- | --------- | -------- |
-| Jaccard  | (Intercept)  | 0.294    | 0.0246    | 12.0      | 6.04e-15 |
-| Jaccard  | sexmale      | 0.0853   | 0.0288    | 2.96      | 5.06e-3  |
-| Jaccard  | groupPlacebo | -0.0207  | 0.0279    | -0.744    | 4.61e-1  |
+<table><thead><tr><th width="123">Distance</th><th>Term</th><th>Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>Jaccard</td><td>(Intercept)</td><td>0.294</td><td>0.0246</td><td>12.0</td><td>6.04e-15</td></tr><tr><td>Jaccard</td><td>sexmale</td><td>0.0853</td><td>0.0288</td><td>2.96</td><td>5.06e-3</td></tr><tr><td>Jaccard</td><td>groupPlacebo</td><td>-0.0207</td><td>0.0279</td><td>-0.744</td><td>4.61e-1</td></tr></tbody></table>
 
 Next, we explore the `generate_beta_ordination_pair()` function. This function generates ordination plots based on the microbial community structures of samples.
 

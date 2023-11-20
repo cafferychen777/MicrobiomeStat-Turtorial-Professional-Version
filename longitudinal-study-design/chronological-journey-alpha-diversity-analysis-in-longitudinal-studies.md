@@ -28,27 +28,11 @@ alpha_trend_test_results <- generate_alpha_trend_test_long(
 
 **Shannon Diversity**
 
-| Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
-| ---------------------------------------------------- | -------- | --------- | --------- | -------- |
-| (Intercept)                                          | 2.59     | 0.204     | 12.7      | 5.13e-27 |
-| subject\_racecaucasian                               | 0.214    | 0.231     | 0.928     | 3.55e-1  |
-| subject\_racehispanic\_or\_latino                    | 0.197    | 0.441     | 0.446     | 6.56e-1  |
-| visit\_number\_num                                   | -0.00852 | 0.0547    | -0.156    | 8.76e-1  |
-| subject\_racecaucasian:visit\_number\_num            | -0.0105  | 0.0617    | -0.170    | 8.65e-1  |
-| subject\_racehispanic\_or\_latino:visit\_number\_num | 0.0515   | 0.116     | 0.443     | 6.58e-1  |
-| subject\_race:visit\_number\_num                     | NA       | NA        | 0.175     | 8.40e-1  |
+<table><thead><tr><th>Term</th><th width="114">Estimate</th><th width="123">Std.Error</th><th width="118">Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>2.59</td><td>0.204</td><td>12.7</td><td>5.13e-27</td></tr><tr><td>subject_racecaucasian</td><td>0.214</td><td>0.231</td><td>0.928</td><td>3.55e-1</td></tr><tr><td>subject_racehispanic_or_latino</td><td>0.197</td><td>0.441</td><td>0.446</td><td>6.56e-1</td></tr><tr><td>visit_number_num</td><td>-0.00852</td><td>0.0547</td><td>-0.156</td><td>8.76e-1</td></tr><tr><td>subject_racecaucasian:visit_number_num</td><td>-0.0105</td><td>0.0617</td><td>-0.170</td><td>8.65e-1</td></tr><tr><td>subject_racehispanic_or_latino:visit_number_num</td><td>0.0515</td><td>0.116</td><td>0.443</td><td>6.58e-1</td></tr><tr><td>subject_race:visit_number_num</td><td>NA</td><td>NA</td><td>0.175</td><td>8.40e-1</td></tr></tbody></table>
 
 **Observed Species Diversity**
 
-| Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
-| ---------------------------------------------------- | -------- | --------- | --------- | -------- |
-| (Intercept)                                          | 118      | 16.1      | 7.36      | 3.22e-12 |
-| subject\_racecaucasian                               | 23.2     | 18.2      | 1.28      | 2.02e-1  |
-| subject\_racehispanic\_or\_latino                    | 20.1     | 34.6      | 0.580     | 5.62e-1  |
-| visit\_number\_num                                   | -0.152   | 4.35      | -0.0349   | 9.72e-1  |
-| subject\_racecaucasian:visit\_number\_num            | -0.792   | 4.90      | -0.162    | 8.72e-1  |
-| subject\_racehispanic\_or\_latino:visit\_number\_num | 2.71     | 9.28      | 0.292     | 7.70e-1  |
-| subject\_race:visit\_number\_num                     | NA       | NA        | 0.0910    | 9.13e-1  |
+<table><thead><tr><th>Term</th><th width="112">Estimate</th><th width="125">Std.Error</th><th width="131">Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>118</td><td>16.1</td><td>7.36</td><td>3.22e-12</td></tr><tr><td>subject_racecaucasian</td><td>23.2</td><td>18.2</td><td>1.28</td><td>2.02e-1</td></tr><tr><td>subject_racehispanic_or_latino</td><td>20.1</td><td>34.6</td><td>0.580</td><td>5.62e-1</td></tr><tr><td>visit_number_num</td><td>-0.152</td><td>4.35</td><td>-0.0349</td><td>9.72e-1</td></tr><tr><td>subject_racecaucasian:visit_number_num</td><td>-0.792</td><td>4.90</td><td>-0.162</td><td>8.72e-1</td></tr><tr><td>subject_racehispanic_or_latino:visit_number_num</td><td>2.71</td><td>9.28</td><td>0.292</td><td>7.70e-1</td></tr><tr><td>subject_race:visit_number_num</td><td>NA</td><td>NA</td><td>0.0910</td><td>9.13e-1</td></tr></tbody></table>
 
 In the trend test, our primary focus is on the interaction term between `group.var` and `time.var`. When the levels of `group.var` are greater than 2, an ANOVA is performed, which is represented in the last row of the table.
 
@@ -87,23 +71,11 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
 
 **Shannon**
 
-| Term                              | Estimate | Std.Error | Statistic |     P.Value |
-| --------------------------------- | -------: | --------: | --------: | ----------: |
-| (Intercept)                       |    0.544 |    0.0959 |      5.67 | 0.000000423 |
-| subject\_racecaucasian            |   0.0222 |     0.108 |     0.205 |       0.838 |
-| subject\_racehispanic\_or\_latino |  -0.0705 |     0.222 |    -0.318 |       0.752 |
-| subject\_race                     |       NA |        NA |     0.114 |       0.893 |
-| Residuals                         |       NA |        NA |        NA |          NA |
+<table><thead><tr><th align="center">Term</th><th width="127" align="center">Estimate</th><th width="112" align="center">Std.Error</th><th align="center">Statistic</th><th align="center">P.Value</th></tr></thead><tbody><tr><td align="center">(Intercept)</td><td align="center">0.544</td><td align="center">0.0959</td><td align="center">5.67</td><td align="center">0.000000423</td></tr><tr><td align="center">subject_racecaucasian</td><td align="center">0.0222</td><td align="center">0.108</td><td align="center">0.205</td><td align="center">0.838</td></tr><tr><td align="center">subject_racehispanic_or_latino</td><td align="center">-0.0705</td><td align="center">0.222</td><td align="center">-0.318</td><td align="center">0.752</td></tr><tr><td align="center">subject_race</td><td align="center">NA</td><td align="center">NA</td><td align="center">0.114</td><td align="center">0.893</td></tr><tr><td align="center">Residuals</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td></tr></tbody></table>
 
 **Observed Species**
 
-| Term                              | Estimate | Std.Error | Statistic | P.Value |
-| --------------------------------- | -------: | --------: | --------: | ------: |
-| (Intercept)                       |     40.6 |      5.82 |      6.98 | 2.51e-9 |
-| subject\_racecaucasian            |    -1.95 |      6.56 |    -0.297 | 7.67e-1 |
-| subject\_racehispanic\_or\_latino |    -7.04 |      13.4 |    -0.524 | 6.02e-1 |
-| subject\_race                     |       NA |        NA |     0.143 | 8.67e-1 |
-| Residuals                         |       NA |        NA |        NA |      NA |
+<table><thead><tr><th width="148">Term</th><th width="141" align="center">Estimate</th><th width="109" align="center">Std.Error</th><th width="185" align="center">Statistic</th><th align="center">P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td align="center">40.6</td><td align="center">5.82</td><td align="center">6.98</td><td align="center">2.51e-9</td></tr><tr><td>subject_racecaucasian</td><td align="center">-1.95</td><td align="center">6.56</td><td align="center">-0.297</td><td align="center">7.67e-1</td></tr><tr><td>subject_racehispanic_or_latino</td><td align="center">-7.04</td><td align="center">13.4</td><td align="center">-0.524</td><td align="center">6.02e-1</td></tr><tr><td>subject_race</td><td align="center">NA</td><td align="center">NA</td><td align="center">0.143</td><td align="center">8.67e-1</td></tr><tr><td>Residuals</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td></tr></tbody></table>
 
 Before we proceed with the visualization, it's crucial to understand the `time.var`, `t0.level`, and `ts.levels` parameters used in the functions `generate_alpha_spaghettiplot_long` and `generate_alpha_boxplot_long`.
 

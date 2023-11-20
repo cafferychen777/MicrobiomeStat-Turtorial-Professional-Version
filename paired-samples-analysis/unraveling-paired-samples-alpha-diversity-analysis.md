@@ -26,13 +26,7 @@ generate_alpha_test_pair(
 )
 ```
 
-| Term               | Estimate | Std.Error | Statistic | P.Value  |
-| ------------------ | -------- | --------- | --------- | -------- |
-| (Intercept)        | 3.53     | 0.0372    | 95.0      | 1.25e-43 |
-| groupPlacebo       | 0.0994   | 0.0436    | 2.28      | 2.87e-2  |
-| time2              | 0.0589   | 0.0433    | 1.36      | 1.88e-1  |
-| sexmale            | -0.0548  | 0.0353    | -1.55     | 1.37e-1  |
-| groupPlacebo:time2 | -0.0548  | 0.0542    | -1.01     | 3.25e-1  |
+<table><thead><tr><th>Term</th><th width="121">Estimate</th><th width="133">Std.Error</th><th width="144">Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>3.53</td><td>0.0372</td><td>95.0</td><td>1.25e-43</td></tr><tr><td>groupPlacebo</td><td>0.0994</td><td>0.0436</td><td>2.28</td><td>2.87e-2</td></tr><tr><td>time2</td><td>0.0589</td><td>0.0433</td><td>1.36</td><td>1.88e-1</td></tr><tr><td>sexmale</td><td>-0.0548</td><td>0.0353</td><td>-1.55</td><td>1.37e-1</td></tr><tr><td>groupPlacebo:time2</td><td>-0.0548</td><td>0.0542</td><td>-1.01</td><td>3.25e-1</td></tr></tbody></table>
 
 The output from this function allows us to test differences in alpha diversity across timepoints or groups, contributing to our understanding of changes in microbial diversity.
 
@@ -74,11 +68,7 @@ The output of this function is a list of summary tables for each alpha diversity
 
 Here is an example of what the output might look like:
 
-| Term         | Estimate  | Std.Error | Statistic | P.Value |
-| ------------ | --------- | --------- | --------- | ------- |
-| (Intercept)  | 0.0174    | 0.0140    | 1.24      | 0.230   |
-| sexmale      | -0.000390 | 0.0164    | -0.0238   | 0.981   |
-| groupPlacebo | -0.0154   | 0.0158    | -0.975    | 0.342   |
+<table><thead><tr><th>Term</th><th width="128">Estimate</th><th width="141">Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>0.0174</td><td>0.0140</td><td>1.24</td><td>0.230</td></tr><tr><td>sexmale</td><td>-0.000390</td><td>0.0164</td><td>-0.0238</td><td>0.981</td></tr><tr><td>groupPlacebo</td><td>-0.0154</td><td>0.0158</td><td>-0.975</td><td>0.342</td></tr></tbody></table>
 
 To further enhance our understanding of alpha diversity changes, MicrobiomeStat provides the `generate_alpha_boxplot_long` function. This function is particularly useful as it can handle multiple time point scenarios. It generates an informative alpha diversity boxplot, with lines connecting the boxplots representing the same subject across different time points. These lines provide a visual representation of how individual subjects' alpha diversity changes over time.
 

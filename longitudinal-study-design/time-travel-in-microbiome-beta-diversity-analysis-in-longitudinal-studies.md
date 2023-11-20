@@ -23,15 +23,7 @@ generate_beta_trend_test_long(
 )
 ```
 
-| Term                                                 | Estimate | Std.Error | Statistic | P.Value  |
-| ---------------------------------------------------- | -------- | --------- | --------- | -------- |
-| (Intercept)                                          | 1.95     | 0.142     | 13.8      | 1.59e-20 |
-| subject\_racecaucasian                               | -0.280   | 0.162     | -1.73     | 8.90e-2  |
-| subject\_racehispanic\_or\_latino                    | 0.248    | 0.308     | 0.805     | 4.25e-1  |
-| visit\_number\_num                                   | -0.0235  | 0.0245    | -0.959    | 3.44e-1  |
-| subject\_racecaucasian:visit\_number\_num            | 0.0490   | 0.0280    | 1.75      | 8.88e-2  |
-| subject\_racehispanic\_or\_latino:visit\_number\_num | 0.0264   | 0.0484    | 0.545     | 5.90e-1  |
-| subject\_race:visit\_number\_num                     | NA       | NA        | 1.56      | 2.27e-1  |
+<table><thead><tr><th>Term</th><th width="133">Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>1.95</td><td>0.142</td><td>13.8</td><td>1.59e-20</td></tr><tr><td>subject_racecaucasian</td><td>-0.280</td><td>0.162</td><td>-1.73</td><td>8.90e-2</td></tr><tr><td>subject_racehispanic_or_latino</td><td>0.248</td><td>0.308</td><td>0.805</td><td>4.25e-1</td></tr><tr><td>visit_number_num</td><td>-0.0235</td><td>0.0245</td><td>-0.959</td><td>3.44e-1</td></tr><tr><td>subject_racecaucasian:visit_number_num</td><td>0.0490</td><td>0.0280</td><td>1.75</td><td>8.88e-2</td></tr><tr><td>subject_racehispanic_or_latino:visit_number_num</td><td>0.0264</td><td>0.0484</td><td>0.545</td><td>5.90e-1</td></tr><tr><td>subject_race:visit_number_num</td><td>NA</td><td>NA</td><td>1.56</td><td>2.27e-1</td></tr></tbody></table>
 
 The `generate_beta_volatility_test_long()` function performs a volatility test for beta diversity in longitudinal data. This function calculates the beta diversity volatility by determining the average rate of change in beta diversity over time for each subject.
 
@@ -72,13 +64,7 @@ generate_beta_volatility_test_long(
 )
 ```
 
-| Term                              | Estimate | Std.Error | Statistic | P.Value     |
-| --------------------------------- | -------- | --------- | --------- | ----------- |
-| (Intercept)                       | 0.956    | 0.161     | 5.93      | 0.000000164 |
-| subject\_racecaucasian            | -0.104   | 0.182     | -0.571    | 0.570       |
-| subject\_racehispanic\_or\_latino | -0.502   | 0.372     | -1.35     | 0.183       |
-| subject\_race                     | NA       | NA        | 0.909     | 0.408       |
-| Residuals                         | NA       | NA        | NA        | NA          |
+<table><thead><tr><th>Term</th><th width="140">Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>0.956</td><td>0.161</td><td>5.93</td><td>0.000000164</td></tr><tr><td>subject_racecaucasian</td><td>-0.104</td><td>0.182</td><td>-0.571</td><td>0.570</td></tr><tr><td>subject_racehispanic_or_latino</td><td>-0.502</td><td>0.372</td><td>-1.35</td><td>0.183</td></tr><tr><td>subject_race</td><td>NA</td><td>NA</td><td>0.909</td><td>0.408</td></tr><tr><td>Residuals</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr></tbody></table>
 
 In addition to these statistical analyses, MicrobiomeStat also provides visualization tools for beta diversity. For instance, the `generate_beta_pc_boxplot_long()` function creates a plot that shows individual trajectories across ordination axes, connecting data points from one timepoint to the next.
 
