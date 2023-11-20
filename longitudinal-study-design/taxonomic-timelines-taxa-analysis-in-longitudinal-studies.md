@@ -157,10 +157,10 @@ generate_taxa_barplot_long(
 In the context of large-scale microbiome datasets, it is often beneficial to focus on a subset of taxa that are either abundant or exhibit significant variability. The parameters `top.k.plot` and `top.k.func` facilitate this focus:
 
 * `top.k.func` assists in determining the criteria for this selection, offering three choices:
-    * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-    * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
-    * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
-    * Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
+  * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+  * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
+  * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
+  * Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
 
 These parameters are particularly effective when generating heatmaps, as they enable concentration on the most pertinent taxa for the research question at hand.
 
@@ -351,5 +351,3 @@ generate_taxa_indiv_boxplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 20.08.07.png" alt=""><figcaption><p>Longitudinal Phylum Abundance Boxplots: This function generates individual boxplots showing the distribution of specific phyla abundance over time. Log transformation and abundance filtering (at 0.01) enable focused insights. The customized color palette enhances visualization. These plots allow in-depth analysis of abundance changes for each phylum longitudinally.</p></figcaption></figure>
-
-With these powerful tools at our disposal, we can now uncover intricate taxonomic changes and gain deeper insights into the dynamics of the microbiome in longitudinal studies. We can proceed with the MicrobiomeStat functions to unravel the mysteries within the data.

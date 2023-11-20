@@ -169,5 +169,3 @@ generate_alpha_boxplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 09.42.30.png" alt=""><figcaption><p>This boxplot displays the distribution of Shannon diversity over selected time points, segmented by subject race. This plot provides insights into the influence of race on shifts in microbiome diversity over time.</p></figcaption></figure>
-
-In the following sections, we will continue to explore the temporal intricacies of microbiome data using methods provided by MicrobiomeStat.
