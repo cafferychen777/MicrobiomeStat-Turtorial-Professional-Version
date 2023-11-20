@@ -1,10 +1,4 @@
----
-description: >-
-  This section provides an introduction to longitudinal studies in microbiome
-  research and an overview of the example dataset used for the purpose.
----
-
-## Longitudinal Studies in Microbiome Research: Introduction and Dataset Overview
+# Introduction
 
 Longitudinal studies are a prevalent methodology in microbiome research. They enable the observation of temporal changes and complexities that are not accessible through cross-sectional measurements. These studies facilitate the examination of the interactions between the microbiome and various influencing factors such as the environment, medical interventions, and disease progression over time.
 
@@ -24,7 +18,7 @@ These datasets provide valuable insights into how early-life experiences and hea
 
 To achieve this, it's important to note some constraints of our current development progress. Specifically, our group.var, strata.var, and adj.vars are all currently assumed to have temporal consistency. In other words, for a given subject, these states do not change over time. However, we are aware of the dynamic nature of microbiome and its potential time-varying properties. Therefore, if there are functions within the tutorial that are applicable to such time-varying properties, we will make sure to specifically highlight them.
 
-For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+For users wishing to apply our tutorial to their own datasets, please see the following guide.
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)

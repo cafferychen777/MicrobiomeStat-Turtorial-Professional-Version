@@ -1,11 +1,4 @@
----
-description: >-
-  Focusing on beta diversity analysis, this page explains how to visualize and
-  quantify changes in microbial community composition over time across different
-  samples.
----
-
-# Time Travel in Microbiome: Beta Diversity Analysis in Longitudinal Studies
+# Beta Diversity Analysis
 
 This guide outlines how to use MicrobiomeStat for beta diversity analysis, specifically focusing on visualizing and quantifying temporal changes in microbial community composition. MicrobiomeStat offers tools for examining longitudinal patterns in beta diversity.
 

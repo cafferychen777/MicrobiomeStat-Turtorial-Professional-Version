@@ -22,27 +22,27 @@
 
 ## Cross-Sectional Study Design
 
-* [Analyzing Cross-Sectional Microbiome Data with MicrobiomeStat](cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
-* [Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
-* [Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
-* [Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
-* [Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
+* [Introduction](cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
+* [Alpha Diversity Analysis](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
+* [Beta Diversity Analysis](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
+* [Feature-level Analysis](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
+* [Reports Generation](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
 
 ## Paired Samples Analysis
 
-* [Unveiling Paired Samples Analysis: A Comprehensive Guide](paired-samples-analysis/unveiling-paired-samples-analysis-a-comprehensive-guide.md)
-* [Unraveling Paired Samples: Alpha Diversity Analysis](paired-samples-analysis/unraveling-paired-samples-alpha-diversity-analysis.md)
-* [Navigating Paired Samples: Beta Diversity Analysis](paired-samples-analysis/navigating-paired-samples-beta-diversity-analysis.md)
-* [Inspecting Paired Samples: Feature-level Analysis](paired-samples-analysis/inspecting-paired-samples-taxa-analysis.md)
-* [Automated Reporting for Paired Studies: MicrobiomeStat's Integrated Analysis Reports](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
+* [Introduction](paired-samples-analysis/unveiling-paired-samples-analysis-a-comprehensive-guide.md)
+* [Alpha Diversity Analysis](paired-samples-analysis/unraveling-paired-samples-alpha-diversity-analysis.md)
+* [Beta Diversity Analysis](paired-samples-analysis/navigating-paired-samples-beta-diversity-analysis.md)
+* [Feature-level Analysis](paired-samples-analysis/inspecting-paired-samples-taxa-analysis.md)
+* [Reports Generation](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
 
 ## Longitudinal Study Design
 
-* [Grasping Longitudinal Studies: Introduction and Dataset Overview](longitudinal-study-design/grasping-longitudinal-studies-introduction-and-dataset-overview.md)
-* [Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
-* [Time Travel in Microbiome: Beta Diversity Analysis in Longitudinal Studies](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
-* [Taxonomic Timelines: Feature-level Analysis in Longitudinal Studies](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
-* [Longitudinal Reporting: Microbiome Analysis Automation with MicrobiomeStat](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
+* [Introduction](longitudinal-study-design/grasping-longitudinal-studies-introduction-and-dataset-overview.md)
+* [Alpha Diversity Analysis](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
+* [Beta Diversity Analysis](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
+* [Feature-level Analysis](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
+* [Reports Generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
 
 ## Data Manipulation and Transformation
 

@@ -1,11 +1,4 @@
----
-description: >-
-  Explore alpha diversity analysis in cross-sectional studies using
-  MicrobiomeStat. Learn to interpret these biodiversity measures for valuable
-  microbiome dataset insights.
----
-
-# Cross-Sectional Snapshot: Alpha Diversity Analysis with MicrobiomeStat
+# Alpha Diversity Analysis
 
 Alpha diversity indices offer insights into the species richness and evenness within individual microbiome samples.&#x20;
 

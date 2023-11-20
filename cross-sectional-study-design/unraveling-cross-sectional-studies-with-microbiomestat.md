@@ -1,10 +1,4 @@
----
-description: >-
-  A guide to leveraging MicrobiomeStat for comprehensive analyses in
-  cross-sectional microbiome studies.
----
-
-# Unraveling Cross-Sectional Studies with MicrobiomeStat
+# Introduction
 
 Cross-sectional studies, which analyze data from a single point in time, are a fundamental component of microbiome research. MicrobiomeStat offers versatility in handling and analyzing such datasets, whether they capture standalone time points, specific moments from paired or longitudinal datasets, or treat paired and longitudinal datasets as cohesive units for comprehensive analysis.
 
@@ -12,7 +6,7 @@ One notable dataset that can be explored using this framework is the `peerj32` d
 
 **Exploring the PeerJ32 Dataset**
 
-The `peerj32` dataset is sourced from the study on associations between the human intestinal microbiota and Lactobacillus rhamnosus GG and was originally in the `phyloseq` format.&#x20;
+The `peerj32` dataset is sourced from the study on associations between the human intestinal microbiota and Lactobacillus rhamnosus GG and was originally in the `phyloseq` format.
 
 > Lahti L, Salonen A, Kekkonen RA, Salojärvi J, Jalanka-Tuovinen J, Palva A, Orešič M, de Vos WM. Associations between the human intestinal microbiota, Lactobacillus rhamnosus GG and serum lipids indicated by integrated analysis of high-throughput profiling data. PeerJ. 2013 Feb 26;1:e32. doi: 10.7717/peerj.32. PMID: 23638368; PMCID: PMC3628737.
 
@@ -34,7 +28,7 @@ With MicrobiomeStat, users can adeptly manage, process, and analyze this dataset
 
 As we proceed, we will further dissect the `peerj32` dataset, understanding its intricate details and harnessing its data for robust conclusions.
 
-For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+For users wishing to apply our tutorial to their own datasets, please see the following guide.
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)

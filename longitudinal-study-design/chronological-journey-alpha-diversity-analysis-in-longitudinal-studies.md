@@ -1,11 +1,4 @@
----
-description: >-
-  Diving into alpha diversity analysis for longitudinal studies. How does
-  within-sample diversity change over time? This page provides the tools to
-  answer this question.
----
-
-# Chronological Journey: Alpha Diversity Analysis in Longitudinal Studies
+# Alpha Diversity Analysis
 
 This section introduces alpha diversity analysis in longitudinal studies, focusing on how within-sample diversity changes over time. The first step is to filter out samples with low sequencing depth, as alpha diversity analysis is sensitive to this factor.
 
@@ -116,11 +109,9 @@ Before we proceed with the visualization, it's crucial to understand the `time.v
 
 The `time.var` parameter can take three forms:
 
-- Numeric: When `time.var` is numeric, you don't need to set `t0.level` and `ts.levels`, as they will be automatically arranged in ascending order.
-
-- Factor: If `time.var` is a factor, and if `t0.level` and `ts.levels` are not set, they will be automatically arranged according to the levels of the factor. However, if you have specific needs for the order of the levels, you can manually adjust `t0.level` and `ts.levels`.
-
-- Character: If `time.var` is character, it's recommended to manually set `t0.level` and `ts.levels`, as the automatic arrangement might not reflect the correct order.
+* Numeric: When `time.var` is numeric, you don't need to set `t0.level` and `ts.levels`, as they will be automatically arranged in ascending order.
+* Factor: If `time.var` is a factor, and if `t0.level` and `ts.levels` are not set, they will be automatically arranged according to the levels of the factor. However, if you have specific needs for the order of the levels, you can manually adjust `t0.level` and `ts.levels`.
+* Character: If `time.var` is character, it's recommended to manually set `t0.level` and `ts.levels`, as the automatic arrangement might not reflect the correct order.
 
 The `t0.level` parameter represents the first time point, while `ts.levels` represents the other time points, arranged in the order you desire, excluding `t0.level`.
 

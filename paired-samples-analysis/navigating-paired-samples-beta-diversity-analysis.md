@@ -1,9 +1,4 @@
----
-description: >-
-  An in-depth analysis of beta diversity metrics and ordination methods for paired samples, highlighting variations in microbial community structure.
----
-
-# Navigating Paired Samples: Beta Diversity Analysis
+# Beta Diversity Analysis
 
 Welcome to this tutorial on Beta Diversity Analysis within Paired Samples. Our focus here is to understand the variations in microbial community structure across different groups and within individual subjects over time. We aim to identify patterns and extract meaningful insights from microbiome data using various functions provided by MicrobiomeStat.
 
@@ -145,7 +140,6 @@ generate_beta_pc_boxplot_long(
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 15.10.07.png" alt=""><figcaption><p>The plot from `generate_beta_pc_boxplot_long()` tracks the changes in each subject's microbiome across two distinct time points. Each line represents the evolution of beta diversity within an individual subject along specified ordination axes, providing a clear visualization of microbial changes.
-</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 15.10.07.png" alt=""><figcaption><p>The plot from `generate_beta_pc_boxplot_long()` tracks the changes in each subject's microbiome across two distinct time points. Each line represents the evolution of beta diversity within an individual subject along specified ordination axes, providing a clear visualization of microbial changes.</p></figcaption></figure>
 
 By using these functions, we can gain a comprehensive understanding of the shifts in microbial communities over time and across different groups.
