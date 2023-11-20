@@ -82,18 +82,19 @@ In the context of this table:
 
 By inspecting these metrics, researchers can gain insights into the relative importance of each taxon within the analyzed samples, informing subsequent analyses and visualization.
 
-Next, we will introduce functions to plot the taxa (features) data. They can be used to visualize specific taxa (features), for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which has the following relevant parameters:
+Next, we will introduce functions to plot the taxa/features data. They can be used to visualize specific taxa/features, for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which has the following relevant parameters:
 
 * `transform`: This parameter indicates the transformation to apply to the axis when plotting. Transformations are only applied when the `feature.dat.type` is set to either `"count"` or `"proportion"`. The available options for `transform` include:
   * `"identity"`: No transformation (default)
   * `"sqrt"`: Square root transformation
   * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
-* `features.plot`: This parameter dictates which features (or taxa) should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
+* `features.plot`: This parameter dictates which taxa/features should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
 * `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
-  * `top.k.func` assists in determining the criteria for this selection, offering two choices:
+* `top.k.func` assists in determining the criteria for this selection, offering three choices:
     * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-    * `"sd"`: Focuses on taxa that exhibit the most pronounced variability (standard deviation) across samples. This proves particularly insightful when you're keen on understanding taxa that display marked differences across different conditions or over distinct time frames.
-    * Custom function: Users can also pass their own function, which should take a matrix as input (rows as taxa and columns as samples) and return a numeric vector with values for each taxon. The function is applied to the abundance data, and taxa are then ranked based on the values returned by this function. For example, if a user wants to focus on taxa with a specific pattern or statistical property not covered by "mean" or "sd", they can define a function that calculates this property and pass it to `top.k.func`.
+    * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
+    * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
+    * Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
 
 The following shows the usage and output of the function `generate_taxa_boxplot_single`. All the taxa are plotted together.
 
@@ -159,7 +160,7 @@ generate_taxa_indiv_boxplot_single(
 
 Transitioning from bar plots, we venture into the domain of heatmaps using the `generate_taxa_heatmap_single` function. Heatmaps offer a unique, colorful perspective on data, visually encapsulating the richness and patterns of microbial abundance across samples.
 
-Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. By default, the function will cluster rows (features or taxa) based on their abundance patterns. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
+Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. By default, the function will cluster rows (taxa/features) based on their abundance patterns. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
 
 The function also allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions.
 
@@ -223,7 +224,7 @@ generate_taxa_dotplot_single(
 
 We can use `generate_taxa_barplot_single` function to generate starked bar plots of taxa. The function has an important parameter `feature.number`. &#x20;
 
-* `feature.number`: This parameter determines the maximum number of taxa (or features) that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
+* `feature.number`: This parameter determines the maximum number of taxa/features that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
 
 With this insight, let's now examine the function and the resultant visuals:
 
