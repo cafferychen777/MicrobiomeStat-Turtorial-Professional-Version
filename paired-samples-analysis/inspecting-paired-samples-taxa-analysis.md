@@ -113,9 +113,10 @@ To include a description of the custom function within the context of the `top.k
 
 The `top.k.plot` parameter specifies the maximum number of taxa to be displayed in visualizations. For instance, setting it to 10 means only the top 10 taxa, as determined by the criteria specified in `top.k.func`, will be visualized. The `top.k.func` parameter offers several predefined choices:
 
-* `"mean"`: Highlights taxa with the highest average abundances across samples.
-* `"sd"`: Focuses on taxa with the greatest variability in abundance, useful for identifying taxa with significant differences under various conditions or over time.
-* `"prevalence"`: Selects taxa with the highest occurrence across samples, ideal for pinpointing consistently present taxa.
+* `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+* `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
+* `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
+* Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
 
 Additionally, `top.k.func` can accept a custom function defined by the user. This function should take a matrix of taxa abundances as input and return a numeric vector of values. By using a custom function, researchers can apply unique criteria to rank and select taxa based on specialized research questions or distinct patterns of interest. The top taxa, according to the output of this custom function or the predefined options, will then be selected for visualization up to the number specified by `top.k.plot`.
 
