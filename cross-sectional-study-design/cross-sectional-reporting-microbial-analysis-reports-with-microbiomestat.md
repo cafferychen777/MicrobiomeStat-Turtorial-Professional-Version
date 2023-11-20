@@ -40,7 +40,7 @@ Before using the function, it's important to understand the parameters:
 
 * `group.var`: The name of the variable of primary interest.
 * `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
-* `vis.adj.vars`: Names of columns in the metadata containing covariates to visualize in plots, in addition to the primary variables of interest such as groups. Default is NULL, which indicates only the primary variables of interest will be visualized without additional covariates.
+* `vis.adj.vars`: For alpha and beta diversity visualization functions, the `vis.adj.vars` parameter designates the column names in the metadata that correspond to covariates. When covariates are specified, `vis.adj.vars` will adjust the `alpha.obj` and `dist.obj` accordingly, resulting in an alpha diversity index and a distance matrix that have been modified to account for the additional covariates.
 * `strata.var`: Variable to stratify the data in visualization by (optional).
 * `subject.var`: Variable name used for subject identification.
 * `time.var`: Variable name used for time points.
