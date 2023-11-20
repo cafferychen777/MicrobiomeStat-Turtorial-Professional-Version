@@ -111,7 +111,7 @@ plot.list <- generate_taxa_volatility_volcano_long(
 
 To visualize the abundance trajectories of specific taxa across multiple timepoints, the function `generate_taxa_areaplot_long()` can be used. Let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
 
-* `feature.number`: This parameter determines the maximum number of features (or taxa) that will be visualized directly in the aeraplot and barplot. When confronted with datasets teeming with numerous features, it's practical to limit our visual focus to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function smartly aggregates all excess, low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
+* `feature.number`: This parameter determines the maximum number of taxa/features that will be visualized directly in the aeraplot and barplot. When confronted with datasets teeming with numerous features, it's practical to limit our visual focus to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function smartly aggregates all excess, low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
 
 ```r
 generate_taxa_areaplot_long(
@@ -162,17 +162,17 @@ generate_taxa_barplot_long(
 
 In the context of large-scale microbiome datasets, it is often beneficial to focus on a subset of taxa that are either abundant or exhibit significant variability. The parameters `top.k.plot` and `top.k.func` facilitate this focus:
 
-* `top.k.plot`: Limits the number of taxa visualized. For example, setting it to 10 will visualize only the top 10 taxa, as determined by the criteria in `top.k.func`.
-* `top.k.func`: Defines the selection criteria, with two options:
-  * `"mean"`: Focuses on taxa with the highest mean abundances across samples.
-  * `"sd"`: Highlights taxa with the greatest standard deviation across samples, useful for examining taxa with significant differences across conditions or time frames.
-  * Custom function: Users can also pass their own function, which should take a matrix as input (rows as taxa and columns as samples) and return a numeric vector with values for each taxon. The function is applied to the abundance data, and taxa are then ranked based on the values returned by this function. For example, if a user wants to focus on taxa with a specific pattern or statistical property not covered by "mean" or "sd", they can define a function that calculates this property and pass it to `top.k.func`.
+* `top.k.func` assists in determining the criteria for this selection, offering three choices:
+    * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+    * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
+    * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
+    * Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
 
 These parameters are particularly effective when generating heatmaps, as they enable concentration on the most pertinent taxa for the research question at hand.
 
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
-* `cluster.rows`: By default, the `generate_taxa_heatmap_long()` function will cluster rows (features or taxa) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
+* `cluster.rows`: By default, the `generate_taxa_heatmap_long()` function will cluster rows (taxa/features) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
 * `cluster.cols`: The `generate_taxa_change_heatmap_long()` function allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions. By default, this function clusters rows (`cluster.rows = TRUE`) and does not cluster columns (`cluster.cols = FALSE`).
 
 With these parameters in mind, let's look at the implementation of these functions:
