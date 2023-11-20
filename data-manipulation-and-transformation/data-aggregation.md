@@ -36,7 +36,7 @@ In this example, we've prepared the data for our function using the `peerj32.obj
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-09 at 19.22.06.png" alt=""><figcaption><p><strong>Figure 1:</strong> Snapshot of the <code>feature.tab</code> component of the <code>peerj32.obj</code> dataset before aggregation. This table showcases the microbial feature abundances across multiple samples, illustrating the raw distribution and counts of different microbiome features in the original dataset.</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-09 at 19.22.53.png" alt=""><figcaption><p><strong>Figure 2:</strong> Overview of the <code>meta.dat</code> component of the <code>peerj32.obj</code> dataset prior to aggregation. This table provides metadata information for each sample, encompassing various attributes and characteristics that offer context and additional information about the samples in the dataset.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-09 at 19.22.53.png" alt=""><figcaption><p><strong>Figure 2:</strong> Overview of the <code>meta.dat</code> component of the <code>peerj32.obj</code> dataset prior to aggregation. This table provides metadata information for each sample, including various attributes and characteristics that offer context and additional information about the samples in the dataset.</p></figcaption></figure>
 
 After the aggregation, the data will be restructured and summarized based on the specified "subject" variable.
 
