@@ -1,12 +1,4 @@
-# Reports generation
-
-Microbiome research generates complex multidimensional datasets. These datasets often include:
-
-* Alpha diversity: This measures the taxonomic diversity within each sample.
-* Beta diversity: This quantifies the taxonomic dissimilarity between samples.
-* Differential abundance: This identifies taxa whose abundance varies significantly across experimental conditions.
-
-Manual analysis of these datasets can be time-consuming and may introduce inconsistencies.
+# Reports Generation
 
 MicrobiomeStat provides an efficient solution by generating integrated reports for paired sample studies. These reports include:
 

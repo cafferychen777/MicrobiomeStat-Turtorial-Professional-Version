@@ -42,7 +42,7 @@
 * [Alpha Diversity Analysis](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
 * [Beta Diversity Analysis](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
 * [Feature-level Analysis](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
-* [Reports generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
+* [Reports Generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
 
 ## Data Manipulation and Transformation
 
