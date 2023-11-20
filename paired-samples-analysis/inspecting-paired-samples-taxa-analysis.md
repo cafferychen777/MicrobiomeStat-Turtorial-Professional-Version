@@ -1,11 +1,4 @@
----
-description: >-
-  This tutorial focuses on techniques for differential abundance analysis,
-  highlighting significant changes in microbial abundance between paired
-  conditions.
----
-
-# Inspecting Paired Samples: Feature-level Analysis
+# Feature-level Analysis
 
 In this section, we focus on the variations within microbial ecosystems, particularly taxa variations. MicrobiomeStat provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
 

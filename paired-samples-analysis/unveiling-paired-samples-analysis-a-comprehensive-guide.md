@@ -1,11 +1,4 @@
----
-description: >-
-  This document provides a comprehensive guide to paired samples analysis in
-  microbiome research using MicrobiomeStat, with a focus on alpha and beta
-  diversity and taxa composition.
----
-
-# Unveiling Paired Samples Analysis: A Comprehensive Guide
+# Introduction
 
 In microbiome research, paired samples analysis is a crucial tool for examining dynamic changes within microbial communities. The MicrobiomeStat package enables analyses of samples collected at distinct time points, labeled as '1' and '2', as well as accommodating traditional 'pre-' and 'post-treatment' study designs. This guide will navigate you through a comprehensive analysis, from calculating alpha diversity and beta diversity to performing taxa analysis. The visualizations produced by MicrobiomeStat can elucidate patterns and trends in your data, facilitating a more straightforward interpretation and understanding of your results.
 
@@ -19,7 +12,7 @@ For an in-depth introduction and generation process of the peerj32 dataset, plea
 
 Due to the constraints of development progress, our current group.var, strata.var, adj.vars are all assumed to have temporal consistency. That is, for the same subject, these states do not change over time. If there are functions applicable to time-varying properties in the tutorial, we will specifically mark them out.
 
-For users wishing to apply our tutorial to their own datasets, please see the following guide. 
+For users wishing to apply our tutorial to their own datasets, please see the following guide.
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)

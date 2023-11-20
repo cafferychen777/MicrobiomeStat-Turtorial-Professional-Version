@@ -1,26 +1,20 @@
----
-description: >-
-  MicrobiomeStat facilitates the exploration of beta diversity in
-  cross-sectional microbiome studies by offering computational tools for
-  distance calculation and dissimilarity visualization.
----
+# Beta Diversity Analysis
 
-# Cross-Sectional Exploration: Beta Diversity Analysis with MicrobiomeStat
+Beta diversity analysis is instrumental in revealing the difference in microbial community composition across samples.
 
-Beta diversity analysis is instrumental in revealing the difference in microbial community composition across samples.&#x20;
+For those beta diversity-based functions, they all have a `dist.obj` parameter, which accepts a list of distance matrices. If the parameter is not specified, `mStat_calculate_beta_diversity` will be automatically called. Or the users can create their own list of distance matrices and pass it to `dist.obj`. We recommend the user to create a list of distance matrices once in the analysis and then use it repeatedly.
 
-For those beta diversity-based functions, they all have a `dist.obj` parameter, which accepts a list of distance matrices.  If the parameter is not specified, `mStat_calculate_beta_diversity` will be automatically called. Or the users can create their own list of distance  matrices and pass it to `dist.obj`. We recommend the user to create a list of distance matrices once in the analysis and then use it repeatedly. 
+When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_distance` function refines the microbial community dissimilarities using a method based on the reference below.
 
-When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_distance` function refines the microbial community dissimilarities using a method based on the reference below. 
 > Chen J, Zhang X. dICC: distance-based intraclass correlation coefficient for metagenomic reproducibility studies. Bioinformatics. 2022 Oct 31;38(21):4969-4971. doi: 10.1093/bioinformatics/btac618. PMID: 36083005; PMCID: PMC9801959.
 
 This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
-Based on the distance matrices, we can also extract their first several principal coordinates (PCs), which capture the main variation in the data.  PCs can be calculated by calling `mstat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers favoring advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. For those PC-based functions, they all have a `pc.obj` parameter, which accepts a list of PC matrices based on a variety of beta diversity measures. If the parameter is not specified, `mStat_calculate_PC` will be called automatically. Or the users can create their own list of PC matrices and pass it to `pc.obj`.  We recommend th user to create the list once in the analysis and use it repeatedly.
+Based on the distance matrices, we can also extract their first several principal coordinates (PCs), which capture the main variation in the data. PCs can be calculated by calling `mstat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers favoring advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. For those PC-based functions, they all have a `pc.obj` parameter, which accepts a list of PC matrices based on a variety of beta diversity measures. If the parameter is not specified, `mStat_calculate_PC` will be called automatically. Or the users can create their own list of PC matrices and pass it to `pc.obj`. We recommend th user to create the list once in the analysis and use it repeatedly.
 
-MicrobiomeStats supports a variety of beta diversity measures, including "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted), "GUniFrac" (generalized), "WUniFrac" (weighted), and "JS" (Jensen-Shannon divergence). These measures can be computed using the `mStat_calculate_beta_diversity` function, which is designed to handle a range of distance calculations for assessing the dissimilarity between microbial communities. 
+MicrobiomeStats supports a variety of beta diversity measures, including "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted), "GUniFrac" (generalized), "WUniFrac" (weighted), and "JS" (Jensen-Shannon divergence). These measures can be computed using the `mStat_calculate_beta_diversity` function, which is designed to handle a range of distance calculations for assessing the dissimilarity between microbial communities.
 
-It is important to note that certain beta diversity measures, like "UniFrac" and its variants, require a phylogenetic tree to accurately reflect the evolutionary relationships between microbial taxa. Therefore, when utilizing these measures, ensure that the `tree` component is present within the `data.obj`. This will enable the `mStat_calculate_beta_diversity` function to incorporate phylogenetic information into the beta diversity calculation, providing insights that are rooted in the evolutionary context of the microbial communities being studied. [Talk about rarefaction similarly as the alpha diversity section.]  
+It is important to note that certain beta diversity measures, like "UniFrac" and its variants, require a phylogenetic tree to accurately reflect the evolutionary relationships between microbial taxa. Therefore, when utilizing these measures, ensure that the `tree` component is present within the `data.obj`. This will enable the `mStat_calculate_beta_diversity` function to incorporate phylogenetic information into the beta diversity calculation, providing insights that are rooted in the evolutionary context of the microbial communities being studied. \[Talk about rarefaction similarly as the alpha diversity section.]
 
 We will first use beta diversity-based visualizations to study the relationship between the community-level composition and variables of interest. The `generate_beta_ordination_single` function provides the necessary visualization tools.
 
@@ -106,7 +100,7 @@ In the PCoA plot above, we plot all the observations regardless of time points a
 )
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'. </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.55.26.png" alt=""><figcaption><p>Beta An in-depth visual representation of the Beta Diversity Ordination at Time Point '2'.</p></figcaption></figure>
 
 We can also stratify on a specific variable, such as `sex`. And we also add a p-value annotation to the plot, derived from a PERMANOVA test, to highlight significant differences between groups:
 

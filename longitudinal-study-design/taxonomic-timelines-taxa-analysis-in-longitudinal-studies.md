@@ -1,10 +1,4 @@
----
-description: >-
-  This page facilitates an objective study of taxonomic shifts over time,
-  illuminating microbial dynamics.
----
-
-# Feature-level Longitudinal Data Analysis in Microbiome Studies
+# Feature-level Analysis
 
 This guide will walk you through the process of investigating how taxonomic composition changes within a longitudinal context, providing insights into microbial dynamics over time.
 

@@ -1,10 +1,4 @@
----
-description: >-
-  MicrobiomeStat provides automated solutions for integrated analysis reporting
-  in paired microbiome studies.
----
-
-# Automated Reporting for Paired Studies: MicrobiomeStat's Integrated Analysis Reports
+# Reports Generation
 
 Microbiome research generates complex multidimensional datasets. These datasets often include:
 

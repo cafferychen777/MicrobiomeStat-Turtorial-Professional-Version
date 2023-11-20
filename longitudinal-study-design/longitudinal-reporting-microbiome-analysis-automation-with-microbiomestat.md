@@ -1,10 +1,4 @@
----
-description: >-
-  Automate integrated analysis reporting for longitudinal microbiome studies
-  with MicrobiomeStat.
----
-
-# Longitudinal Reporting: Microbiome Analysis Automation with MicrobiomeStat
+# Reports generation
 
 Microbiome research generates complex multidimensional datasets. These datasets often include:
 

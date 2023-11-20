@@ -1,10 +1,4 @@
----
-description: >-
-  MicrobiomeStat provides automated report generation for cross-sectional or
-  case/control studies in microbiome research.
----
-
-# Cross-Sectional Reporting: Microbial Analysis Reports with MicrobiomeStat
+# Reports Generation
 
 MicrobiomeStat provides an efficient solution by generating integrated reports for cross-sectional studies. These reports include:
 

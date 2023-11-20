@@ -1,11 +1,4 @@
----
-description: >-
-  Delve deep into microbial diversity patterns with MicrobiomeStat's
-  feature-level analysis tools, providing insight into taxa abundance variations
-  across distinct groups.
----
-
-# Cross-Sectional Investigation: Feature-level Analysis with MicrobiomeStat
+# Feature-level Analysis
 
 A foundational step in feature-level analysis is discerning taxa with differential abundance between groups. The `generate_taxa_test_single` function facilitates this by performing differential abundance testing.
 
@@ -33,7 +26,7 @@ Furthermore, when interpreting the results, it's essential to understand `featur
 * `feature.sig.level`: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
 * `feature.mt.method`: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot.
 
-By understanding and appropriately setting these parameters, users can ensure a more accurate  interpretation of the plotted results.
+By understanding and appropriately setting these parameters, users can ensure a more accurate interpretation of the plotted results.
 
 ```r
 # Load data
@@ -221,7 +214,7 @@ generate_taxa_dotplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.34.06.png" alt=""><figcaption><p>With the help of the <code>generate_taxa_dotplot_single</code> function, this dot plot presents a clear comparison of the average abundance and prevalence of each microbial family across our groups. The graphical representation makes it easier to spot potential differences in microbial presence and abundance across different groups.</p></figcaption></figure>
 
-We can use `generate_taxa_barplot_single` function to generate starked bar plots of taxa. The function has an important parameter `feature.number`. &#x20;
+We can use `generate_taxa_barplot_single` function to generate starked bar plots of taxa. The function has an important parameter `feature.number`.
 
 * `feature.number`: This parameter determines the maximum number of taxa (or features) that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
 
