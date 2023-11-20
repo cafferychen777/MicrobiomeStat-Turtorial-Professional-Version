@@ -141,5 +141,3 @@ generate_beta_pc_boxplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 15.10.07.png" alt=""><figcaption><p>The plot from `generate_beta_pc_boxplot_long()` tracks the changes in each subject's microbiome across two distinct time points. Each line represents the evolution of beta diversity within an individual subject along specified ordination axes, providing a clear visualization of microbial changes.</p></figcaption></figure>
-
-By using these functions, we can gain a comprehensive understanding of the shifts in microbial communities over time and across different groups.
