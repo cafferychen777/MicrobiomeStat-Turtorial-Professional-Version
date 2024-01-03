@@ -26,7 +26,7 @@
 * [Alpha Diversity Analysis](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
 * [Beta Diversity Analysis](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
 * [Feature-level Analysis](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
-* [Reports Generation](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
+* [One-Click Reports Generation](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
 
 ## Paired Samples Analysis
 
@@ -34,7 +34,7 @@
 * [Alpha Diversity Analysis](paired-samples-analysis/unraveling-paired-samples-alpha-diversity-analysis.md)
 * [Beta Diversity Analysis](paired-samples-analysis/navigating-paired-samples-beta-diversity-analysis.md)
 * [Feature-level Analysis](paired-samples-analysis/inspecting-paired-samples-taxa-analysis.md)
-* [Reports Generation](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
+* [One-Click Reports Generation](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
 
 ## Longitudinal Study Design
 
@@ -42,7 +42,7 @@
 * [Alpha Diversity Analysis](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
 * [Beta Diversity Analysis](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
 * [Feature-level Analysis](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
-* [Reports Generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
+* [One-Click Reports Generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
 
 ## Data Manipulation and Transformation
 
