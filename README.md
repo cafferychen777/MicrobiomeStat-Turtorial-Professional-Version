@@ -19,9 +19,15 @@ We also acknowledge the work by the developers of `microbiomeutilities`, `phylos
 
 ## News
 
+### January 8th, 2024
+
+Exciting news for our users! We have enhanced the color palette functionality in our package. You can now use predefined palette names like "lancet", "nejm", "npg", "aaas", "jama", "jco", and "ucscgb" directly in the `palette` parameter across most functions. This update simplifies the process of customizing color schemes in your data visualizations, making your plots more visually appealing and easier to interpret. For more details, please refer to the function documentation.
+
 ### October 20th, 2023
 
-We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now officially available. This interface provides an interactive platform for microbiome data analysis. The Shiny application can be accessed directly at [this link](https://microbiomestat.shinyapps.io/MicrobiomeStat-Shiny/). For users who prefer a local setup or require more customization, the Shiny application files and instructions are available on its dedicated [GitHub repository](https://github.com/cafferychen777/MicrobiomeStat-Shiny).
+We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now officially available. This interface provides an interactive platform for microbiome data analysis, making it more accessible and user-friendly. The Shiny application can be accessed directly at [this link](https://microbiomestat.shinyapps.io/MicrobiomeStat-Shiny/). For users who prefer a local setup or require more customization, the Shiny application files and instructions are available on its dedicated [GitHub repository](https://github.com/cafferychen777/MicrobiomeStat-Shiny).
+
+Stay tuned for more updates and enhancements as we continue to improve `MicrobiomeStat` for our user community.
 
 ## Resources:
 
