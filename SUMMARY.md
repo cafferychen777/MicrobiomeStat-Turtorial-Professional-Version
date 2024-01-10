@@ -53,3 +53,4 @@
 * [Data Validation](data-manipulation-and-transformation/data-validation.md)
 * [Data Combination](data-manipulation-and-transformation/data-combination.md)
 * [Metadata Management](data-manipulation-and-transformation/metadata-management.md)
+* [Color Palette](data-manipulation-and-transformation/color-palette.md)
