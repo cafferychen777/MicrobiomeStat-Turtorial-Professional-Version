@@ -131,6 +131,8 @@ dotplot_T2D <- generate_taxa_dotplot_long(
 )
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 17.38.01.png" alt=""><figcaption></figcaption></figure>
+
 These methods, including both the `generate_taxa_test_long` and `generate_taxa_dotplot_long`, enhance our ability to scrutinize and understand the intricate patterns and variations in taxa abundance throughout the course of the Type 2 Diabetes study, thereby enriching our analysis and insights.
 
 To visualize the abundance trajectories of specific taxa across multiple timepoints, the function `generate_taxa_areaplot_long()` can be used. Let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
