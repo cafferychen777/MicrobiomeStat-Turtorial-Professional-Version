@@ -122,9 +122,11 @@ volcano_plots_T2D <- generate_taxa_volcano_single(
   group.var = "subject_race",
   test.list = test.list_T2D,
   feature.sig.level = 0.1,
-  feature.mt.method = "fdr"
+  feature.mt.method = "none"
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 18.07.50.png" alt=""><figcaption></figcaption></figure>
 
 Building on this, we also use the `generate_taxa_test_long` function to analyze the microbiome data at each individual time point. This function performs a subset analysis on the dataset, followed by a statistical test using the linda method for each time point. It enables a detailed investigation of taxa changes over time, considering various factors such as subject characteristics and sample sites.
 
