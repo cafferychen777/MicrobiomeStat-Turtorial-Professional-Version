@@ -135,6 +135,38 @@ dotplot_T2D <- generate_taxa_dotplot_long(
 
 These methods, including both the `generate_taxa_test_long` and `generate_taxa_dotplot_long`, enhance our ability to scrutinize and understand the intricate patterns and variations in taxa abundance throughout the course of the Type 2 Diabetes study, thereby enriching our analysis and insights.
 
+Further advancing our analysis, we introduce the `generate_taxa_change_test_long` function. This function is designed to analyze the change in taxa abundance relative to a baseline time point (`t0.level`). It provides insights into the changes in microbiome composition from the baseline to subsequent time points, considering the diversity at different taxonomic levels such as Genus and Family.
+
+```r
+result <- generate_taxa_change_test_long(
+  data.obj = subset_T2D.obj,
+  subject.var = "subject_id",
+  time.var = "visit_number",
+  t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],
+  ts.levels = unique(subset_T2D.obj$meta.dat$visit_number)[-1],
+  group.var = "subject_race",
+  adj.vars = "sample_body_site",
+  prev.filter = 0.1,
+  abund.filter = 0.001,
+  feature.level = c("Genus", "Family"),
+  feature.dat.type = "count"
+)
+```
+
+The results from this function can be visualized using `generate_taxa_dotplot_long`, which provides a comprehensive view of the taxa changes from the baseline across different time points. This visualization aids in identifying significant shifts in the microbiome composition over the course of the study.
+
+```r
+dotplot_T2D <- generate_taxa_dotplot_long(
+  data.obj = subset_T2D.obj,
+  time.test.list = result,
+  t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],
+  ts.levels = unique(subset_T2D.obj$meta.dat$visit_number)[-1],
+  group.var = "subject_race",
+  time.var = "visit_number",
+  feature.level = c("Genus", "Family")
+)
+```
+
 To visualize the abundance trajectories of specific taxa across multiple timepoints, the function `generate_taxa_areaplot_long()` can be used. Let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
 
 * `feature.number`: This parameter determines the maximum number of taxa/features that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
