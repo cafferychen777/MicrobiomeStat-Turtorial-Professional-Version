@@ -58,7 +58,6 @@ To account for the adjustment variables in the distance calculation, the functio
 After the volatility is calculated, the function tests the relationship between the calculated volatility and a specified group variable. This is done using linear regression or ANOVA for multi-category variables, allowing for the exploration of how beta diversity volatility differs across different groups.
 
 ```r
-data(subset_T2D.obj)
 generate_beta_volatility_test_long(
   data.obj = subset_T2D.obj,
   dist.obj = NULL,
@@ -100,6 +99,10 @@ dotplot_T2D <- generate_beta_dotplot_long(
   ts.levels = unique(subset_T2D.obj$meta.dat$visit_number_num)[-1],
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 17.21.08.png" alt="" width="563"><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 17.21.39.png" alt="" width="563"><figcaption></figcaption></figure>
 
 In addition to these statistical analyses, MicrobiomeStat also provides visualization tools for beta diversity. For instance, the `generate_beta_pc_boxplot_long()` function creates a plot that shows individual trajectories across ordination axes, connecting data points from one timepoint to the next.
 
