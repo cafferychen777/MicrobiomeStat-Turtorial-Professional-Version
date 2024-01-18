@@ -110,6 +110,10 @@ dot_plots_T2D <- generate_alpha_dotplot_long(
 )
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 16.34.59.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 16.33.47.png" alt=""><figcaption></figcaption></figure>
+
 These functions, `generate_alpha_test_long` and `generate_alpha_dotplot_long`, complement thse earlier discussed functions by providing a more granular view of alpha diversity over time, especially useful in studies with multiple time points like the T2D dataset.
 
 Before we proceed with the visualization, it's crucial to understand the `time.var`, `t0.level`, and `ts.levels` parameters used in the functions `generate_alpha_spaghettiplot_long` and `generate_alpha_boxplot_long`.
