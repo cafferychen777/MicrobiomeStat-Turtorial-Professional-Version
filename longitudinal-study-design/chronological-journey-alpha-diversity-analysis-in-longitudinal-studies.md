@@ -77,6 +77,41 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
 
 <table><thead><tr><th width="148">Term</th><th width="141" align="center">Estimate</th><th width="109" align="center">Std.Error</th><th width="185" align="center">Statistic</th><th align="center">P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td align="center">40.6</td><td align="center">5.82</td><td align="center">6.98</td><td align="center">2.51e-9</td></tr><tr><td>subject_racecaucasian</td><td align="center">-1.95</td><td align="center">6.56</td><td align="center">-0.297</td><td align="center">7.67e-1</td></tr><tr><td>subject_racehispanic_or_latino</td><td align="center">-7.04</td><td align="center">13.4</td><td align="center">-0.524</td><td align="center">6.02e-1</td></tr><tr><td>subject_race</td><td align="center">NA</td><td align="center">NA</td><td align="center">0.143</td><td align="center">8.67e-1</td></tr><tr><td>Residuals</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td><td align="center">NA</td></tr></tbody></table>
 
+After discussing the functions `generate_alpha_trend_test_long` and `generate_alpha_volatility_test_long`, let's explore another important aspect of analyzing longitudinal alpha diversity data in the context of Type 2 Diabetes (T2D) dataset.
+
+In addition to the trend and volatility tests, MicrobiomeStat provides the capability to perform detailed alpha diversity tests at each time point in a longitudinal study. This is achieved using the `generate_alpha_test_long` function. This function allows for a comprehensive examination of alpha diversity measures such as Shannon, Simpson, Observed Species, Chao1, ACE, and Pielou's Evenness across different time points in the dataset.
+
+To perform the longitudinal alpha diversity test for the T2D dataset, we apply the `generate_alpha_test_long` function. This function requires specifying various parameters including alpha diversity measures, time variable, levels for time points, group variable, and any additional variables for adjustment. Here's an example:
+
+```r
+alpha_test_results_T2D <- generate_alpha_test_long(
+  data.obj = subset_T2D.obj,
+  alpha.name = c("shannon", "simpson", "observed_species", "chao1", "ace", "pielou"),
+  time.var = "visit_number",
+  t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],
+  ts.levels = unique(subset_T2D.obj$meta.dat$visit_number)[-1],
+  group.var = "subject_race",
+  adj.vars = c("sample_body_site")
+)
+```
+
+Subsequently, to visualize the results of these tests, the `generate_alpha_dotplot_long` function can be utilized. This function creates dot plots for the alpha diversity measures, allowing for an intuitive understanding of the changes and differences across time points and groups. The visualization includes specifying the group and time variables, setting the levels for time points, and choosing the desired theme and base size for the plot. The following example demonstrates how to generate dot plots for the T2D dataset results:
+
+```r
+dot_plots_T2D <- generate_alpha_dotplot_long(
+  data.obj = subset_T2D.obj,
+  test.list = alpha_test_results_T2D,
+  group.var = "subject_race",
+  time.var = "visit_number",
+  t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],
+  ts.levels = unique(subset_T2D.obj$meta.dat$visit_number)[-1],
+  base.size = 16,
+  theme.choice = "bw"
+)
+```
+
+These functions, `generate_alpha_test_long` and `generate_alpha_dotplot_long`, complement thse earlier discussed functions by providing a more granular view of alpha diversity over time, especially useful in studies with multiple time points like the T2D dataset.
+
 Before we proceed with the visualization, it's crucial to understand the `time.var`, `t0.level`, and `ts.levels` parameters used in the functions `generate_alpha_spaghettiplot_long` and `generate_alpha_boxplot_long`.
 
 The `time.var` parameter can take three forms:
