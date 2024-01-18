@@ -103,6 +103,29 @@ plot.list <- generate_taxa_volatility_volcano_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 20.05.53.png" alt=""><figcaption></figcaption></figure>
 
+To extend our analysis further, we use the `generate_taxa_association_test_long` function. This function analyzes the microbiome data by treating longitudinal data as cross-sectional, effectively ignoring the time component. It is especially useful in situations where the focus is on understanding the overall association between microbiome composition and other variables, without considering the fluctuations over time. This approach can yield more robust results by diminishing the influence of time-point specific variations on the microbiome.
+
+```r
+data("subset_T2D.obj")
+test.list_T2D <- generate_taxa_association_test_long(
+  data.obj = subset_T2D.obj,
+  subject.var = "subject_id",
+  feature.level = "Genus",
+  group.var = "subject_race",
+  feature.dat.type = c("count"),
+  prev.filter = 0.1,
+  abund.filter = 0.001
+)
+
+volcano_plots_T2D <- generate_taxa_volcano_single(
+  data.obj = subset_T2D.obj,
+  group.var = "subject_race",
+  test.list = test.list_T2D,
+  feature.sig.level = 0.1,
+  feature.mt.method = "fdr"
+)
+```
+
 Building on this, we also use the `generate_taxa_test_long` function to analyze the microbiome data at each individual time point. This function performs a subset analysis on the dataset, followed by a statistical test using the linda method for each time point. It enables a detailed investigation of taxa changes over time, considering various factors such as subject characteristics and sample sites.
 
 ```r
