@@ -14,6 +14,23 @@ This guide is tailored for users who already possess a Phyloseq object. If you h
 
 The current guide illustrates the procedure to convert a Phyloseq object into a MicrobiomeStat data object.
 
+### Requirement: Taxa as Rows in Phyloseq
+
+Before converting your Phyloseq object to a MicrobiomeStat data object, it is crucial to ensure that the taxa are represented as rows in your Phyloseq object. This is a requirement for the conversion process to work correctly.
+
+To check if your Phyloseq object has taxa as rows, you can use the `phyloseq::taxa_are_rows()` function:
+
+```r
+library(phyloseq)
+
+data(GlobalPatterns)
+
+# Check if taxa are rows in the Phyloseq object
+phyloseq::taxa_are_rows(GlobalPatterns)
+```
+
+If the function returns `TRUE`, your Phyloseq object is ready for conversion. If it returns `FALSE`, you need to transpose your Phyloseq object to have taxa as rows before proceeding with the conversion.
+
 First, let's take a look at the original structure of our Phyloseq data:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.51.53.png" alt=""><figcaption><p><strong>Figure 1</strong>: Structure of the original Phyloseq data object.</p></figcaption></figure>
