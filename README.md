@@ -11,7 +11,7 @@ description: >-
 
 MicrobiomeStat is a specialized tool for analyzing longitudinal and paired microbiome data. It can also be used for longitudinal analysis of other omics datatypes as long as the data are properly normalized and transformed. As a special case, cross-sectional and case-control microbiome data analysis is also supported.
 
-### Dependencies
+## Dependencies
 
 It depends on packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `rmarkdown`, `knitr`, `pander`, and `tinytex`. We thank the authors of these packages, whose work has greatly facilitated the development of MicrobiomeStat.
 
@@ -29,7 +29,7 @@ We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now 
 
 Stay tuned for more updates and enhancements as we continue to improve `MicrobiomeStat` for our user community.
 
-## Resources:
+## Resources
 
 - MicrobiomeStat Repository: [GitHub](https://github.com/cafferychen777/MicrobiomeStat)
 - MicrobiomeStat Shiny Repository: [GitHub](https://github.com/cafferychen777/MicrobiomeStat-Shiny)
