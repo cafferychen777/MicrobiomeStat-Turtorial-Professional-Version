@@ -6,6 +6,8 @@ description: >-
 
 This document will guide you through the installation process of the MicrobiomeStat package.
 
+## Installation Options
+
 ### Option 1: Installation via CRAN
 
 MicrobiomeStat is available on the CRAN repository. To install it, run the following command in your R console:
@@ -32,11 +34,11 @@ After installing 'devtools', you can proceed to install MicrobiomeStat:
 devtools::install_github("cafferychen777/MicrobiomeStat")
 ```
 
-### Dependencies
+## Dependencies
 
 To ensure the proper functioning of MicrobiomeStat, ensure that you have the following packages installed:
 
-**Required CRAN Packages**:
+### Required CRAN Packages
 
 ```R
 # List of packages to install
