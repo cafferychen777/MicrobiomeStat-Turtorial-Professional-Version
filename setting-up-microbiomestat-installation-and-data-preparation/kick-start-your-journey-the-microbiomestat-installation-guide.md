@@ -83,6 +83,8 @@ install.packages(packages_to_install)
 **Note:** Due to CRAN's restrictions, we couldn't list all the packages that `MicrobiomeStat` depends on as dependencies in our package documentation. However, for a smooth analysis process, it's imperative to have all these packages installed. Please ensure that you've installed all the packages listed above to prevent any disruptions during your analysis using `MicrobiomeStat`.
 {% endhint %}
 
+## Troubleshooting
+
 Ensure that you are using the latest versions of R and Bioconductor. If you encounter any issues, it might be because a package requires a specific version of R or Bioconductor. Consult the documentation of the problematic package for guidance.
 
 Thank you for choosing MicrobiomeStat.
