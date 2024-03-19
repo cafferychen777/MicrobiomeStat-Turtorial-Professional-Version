@@ -7,11 +7,17 @@ description:
 
 This section outlines the core components of the MicrobiomeStat data object. We use the basic list type to encapsulate the key components of a typical microbiome/omics dataset.  The use of the basic data structure in R improves the flexibility and interoperability with other tools.
 
-**Component 1: feature.tab (matrix)** The primary matrix of the data object is the **feature.tab**. It represents the connection between research entities/features (**OTU/ASV/KEGG/Gene**, etc.) and **samples**. In this matrix, research entities are designated as rows, while samples are designated as columns. It's essential to ensure the row names (feature names) and column names (sample names ) be named properly and uniquely.
+## Core Components
+
+### Component 1: feature.tab (matrix)
+
+The primary matrix of the data object is the **feature.tab**. It represents the connection between research entities/features (**OTU/ASV/KEGG/Gene**, etc.) and **samples**. In this matrix, research entities are designated as rows, while samples are designated as columns. It's essential to ensure the row names (feature names) and column names (sample names ) be named properly and uniquely.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.35.59.png" alt=""><figcaption><p>peerj32.obj$feature.tab</p></figcaption></figure>
 
-**Component 2: meta.dat (data.frame)** The **meta.dat** is a structured data.frame that holds metadata corresponding to the samples. The rows represent the samples and they must align precisely with the columns of the feature.tab. The row names of meta.dat should be the unique sample IDs. Each column in the meta.dat acts as an **annotation** for the samples. The column names should be informative and concise. To facilitate analysis, for continuous/numeric variables,  make sure they are of "numeric" type ("as.numeric" to convert), and for categorical variables, make sure they are of "factor" type with informative factor levels ("as.factor" to convert). It is a good practice to order the levels properly when creating a factor and always put the reference level in the first.  Level ordering is especially important for ordinal variables. For the meta data of a longitudinal dataset, we expect to see the following variables or similar:
+### Component 2: meta.dat (data.frame)
+
+The **meta.dat** is a structured data.frame that holds metadata corresponding to the samples. The rows represent the samples and they must align precisely with the columns of the feature.tab. The row names of meta.dat should be the unique sample IDs. Each column in the meta.dat acts as an **annotation** for the samples. The column names should be informative and concise. To facilitate analysis, for continuous/numeric variables,  make sure they are of "numeric" type ("as.numeric" to convert), and for categorical variables, make sure they are of "factor" type with informative factor levels ("as.factor" to convert). It is a good practice to order the levels properly when creating a factor and always put the reference level in the first.  Level ordering is especially important for ordinal variables. For the meta data of a longitudinal dataset, we expect to see the following variables or similar:
 
 * **subject**: a factor that indicates individual subjects or experimental units in the study. This can be alphanumeric and unique for each participant. For example, "subj001", "subj002", etc. In a longitudinal study, each subject should have multiple samples collected over time. Therefore, the number of unique subjects should be less than the total number of samples. For instance, if you have 20 subjects and plan to sample each subject at 4 time points, you would expect a total of 80 samples (rows) in your meta.dat, but only 20 unique subjects. 
 
@@ -27,7 +33,9 @@ MicrobiomeStat can handle such unbalanced longitudinal data, where not all subje
 **Note**: Tibbles are not allowed for this component. Ensure you are working with a standard R data.frame.
 {% endhint %}
 
-**Component 3: feature.ann (matrix)** The **feature.ann** is an annotation matrix where research entities such as **OTU/ASV/KEGG/Gene**, etc., are designated as rows. These row names must exactly match those in the feature.tab to maintain consistency in the data object. The columns of the feature.ann matrix hold **annotations** for the respective research entities/features.
+### Component 3: feature.ann (matrix)
+
+The **feature.ann** is an annotation matrix where research entities such as **OTU/ASV/KEGG/Gene**, etc., are designated as rows. These row names must exactly match those in the feature.tab to maintain consistency in the data object. The columns of the feature.ann matrix hold **annotations** for the respective research entities/features.
 
 For example:
 
@@ -37,11 +45,15 @@ For example:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.38.05.png" alt=""><figcaption><p>peerj32.obj$feature.ann</p></figcaption></figure>
 
-**Component 4: tree (phylo, optional)** The **phylogenetic tree** represents the evolutionary relationships among various research entities. In most situations when using MicrobiomeStat, the phylogenetic tree is not required. However, for certain beta-diversity calculations, the phylogenetic tree becomes essential as it provides additional evolutionary context. Unless your analysis specifically requires this evolutionary perspective, you can typically proceed without this component.
+### Component 4: tree (phylo, optional)
+
+The **phylogenetic tree** represents the evolutionary relationships among various research entities. In most situations when using MicrobiomeStat, the phylogenetic tree is not required. However, for certain beta-diversity calculations, the phylogenetic tree becomes essential as it provides additional evolutionary context. Unless your analysis specifically requires this evolutionary perspective, you can typically proceed without this component.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-11 at 10.42.09.png" alt=""><figcaption><p>MicrobiomeData$tree</p></figcaption></figure>
 
-**Component 5: feature.agg.list (Optional)** The **feature.agg.list** is an optional component derived from the aggregation of data in the **feature.tab** based on annotations in **feature.ann**. This aggregated data is generated using the `mStat_aggregate_by_taxonomy()` function.
+### Component 5: feature.agg.list (Optional)
+
+The **feature.agg.list** is an optional component derived from the aggregation of data in the **feature.tab** based on annotations in **feature.ann**. This aggregated data is generated using the `mStat_aggregate_by_taxonomy()` function.
 
 The `feature.agg.list` is a list containing matrices for each level of aggregation. For example, if you aggregated the data by taxonomy, you might have entries like `$Phylum`. To access a specific level of aggregation within the `feature.agg.list`, you would use syntax such as `data.obj$feature.agg.list$Phylum`.
 
