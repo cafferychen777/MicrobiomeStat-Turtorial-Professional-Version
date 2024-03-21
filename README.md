@@ -29,6 +29,16 @@ We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now 
 
 Stay tuned for more updates and enhancements as we continue to improve `MicrobiomeStat` for our user community.
 
+## Contribute to the MicrobiomeStat Wiki
+
+We welcome contributions from the community to enhance the MicrobiomeStat Wiki. If you would like to contribute, please follow these steps:
+
+1. Fork the [MicrobiomeStat Wiki repository](https://github.com/cafferychen777/MicrobiomeStat-Wiki) on GitHub.
+2. Make your desired changes, additions, or updates to the Wiki content.
+3. Submit a pull request with a clear description of your changes.
+
+Our team will review your pull request and merge the changes once approved. By contributing to the Wiki, you'll be helping to improve the documentation and resources available to the MicrobiomeStat user community. We appreciate your support in making this project better for everyone.
+
 ## Resources
 
 - MicrobiomeStat Repository: [GitHub](https://github.com/cafferychen777/MicrobiomeStat)
