@@ -47,3 +47,9 @@ Our team will review your pull request and merge the changes once approved. By c
 - MicrobiomeStat Github Pages: [Link](https://cafferychen777.github.io/MicrobiomeStat/index.html)
 - Function Documentation: [Link](https://cafferychen777.github.io/MicrobiomeStat/reference/index.html)
 - Gitbook Wiki: [Link](https://www.microbiomestat.wiki/)
+
+## Contributors
+
+We would like to express our gratitude to the following contributors for their valuable contributions to the MicrobiomeStat project:
+
+<a href="https://github.com/cafferychen777"><img src="https://github.com/cafferychen777.png?size=50" alt="cafferychen777's avatar"></a>
