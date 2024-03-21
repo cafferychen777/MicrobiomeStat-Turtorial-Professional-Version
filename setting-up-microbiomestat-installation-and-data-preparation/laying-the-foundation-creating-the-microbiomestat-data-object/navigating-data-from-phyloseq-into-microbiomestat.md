@@ -6,6 +6,8 @@ description: >-
 
 # Converting Data from Phyloseq into MicrobiomeStat
 
+This guide is a tribute to the groundbreaking contributions of the phyloseq package to the field of microbiome analysis. The phyloseq team has set a high standard for data handling and visualization in microbiome research, providing an invaluable foundation for the community. This guide is tailored for users who already possess a Phyloseq object and wish to leverage the advanced longitudinal analysis capabilities of MicrobiomeStat. If you haven't yet successfully constructed a Phyloseq object, we highly recommend exploring the [Phyloseq documentation](https://joey711.github.io/phyloseq/) to appreciate the full power and flexibility of this pioneering tool.
+
 This guide is tailored for users who already possess a Phyloseq object. If you haven't yet successfully constructed a Phyloseq object, we recommend reviewing this tutorial for guidance.&#x20;
 
 {% content-ref url="building-microbiomestat-from-matrix-and-data.frame.md" %}
