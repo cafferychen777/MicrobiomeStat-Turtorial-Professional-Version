@@ -58,9 +58,9 @@ We would like to express our gratitude to the following contributors for their v
 
 <table>
   <tr>
-    <td><a href="https://github.com/cafferychen777"><img src="https://github.com/cafferychen777.png?size=400" alt="cafferychen777's avatar"></a></td>
-    <td><a href="https://github.com/jchen1981"><img src="https://github.com/jchen1981.png?size=0.5" alt="jchen1981's avatar"></a></td>
-    <td><a href="https://github.com/zhangxiany-tamu"><img src="https://github.com/zhangxiany-tamu.png?size=0.5" alt="zhangxiany-tamu's avatar"></a></td>
-    <td><a href="https://github.com/zhouhj1994"><img src="https://github.com/zhouhj1994.png?size=0.5" alt="zhouhj1994's avatar"></a></td>
+    <td><a href="https://github.com/cafferychen777"><img src="https://github.com/cafferychen777.png?size=300" alt="cafferychen777's avatar"></a></td>
+    <td><a href="https://github.com/jchen1981"><img src="https://github.com/jchen1981.png?s=0.001" alt="jchen1981's avatar"></a></td>
+    <td><a href="https://github.com/zhangxiany-tamu"><img src="https://github.com/zhangxiany-tamu.png?s=0.001" alt="zhangxiany-tamu's avatar"></a></td>
+    <td><a href="https://github.com/zhouhj1994"><img src="https://github.com/zhouhj1994.png?s=0.001" alt="zhouhj1994's avatar"></a></td>
   </tr>
 </table>
