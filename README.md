@@ -53,3 +53,9 @@ Our team will review your pull request and merge the changes once approved. By c
 We would like to express our gratitude to the following contributors for their valuable contributions to the MicrobiomeStat project:
 
 <a href="https://github.com/cafferychen777"><img src="https://github.com/cafferychen777.png?size=50" alt="cafferychen777's avatar"></a>
+
+<a href="https://github.com/jchen1981"><img src="https://github.com/jchen1981.png?size=50" alt="jchen1981's avatar"></a>
+
+<a href="https://github.com/zhangxiany-tamu"><img src="https://github.com/zhangxiany-tamu.png?size=50" alt="zhangxiany-tamu's avatar"></a>
+
+<a href="https://github.com/zhouhj1994"><img src="https://github.com/zhouhj1994.png?size=50" alt="zhouhj1994's avatar"></a>
