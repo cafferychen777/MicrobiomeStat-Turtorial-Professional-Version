@@ -52,10 +52,6 @@ Our team will review your pull request and merge the changes once approved. By c
 
 We would like to express our gratitude to the following contributors for their valuable contributions to the MicrobiomeStat project:
 
-## Contributors
-
-We would like to express our gratitude to the following contributors for their valuable contributions to the MicrobiomeStat project:
-
 <table>
   <tr>
     <td><a href="https://github.com/cafferychen777"><img src="https://github.com/cafferychen777.png?size=300" alt="cafferychen777's avatar"></a></td>
