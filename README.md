@@ -1,6 +1,6 @@
 ---
 description: >-
-  Dive into MicrobiomeStat's offerings for longitudinal data exploration in microbiome research. It is designed for ease, collaboration, and openness to the scientific community.
+  Dive into MicrobiomeStat's offerings for longitudinal data exploration in microbiome research. Designed for ease, collaboration, and reproducibility, it upholds openness to the scientific community.
 ---
 
 # Track, Analyze, Visualize: Unravel Your Microbiome's Temporal Pattern with MicrobiomeStat.
