@@ -66,9 +66,9 @@ It's worth noting that if you call a MicrobiomeStat function and set a `feature.
 
 Together, these components comprise the MicrobiomeStat data object, which facilitates a structured representation of microbiome data. After constructing the MicrobiomeStat data object, it is imperative to validate the integrity of the data object using the `mStat_validate_data` function. 
 
-## Data Objects Devoted to Specialized Analysis
+## Specialized Data Objects
 
-In addition to the basic data object, the MicrobiomeStat toolkit accepts specialized data objects for advanced analyses, such as alpha diversity, beta diversity, and ordination. These special data objects can be passed to the specific parameters in MicrobiomeStat functions as detailed below.
+In addition to the basic data object, the MicrobiomeStat toolkit accepts specialized data objects for specific analyses, such as alpha and beta diversity analysis.  These specialized data objects can be passed to the specific parameters (arguments) in relevant MicrobiomeStat functions as detailed below.
 
 ### alpha.obj
 
@@ -82,7 +82,7 @@ It is important to note that `mStat_calculate_alpha_diversity` does not perform 
 
 ### pc.obj
 
-`pc.obj`:  For functions performing beta diversity analysis based on the principal coordinates (PC) of distance matices,  the `pc.obj` parameter accepts a data object containing the PCs of various distance matrices (list type, each element is a matrix with rows representing samples, columns representing PCs). The `mStat_calculate_PC` function can be used to generate the PC object.  This function allows for the choice between "mds" (multidimensional scaling) and "nmds" (non-metric multidimensional scaling) for ordination methods. If no PC object is passed to `pc.obj`, `mStat_calculate_PC` function will be automatically invoked using the default "mds". For users who prefer more advanced ordination methods, such as t-SNE or UMAP, these can be computed using external tools and then formatted to fit the MicrobiomeStat data structure for compatibility with the MicrobiomeStat toolkit.
+`pc.obj`:  For functions performing beta diversity analysis based on the principal coordinates (PC) of distance matrices,  the `pc.obj` parameter accepts a data object containing the PCs of various distance matrices (list type, each element is a matrix with rows representing samples, columns representing PCs). The `mStat_calculate_PC` function can be used to generate the PC object.  This function allows for the choice between "mds" (multidimensional scaling) and "nmds" (non-metric multidimensional scaling) for ordination methods. If no PC object is passed to `pc.obj`, `mStat_calculate_PC` function will be automatically invoked using the default "mds". For users who prefer more advanced ordination methods, such as t-SNE or UMAP, these can be computed using external tools and then formatted to fit the MicrobiomeStat data structure for compatibility with the MicrobiomeStat toolkit.
 
 
 
