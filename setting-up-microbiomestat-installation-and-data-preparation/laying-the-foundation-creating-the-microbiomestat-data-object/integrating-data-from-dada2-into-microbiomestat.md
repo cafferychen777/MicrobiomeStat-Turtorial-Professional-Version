@@ -6,7 +6,7 @@ description: >-
 
 # Importing Data from DADA2 into MicrobiomeStat
 
-This guide will walk you through the steps required to convert and integrate data from DADA2 into MicrobiomeStat.
+This guide will walk you through the steps required to import data from DADA2 into MicrobiomeStat.
 
 ### Download Necessary Files
 
