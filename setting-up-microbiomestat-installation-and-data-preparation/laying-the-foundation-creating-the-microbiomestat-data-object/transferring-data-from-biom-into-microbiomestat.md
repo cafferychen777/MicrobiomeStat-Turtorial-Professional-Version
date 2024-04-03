@@ -1,8 +1,8 @@
 ---
-description: Guide to importing data in BIOM format into MicrobiomeStat's structure.
+description: Guide to importing BIOM data into MicrobiomeStat data object.
 ---
 
-# Importing Data from BIOM into MicrobiomeStat
+# Importing BIOM Data into MicrobiomeStat Object
 
 Follow the instructions below to convert your BIOM data into a format suitable for MicrobiomeStat.
 
