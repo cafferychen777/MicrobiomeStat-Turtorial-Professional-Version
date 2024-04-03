@@ -3,7 +3,7 @@ description:
 
 ---
 
-# Creating the Basic MicrobiomeStat Data Object
+# Creating the MicrobiomeStat Data Object
 
 This section outlines the core components of the basic MicrobiomeStat data object. We use the basic list type to encapsulate the key components of a typical microbiome/omics dataset.  The use of the basic data structure in R improves the flexibility and interoperability with other tools. In MicrobiomeStat functions, the parameter `data.obj` is designed to receive the basic MicrobiomeStat data object.
 
