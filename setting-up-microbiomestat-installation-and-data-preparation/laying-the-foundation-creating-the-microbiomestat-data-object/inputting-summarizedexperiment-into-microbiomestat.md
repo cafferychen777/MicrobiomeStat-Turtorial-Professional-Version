@@ -1,12 +1,12 @@
 ---
 description: >-
-  A step-by-step guide on transforming SummarizedExperiment data structures for
+  A step-by-step guide on converting SummarizedExperiment data format for
   compatibility with MicrobiomeStat.
 ---
 
 # Converting SummarizedExperiment into MicrobiomeStat
 
-The Bioconductor package `SummarizedExperiment` provides a convenient representation of experimental data. To facilitate researchers using this format, MicrobiomeStat provides a straightforward method for converting SummarizedExperiment objects.
+The Bioconductor package `SummarizedExperiment` provides a convenient representation of experimental data.  MicrobiomeStat provides a straightforward method for converting SummarizedExperiment objects.
 
 ```r
 # Check if the 'airway' package is installed
@@ -39,4 +39,4 @@ Post conversion, the data is organized into a **MicrobiomeStat data object** wit
 
 For efficient analysis, features with an aggregate count of zero in the assay data are excluded during the conversion process.
 
-Utilizing the `mStat_convert_SummarizedExperiment_to_data_obj` function ensures that the SummarizedExperiment data is appropriately structured for subsequent analysis within the MicrobiomeStat environment. This streamlined conversion process aids in maintaining data integrity and simplifies the data preparation step for users.
+
