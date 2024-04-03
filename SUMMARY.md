@@ -9,7 +9,7 @@
 ## Setting Up MicrobiomeStat: Installation and Data Preparation
 
 * [Installation Guide](setting-up-microbiomestat-installation-and-data-preparation/kick-start-your-journey-the-microbiomestat-installation-guide.md)
-* [Creating the mStat Data Object](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/README.md)
+* [Creating the Basic MicrobiomeStat Data Object](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/README.md)
   * [Building MicrobiomeStat from Matrix and Data.frame](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/building-microbiomestat-from-matrix-and-data.frame.md)
   * [Converting Data from Phyloseq into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/navigating-data-from-phyloseq-into-microbiomestat.md)
   * [Importing Data from QIIME2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/importing-data-from-qiime2-into-microbiomestat.md)
