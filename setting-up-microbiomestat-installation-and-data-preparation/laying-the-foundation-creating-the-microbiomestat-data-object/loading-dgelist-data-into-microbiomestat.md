@@ -1,12 +1,12 @@
 ---
 description: >-
-  Learn the steps to efficiently import DGEList data structures into
-  MicrobiomeStat for streamlined analysis.
+  Learn the steps to  convert DGEList data format into
+  MicrobiomeStat data format.
 ---
 
-# Converting DGEList Data into MicrobiomeStat
+# Converting DGEList Data Format into MicrobiomeStat Data Format
 
-This guide will assist you in transferring data from the DGEList format to MicrobiomeStat.
+This guide will assist you in converting DGEList data format into MicrobiomeStat format.
 
 Before we proceed with the conversion, let's examine the original structure of our DGEList data:
 
@@ -42,4 +42,4 @@ The resultant **MicrobiomeStat data object** includes:
 * **feature.tab**: A matrix populated with counts data.
 * **meta.dat**: A data frame detailing the sample information.
 
-As part of the conversion process, features with a sum of zero from the counts data are filtered out to maintain data relevance and accuracy.
+As part of the conversion process, features with a sum of zero from the counts data are filtered out to maintain data relevance.
