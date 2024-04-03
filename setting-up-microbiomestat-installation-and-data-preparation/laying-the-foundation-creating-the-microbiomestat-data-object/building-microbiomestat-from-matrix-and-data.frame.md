@@ -4,15 +4,15 @@ description: >-
   frames from your R environment or by importing data from external CSV files.
 ---
 
-# Building MicrobiomeStat from Matrix and Data.frame
+# Building MicrobiomeStat Object from Matrix and Data.frame
 
-The MicrobiomeStat data object consists of the following components:
+The basic MicrobiomeStat data object consists of the following components:
 
-* **feature.tab (matrix)**: A matrix displaying the connection between research entities (like OTUs, ASVs, genes) as rows and samples as columns. Ensure row names are the names of the research entities, and column names match the samples.
-* **meta.dat (data.frame)**: Holds metadata for samples, where rows correlate with samples, and columns denote annotations. Examples of annotations include disease severity (mild, moderate, severe), treatment status (treated, untreated), and study phases (phase 1, phase 2, etc). Ensure the row names match the feature.tab columns. Tibbles are not permitted; use a standard R data frame.
-* **feature.ann (matrix)**: An annotation matrix with research entities as rows. Columns might provide taxonomic details for microbiome data, cell types for single-cell data, or pathway levels for KEGG data. Ensure row names match those in feature.tab.
-* **tree (phylo, optional)**: Depicts evolutionary relationships among research entities. It's essential for specific beta-diversity calculations but isn't required for the majority of MicrobiomeStat analyses.
-* **feature.agg.list (list, optional)**: Generated using the `mStat_aggregate_by_taxonomy()` function, this list contains matrices of aggregated data based on taxonomy or cell type, with each matrix's columns representing sample names and rows representing the aggregation level (e.g., Phylum, CellType).
+* **feature.tab (matrix)**: A matrix recording the measurements of detected features (like OTUs, ASVs, genes) with features as rows and samples as columns. Ensure row names are the names of the features, and column names match the samples.
+* **meta.dat (data.frame)**: A data frame of the sample meta data, where rows correspond to samples, and columns denote annotations.  Ensure the row names match the feature.tab columns. Tibbles are not permitted; use a standard R data frame.
+* **feature.ann (matrix)**: An annotation matrix with features as rows and annotations as columns. Annotations are usually hierarchical such as the taxonomic annotations. Ensure row names match those in feature.tab.
+* **tree (phylo, optional)**: Captures the evolutionary relationships among feautres. It's essential for specific beta-diversity calculations but isn't required for the majority of MicrobiomeStat analyses.
+* **feature.agg.list (list, optional)**: Generated using the `mStat_aggregate_by_taxonomy` function, this list contains matrices of aggregated data based on the annotations specified in ”feature.ann", with each matrix's columns representing samples and rows representing the annotation level (e.g., Phylum, Genus).
 
 Here is how to construct the MicrobiomeStat data object directly from matrix and data.frame:
 
@@ -20,7 +20,7 @@ Here is how to construct the MicrobiomeStat data object directly from matrix and
 
 #### Starting from matrix and data.frame
 
-Assuming we already have the expression matrix and sample metadata:
+Assuming we already have the count matrix and sample metadata:
 
 ```r
 # Step 1: Create the sample names.
@@ -32,9 +32,9 @@ samplenames <- paste0("S",1:20)
 featurenames <- paste0("OTU",1:100)
 
 # Step 3: Create the Feature.tab matrix.
-# We want a matrix with 100 rows and 20 columns, filled with random numbers from a normal distribution (using `rnorm`).
+# We want a matrix with 100 rows and 20 columns, filled with random counts.
 # We then set the row and column names of this matrix to the feature and sample names we created earlier.
-Feature.tab <- matrix(rnorm(100*20),nrow=100,ncol=20)
+Feature.tab <- matrix(sample(1:1000, 100*20, repl = TRUE),nrow=100,ncol=20)
 rownames(Feature.tab) <- featurenames
 colnames(Feature.tab) <- samplenames
 
@@ -57,7 +57,7 @@ rownames(Meta.dat) <- samplenames
 
 #### Add Feature Annotation
 
-To enrich the analysis, it's beneficial to add a feature annotation. For this example, we add taxonomic classifications and functional categories:
+To enrich the analysis, it's beneficial to add feature annotations. For this example, we add both taxonomic and functional classifications:
 
 ```r
 # Step 1: Define the values for the "Kingdom" column. 
@@ -153,7 +153,7 @@ MicrobiomeData <- list(
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.28.16.png" alt=""><figcaption><p>This visualization presents the structure of the imported <code>MicrobiomeStat</code> data object using R's <code>str</code> function, illustrating the organization of the components sourced from external CSV files.</p></figcaption></figure>
 
-#### Upload Your Phylogenetic Tree
+#### Add Phylogenetic Tree
 
 If you have a phylogenetic tree that you would like to use, you can upload it:
 
