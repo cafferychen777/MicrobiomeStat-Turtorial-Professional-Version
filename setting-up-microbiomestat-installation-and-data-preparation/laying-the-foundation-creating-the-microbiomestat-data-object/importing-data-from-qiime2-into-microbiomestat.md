@@ -1,12 +1,12 @@
 ---
 description: >-
-  This guide provides a step-by-step method for importing QIIME2 data structures
+  This guide provides a step-by-step method for importing QIIME2 data 
   into the MicrobiomeStat data object.
 ---
 
 # Importing Data from QIIME2 into MicrobiomeStat
 
-To effectively utilize the capabilities of MicrobiomeStat, it's essential to ensure your data is in a compatible format. This guide details the process to convert QIIME2 data structures into MicrobiomeStat's required data object.
+This guide details the process to import QIIME2 data  into MicrobiomeStat's required data object.
 
 The provided files represent essential QIIME2 artifacts and metadata required for microbiome data analysis:
 
@@ -47,9 +47,9 @@ data.obj <- mStat_import_qiime2_as_data_obj(
 
 The function `mStat_import_qiime2_as_data_obj` efficiently transforms QIIME2 datasets into the data format required by MicrobiomeStat. Here's a breakdown of the input parameters:
 
-* **otu\_qza**: This file represents your feature table, containing the abundance data of microbial entities across samples.
-* **taxa\_qza** (Optional): This is the taxonomy assignment table which provides taxonomic classifications for the microbial entities.
-* **sam\_tab** (Optional): The sample metadata table offers details about the conditions, treatments, or any other pertinent annotations related to the samples.
-* **tree\_qza** (Optional): A phylogenetic tree depicting the evolutionary relationships of the microbial entities.
+* **otu\_qza**: This file represents your feature table, containing the abundance data of microbial features across samples.
+* **taxa\_qza** (Optional): This is the taxonomy assignment table which provides taxonomic classifications for the microbial features.
+* **sam\_tab** (Optional): The sample metadata table offers details about the samples.
+* **tree\_qza** (Optional): A phylogenetic tree depicting the evolutionary relationships of the microbial features.
 
 Ensure that you have the correct file paths and all required dependencies installed before initiating the conversion process.
