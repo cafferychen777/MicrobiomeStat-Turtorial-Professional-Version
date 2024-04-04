@@ -4,7 +4,7 @@ Beta diversity analysis is instrumental in revealing the difference in microbial
 
 In some applications (e.g. ordination), the users may want to remove the covariate effects from the distance matrices. This can be achieved by using `mStat_calculate_adjusted_distance` function based on the reference below.
 
-> Chen J, Zhang X. dICC: distance-based intraclass correlation coefficient for metagenomic reproducibility studies. Bioinformatics. 2022 Oct 31;38(21):4969-4971. doi: 10.1093/bioinformatics/btac618. PMID: 36083005; PMCID: PMC9801959.
+> Shi, Y., Zhang, L., Do, K. A., Peterson, C. B., & Jenq, R. R. (2020). aPCoA: covariate adjusted principal coordinates analysis. Bioinformatics, 36(13), 4099-4101. PMID: 32339223 PMCID: PMC7332564.
 
 This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
@@ -38,7 +38,7 @@ generate_beta_ordination_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 19.54.22.png" alt=""><figcaption></figcaption></figure>
 
-In the example above, we did not specifiy the specific time point, though the function has the flexibility to visualize a specific time point as shown later.  After the visualization, we usually proceed to more rigorous statistical testing and calculate p-values. To rigorously test the association between the microbial community and a covariate of interest while adjusting for other covariates, we can use `generate_beta_test_single`, which is based on PERMANOVA using distance matrices.
+In the example above, we did not specifiy the specific time point, though the function has the flexibility to visualize a specific time point by using `time.var` and `t.level`.  After the visualization, we can conduct more rigorous statistical testing and calculate p-values. To rigorously test the association between the microbial community and a covariate of interest while adjusting for other covariates, we can use `generate_beta_test_single`, which is based on PERMANOVA using distance matrices.
 
 ```r
 generate_beta_test_single(
@@ -67,11 +67,11 @@ The table above provides the detailed outcome of the PERMANOVA analysis, includi
 | sex   | 0.791 | 0.819   | 0.808   |
 | group | 0.794 | 0.859   | 0.817   |
 
-It is also noteworthy that in practical scenarios, the nature of microbiome change is usually unknown before the analysis. As each distance measure excels at detecting a specific type of change, combining several representative distance measures may improve statistical power.  Howver, conducting separate tests for each distance measure requires multiple testing correction and the simple Bonferroni correction may be too stringent due to the correlations among the distance measures. An omnibus test (reference below), which takes the minimum of the p-values as a new test statistic and uses permutation to assess significance, is usually more powerful than Bonferroni correction.  In the result table, we thus also provide the omnibus test p-value by combining the association evidence provided by different distance measures.
+It is also noteworthy that in practical scenarios, the nature of microbiome change is usually unknown before the analysis. As each distance measure excels at detecting a specific type of change, combining several representative distance measures may improve statistical power.  Howver, conducting separate tests for each distance measure requires multiple testing correction and the simple Bonferroni correction may be too stringent due to the correlations among the distance measures. An omnibus test (reference below), which takes the minimum of the p-values as a new test statistic and uses permutation to assess significance, is usually more powerful than Bonferroni correction.  In the result, we thus also provide the omnibus test p-value by combining the association evidence provided by different distance measures.
 
 > Chen J, Bittinger K, Charlson ES, Hoffmann C, Lewis J, Wu GD, Collman RG, Bushman FD, Li H. Associating microbiome composition with environmental covariates using generalized UniFrac distances. Bioinformatics. 2012 Aug 15;28(16):2106-13. doi: 10.1093/bioinformatics/bts342. Epub 2012 Jun 17. PMID: 22711789; PMCID: PMC3413390.
 
-In the PCoA plot, we can also stratify on a specific variable, such as "sex". We can also add the PERMANOVA p-value to the plot to show the statistical significance:
+In the PCoA plot, we can also stratify on a specific variable, such as "sex", and add the PERMANOVA p-value to highlight the statistical significance:
 
 ```r
 library(MicrobiomeStat)
