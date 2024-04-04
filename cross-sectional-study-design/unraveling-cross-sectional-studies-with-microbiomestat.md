@@ -1,6 +1,6 @@
 # Introduction
 
-Cross-sectional microbiome studies, which randomly sample the microbiome from a study population at a single time point, have been widely used in microbiome research due to its simplicity and easy sample collection. Besides cross-sectional design, case-control study designs are also prevalent in microbiome research.  Both designs will generate microbiome data that are dependent of each other and can be analyzed in a similar way by treating the microbiome measruement as the outcome. MicrobiomeStat provides full support of analyzing the data from cross-sectional and case-control studies. We illustrate the use of MicrobiomeStat in analyzing cross-sectional/case-control data using the `peerj32` dataset, which was originated from a study that probed the relationship between human intestinal bacteria and lipid metabolism in response to a probiotic intervention. 
+Cross-sectional microbiome studies, which randomly sample the microbiome from a study population at a single time point, have been widely used in microbiome research due to its simplicity and easy sample collection. Besides cross-sectional design, case-control study designs are also prevalent in microbiome research.  Both designs will generate microbiome data with independence among samples and can be analyzed in a similar way by treating the microbiome measurement as the outcome. MicrobiomeStat provides full support of analyzing data from cross-sectional and case-control studies. We illustrate the use of MicrobiomeStat in analyzing these types of data using the `peerj32` dataset, which was originated from a study that probed the relationship between human intestinal bacteria and lipid metabolism in response to a probiotic intervention. 
 
 > Lahti L, Salonen A, Kekkonen RA, Salojärvi J, Jalanka-Tuovinen J, Palva A, Orešič M, de Vos WM. Associations between the human intestinal microbiota, Lactobacillus rhamnosus GG and serum lipids indicated by integrated analysis of high-throughput profiling data. PeerJ. 2013 Feb 26;1:e32. doi: 10.7717/peerj.32. PMID: 23638368; PMCID: PMC3628737.
 
@@ -20,9 +20,7 @@ The dataset provides taxonomic classifications at three ranks: Phylum, Family, a
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 18.32.30.png" alt=""><figcaption><p>Taxonomic annotations for the microbial features in the <code>peerj32</code> dataset. Each row represents a microbial feature, classified at the Phylum, Family, and Genus levels.</p></figcaption></figure>
 
-We will use `peerj32` dataset to showcase the utility of MicrobiomeStats in analyzing cross-sectional/case-control data.
-
-For users wishing to apply our tutorial to their own datasets, please see the following guide:
+We will use `peerj32` dataset to showcase the utility of MicrobiomeStats in analyzing cross-sectional/case-control data. For users wishing to apply our tutorial to their own datasets, please see the following guide:
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)
