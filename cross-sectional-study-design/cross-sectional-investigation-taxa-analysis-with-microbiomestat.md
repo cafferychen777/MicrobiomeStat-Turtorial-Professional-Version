@@ -1,32 +1,31 @@
 # Feature-level Analysis
 
-A foundational step in feature-level analysis is discerning taxa with differential abundance between groups. The `generate_taxa_test_single` function facilitates this by performing differential abundance testing.
-
-The `generate_taxa_test_single` function employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance between groups.
+A central task in feature-level analysis is to identify taxa with differential abundance between groups. The `generate_taxa_test_single` function performs differential abundance analysis (DAA) based on compositional data using the LinDA method, which is a DAA method based on log linear model with bias correction due to composiitonal effects.  If the data are not compositional, regular linear regression analysis will be used.
 
 > Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
-The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
+In the `generate_taxa_test_single` function,  `feature.dat.type` parameter specifies the data type in the feature matrix.  Depending on the data type, different preprocessing steps and methods are used.
 
-* `count`: For raw count data, the function first performs rarefaction, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
-* `proportion`: Data presented as proportions remains unaltered. However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
-* `other`: In scenarios where the data originates from non-compositional sources, like transcriptomics and metabolomics, a different data transformation approach might be more appropriate. When `feature.dat.type` is set to "other", the function does not perform any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+* `count` and `proportion`: For count and proportion data, which are both compositional, `linda` will be called. To address zeros, a pseudo-count of 0.5 is added to the count data, and zeros are substituted with half of the nonzero minimum for proportion data (feature-wise).  Winorization at 97% quantile is performed to reduce the influence of outliers.
+* `other`:  When `feature.dat.type` is set to "other", the data are considered to be non-compositional and ordinary linear regression analysis will be performed. Users need to determine the appropriate normalization and transformation of the data before runing the function.  This option increases the applicability of MicrobiomeStat to other data types.
 
-Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
+The `prev.filter` and `abund.filter` parameters filter taxa based on their prevalence and average relative abundance, so those rare and less abundant taxa will be excluded from testing. As the statistical power for these rare/less abundant taxa tends to be low, excluding them can reduce multiple testing burden. 
 
-* `prev.filter` targets taxa retention based on their prevalence across samples.
-* `abund.filter` focuses on the average abundance of taxa across all samples.
+The `feature.level` determines what aggregation level(s) the tests will be performed. If `feature.level` is set to "original", the original features in `feature.tab`  will be tested. The `feature.level` can also be set to the aggregated levels specified in the `feature.ann` matrix.
 
-Such filtering ensures that the analysis centers on taxa both prevalent and abundant, enhancing result reliability by excluding potential outliers or noise.
+The `generate_taxa_test_single` outputs a table of LinDA association statistics for all tested taxa/features. The table contains the following components:
 
-For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don't require aggregation, it's recommended to set the `feature.level` parameter to "original". Or we can perform testing on aggregated levels such as "Phylum", "Family" and "Genus" levels for microbiome data.
+* `Variable`: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
+* `Coefficient`: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
+* `SE`: Standard errors of the coefficients. It measures the variability of the coefficient estimates.
+* `Mean Abundance`: This average abundance of a particular taxon (variable) across all samples.
+* `Prevalence`: The proportion of samples where a specific taxon is present.
+  
+`generate_taxa_volcano_single` will produce a volcano plot based on the `generate_taxa_test_single` output. It visualizes the relationship between the effect size (log foldchange) and its statistical significance. The function has the `feature.sig.level` and `feature.mt.method` parameters:
+* `feature.sig.level`: This parameter determines the significance level, influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences.
+* `feature.mt.method`: Thi parameter determines whether the fdr-adjusted p-values or raw p-values will be plotted . There are two options available currently: "fdr" (false discovery rate) and "none" (raw p-value). 
 
-Furthermore, when interpreting the results, it's essential to understand `feature.sig.level` and `feature.mt.method` parameters:
-
-* `feature.sig.level`: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
-* `feature.mt.method`: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot.
-
-By understanding and appropriately setting these parameters, users can ensure a more accurate interpretation of the plotted results.
+Following shows an example:
 
 ```r
 # Load data
@@ -45,6 +44,10 @@ test.list <- generate_taxa_test_single(
     abund.filter = 0.0001
 )
 
+#### First 10 Rows of Differential Abundance Results at Genus Level
+
+<table><thead><tr><th>Variable</th><th width="135">Coefficient</th><th width="54">SE</th><th>P.Value</th><th>Adjusted.P.Value</th><th>Mean.Abundance</th><th>Prevalence</th></tr></thead><tbody><tr><td>Actinomycetaceae</td><td>0.43088737</td><td>0.8125191</td><td>0.60204023</td><td>0.9892442</td><td>0.0001950405</td><td>0.7272727</td></tr><tr><td>Aerococcus</td><td>-0.09734179</td><td>0.7893169</td><td>0.90314569</td><td>0.9892442</td><td>0.0002352668</td><td>0.5909091</td></tr><tr><td>Aeromonas</td><td>0.02022775</td><td>1.0311377</td><td>0.98455351</td><td>0.9892442</td><td>0.0002829477</td><td>0.6363636</td></tr><tr><td>Akkermansia</td><td>-0.70914707</td><td>0.5667601</td><td>0.22603834</td><td>0.9892442</td><td>0.0202212889</td><td>1.0000000</td></tr><tr><td>Allistipes et rel.</td><td>-0.54628088</td><td>0.4985462</td><td>0.28688461</td><td>0.9892442</td><td>0.0083365762</td><td>1.0000000</td></tr><tr><td>Anaerofustis</td><td>0.37736758</td><td>0.3988262</td><td>0.35592789</td><td>0.9892442</td><td>0.0013725489</td><td>1.0000000</td></tr><tr><td>Anaerostipes caccae et rel.</td><td>-0.45297144</td><td>0.1723513</td><td>0.01655715</td><td>0.7004574</td><td>0.0185944926</td><td>1.0000000</td></tr><tr><td>Anaerotruncus colihominis et rel.</td><td>0.05420558</td><td>0.4605402</td><td>0.90754073</td><td>0.9892442</td><td>0.0028354658</td><td>1.0000000</td></tr><tr><td>Anaerovorax odorimutans et rel.</td><td>-0.55577241</td><td>0.3180729</td><td>0.09672749</td><td>0.9892442</td><td>0.0044828621</td><td>1.0000000</td></tr><tr><td>Aneurinibacillus</td><td>-0.20493605</td><td>0.5227462</td><td>0.69939327</td><td>0.9892442</td><td>0.0007296989</td><td>0.9545455</td></tr></tbody></table>
+
 # Generate volcano plots
 volcano_plots <- generate_taxa_volcano_single(
     data.obj = peerj32.obj,
@@ -57,37 +60,22 @@ volcano_plots <- generate_taxa_volcano_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-07 at 15.18.08.png" alt=""><figcaption></figcaption></figure>
 
-The resultant volcano plot visualizes the relationship between the magnitude of change (fold-change) and its statistical significance. This graphical representation aids researchers in pinpointing taxa with substantial differential abundance.
 
-The `generate_taxa_test_single` also outputs a table of LinDA association statistics for all tested taxa/features.
 
-In the context of this table:
 
-* `Variable`: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
-* `Coefficient`: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
-* `SE`: Standard errors of the coefficients. It measures the variability of the coefficient estimates.
-* `Mean Abundance`: This average abundance of a particular taxon (variable) across all samples.
-* `Prevalence`: The proportion of samples where a specific taxon is present.
-
-#### First 10 Rows of Differential Abundance Results at Genus Level
-
-<table><thead><tr><th>Variable</th><th width="135">Coefficient</th><th width="54">SE</th><th>P.Value</th><th>Adjusted.P.Value</th><th>Mean.Abundance</th><th>Prevalence</th></tr></thead><tbody><tr><td>Actinomycetaceae</td><td>0.43088737</td><td>0.8125191</td><td>0.60204023</td><td>0.9892442</td><td>0.0001950405</td><td>0.7272727</td></tr><tr><td>Aerococcus</td><td>-0.09734179</td><td>0.7893169</td><td>0.90314569</td><td>0.9892442</td><td>0.0002352668</td><td>0.5909091</td></tr><tr><td>Aeromonas</td><td>0.02022775</td><td>1.0311377</td><td>0.98455351</td><td>0.9892442</td><td>0.0002829477</td><td>0.6363636</td></tr><tr><td>Akkermansia</td><td>-0.70914707</td><td>0.5667601</td><td>0.22603834</td><td>0.9892442</td><td>0.0202212889</td><td>1.0000000</td></tr><tr><td>Allistipes et rel.</td><td>-0.54628088</td><td>0.4985462</td><td>0.28688461</td><td>0.9892442</td><td>0.0083365762</td><td>1.0000000</td></tr><tr><td>Anaerofustis</td><td>0.37736758</td><td>0.3988262</td><td>0.35592789</td><td>0.9892442</td><td>0.0013725489</td><td>1.0000000</td></tr><tr><td>Anaerostipes caccae et rel.</td><td>-0.45297144</td><td>0.1723513</td><td>0.01655715</td><td>0.7004574</td><td>0.0185944926</td><td>1.0000000</td></tr><tr><td>Anaerotruncus colihominis et rel.</td><td>0.05420558</td><td>0.4605402</td><td>0.90754073</td><td>0.9892442</td><td>0.0028354658</td><td>1.0000000</td></tr><tr><td>Anaerovorax odorimutans et rel.</td><td>-0.55577241</td><td>0.3180729</td><td>0.09672749</td><td>0.9892442</td><td>0.0044828621</td><td>1.0000000</td></tr><tr><td>Aneurinibacillus</td><td>-0.20493605</td><td>0.5227462</td><td>0.69939327</td><td>0.9892442</td><td>0.0007296989</td><td>0.9545455</td></tr></tbody></table>
-
-By inspecting these metrics, researchers can gain insights into the relative importance of each taxon within the analyzed samples, informing subsequent analyses and visualization.
-
-Next, we will introduce functions to plot the taxa/features data. They can be used to visualize specific taxa/features, for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which has the following relevant parameters:
-
-* `transform`: This parameter indicates the transformation to apply to the axis when plotting. Transformations are only applied when the `feature.dat.type` is set to either `"count"` or `"proportion"`. The available options for `transform` include:
+Next, we will introduce functions to plot the taxa/features data. They can be used to visualize specific taxa/features, for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which generate boxplots of abundance data. It has the following relevant parameters:
+* `feature.dat.type`: One of "count", "proportion" or "other".  For "count", the data will be converted to proportion data before the visualization. 
+* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should deterimne the appropriate transformation to better visualize the data. The available options for `transform` include:
   * `"identity"`: No transformation (default)
   * `"sqrt"`: Square root transformation
-  * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
-* `features.plot`: This parameter dictates which taxa/features should be visualized. For instance, after executing a differential abundance analysis, you might be inclined to closely inspect taxa that exhibit significant variations. By defining `features.plot` with a list of taxa with a p-value less than a certain threshold from your differential abundance results, you're streamlining the visualization to spotlight these select taxa. When `features.plot` is determined, the values for `prev.filter` and `abund.filter` are instantly set to 0, indicating that these won't be applied for further filtering in visualization.
-* `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their sheer abundance or because they manifest a pronounced variability. `top.k.plot` lets you cap the maximum number of taxa to visualize. For instance, if you set it to 10, only the top 10 taxa, as determined by the criteria detailed in `top.k.func`, will be visualized.
-* `top.k.func` assists in determining the criteria for this selection, offering three choices:
-  * `"mean"`: Highlights taxa with the highest average abundances spread across samples.
+  * `"log"`: Logarithmic transformation. Zeros are replaced with half of the non-zero minimum  for each taxon before log transformation.
+* `feature.level`: Specifiy which level of the data to be plotted. Same meaning as in  `generate_taxa_test_single`.
+* `features.plot`: This parameter dictates which taxa/features should be visualized. For instance, after executing a differential abundance analysis, you may only be interested in visualizing the abundance distribution of those significantly differential taxa.  When a vector of taxa/feature names are provided to `features.plot`, the  `prev.filter` and `abund.filter` will be overridden.
+* `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their high abundance or  large variability. `top.k.plot` lets you visualize the top k taxa/features based on the criterion you selected in  `top.k.func`, which have four choices:
+  * `"mean"`: Highlights taxa with the highest average abundances across samples.
   * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
   * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
-  * Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
+  * `top.k.func` can also accept a user-defined function so that the users can rank taxa based on their own criterion.  The user-defined function should take the abundance matrix (those in `feature.tab` and `feature.agg.list`) as the input and returns a numeric vector of the feature importance values. This allows for criteria beyond "mean", "sd", or "prevalence".
 
 The following shows the usage and output of the function `generate_taxa_boxplot_single`. All the taxa are plotted together.
 
@@ -151,13 +139,7 @@ generate_taxa_indiv_boxplot_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-08-05 at 20.04.16.png" alt=""><figcaption></figcaption></figure>
 
-Transitioning from bar plots, we venture into the domain of heatmaps using the `generate_taxa_heatmap_single` function. Heatmaps offer a unique, colorful perspective on data, visually encapsulating the richness and patterns of microbial abundance across samples.
-
-Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. By default, the function will cluster rows (taxa/features) based on their abundance patterns. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
-
-The function also allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions.
-
-We can generate of the heatmap of the selected taxa using:
+Besides boxplots, MicrobiomeStat can also generate heatmaps using the `generate_taxa_heatmap_single` function.  Heatmaps are particularly insightful for discerning clusters of taxa/features that exhibit similar abundance profiles across amples. By default, the function will only cluster rows (taxa/features) based on their abundance patterns. The columns are ordered by `group.var` and `strata.var`. If users wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`.  The function also allows for column clustering by setting `cluster.cols = TRUE`, which can be instrumental in revealing groups of samples with similar abundance profiles. Note that when `feature.dat.type` is "count” or "proportion", the data will be visualized using proportions. For "other" type, the original scale will be used. Following is an example:
 
 ```r
 generate_taxa_heatmap_single(
@@ -185,7 +167,7 @@ generate_taxa_heatmap_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 21.16.15.png" alt=""><figcaption></figcaption></figure>
 
-We can use `generate_taxa_dotplot_single` function to juxtapose average abundance and taxa prevalence across groups:
+We can use `generate_taxa_dotplot_single` function as an alternative to the heatmap. Here is the example:
 
 ```r
 generate_taxa_dotplot_single(
