@@ -7,7 +7,7 @@ A central task in feature-level analysis is to identify taxa with differential a
 In the `generate_taxa_test_single` function,  `feature.dat.type` parameter specifies the data type in the feature matrix.  Depending on the data type, different preprocessing steps and methods are used.
 
 * `count` and `proportion`: For count and proportion data, which are both compositional, `linda` will be called. To address zeros, a pseudo-count of 0.5 is added to the count data, and zeros are substituted with half of the nonzero minimum for proportion data (feature-wise).  Winorization at 97% quantile is performed to reduce the influence of outliers.
-* `other`:  When `feature.dat.type` is set to "other", the data are considered to be non-compositional and ordinary linear regression analysis will be performed. Users need to determine the appropriate normalization and transformation of the data before runing the function.  This option increases the applicability of MicrobiomeStat to other data types.
+* `other`:  When `feature.dat.type` is set to "other", the data are considered to be non-compositional and ordinary linear regression analysis will be performed. Users need to determine the appropriate normalization and transformation of the data before running the function.  This option increases the applicability of MicrobiomeStat to other data types.
 
 The `prev.filter` and `abund.filter` parameters filter taxa based on their prevalence and average relative abundance, so those rare and less abundant taxa will be excluded from testing. As the statistical power for these rare/less abundant taxa tends to be low, excluding them can reduce multiple testing burden. 
 
@@ -59,8 +59,6 @@ volcano_plots <- generate_taxa_volcano_single(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-07 at 15.18.08.png" alt=""><figcaption></figcaption></figure>
-
-
 
 
 Next, we will introduce functions to plot the taxa/features data. They can be used to visualize specific taxa/features, for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which generate boxplots of abundance data. It has the following relevant parameters:
