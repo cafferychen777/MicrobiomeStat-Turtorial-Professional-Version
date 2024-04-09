@@ -25,8 +25,7 @@ For users wishing to apply our tutorial to their own datasets, please see the fo
 
 This section explains how to convert your data into the `mStat` format, enabling you to use MicrobiomeStat for your research.
 
-Note that, in our current implementation, the `group.var` and `strata.var` should be non-time-varying, i.e., they should stay constant across time points.  `adj.vars` on the hand could be time-varying except when analyzing changes. To account for time-varying covariates in analysis of changes, the users could first regress out their effects and then work with the residuals. 
-
+Note that, in our current implementation, the `group.var` and `strata.var` should be non-time-varying, i.e., they should stay constant across time points.  `adj.vars` on the other hand could be time-varying in most cases. If only non-time-varying variables are allowed, we will state it explicitly.
 
 
 
