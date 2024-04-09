@@ -34,6 +34,16 @@ After installing 'devtools', you can proceed to install MicrobiomeStat:
 devtools::install_github("cafferychen777/MicrobiomeStat")
 ```
 
+### Checking the Installed Version
+
+After installation, you can check the installed version of MicrobiomeStat to ensure that you have the latest version:
+
+```R
+packageVersion("MicrobiomeStat")
+```
+
+This should display the version number of MicrobiomeStat. For the development version installed from GitHub, the current version is 1.1.3. For the CRAN version, the current version is 1.1. Ensure that the displayed version number matches the expected version for the source you installed from (GitHub or CRAN).
+
 ## Dependencies
 
 To ensure the proper functioning of MicrobiomeStat, ensure that you have the following packages installed:
