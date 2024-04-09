@@ -11,6 +11,16 @@ description: >-
 
 MicrobiomeStat is a specialized tool for analyzing longitudinal and paired microbiome data. It can also be used for longitudinal analysis of other omics datatypes as long as the data are properly normalized and transformed. As a special case, cross-sectional and case-control microbiome data analysis is also supported.
 
+## Leveraging the MicrobiomeStat Gitbook Wiki with Gitbook LLM
+
+Maximize the potential of MicrobiomeStat by utilizing its Gitbook wiki documentation in conjunction with Gitbook LLM (Large Language Model). In the top right corner of the Gitbook, you'll find the "Ask or Search" feature. Feel free to pose any questions you might have, such as "How to filter microbiome data in MicrobiomeStat?"
+
+The Gitbook LLM, fine-tuned specifically for the MicrobiomeStat wiki, will provide you with the answers you need. For example:
+
+<figure><img src=".gitbook/assets/gitbook_llm_example.png" alt="Example of Gitbook LLM providing an answer"><figcaption>Example of Gitbook LLM providing an answer to a question</figcaption></figure>
+
+By leveraging this feature, you can quickly find solutions and guidance for using MicrobiomeStat effectively in your research.
+
 ## Dependencies
 
 It depends on packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `rmarkdown`, `knitr`, `pander`, and `tinytex`. We thank the authors of these packages, whose work has greatly facilitated the development of MicrobiomeStat.
