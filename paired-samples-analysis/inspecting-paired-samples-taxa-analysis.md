@@ -1,40 +1,37 @@
 # Feature-level Analysis
 
-In this section, we focus on the variations within microbial ecosystems, particularly taxa variations. MicrobiomeStat provides tools for differential abundance analysis, enabling us to study significant changes in microbial abundance between paired conditions.
-
-Our goal is to understand patterns in taxa composition, prevalence, abundance, and changes, and to identify samples with similar trends of taxa variation. The tutorial will guide you through the process of analyzing your microbial data and understanding the complexity of microbial communities.
-
-Before visual exploration, statistical tests are performed to identify differentially abundant taxa. The function `generate_taxa_test_pair()` employs the LinDA method to facilitate differential abundance analysis at the feature level. This method is essential for discerning taxa with distinct abundance and change trend between groups.
+In feature-level data analysis for paired samples design, the major tasks include identifying (1) features that change over time, (2) features that are differenital between groups over time,  and (3) features whose changes over time differ between groups. Features in (3) are a subset of features in (2). These tasks can be achieved by `generate_taxa_test_single` and `generate_taxa_change_test_pair`. The `generate_taxa_test_pair` function performs differential abundance analysis (DAA) based on compositional data using the mixed effects mode of LinDA, which is a DAA method based on log linear model with bias correction due to composiitonal effects. If the data are not compositional, standard linear mixed effects model (lme4) will be used.
 
 > Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
-The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
+In the `generate_taxa_test_pair` function,  `feature.dat.type` parameter specifies the data type in the feature matrix.  Depending on the data type, different preprocessing steps and methods are used.
 
-* `"count"`: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.
-* `"proportion"`: Data presented as proportions remains unaltered.However, it's worth noting that during the LinDA differential abundance analysis, zeroes in the dataset are substituted with half of the smallest non-zero count for each feature. This adjustment is done to mitigate the impact of zero-inflation.
-* `"other"`: In scenarios where the data originates from non-compositional sources, like transcriptomics and metabolomics, a different data transformation approach might be more appropriate. When `feature.dat.type` is set to "other", the function does not perform any normalization or scaling operations, allowing users to apply domain-specific transformations if necessary.
+* `count` and `proportion`: For count and proportion data, which are both compositional, `linda` will be called. To address zeros, a pseudo-count of 0.5 is added to the count data, and zeros are substituted with half of the nonzero minimum for proportion data (feature-wise).  Winorization at 97% quantile is performed to reduce the influence of outliers.
+* `other`:  When `feature.dat.type` is set to "other", the data are considered to be non-compositional and standard linear mixed effects model will be used. Users need to determine the appropriate normalization and transformation of the data before running the function.  This option increases the applicability of MicrobiomeStat to other data types.
 
-Further enhancing data robustness, the `prev.filter` and `abund.filter` parameters filter taxa based on prevalence and average abundance, respectively. Specifically:
+The `prev.filter` and `abund.filter` parameters filter taxa based on their prevalence and average relative abundance, so those rare and less abundant taxa will be excluded from testing. As the statistical power for these rare/less abundant taxa tends to be low, excluding them can reduce multiple testing burden. 
 
-* `prev.filter` targets taxa retention based on their prevalence across samples.
-* `abund.filter` focuses on the average abundance of taxa across all samples.
+The `feature.level` determines what aggregation level(s) the tests will be performed. If `feature.level` is set to "original", the original features in `feature.tab`  will be tested. The `feature.level` can also be set to the aggregated levels specified in the `feature.ann` matrix.
 
-Such filtering ensures that the analysis centers on taxa both prevalent and abundant, enhancing result reliability by excluding potential outliers or noise.
+The `generate_taxa_test_pair` outputs a table of LinDA association statistics for all tested taxa/features. The table contains the following components:
 
-For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don't require aggregation, it's recommended to set the `feature.level` parameter to "original". Or we can perform testing on aggregated levels such as "Phylum", "Family" and "Genus" levels for microbiome data.
+* `Variable`: It identifies the taxon/feature being analyzed.
+* `Coefficient`: Expressed as log2FoldChange,  bias-corrected. It indicates the degree and direction of change in the abundance of a specific taxon/feature.
+* `SE`: Standard errors of the coefficients. It measures the variability of the coefficient estimates.
+* `Mean Abundance`: The average abundance of a particular taxon/feature across all samples.
+* `Prevalence`: The proportion of samples where a specific taxon/feature is present.
+  
+The `generate_taxa_change_test_pair` function contains an additional parameter `feature.change.func`, which specifies the method or function used to compute the change between the two time points. The options include:
 
-Furthermore, when interpreting the results, it's essential to understand `feature.sig.level` and `feature.mt.method` parameters:
+* `"absolute change"` (default): Computes the absolute difference between the values at the two time points (`value_time_2 - value_time_1`).
+* `"log fold change"`: Computes the log2 fold change between the two time points. 
+* `"relative change"`: Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have 0 values, the change is defined as 0.
+* A custom function: If a user-defined function is provided to calculate the change, it should take two numeric vectors as input corresponding to the values at the two time points (`value_time_1` and `value_time_2`) and return a numeric vector of the computed changes. 
 
-* `feature.sig.level`: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
-* `feature.mt.method`: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot.
-
-Another important parameter is `feature.change.func`, which specifies the method or function used to compute the change between two time points. The options include:
-
-* `"absolute change"` (default): Computes the absolute difference between the values at the two time points (`value_time_2` and `value_time_1`).
-* `"log fold change"`: Computes the log2 fold change between the two time points. For zero values, imputation is performed using half of the minimum nonzero value for each feature level at the respective time point before taking the logarithm.
-* `"relative change"`: Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have a value of 0, the change is defined as 0.
-* A custom function: If a user-defined function is provided, it should take two numeric vectors as input corresponding to the values at the two time points (`value_time_1` and `value_time_2`) and return a numeric vector of the computed change. This custom function will be applied directly to calculate the difference.
-
+Results from both functions can be visualized using `generate_taxa_volcano_single`, will produce a volcano plot. It visualizes the relationship between the effect size (log foldchange) and its statistical significance. The function has the `feature.sig.level` and `feature.mt.method` parameters:
+* `feature.sig.level`: This parameter determines the significance level, influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences.
+* `feature.mt.method`: Thi parameter determines whether the fdr-adjusted p-values or raw p-values will be plotted . There are two options available currently: "fdr" (false discovery rate) and "none" (raw p-value).
+  
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
 ```r
