@@ -15,11 +15,11 @@ The `feature.level` determines what aggregation level(s) the tests will be perfo
 
 The `generate_taxa_test_single` outputs a table of LinDA association statistics for all tested taxa/features. The table contains the following components:
 
-* `Variable`: This corresponds to the specific feature level you have set in `feature.level`. It identifies the taxon or feature being analyzed.
-* `Coefficient`: Also known as log2FoldChange, this represents the bias-corrected coefficients. It indicates the degree and direction of change in the abundance of a specific taxon.
+* `Variable`: It identifies the taxon/feature being analyzed.
+* `Coefficient`: Expressed as log2FoldChange,  bias-corrected. It indicates the degree and direction of change in the abundance of a specific taxon/feature.
 * `SE`: Standard errors of the coefficients. It measures the variability of the coefficient estimates.
-* `Mean Abundance`: This average abundance of a particular taxon (variable) across all samples.
-* `Prevalence`: The proportion of samples where a specific taxon is present.
+* `Mean Abundance`: The average abundance of a particular taxon/feature across all samples.
+* `Prevalence`: The proportion of samples where a specific taxon/feature is present.
   
 `generate_taxa_volcano_single` will produce a volcano plot based on the `generate_taxa_test_single` output. It visualizes the relationship between the effect size (log foldchange) and its statistical significance. The function has the `feature.sig.level` and `feature.mt.method` parameters:
 * `feature.sig.level`: This parameter determines the significance level, influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences.
