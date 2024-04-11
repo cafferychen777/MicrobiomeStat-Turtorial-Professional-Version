@@ -1,5 +1,7 @@
 ## General FAQs
 
+This document is a collection of frequently asked questions (FAQs) and their solutions regarding the use of the MicrobiomeStat package in R. These FAQs are based on common issues and inquiries encountered by users in the past. For additional questions or if you encounter new issues, please feel free to visit the GitHub issues section of the MicrobiomeStat repository at https://github.com/cafferychen777/MicrobiomeStat/issues, where you can post your questions and receive support from the community and the package developers.
+
 ### I'm having an issue converting a phyloseq object to a MicrobiomeStat object using `mStat_convert_phyloseq_to_data_obj()`
 
 Despite installing the latest version of MicrobiomeStat from GitHub, I'm still getting the error "could not find function 'mStat\_convert\_phyloseq\_to\_data\_obj'". Any suggestions?
