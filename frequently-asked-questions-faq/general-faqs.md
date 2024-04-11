@@ -140,3 +140,26 @@ FDR adjustment is crucial for high-dimensional data to control multiple testing 
 The `feature.mt.method` parameter allows users to choose between adjusted p-values (via FDR) or raw p-values for visualization in the volcano plot. Using raw p-values is for aesthetic reasons to improve plot clarity and interpretability.
 
 While FDR adjustment is integral to MicrobiomeStat's statistical procedures, `feature.mt.method` offers flexibility in visualization without compromising statistical rigor.
+
+### Issue with Corrupted Lazy-Load Database for MicrobiomeStat Package
+
+**Problem:**
+When running functions from the MicrobiomeStat package, the following error is encountered:
+
+```
+Warning: restarting interrupted promise evaluation 
+Warning: internal error -3 in R_decompress1
+Error in FUN(X[[i]], ...) : The lazy-load database '/R/x86_64-pc-linux-gnu-library/4.2/MicrobiomeStat/R/MicrobiomeStat.rdb' is corrupted.
+```
+
+**Solution:**
+
+1. Restart the R session: This often resolves issues related to the lazy-load database.
+
+2. Reinstall the MicrobiomeStat package: If restarting the R session does not work, try reinstalling the package using:
+
+```r
+devtools::install_github("cafferychen777/MicrobiomeStat")
+```
+
+If these steps do not resolve the issue, please provide more detailed information for further troubleshooting.
