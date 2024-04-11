@@ -8,7 +8,7 @@ Despite installing the latest version of MicrobiomeStat from GitHub, I'm still g
 
 **Solution:**
 
-It appears there may have been an issue with the installation. Ensure you have installed all necessary dependencies before attempting to install from GitHub:
+It appears there may have been an issue with the installation. After downloading and installing, pay attention to the version numbers. The current CRAN version is 1.1, while the GitHub version is 1.1.3. Sometimes, if the installation of the GitHub version is unsuccessful, this issue may arise. Ensure you have installed all necessary dependencies before attempting to install from GitHub:
 
 ```r
 packages_to_install <- c(
