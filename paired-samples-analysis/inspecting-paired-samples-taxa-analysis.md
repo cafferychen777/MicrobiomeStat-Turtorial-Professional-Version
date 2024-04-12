@@ -69,10 +69,10 @@ plot.list
 
 For specific comparisons, labels like `$Genus$Placebo vs LGG (Reference) [Main Effect]` and `$Genus$Placebo vs LGG (Reference) [Interaction]` may appear.
 
-* The `[Main Effect]` label indicates the primary difference in taxa abundance between the compared groups, excluding the influence of other factors.
-* The `[Interaction]` label reveals the relationship between group differences and time variable. It indicates if the difference in taxa abundance between groups varies depending on other factors in the model.
+* The `[Main Effect]` label indicates the primary difference in taxa abundance between the compared groups at the baseline.
+* The `[Interaction]` label reveals the interaction between group differences and time variable, i.e., whether the group difference changes with the time.
 
-If the aim is to specifically investigate the shifts in taxa abundance across distinct timepoints, the `generate_taxa_change_test_pair()` function is advantageous. This function employs a linear model (lm) to evaluate the changes in taxa abundance and to distinguish the differences between groups.
+If the aim is to specifically investigate the shifts in taxa abundance between the two time points, the `generate_taxa_change_test_pair()` function can be used. This function employs a linear model (lm) to evaluate the changes in taxa abundance in relation to a grouping variable.
 
 ```r
 # Generate taxa change test pair
@@ -102,34 +102,9 @@ plot.list <- generate_taxa_volcano_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.37.16.png" alt=""><figcaption></figcaption></figure>
 
-The outcomes enable researchers to recognize taxa that exhibit notable changes in abundance across timepoints, and to determine whether these changes are associated with group affiliations. In the following sections, we will demonstrate how to visualize features of interest from the differential abundance analysis, or other specific features, using various methods.
+The results enable researchers to recognize taxa that exhibit notable changes in abundance across time points, and to determine whether these changes differ by group. In the following sections, we will demonstrate how to visualize taxa of interest such as those from the differential abundance analysis using various visualization tools.
 
-In the analysis of large-scale microbiome datasets, it's often necessary to concentrate on a subset of taxa that are either most abundant or exhibit significant variability. This focus is facilitated by two parameters, `top.k.plot` and `top.k.func`, which are particularly useful when creating boxplot visualizations.
-
-To include a description of the custom function within the context of the `top.k.plot` parameter, you can modify the paragraph as follows:
-
-The `top.k.plot` parameter specifies the maximum number of taxa to be displayed in visualizations. For instance, setting it to 10 means only the top 10 taxa, as determined by the criteria specified in `top.k.func`, will be visualized. The `top.k.func` parameter offers several predefined choices:
-
-* `"mean"`: Highlights taxa with the highest average abundances spread across samples.
-* `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
-* `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
-* Custom function: Users can input their own function to rank taxa based on a numeric vector it returns when applied to the abundance matrix. This allows for custom criteria beyond "mean", "sd", or "prevalence".
-
-Additionally, `top.k.func` can accept a custom function defined by the user. This function should take a matrix of taxa abundances as input and return a numeric vector of values. By using a custom function, researchers can apply unique criteria to rank and select taxa based on specialized research questions or distinct patterns of interest. The top taxa, according to the output of this custom function or the predefined options, will then be selected for visualization up to the number specified by `top.k.plot`.
-
-This tailored approach ensures that the visualizations are most relevant to the user's specific analytical needs and research focus.
-
-These parameters are integral to our next topic of discussion: boxplot visualization analyses for individual taxa. We introduce two functions for this purpose, `generate_taxa_indiv_boxplot_long()` and `generate_taxa_boxplot_long()`.
-
-Before delving into these functions, it's worth noting the `transform` parameter. It's a string indicating the transformation to apply to the axis when plotting. The options include:
-
-* `"identity"`: No transformation (default)
-* `"sqrt"`: Square root transformation
-* `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
-
-Additionally, three other parameters play significant roles in these functions:
-
-First, we look at `generate_taxa_indiv_boxplot_long()`:
+First, let us look at `generate_taxa_indiv_boxplot_long()`:
 
 ```r
 generate_taxa_indiv_boxplot_long(
@@ -161,9 +136,25 @@ generate_taxa_indiv_boxplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.50.17.png" alt=""><figcaption></figcaption></figure>
 
-This function creates a series of boxplots, one for each taxon, and outputs them into a multi-page PDF.
+This function creates a series of boxplots, one for each taxon, and outputs them into a multi-page PDF. Several parameters in this function and other related functions are noteworthy. 
 
-Next, we have `generate_taxa_boxplot_long()`:
+* `feature.dat.type`: One of "count", "proportion" or "other".  For "count", the data will be converted to proportion data before the visualization.
+* `t0.level`: the name of the baseline level ("t1") or the first time point.
+* `ts.levels`: a character vector of the names of other levels to be visualized. In the paired-sample setting, `ts.levels` can be the name of the second time point ("t2")
+* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should deterimne the appropriate transformation to better visualize the data. The available options for `transform` include:
+  * `"identity"`: No transformation (default)
+  * `"sqrt"`: Square root transformation
+  * `"log"`: Logarithmic transformation. Zeros are replaced with half of the non-zero minimum  for each taxon before log transformation.
+* `feature.level`: Specifiy which level of the data to be plotted.
+* `features.plot`: This parameter dictates which taxa/features should be visualized. For instance, after executing a differential abundance analysis, you may only be interested in visualizing the abundance distribution of those significantly differential taxa.  When a vector of taxa/feature names are provided to `features.plot`, the  `prev.filter` and `abund.filter` will be overridden.
+* `top.k.plot` and `top.k.func`: In many scenarios, especially when navigating through expansive datasets, you may want to focus on a select subset of taxa that stand out either due to their high abundance or  large variability. `top.k.plot` lets you visualize the top k taxa/features based on the criterion you selected in  `top.k.func`, which have four choices:
+  * `"mean"`: Highlights taxa with the highest average abundances across samples.
+  * `"sd"`: Selects taxa with the greatest variability (standard deviation) across samples, useful for identifying taxa with notable differences under varying conditions.
+  * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
+  * `top.k.func` can also accept a user-defined function so that the users can rank taxa based on their own criterion.  The user-defined function should take the abundance matrix (those in `feature.tab` and `feature.agg.list`) as the input and returns a numeric vector of the feature importance values. This allows for criteria beyond "mean", "sd", or "prevalence".
+
+
+The `generate_taxa_boxplot_long()` places all taxa onto a single page, providing an overview of all your taxa at once.
 
 ```r
 generate_taxa_boxplot_long(
@@ -195,11 +186,9 @@ generate_taxa_boxplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 16.52.12.png" alt=""><figcaption></figcaption></figure>
 
-This function places all taxa onto a single page, providing an overview of all your taxa at once.
 
-We present two key functions for conducting paired taxa analysis: `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`.
+Next, we present two key functions, `generate_taxa_indiv_change_boxplot_pair()` and `generate_taxa_change_boxplot_pair()`,  for visualizing the changes from "t1" to "t2".  
 
-The initial function, `generate_taxa_indiv_change_boxplot_pair()`, is utilized as follows:
 
 ```R
 generate_taxa_indiv_change_boxplot_pair(
@@ -230,7 +219,6 @@ generate_taxa_indiv_change_boxplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.18.32.png" alt=""><figcaption></figcaption></figure>
 
-Next, we move onto the second function `generate_taxa_change_boxplot_pair()`:
 
 ```R
 generate_taxa_change_boxplot_pair(
@@ -261,11 +249,9 @@ generate_taxa_change_boxplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.20.52.png" alt=""><figcaption></figcaption></figure>
 
-Before we dive into the visual interpretation offered by the `generate_taxa_barplot_pair` function, let's touch upon an essential parameter that fundamentally steers the visual output – the `feature.number`.
+The `generate_taxa_barplot_pair` function will generate starked bar plots of taxa. In each sample pair, the same taxa are connected by lines ito track their abundance changes. The function outputs both individual and averaged bar plots. The function has an important parameter `feature.number`.
 
 * `feature.number`: This parameter determines the maximum number of taxa/features that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
-
-With this insight, let's now examine the function and the resultant visuals:
 
 ```r
 generate_taxa_barplot_pair(
@@ -292,7 +278,7 @@ generate_taxa_barplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.24.47.png" alt=""><figcaption></figcaption></figure>
 
-The function `generate_taxa_dotplot_pair()` visually evaluates variations in mean abundance and prevalence across distinct groups. In the context of paired samples, this function produces dotplots of each feature's mean abundance and prevalence.
+The function `generate_taxa_dotplot_pair()` depicts the mean abundance and prevalence across times and  groups. The two time points are visualized together for easy comparison.
 
 ```r
 generate_taxa_dotplot_pair(
@@ -321,9 +307,7 @@ generate_taxa_dotplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-06-12 at 20.34.39.png" alt=""><figcaption></figcaption></figure>
 
-The `generate_taxa_change_dotplot_pair()` function visualizes microbiome fluctuations within your dataset. This function allows for the tracking of dynamic changes in taxa abundance across different time points.
-
-An example of how to use this function is as follows:
+The `generate_taxa_change_dotplot_pair()` function visualizes the mean abundance change and prevalence change across groups:
 
 ```r
 generate_taxa_change_dotplot_pair(
@@ -353,14 +337,8 @@ generate_taxa_change_dotplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.12.29.png" alt=""><figcaption></figcaption></figure>
 
-Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples. Two critical parameters, `cluster.rows` and `cluster.cols`, control the clustering behavior in these functions:
 
-* `cluster.rows`: By default, the `generate_taxa_heatmap_pair()` function will cluster rows (taxa/features) based on their abundance patterns, set by `cluster.rows = TRUE`. If researchers wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`. However, when clustering is enabled, patterns of microbial families with congruent abundance become readily discernible, painting a vivid picture of microbial dynamics.
-* `cluster.cols`: The `generate_taxa_change_heatmap_pair()` function allows for column clustering when `cluster.cols = TRUE`, which can be instrumental in revealing samples that share analogous abundance characteristics. This could be pivotal in unearthing hidden sample groups or conditions that exhibit similar microbial compositions. By default, this function clusters both rows and columns (`cluster.rows = TRUE` and `cluster.cols = TRUE`).
-
-With these parameters in mind, let's look at the implementation of these functions:
-
-The `generate_taxa_heatmap_pair()` function creates a paired heatmap, which visualizes taxonomic shifts between paired design stages. Here is its implementation:
+The `generate_taxa_heatmap_pair()` function creates a heatmap of paired smaples. Here is an example:
 
 ```r
 generate_taxa_heatmap_pair(
@@ -385,12 +363,13 @@ generate_taxa_heatmap_pair(
    pdf.hei = 8.5
 )
 ```
+Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples.  Heatmaps are particularly insightful for discerning clusters of taxa/features that exhibit similar abundance profiles across amples. By default, the function will only cluster rows (taxa/features) based on their abundance patterns. The columns are ordered by `group.var` and `strata.var`. If users wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`.  The function also allows for column clustering by setting `cluster.cols = TRUE`, which can be instrumental in revealing groups of samples with similar abundance profiles. Note that when `feature.dat.type` is "count” or "proportion", the data will be visualized using proportions. For "other" type, the original scale will be used. 
+
+
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption></figcaption></figure>
 
-The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of change.
-
-The function demonstrated here:
+The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of changes:
 
 ```
 generate_taxa_change_heatmap_pair(
