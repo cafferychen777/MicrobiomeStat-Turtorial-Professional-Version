@@ -363,11 +363,13 @@ generate_taxa_heatmap_pair(
    pdf.hei = 8.5
 )
 ```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption></figcaption></figure>
+
 Heatmaps are particularly insightful for discerning clusters of microbial families that exhibit similar abundance profiles across different samples.  Heatmaps are particularly insightful for discerning clusters of taxa/features that exhibit similar abundance profiles across amples. By default, the function will only cluster rows (taxa/features) based on their abundance patterns. The columns are ordered by `group.var` and `strata.var`. If users wish to see the taxa in their original order without clustering, they can achieve this by setting `cluster.rows = FALSE`.  The function also allows for column clustering by setting `cluster.cols = TRUE`, which can be instrumental in revealing groups of samples with similar abundance profiles. Note that when `feature.dat.type` is "count” or "proportion", the data will be visualized using proportions. For "other" type, the original scale will be used. 
 
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.21.36.png" alt=""><figcaption></figcaption></figure>
 
 The `generate_taxa_change_heatmap_pair()` function helps assist in analyzing patterns of changes:
 
