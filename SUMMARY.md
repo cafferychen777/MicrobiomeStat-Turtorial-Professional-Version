@@ -20,13 +20,13 @@
   * [Importing Data from DADA2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/integrating-data-from-dada2-into-microbiomestat.md)
   * [Importing Data from Mothur into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/fetching-data-from-mothur-into-microbiomestat.md)
 
-## Cross-Sectional Study Design
+## Single-Point Analysis
 
-* [Introduction](cross-sectional-study-design/unraveling-cross-sectional-studies-with-microbiomestat.md)
-* [Alpha Diversity Analysis](cross-sectional-study-design/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
-* [Beta Diversity Analysis](cross-sectional-study-design/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
-* [Feature-level Analysis](cross-sectional-study-design/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
-* [One-Click Reports Generation](cross-sectional-study-design/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
+* [Introduction](single-point-analysis/unraveling-cross-sectional-studies-with-microbiomestat.md)
+* [Alpha Diversity Analysis](single-point-analysis/cross-sectional-snapshot-alpha-diversity-analysis-with-microbiomestat.md)
+* [Beta Diversity Analysis](single-point-analysis/cross-sectional-exploration-beta-diversity-analysis-with-microbiomestat.md)
+* [Feature-level Analysis](single-point-analysis/cross-sectional-investigation-taxa-analysis-with-microbiomestat.md)
+* [One-Click Reports Generation](single-point-analysis/cross-sectional-reporting-microbial-analysis-reports-with-microbiomestat.md)
 
 ## Paired Samples Analysis
 
@@ -36,13 +36,13 @@
 * [Feature-level Analysis](paired-samples-analysis/inspecting-paired-samples-taxa-analysis.md)
 * [One-Click Reports Generation](paired-samples-analysis/automated-reporting-for-paired-studies-microbiomestats-integrated-analysis-reports.md)
 
-## Longitudinal Study Design
+## Longitudinal Analysis
 
-* [Introduction](longitudinal-study-design/grasping-longitudinal-studies-introduction-and-dataset-overview.md)
-* [Alpha Diversity Analysis](longitudinal-study-design/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
-* [Beta Diversity Analysis](longitudinal-study-design/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
-* [Feature-level Analysis](longitudinal-study-design/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
-* [One-Click Reports Generation](longitudinal-study-design/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
+* [Introduction](longitudinal-analysis/grasping-longitudinal-studies-introduction-and-dataset-overview.md)
+* [Alpha Diversity Analysis](longitudinal-analysis/chronological-journey-alpha-diversity-analysis-in-longitudinal-studies.md)
+* [Beta Diversity Analysis](longitudinal-analysis/time-travel-in-microbiome-beta-diversity-analysis-in-longitudinal-studies.md)
+* [Feature-level Analysis](longitudinal-analysis/taxonomic-timelines-taxa-analysis-in-longitudinal-studies.md)
+* [One-Click Reports Generation](longitudinal-analysis/longitudinal-reporting-microbiome-analysis-automation-with-microbiomestat.md)
 
 ## Data Manipulation and Transformation
 
