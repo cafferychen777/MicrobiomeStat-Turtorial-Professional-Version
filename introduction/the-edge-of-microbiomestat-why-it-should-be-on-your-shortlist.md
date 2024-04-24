@@ -13,6 +13,6 @@ MicrobiomeStat provides customizable parameters, allowing users to adapt analysi
 
 Our team with rich experience in collaborative microbiome research and statistical methodological development, is committed to delivering rigorous and reproducible analysis of microbiome data.
 
-MicrobiomeStat's outputs are compatible with the 'plotly' package, enabling users to create interactive graphics for further manipulation and customization post-analysis. The combination of time-series and individual time point analysis, along with paired sample analysis, makes MicrobiomeStat a versatile tool for comprehensive microbiome data analysis.
+MicrobiomeStat's outputs are compatible with the 'plotly' package, enabling users to create interactive graphics for further manipulation and customization post-analysis. The combination of time-series and individual time point analysis, along with paired samples analysis, makes MicrobiomeStat a versatile tool for comprehensive microbiome data analysis.
 
 <figure><img src="../.gitbook/assets/DALL·E 2023-10-07 17.57.44 - Illustration of a collaborative research environment. A male scientist with European descent and a female scientist with South Asian descent are discu.png" alt=""><figcaption></figcaption></figure>
