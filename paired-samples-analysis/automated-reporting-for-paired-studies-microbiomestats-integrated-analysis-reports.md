@@ -1,7 +1,7 @@
 ---
 description: >-
   MicrobiomeStat provides automated solutions for integrated analysis reporting
-  in paired microbiome studies.
+  in paired samples microbiome studies.
 ---
 
 # Reports Generation
