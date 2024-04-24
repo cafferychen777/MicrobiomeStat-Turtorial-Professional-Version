@@ -12,7 +12,7 @@ This process ensures the extracted microbial patterns are not confounded by the 
 
 Based on the distance matrices, we can also extract the first several principal coordinates (PCs), which capture the main variation in the data. PCs can be calculated by calling `mstat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` is not provided beforehand, the toolkit defaults to the "mds" method. Researchers favoring advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. For those PC-based functions, they all have a `pc.obj` parameter, which accepts a list of PC matrices based on a variety of beta diversity measures. If the parameter is not specified, `mStat_calculate_PC` will be called automatically. Or the users can create their own list of PC matrices and pass it to `pc.obj`. We recommend the user to create the list once in the analysis and use it repeatedly. 
 
-We begin our analysis by statistically testing beta diversity differences using the `generate_beta_change_test_pair()` function. This function fits linear models where the dependent variable is the distance between two time points from the same subject in a paired design, relating these beta diversity measures to  the grouping variable and covariates.
+We begin our analysis by statistically testing beta diversity differences using the `generate_beta_change_test_pair()` function. This function fits linear models where the dependent variable is the distance between two time points from the same subject in a paired samples design, relating these beta diversity measures to  the grouping variable and covariates.
 
 ```r
 generate_beta_change_test_pair(
@@ -27,7 +27,7 @@ generate_beta_change_test_pair(
 )
 ```
 
-The function returns coefficient tables with p-values for assessing  associations with each beta diversity measure. These tables enable rigorous hypothesis testing complementing visualization for paired designs.
+The function returns coefficient tables with p-values for assessing  associations with each beta diversity measure. These tables enable rigorous hypothesis testing complementing visualization for paired samples designs.
 
 <table><thead><tr><th width="134">Distance</th><th>Term</th><th>Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>BC</td><td>(Intercept)</td><td>0.175</td><td>0.0186</td><td>9.42</td><td>8.24e-12</td></tr><tr><td>BC</td><td>sexmale</td><td>0.0671</td><td>0.0217</td><td>3.09</td><td>3.58e-3</td></tr><tr><td>BC</td><td>groupPlacebo</td><td>-0.0157</td><td>0.0210</td><td>-0.746</td><td>4.60e-1</td></tr></tbody></table>
 
