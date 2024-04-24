@@ -140,7 +140,7 @@ This function creates a series of boxplots, one for each taxon, and outputs them
 
 * `feature.dat.type`: One of "count", "proportion" or "other".  For "count", the data will be converted to proportion data before the visualization.
 * `t0.level`: the name of the baseline level ("t1") or the first time point.
-* `ts.levels`: a character vector of the names of other levels to be visualized. In the paired-sample setting, `ts.levels` can be the name of the second time point ("t2")
+* `ts.levels`: a character vector of the names of other levels to be visualized. In the paired samples setting, `ts.levels` can be the name of the second time point ("t2")
 * `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should deterimne the appropriate transformation to better visualize the data. The available options for `transform` include:
   * `"identity"`: No transformation (default)
   * `"sqrt"`: Square root transformation
