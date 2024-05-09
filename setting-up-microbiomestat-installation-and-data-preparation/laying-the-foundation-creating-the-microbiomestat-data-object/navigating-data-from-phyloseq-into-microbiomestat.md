@@ -25,6 +25,12 @@ phyloseq::taxa_are_rows(GlobalPatterns)
 
 If the function returns `TRUE`, your Phyloseq object is ready for conversion. If it returns `FALSE`, you need to transpose your Phyloseq object to have taxa as rows before proceeding with the conversion.
 
+If your Phyloseq object contains a phylogenetic tree, you also need to load the `phangorn` package for midpoint rooting:
+
+```r
+library(phangorn)
+```
+
 First, let's take a look at the original structure of our Phyloseq data:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-10-10 at 10.51.53.png" alt=""><figcaption><p><strong>Figure 1</strong>: Structure of the original Phyloseq data object.</p></figcaption></figure>
