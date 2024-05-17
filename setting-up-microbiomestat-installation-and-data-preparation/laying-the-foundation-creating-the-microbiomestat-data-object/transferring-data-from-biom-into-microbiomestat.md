@@ -28,7 +28,7 @@ treefilename <- "biom-tree.phy"
 
 # Convert the BIOM data and associated phylogenetic tree (if provided) 
 # into a format suitable for MicrobiomeStat using the mStat_import_biom_as_data_obj function.
-data.obj <- mStat_import_biom_as_data_obj(biom_filename = rich_dense_biom, tree_filename = treefilename)
+data.obj <- mStat_import_biom_as_data_obj(BIOMfilename = rich_dense_biom, treefilename = treefilename)
 
 # The resulting 'data.obj' is now a MicrobiomeStat data object that you can use for further analyses.
 ```
