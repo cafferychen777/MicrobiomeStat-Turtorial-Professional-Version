@@ -149,7 +149,7 @@ To effectively visualize these results, we employ the `generate_taxa_dotplot_lon
 ```r
 dotplot_T2D <- generate_taxa_dotplot_long(
   data.obj = subset_T2D.obj,
-  time.test.list = result2,
+  test.list = result2,
   group.var = "subject_race",
   time.var = "visit_number",
   feature.level = c("Genus", "Family")
@@ -183,7 +183,7 @@ The results from this function can be visualized using `generate_taxa_dotplot_lo
 ```r
 dotplot_T2D <- generate_taxa_dotplot_long(
   data.obj = subset_T2D.obj,
-  time.test.list = result,
+  test.list = result,
   t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],
   ts.levels = unique(subset_T2D.obj$meta.dat$visit_number)[-1],
   group.var = "subject_race",
