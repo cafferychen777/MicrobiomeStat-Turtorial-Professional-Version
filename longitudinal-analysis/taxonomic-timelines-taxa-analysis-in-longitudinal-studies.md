@@ -128,10 +128,10 @@ volcano_plots_T2D <- generate_taxa_volcano_single(
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 18.07.50.png" alt=""><figcaption></figcaption></figure>
 
-Building on this, we also use the `generate_taxa_test_long` function to analyze the microbiome data at each individual time point. This function performs a subset analysis on the dataset, followed by a statistical test using the linda method for each time point. It enables a detailed investigation of taxa changes over time, considering various factors such as subject characteristics and sample sites.
+Building on this, we also use the `generate_taxa_per_time_test_long` function to analyze the microbiome data at each individual time point. This function performs a subset analysis on the dataset, followed by a statistical test using the linda method for each time point. It enables a detailed investigation of taxa changes over time, considering various factors such as subject characteristics and sample sites.
 
 ```r
-result2 <- generate_taxa_test_long(
+result2 <- generate_taxa_per_time_test_long(
   data.obj = subset_T2D.obj,
   subject.var = "subject_id",
   time.var = "visit_number",
@@ -144,10 +144,10 @@ result2 <- generate_taxa_test_long(
 )
 ```
 
-To effectively visualize these results, we employ the `generate_taxa_dotplot_long` function. This function creates dot plots that provide a clear and intuitive visualization of the taxa changes at different time points, facilitating an understanding of the temporal dynamics within the dataset.
+To effectively visualize these results, we employ the `generate_taxa_per_time_dotplot_long` function. This function creates dot plots that provide a clear and intuitive visualization of the taxa changes at different time points, facilitating an understanding of the temporal dynamics within the dataset.
 
 ```r
-dotplot_T2D <- generate_taxa_dotplot_long(
+dotplot_T2D <- generate_taxa_per_time_dotplot_long(
   data.obj = subset_T2D.obj,
   test.list = result2,
   group.var = "subject_race",
@@ -158,7 +158,7 @@ dotplot_T2D <- generate_taxa_dotplot_long(
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-01-18 at 17.38.01.png" alt=""><figcaption></figcaption></figure>
 
-These methods, including both the `generate_taxa_test_long` and `generate_taxa_dotplot_long`, enhance our ability to scrutinize and understand the intricate patterns and variations in taxa abundance throughout the course of the Type 2 Diabetes study, thereby enriching our analysis and insights.
+These methods, including both the `generate_taxa_per_time_test_long` and `generate_taxa_per_time_dotplot_long`, enhance our ability to scrutinize and understand the intricate patterns and variations in taxa abundance throughout the course of the Type 2 Diabetes study, thereby enriching our analysis and insights.
 
 Further advancing our analysis, we introduce the `generate_taxa_change_test_long` function. This function is designed to analyze the change in taxa abundance relative to a baseline time point (`t0.level`). It provides insights into the changes in microbiome composition from the baseline to subsequent time points, considering the diversity at different taxonomic levels such as Genus and Family.
 
@@ -178,10 +178,10 @@ result <- generate_taxa_change_test_long(
 )
 ```
 
-The results from this function can be visualized using `generate_taxa_dotplot_long`, which provides a comprehensive view of the taxa changes from the baseline across different time points. This visualization aids in identifying significant shifts in the microbiome composition over the course of the study.
+The results from this function can be visualized using `generate_taxa_per_time_dotplot_long`, which provides a comprehensive view of the taxa changes from the baseline across different time points. This visualization aids in identifying significant shifts in the microbiome composition over the course of the study.
 
 ```r
-dotplot_T2D <- generate_taxa_dotplot_long(
+dotplot_T2D <- generate_taxa_per_time_dotplot_long(
   data.obj = subset_T2D.obj,
   test.list = result,
   t0.level = unique(subset_T2D.obj$meta.dat$visit_number)[1],

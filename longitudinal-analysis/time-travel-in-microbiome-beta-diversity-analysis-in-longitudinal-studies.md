@@ -71,10 +71,10 @@ generate_beta_volatility_test_long(
 
 <table><thead><tr><th>Term</th><th width="140">Estimate</th><th>Std.Error</th><th>Statistic</th><th>P.Value</th></tr></thead><tbody><tr><td>(Intercept)</td><td>0.956</td><td>0.161</td><td>5.93</td><td>0.000000164</td></tr><tr><td>subject_racecaucasian</td><td>-0.104</td><td>0.182</td><td>-0.571</td><td>0.570</td></tr><tr><td>subject_racehispanic_or_latino</td><td>-0.502</td><td>0.372</td><td>-1.35</td><td>0.183</td></tr><tr><td>subject_race</td><td>NA</td><td>NA</td><td>0.909</td><td>0.408</td></tr><tr><td>Residuals</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr></tbody></table>
 
-In addition to trend and volatility analysis, we introduce the `generate_beta_change_test_long` function. This function evaluates the change in beta diversity for each subject at different time points relative to a baseline level (`t0.level`). It's designed to assess the statistical significance of these changes over time, adding depth to our understanding of beta diversity dynamics in longitudinal studies.
+In addition to trend and volatility analysis, we introduce the `generate_beta_change_per_time_test_long` function. This function evaluates the change in beta diversity for each subject at different time points relative to a baseline level (`t0.level`). It's designed to assess the statistical significance of these changes over time, adding depth to our understanding of beta diversity dynamics in longitudinal studies.
 
 ```r
-result1 <- generate_beta_change_test_long(
+result1 <- generate_beta_change_per_time_test_long(
   data.obj = subset_T2D.obj,
   dist.obj = NULL,
   time.var = "visit_number_num",
@@ -87,10 +87,10 @@ result1 <- generate_beta_change_test_long(
 )
 ```
 
-To visualize the results of the `generate_beta_change_test_long` analysis, the `generate_beta_dotplot_long` function is used. This function produces dot plots that illustrate the changes in beta diversity across different time points and groups. Such visualizations are instrumental in highlighting significant trends and variations in the dataset.
+To visualize the results of the `generate_beta_change_per_time_test_long` analysis, the `generate_beta_per_time_dotplot_long` function is used. This function produces dot plots that illustrate the changes in beta diversity across different time points and groups. Such visualizations are instrumental in highlighting significant trends and variations in the dataset.
 
 ```r
-dotplot_T2D <- generate_beta_dotplot_long(
+dotplot_T2D <- generate_beta_per_time_dotplot_long(
   data.obj = subset_T2D.obj,
   test.list = result1,
   group.var = "subject_race",
