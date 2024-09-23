@@ -106,6 +106,8 @@ Key parameters:
 
 The function returns a list of ggplot objects, one for each comparison in the data. These plots provide a holistic view of the microbiome data, combining phylogenetic information, abundance patterns, and statistical significance.
 
+<figure><img src="../.gitbook/assets/cladogram.png" alt=""><figcaption></figcaption></figure>
+
 The following shows the usage and output of the function `generate_taxa_boxplot_single`. All the taxa are plotted together.
 
 ```r
