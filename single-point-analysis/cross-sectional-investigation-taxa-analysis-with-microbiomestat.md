@@ -75,6 +75,37 @@ Next, we will introduce functions to plot the taxa/features data. They can be us
   * `"prevalence"`: Chooses taxa with the highest occurrence across samples, targeting those most consistently present.
   * `top.k.func` can also accept a user-defined function so that the users can rank taxa based on their own criterion.  The user-defined function should take the abundance matrix (those in `feature.tab` and `feature.agg.list`) as the input and returns a numeric vector of the feature importance values. This allows for criteria beyond "mean", "sd", or "prevalence".
 
+  Certainly. Here's the revised content in English, maintaining consistency with the context and using more professional and concise language:
+
+After performing differential abundance analysis with `generate_taxa_test_single` and visualizing results with `generate_taxa_volcano_single`, we can further explore phylogenetic relationships and abundance patterns using the `generate_taxa_cladogram_single` function. This function creates a circular cladogram with an integrated heatmap.
+
+Key features of `generate_taxa_cladogram_single`:
+
+1. Visualization of phylogenetic relationships
+2. Integrated heatmap of abundance or coefficient data
+3. Simultaneous visualization of multiple taxonomic levels
+4. Filtering based on statistical significance
+5. Customizable color-coding of cladogram branches by taxonomic level
+
+Example usage:
+
+```r
+plot.list <- generate_taxa_cladogram_single(
+  data.obj = peerj32.obj,
+  test.list = test.list,
+  group.var = "group",
+  feature.level = c("Phylum","Genus","Family"),
+  feature.mt.method = "none",
+  cutoff = 0.9,
+  color.group.level = "Family"
+)
+```
+
+Key parameters:
+- `color.group.level`: Taxonomic level for branch color-coding
+
+The function returns a list of ggplot objects, one for each comparison in the data. These plots provide a holistic view of the microbiome data, combining phylogenetic information, abundance patterns, and statistical significance.
+
 The following shows the usage and output of the function `generate_taxa_boxplot_single`. All the taxa are plotted together.
 
 ```r
