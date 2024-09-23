@@ -43,11 +43,13 @@ test.list <- generate_taxa_test_single(
     prev.filter = 0.1,
     abund.filter = 0.0001
 )
+```
 
 #### First 10 Rows of Differential Abundance Results at Genus Level
 
 <table><thead><tr><th>Variable</th><th width="135">Coefficient</th><th width="54">SE</th><th>P.Value</th><th>Adjusted.P.Value</th><th>Mean.Abundance</th><th>Prevalence</th></tr></thead><tbody><tr><td>Actinomycetaceae</td><td>0.43088737</td><td>0.8125191</td><td>0.60204023</td><td>0.9892442</td><td>0.0001950405</td><td>0.7272727</td></tr><tr><td>Aerococcus</td><td>-0.09734179</td><td>0.7893169</td><td>0.90314569</td><td>0.9892442</td><td>0.0002352668</td><td>0.5909091</td></tr><tr><td>Aeromonas</td><td>0.02022775</td><td>1.0311377</td><td>0.98455351</td><td>0.9892442</td><td>0.0002829477</td><td>0.6363636</td></tr><tr><td>Akkermansia</td><td>-0.70914707</td><td>0.5667601</td><td>0.22603834</td><td>0.9892442</td><td>0.0202212889</td><td>1.0000000</td></tr><tr><td>Allistipes et rel.</td><td>-0.54628088</td><td>0.4985462</td><td>0.28688461</td><td>0.9892442</td><td>0.0083365762</td><td>1.0000000</td></tr><tr><td>Anaerofustis</td><td>0.37736758</td><td>0.3988262</td><td>0.35592789</td><td>0.9892442</td><td>0.0013725489</td><td>1.0000000</td></tr><tr><td>Anaerostipes caccae et rel.</td><td>-0.45297144</td><td>0.1723513</td><td>0.01655715</td><td>0.7004574</td><td>0.0185944926</td><td>1.0000000</td></tr><tr><td>Anaerotruncus colihominis et rel.</td><td>0.05420558</td><td>0.4605402</td><td>0.90754073</td><td>0.9892442</td><td>0.0028354658</td><td>1.0000000</td></tr><tr><td>Anaerovorax odorimutans et rel.</td><td>-0.55577241</td><td>0.3180729</td><td>0.09672749</td><td>0.9892442</td><td>0.0044828621</td><td>1.0000000</td></tr><tr><td>Aneurinibacillus</td><td>-0.20493605</td><td>0.5227462</td><td>0.69939327</td><td>0.9892442</td><td>0.0007296989</td><td>0.9545455</td></tr></tbody></table>
 
+```r
 # Generate volcano plots
 volcano_plots <- generate_taxa_volcano_single(
     data.obj = peerj32.obj,
