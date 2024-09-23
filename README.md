@@ -39,15 +39,32 @@ We are pleased to announce that the Shiny interface for `MicrobiomeStat` is now 
 
 Stay tuned for more updates and enhancements as we continue to improve `MicrobiomeStat` for our user community.
 
+
 ## Contribute to the MicrobiomeStat Wiki
 
-We welcome contributions from the community to enhance the MicrobiomeStat Wiki. If you would like to contribute, please follow these steps:
+We welcome contributions from the community to enhance the MicrobiomeStat Wiki. Here's a guide on how to contribute using GitHub Desktop:
 
-1. Fork the [MicrobiomeStat Wiki repository](https://github.com/cafferychen777/MicrobiomeStat-Wiki) on GitHub.
-2. Make your desired changes, additions, or updates to the Wiki content.
-3. Submit a pull request with a clear description of your changes.
+1. Download and install [GitHub Desktop](https://desktop.github.com/).
 
-Our team will review your pull request and merge the changes once approved. By contributing to the Wiki, you'll be helping to improve the documentation and resources available to the MicrobiomeStat user community. We appreciate your support in making this project better for everyone.
+2. Visit the [MicrobiomeStat Wiki repository](https://github.com/cafferychen777/MicrobiomeStat-Wiki) on GitHub.
+
+3. Click the "Fork" button in the top-right corner to create a copy of the repository in your account.
+
+4. Open GitHub Desktop and select "File" > "Clone Repository". Choose the repository you just forked and clone it to your local machine.
+
+5. Make your desired changes or additions to the Wiki content locally.
+
+6. In GitHub Desktop, you'll see the modified files. Add a brief commit message and click "Commit to main".
+
+7. Click "Push origin" at the top to push your changes to your GitHub repository.
+
+8. Return to the GitHub website and navigate to your repository. You'll see a "Contribute" button - click it and select "Open pull request".
+
+9. Fill in the pull request description and submit it.
+
+Our team will review your pull request and merge the changes once approved. By contributing to the Wiki, you'll be helping to improve the documentation and resources available to the MicrobiomeStat user community. We appreciate your support in making this project better for everyone!
+
+If you encounter any issues during this process, please feel free to open an issue on GitHub for assistance.
 
 ## Resources
 
