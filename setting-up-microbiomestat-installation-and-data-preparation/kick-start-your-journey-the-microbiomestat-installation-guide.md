@@ -93,6 +93,18 @@ install.packages(packages_to_install)
 
 ## Troubleshooting
 
-Ensure that you are using the latest versions of R and Bioconductor. If you encounter any issues, it might be because a package requires a specific version of R or Bioconductor. Consult the documentation of the problematic package for guidance.
+Ensure that you are using the latest versions of R and Bioconductor. If you encounter any issues, it might be because a package requires a specific version of R or Bioconductor.
 
-Thank you for choosing MicrobiomeStat.
+If you experience problems during installation or usage, follow these steps:
+
+1. Check our Frequently Asked Questions (FAQ) page at https://app.gitbook.com/o/JyntywoYcDNroaHdd5wZ/s/hFAmY4z7d1R15Cv49vXQ/frequently-asked-questions-faq/general-faqs. Many common issues and their solutions are addressed there.
+
+2. If your issue isn't covered in the FAQ, visit https://github.com/cafferychen777/MicrobiomeStat/issues.
+
+3. Search this page to see if a similar issue has already been reported and resolved.
+
+4. If you don't find a similar issue, feel free to create a new issue to report your specific problem. When describing the issue, please provide as much detail as possible, including your operating system, R version, and any error messages you encountered.
+
+5. If the problem persists, consult the documentation of the problematic package for further guidance.
+
+Thank you for choosing MicrobiomeStat. We will do our best to assist you with any issues you encounter.
