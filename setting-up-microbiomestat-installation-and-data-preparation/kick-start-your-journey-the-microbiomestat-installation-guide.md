@@ -77,8 +77,6 @@ packages_to_install <- c(
   "parallel",      # Utilized only when setting parallel in linda
   "ggprism",       # Active only when theme.choice is set to “prism”
   "aplot",         # Operates exclusively in generate_beta_ordination_single
-  "philentropy",   # Used when dist.name is set to "JS"
-  "forcats",       # Comes into play only within barplot and areaplot
   "yaml",          # Employed solely in mStat_import_qiime2_as_data_obj
   "biomformat",    # Used in mStat_import_biom_as_data_obj
   "Biostrings"     # Required for mStat_import_qiime2_as_data_obj and mStat_import_dada2_as_data_obj
