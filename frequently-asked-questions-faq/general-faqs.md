@@ -15,8 +15,7 @@ packages_to_install <- c(
   "rlang", "tibble", "ggplot2", "matrixStats", "lmerTest", "foreach", 
   "modeest", "dplyr", "pheatmap", "tidyr", "ggh4x", "GUniFrac", "stringr",
   "rmarkdown", "knitr", "pander", "tinytex", "vegan", "scales", "ape",
-  "ggrepel", "parallel", "ggprism", "aplot", "philentropy", "forcats",
-  "yaml", "biomformat", "Biostrings"
+  "ggrepel", "parallel", "ggprism", "aplot", "yaml", "biomformat", "Biostrings"
 )
 install.packages(packages_to_install)
 ```
