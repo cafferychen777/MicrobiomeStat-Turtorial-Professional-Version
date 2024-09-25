@@ -62,7 +62,8 @@ Before using the function, it is important to understand the parameters:
   * "log": Logarithmic transformation. 
 * `base.size`: Base font size for the generated plots.
 * `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
-* `output.file`: A character string specifying the output file name for the report. Full path can be specified using, for example, "path\_to\_your\_location/report.pdf".
+* `output.file`: A character string specifying the output file name for the report. Full path can be specified, e.g., "path_to_your_location/report". The file extension (.pdf or .html) will be automatically added based on the `output.format` if not already present. This parameter also determines the title of the generated report. For example, if set to "path_to_your_location/my_report", the report title will be "my_report".
+* `output.format`: A character string specifying the desired output format of the report. Must be either "pdf" or "html". Default is c("pdf", "html"), which will use the first value ("pdf") if not explicitly specified. This parameter determines whether the report will be generated as a PDF or HTML document.
 
 Note: Before running the function, please be aware of potential compatibility issues between RStudio and LaTeX. These issues can lead to problems such as images from the RStudio Viewer appearing in unexpected locations in the PDF report. To avoid this, it is recommended to clear the current images in the RStudio Viewer before running the function. You can do this by clicking on the broom icon in the RStudio Viewer.
 
