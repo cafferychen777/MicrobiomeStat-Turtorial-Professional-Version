@@ -162,3 +162,46 @@ devtools::install_github("cafferychen777/MicrobiomeStat")
 ```
 
 If these steps do not resolve the issue, please provide more detailed information for further troubleshooting.
+
+### Windows Installation Error: "System command 'Rcmd.exe' failed"
+
+**Problem:**
+Users encountering "System command 'Rcmd.exe' failed" error or issues with file path lengths during Windows installation.
+
+**Solution:**
+
+Several approaches can resolve this issue:
+
+1. Using pak Package (Recommended):
+```r
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
+}
+pak::pkg_install("cafferychen777/MicrobiomeStat", dependencies = TRUE)
+```
+
+2. Using Shorter Temporary Directory Path:
+```r
+# Set temporary directory to a shorter path
+dir.create("C:/Rtemp", showWarnings = FALSE)
+Sys.setenv(TMPDIR = "C:/Rtemp")
+
+# Install the package
+devtools::install_github("cafferychen777/MicrobiomeStat", build_vignettes = FALSE)
+```
+
+3. Modify Windows Path Length Limit:
+   - Open PowerShell as Administrator
+   - Run: `Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1`
+   - Restart computer
+
+If issues persist, check:
+```r
+# Check temporary directory
+Sys.getenv("TMPDIR")
+
+# Check working directory
+getwd()
+```
+
+Ensure latest Rtools is installed and try running R/RStudio as administrator.
