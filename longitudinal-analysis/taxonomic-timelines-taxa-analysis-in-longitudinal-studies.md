@@ -95,8 +95,6 @@ test.list <- generate_taxa_volatility_test_long(
   adj.vars = "sample_body_site",
   prev.filter = 0.1,
   abund.filter = 0.001,
-  feature.mt.method = "fdr",
-  feature.sig.level = 0.1,
   feature.level = c("Species"),
   feature.dat.type = "count",
   transform = "CLR"
