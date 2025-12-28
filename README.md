@@ -37,6 +37,22 @@ We're excited to introduce `mLLMCelltype`, our innovative framework for **single
 
 For researchers working with single-cell data, `mLLMCelltype` offers a powerful new approach to cell type annotation. Learn more about its capabilities and methodology on GitHub: [mLLMCelltype Repository](https://github.com/cafferychen777/mLLMCelltype).
 
+## Also Check Out: FlashDeconv
+
+We're excited to introduce `FlashDeconv`, our ultra-fast tool for **spatial transcriptomics cell type deconvolution**. FlashDeconv uses random sketching to achieve O(N) time complexity, making it the fastest deconvolution method available.
+
+Key features of `FlashDeconv`:
+
+- **Ultra-Fast Processing**: Deconvolves 1M spots in ~3 minutes on CPU (no GPU required)
+- **O(N) Time Complexity**: Scales linearly with dataset size through random sketching
+- **Seamless Integration**: Works directly with scanpy/AnnData workflows
+- **Automatic Marker Selection**: Identifies optimal marker genes for each cell type
+- **Spatial Regularization**: Produces smooth, biologically meaningful proportion maps
+
+For researchers working with spatial transcriptomics data (Visium, Slide-seq, MERFISH, etc.), `FlashDeconv` offers unprecedented speed without sacrificing accuracy. Learn more on GitHub: [FlashDeconv Repository](https://github.com/cafferychen777/FlashDeconv).
+
+Install with: `pip install flashdeconv`
+
 ## Dependencies
 
 It depends on packages such as `rlang`, `tibble`, `ggplot2`, `matrixStats`, `lmerTest`, `foreach`, `modeest`, `vegan`, `dplyr`, `pheatmap`, `tidyr`, `ggh4x`, `ape`, `GUniFrac`, `scales`, `stringr`, `rmarkdown`, `knitr`, `pander`, and `tinytex`. We thank the authors of these packages, whose work has greatly facilitated the development of MicrobiomeStat.
