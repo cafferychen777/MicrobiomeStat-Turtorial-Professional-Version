@@ -54,6 +54,7 @@ test.list <- generate_taxa_test_pair(
   data.obj = peerj32.obj,
   subject.var = "subject",
   time.var = "time",
+  change.base = "1",
   group.var = "group",
   adj.vars = c("sex"),
   feature.level = c("Genus"),

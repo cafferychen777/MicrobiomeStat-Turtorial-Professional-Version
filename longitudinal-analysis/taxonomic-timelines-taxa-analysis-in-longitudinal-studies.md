@@ -171,10 +171,10 @@ dotplot_T2D <- generate_taxa_per_time_dotplot_long(
 
 These methods, including both the `generate_taxa_per_time_test_long` and `generate_taxa_per_time_dotplot_long`, enhance our ability to scrutinize and understand the intricate patterns and variations in taxa abundance throughout the course of the Type 2 Diabetes study, thereby enriching our analysis and insights.
 
-Further advancing our analysis, we introduce the `generate_taxa_change_test_long` function. This function is designed to analyze the change in taxa abundance relative to a baseline time point (`t0.level`). It provides insights into the changes in microbiome composition from the baseline to subsequent time points, considering the diversity at different taxonomic levels such as Genus and Family.
+Further advancing our analysis, we introduce the `generate_taxa_change_per_time_test_long` function. This function is designed to analyze the change in taxa abundance relative to a baseline time point (`t0.level`). It provides insights into the changes in microbiome composition from the baseline to subsequent time points, considering the diversity at different taxonomic levels such as Genus and Family.
 
 ```r
-result <- generate_taxa_change_test_long(
+result <- generate_taxa_change_per_time_test_long(
   data.obj = subset_T2D.obj,
   subject.var = "subject_id",
   time.var = "visit_number",
