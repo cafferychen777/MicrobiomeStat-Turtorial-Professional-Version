@@ -4,7 +4,18 @@ In feature-level data analysis for paired samples design, the major tasks includ
 
 > Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
-In the `generate_taxa_test_pair` function,  `feature.dat.type` parameter specifies the data type in the feature matrix.  Depending on the data type, different preprocessing steps and methods are used.
+### Categorical vs Continuous Predictors
+
+The `generate_taxa_test_pair` function automatically distinguishes between categorical and continuous predictor variables for the `group.var` parameter:
+
+* **Categorical variables** (factor/character): Creates pairwise comparisons vs. the reference level (e.g., "Treatment vs Placebo (Reference) [Main Effect]" and "[Interaction]" effects)
+* **Continuous variables** (numeric/integer): Tests linear association with the variable
+
+This automatic detection allows the same function to handle both types of predictors appropriately.
+
+### Data Type Handling
+
+In the `generate_taxa_test_pair` function, the `feature.dat.type` parameter specifies the data type in the feature matrix. Depending on the data type, different preprocessing steps and methods are used.
 
 * `count` and `proportion`: For count and proportion data, which are both compositional, `linda` will be called. To address zeros, a pseudo-count of 0.5 is added to the count data, and zeros are substituted with half of the nonzero minimum for proportion data (feature-wise).  Winorization at 97% quantile is performed to reduce the influence of outliers.
 * `other`:  When `feature.dat.type` is set to "other", the data are considered to be non-compositional and standard linear mixed effects model will be used. Users need to determine the appropriate normalization and transformation of the data before running the function.  This option increases the applicability of MicrobiomeStat to other data types.

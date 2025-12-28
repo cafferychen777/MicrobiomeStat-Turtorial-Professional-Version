@@ -4,6 +4,17 @@ This guide will walk you through the process of investigating how taxonomic comp
 
 MicrobiomeStat provides a set of functions to illuminate the intricate taxonomic changes over time. The `generate_taxa_trend_test_long()` function executes a trend test on longitudinal microbiome data. It commences with the normalization of count data, followed by the generation of a mixed-effects model that incorporates time, group, and subject variables. Special attention is given to the interaction between time and group variables. Finally, the function applies the `linda()` method to discern whether these variables significantly influence taxa abundance.
 
+### Categorical vs Continuous Predictors
+
+The `generate_taxa_trend_test_long()` function automatically distinguishes between categorical and continuous predictor variables for the `group.var` parameter:
+
+* **Categorical variables** (factor/character): Tests group differences and group × time interaction, creating pairwise comparisons vs. the reference level
+* **Continuous variables** (numeric/integer): Tests linear association with time
+
+This automatic detection allows the same function to handle both types of predictors appropriately without requiring manual specification.
+
+### Data Type Handling
+
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
 
 * `"count"`: For raw count data, the function first performs sparsity treatment, followed by a Total Sum Scaling (TSS) normalization. This process ensures that the data is suitably normalized and comparable across samples.

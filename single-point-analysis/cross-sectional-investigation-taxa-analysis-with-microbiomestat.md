@@ -13,10 +13,21 @@ The `prev.filter` and `abund.filter` parameters filter taxa based on their preva
 
 The `feature.level` determines what aggregation level(s) the tests will be performed. If `feature.level` is set to "original", the original features in `feature.tab`  will be tested. The `feature.level` can also be set to the aggregated levels specified in the `feature.ann` matrix.
 
+### Categorical vs Continuous Predictors
+
+The `generate_taxa_test_single` function automatically distinguishes between categorical and continuous predictor variables:
+
+* **Categorical variables** (factor/character): Creates pairwise comparisons vs. the reference level (first level of the factor). Output format: "Level vs Reference (Reference)" (e.g., "Treatment vs Control (Reference)")
+* **Continuous variables** (numeric/integer): Tests linear association with a single slope coefficient. Output format: Variable name only (e.g., "age")
+
+This distinction is important for interpreting results:
+- For categorical variables, the coefficient represents the log2 fold change between groups
+- For continuous variables, the coefficient represents the change in log2 abundance per unit increase in the predictor
+
 The `generate_taxa_test_single` outputs a table of LinDA association statistics for all tested taxa/features. The table contains the following components:
 
 * `Variable`: It identifies the taxon/feature being analyzed.
-* `Coefficient`: Expressed as log2FoldChange,  bias-corrected. It indicates the degree and direction of change in the abundance of a specific taxon/feature.
+* `Coefficient`: Expressed as log2FoldChange for categorical variables, or slope for continuous variables, bias-corrected. It indicates the degree and direction of change in the abundance of a specific taxon/feature.
 * `SE`: Standard errors of the coefficients. It measures the variability of the coefficient estimates.
 * `Mean Abundance`: The average abundance of a particular taxon/feature across all samples.
 * `Prevalence`: The proportion of samples where a specific taxon/feature is present.
@@ -331,3 +342,109 @@ In the MA plot above:
 - Text labels identify significant taxa to focus on for biological interpretation
 
 MA plots complement volcano plots by emphasizing the relationship between abundance and fold change, which can reveal important patterns that might be missed when looking at just statistical significance. For example, you might observe that most significant changes occur in low-abundance or high-abundance taxa, which could inform further biological interpretation or methodological considerations.
+
+---
+
+## Advanced: Tree-Guided Differential Abundance with `linda2()`
+
+MicrobiomeStat v1.4.2+ includes `linda2()`, an enhanced version of LinDA that supports **phylogenetic tree-guided smoothing** for improved statistical power. This method borrows strength from evolutionarily related taxa to boost detection of differentially abundant features.
+
+### When to Use `linda2()`
+
+- When you have a **phylogenetic tree** available (e.g., from 16S rRNA or shotgun metagenomic data)
+- When you want to **increase statistical power** for detecting differentially abundant taxa
+- When you expect **phylogenetically clustered effects** (related taxa responding similarly to treatment)
+
+### Key Parameters for Tree-Guided Smoothing
+
+```r
+linda2(
+  feature.dat,           # Feature abundance matrix
+  meta.dat,              # Sample metadata
+  formula,               # Model formula (e.g., "~ group + age")
+  feature.dat.type,      # "count", "proportion", or "other"
+  tree = NULL,           # Phylogenetic tree (phylo object)
+  tree.smooth = FALSE,   # Enable tree-guided smoothing
+  tree.lambda = 0.1,     # Smoothing strength (0.05-0.2 recommended)
+  tree.k = 5,            # Number of nearest neighbors for local smoothing
+  tree.meff.exponent = 2.2  # M_eff correction exponent
+)
+```
+
+### Tree Smoothing Parameters Explained
+
+* `tree.lambda`: Controls smoothing strength. Higher values = more borrowing from neighbors.
+  - Default: 0.1 (mild smoothing)
+  - Range: 0.05-0.2 recommended
+  - Use lower values (0.05) for exploratory analysis
+  - Use higher values (0.2) when strong phylogenetic clustering is expected
+
+* `tree.k`: Number of nearest phylogenetic neighbors for local smoothing.
+  - Default: 5
+  - Lower values prevent signal leakage to distant taxa
+
+* `tree.meff.exponent`: Exponent for effective number of tests correction.
+  - Default: 2.2 (for N ≤ 100 samples per group)
+  - Use 3.5 for larger sample sizes (N > 100)
+  - This ensures proper FDR control after smoothing
+
+### Example: Tree-Guided Analysis with phyloseq Data
+
+```r
+library(phyloseq)
+library(MicrobiomeStat)
+
+# If you have a phyloseq object with a tree
+data("GlobalPatterns")
+GP <- GlobalPatterns
+
+# Subset to two groups for comparison
+sample_data(GP)$Environment <- ifelse(
+  sample_data(GP)$SampleType %in% c("Feces", "Skin", "Tongue"),
+  "Human", "Environmental"
+)
+
+# Run linda2 with tree-guided smoothing
+result <- linda2(
+  phyloseq.obj = GP,
+  formula = "~ Environment",
+  tree.smooth = TRUE,      # Enable tree smoothing
+  tree.lambda = 0.1,       # Mild smoothing
+  verbose = TRUE
+)
+
+# The tree is automatically extracted from the phyloseq object
+# Results include both smoothed p-values and M_eff correction
+```
+
+### Precision-Weighted Bias Correction
+
+`linda2()` also includes an improved bias correction method that weights taxa by their precision (1/SE²). This reduces bias estimation error by up to 84% when taxa have heterogeneous standard errors (which is common in microbiome data where high-abundance taxa have lower variance).
+
+This feature is automatically enabled when:
+- SE ratio (max/min) is less than 100
+- All SE values are finite and positive
+
+### Output Interpretation
+
+The output from `linda2()` is similar to `linda()`, with additional tree smoothing information:
+
+```r
+# Access results for a specific variable
+result$output$EnvironmentHuman
+
+# Columns include:
+# - log2FoldChange: Bias-corrected effect size
+# - lfcSE: Standard error
+# - pvalue: Raw p-value (after smoothing if enabled)
+# - padj: FDR-adjusted p-value (with M_eff correction if tree smoothing enabled)
+```
+
+### When Tree Smoothing Helps Most
+
+Tree-guided smoothing provides the greatest power improvement when:
+1. **True effects are phylogenetically clustered**: Related taxa respond similarly
+2. **Sample size is limited**: Borrowing strength helps overcome noise
+3. **Effect sizes are moderate**: Very large effects are detected anyway
+
+For hypothesis-generating analyses, tree smoothing can reveal patterns that would be missed by taxon-by-taxon testing.
