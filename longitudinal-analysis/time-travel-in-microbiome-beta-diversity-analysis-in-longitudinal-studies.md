@@ -183,3 +183,94 @@ generate_beta_change_spaghettiplot_long(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-12 at 10.52.24.png" alt=""><figcaption></figcaption></figure>
+
+## Within-Group and Between-Group Beta Diversity Changes
+
+The `generate_beta_change_boxplot_long()` function compares within-group and between-group beta diversity across time points. This is useful for understanding whether samples within a group become more similar or different over time.
+
+```r
+generate_beta_change_boxplot_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  subject.var = "subject_id",
+  time.var = "visit_number",
+  group.var = "subject_race",
+  strata.var = NULL,
+  adj.vars = NULL,
+  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number))[1],
+  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number))[2:4],
+  dist.name = c("BC"),
+  base.size = 16,
+  theme.choice = "bw",
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL,
+  pdf.wid = 11,
+  pdf.hei = 8.5
+)
+```
+
+## Principal Coordinate Trend and Volatility Analysis
+
+For more detailed analysis of beta diversity changes along specific ordination axes, MicrobiomeStat provides functions to test trends and volatility of principal coordinates.
+
+The `generate_beta_pc_trend_test_long()` function performs linear trend tests on selected Principal Coordinates (PCs) over time:
+
+```r
+generate_beta_pc_trend_test_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  pc.obj = NULL,
+  pc.ind = c(1, 2),
+  subject.var = "subject_id",
+  time.var = "visit_number_num",
+  group.var = "subject_race",
+  adj.vars = NULL,
+  dist.name = c("BC", "Jaccard")
+)
+```
+
+This function fits linear mixed effects models to test whether PC values change significantly over time, while accounting for repeated measures within subjects.
+
+Similarly, the `generate_beta_pc_volatility_test_long()` function calculates the volatility (rate of change) of PC values:
+
+```r
+generate_beta_pc_volatility_test_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  pc.obj = NULL,
+  pc.ind = c(1, 2),
+  subject.var = "subject_id",
+  time.var = "visit_number_num",
+  group.var = "subject_race",
+  adj.vars = NULL,
+  dist.name = c("BC", "Jaccard")
+)
+```
+
+The `generate_beta_pc_spaghettiplot_long()` function visualizes individual PC trajectories over time:
+
+```r
+generate_beta_pc_spaghettiplot_long(
+  data.obj = subset_T2D.obj,
+  dist.obj = NULL,
+  pc.obj = NULL,
+  pc.ind = c(1, 2),
+  subject.var = "subject_id",
+  time.var = "visit_number",
+  t0.level = sort(unique(subset_T2D.obj$meta.dat$visit_number))[1],
+  ts.levels = sort(unique(subset_T2D.obj$meta.dat$visit_number))[2:4],
+  group.var = "subject_race",
+  strata.var = NULL,
+  dist.name = c("BC"),
+  base.size = 16,
+  theme.choice = "bw",
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL,
+  pdf.wid = 11,
+  pdf.hei = 8.5
+)
+```
+
+These PC-based functions complement the distance-based analyses by focusing on specific axes of variation in the microbiome community structure.

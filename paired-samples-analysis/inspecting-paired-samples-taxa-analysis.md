@@ -413,3 +413,68 @@ generate_taxa_change_heatmap_pair(
 ```
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-08 at 21.30.23.png" alt=""><figcaption></figcaption></figure>
+
+## Scatterplot Visualizations
+
+The `generate_taxa_change_scatterplot_pair()` function creates scatterplots showing the change in taxa abundance between two time points. This visualization is particularly useful for identifying taxa with large changes and understanding the direction of change across groups.
+
+```r
+generate_taxa_change_scatterplot_pair(
+  data.obj = peerj32.obj,
+  subject.var = "subject",
+  time.var = "time",
+  group.var = "group",
+  strata.var = "sex",
+  change.base = "1",
+  feature.change.func = "log fold change",
+  feature.level = c("Family"),
+  feature.dat.type = "count",
+  features.plot = NULL,
+  top.k.plot = 10,
+  top.k.func = "mean",
+  prev.filter = 0.1,
+  abund.filter = 0.001,
+  base.size = 16,
+  theme.choice = "bw",
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL,
+  pdf.wid = 11,
+  pdf.hei = 8.5
+)
+```
+
+The `feature.change.func` parameter supports several methods for computing change:
+- `"absolute change"`: Simple difference between time points
+- `"log fold change"`: Log2 fold change (with automatic zero imputation)
+- `"relative change"`: Relative change as (ts - t0) / (ts + t0)
+
+For individual-level visualization, the `generate_taxa_indiv_change_scatterplot_pair()` function shows taxa changes for each subject:
+
+```r
+generate_taxa_indiv_change_scatterplot_pair(
+  data.obj = peerj32.obj,
+  subject.var = "subject",
+  time.var = "time",
+  group.var = "group",
+  strata.var = NULL,
+  change.base = "1",
+  feature.change.func = "log fold change",
+  feature.level = c("Genus"),
+  features.plot = NULL,
+  feature.dat.type = "count",
+  top.k.plot = 6,
+  top.k.func = "sd",
+  prev.filter = 0.1,
+  abund.filter = 0.001,
+  base.size = 16,
+  theme.choice = "bw",
+  palette = NULL,
+  pdf = TRUE,
+  file.ann = NULL,
+  pdf.wid = 20,
+  pdf.hei = 8.5
+)
+```
+
+These scatterplot functions complement the boxplot and heatmap visualizations by providing a different perspective on taxa abundance changes in paired samples.
