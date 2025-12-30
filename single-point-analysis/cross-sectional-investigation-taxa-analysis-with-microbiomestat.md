@@ -126,7 +126,6 @@ The following shows the usage and output of the function `generate_taxa_boxplot_
 ```r
 generate_taxa_boxplot_single(
   data.obj = peerj32.obj,
-  subject.var = "subject",
   time.var = "time",
   t.level = "1",
   group.var = "group",
@@ -157,7 +156,6 @@ For more clarity, `generate_taxa_indiv_boxplot_single` provides separate plots f
 ```r
 generate_taxa_indiv_boxplot_single(
   data.obj = peerj32.obj,
-  subject.var = "subject",
   time.var = "time",
   t.level = "1",
   group.var = "group",
@@ -188,7 +186,6 @@ Besides boxplots, MicrobiomeStat can also generate heatmaps using the `generate_
 ```r
 generate_taxa_heatmap_single(
   data.obj = peerj32.obj,
-  subject.var = "subject",
   time.var = NULL,
   t.level = NULL,
   group.var = "group",
@@ -216,9 +213,8 @@ We can use `generate_taxa_dotplot_single` function as an alternative to the heat
 ```r
 generate_taxa_dotplot_single(
   data.obj = peerj32.obj,
-  subject.var = "subject",
   time.var = NULL,
-  t0.level = NULL,
+  t.level = NULL,
   group.var = "group",
   strata.var = "sex",
   feature.level = c("Family"),
@@ -250,7 +246,6 @@ With this insight, let's now examine the function and the resultant visuals:
 ```r
 generate_taxa_barplot_single(
   data.obj = peerj32.obj,
-  subject.var = "subject",
   time.var = NULL,
   t.level = NULL,
   group.var = "group",

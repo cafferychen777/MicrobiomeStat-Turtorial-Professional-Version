@@ -34,7 +34,6 @@ Before using the function, it is important to understand the parameters:
 * `test.adj.vars`: Names of columns in the metadata containing covariates to be adjusted for in statistical tests and models. Default is NULL, which indicates no covariates are adjusted for in statistical testing.
 * `vis.adj.vars`: For alpha and beta diversity visualization functions, the `vis.adj.vars` parameter specifies the covariates whose effects will be removed before visualization. This is achieved by taking reisuals after regressing the alpha diversity and beta diversity PCs on the variables specified by `vis.adj.vars`. This step is important to reveal the signal of interest when the unwanted variation in `vis.adj.vars` dominates/obscures the signals.  Although it is equally important to do similar adjustment to feature-level data, due to the complexity of the data characteristics (zero inflation, etc.), such linear model-based adjustment may not be sufficient. 
 * `strata.var`: Variable to stratify the data in visualization.
-* `subject.var`: Variable name used for subject identification.
 * `time.var`: Variable name used for time points.
 * `t.level`: Character string specifying the time level/value to subset the data to, only if both `time.var` and `t.level` are specified. If NULL, all data will be used. 
 * `alpha.obj`: A matrix containing pre-calculated alpha diversity measures (row - samples, column - measures). If NULL (default), alpha diversity measures will be calculated using `mStat_calculate_alpha_diversity` function after data rarefaction by `mStat_rarefy_data`. The rarefaction depth can be specified with `depth` parameter or minimum depth will be used if `depth = NULL`.
@@ -78,7 +77,6 @@ data.obj = peerj32.obj
 group.var = "group" # Variable used for grouping samples, primary variable of interest
 vis.adj.vars = c("sex") # Covariates whose effects need to be removed before visualization
 test.adj.vars = c("sex") # Covariates whose effects need to be adjusted in statistical tests
-subject.var = "subject" # Variable used for subject identification
 time.var = "time" # Variable used for time points
 
 # Specify diversity indices
@@ -122,7 +120,6 @@ mStat_generate_report_single(
    group.var = group.var,
    vis.adj.vars = vis.adj.vars,
    test.adj.vars = test.adj.vars,
-   subject.var = subject.var,
    time.var = time.var,
    alpha.name = alpha.name,
    depth = depth,

@@ -19,7 +19,6 @@ generate_beta_ordination_single(
   data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
-  subject.var = "subject",
   time.var = NULL, # Variable representing time points
   t.level = NULL, # Specific time level for subset (if subset desired)
   group.var = "group",
@@ -80,7 +79,6 @@ p <- generate_beta_ordination_single(
   data.obj = peerj32.obj,
   dist.obj = NULL,
   pc.obj = NULL,
-  subject.var = "subject",
   time.var = "time",
   t.level = "2",
   group.var = "group",
