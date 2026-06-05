@@ -13,6 +13,8 @@ The `generate_taxa_trend_test_long()` function automatically distinguishes betwe
 
 This automatic detection allows the same function to handle both types of predictors appropriately without requiring manual specification.
 
+The `ref.level` parameter allows you to explicitly specify the reference level for categorical `group.var`. By default, R uses the first level of the factor as the reference. Setting `ref.level` overrides this behavior, which is useful when you want to compare against a specific control group.
+
 ### Data Type Handling
 
 The `feature.dat.type` parameter plays a crucial role in the data preprocessing phase:
@@ -33,13 +35,13 @@ For those directly analyzing entities like OTU, ASV, Gene, KEGG, etc., that don'
 Furthermore, when interpreting the results, it's essential to understand `feature.sig.level` and `feature.mt.method` parameters:
 
 * `feature.sig.level`: This parameter determines the significance level, primarily influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences in taxa abundance.
-* `feature.mt.method`: There are two options available for this parameter: "fdr" (False Discovery Rate) and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot.
+* `feature.mt.method`: The available options are: "fdr" (False Discovery Rate), "bonferroni", and "none". Regardless of how this parameter is set, it's crucial to note that the `generate_taxa_test_single` function always performs adjustments post-testing. However, the `feature.mt.method` specifically influences the visualization in the volcano plot.
 
 Another important parameter is `feature.change.func`, which specifies the method or function used to compute the change between two time points. The options include:
 
-* `"absolute change"` (default): Computes the absolute difference between the values at the two time points (`value_time_2` and `value_time_1`).
+* `"relative change"` (default): Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have a value of 0, the change is defined as 0.
+* `"absolute change"`: Computes the absolute difference between the values at the two time points (`value_time_2` and `value_time_1`).
 * `"log fold change"`: Computes the log2 fold change between the two time points. For zero values, imputation is performed using half of the minimum nonzero value for each feature level at the respective time point before taking the logarithm.
-* `"relative change"`: Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have a value of 0, the change is defined as 0.
 * A custom function: If a user-defined function is provided, it should take two numeric vectors as input corresponding to the values at the two time points (`value_time_1` and `value_time_2`) and return a numeric vector of the computed change. This custom function will be applied directly to calculate the difference.
 
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
@@ -387,8 +389,8 @@ generate_taxa_spaghettiplot_long(
 
 Before delving into the specifics of the `generate_taxa_boxplot_long()` function, it's worth noting the `transform` parameter. This string indicates the transformation to apply to the axis when plotting. The options are:
 
-* `"identity"`: No transformation (default)
-* `"sqrt"`: Square root transformation
+* `"sqrt"`: Square root transformation (default)
+* `"identity"`: No transformation
 * `"log"`: Logarithmic transformation. Zeros are replaced with half of the minimum non-zero value for each taxon before log transformation.
 
 Now, for an in-depth look at the distribution of specific phyla over time, `generate_taxa_boxplot_long()` can be used:

@@ -61,6 +61,16 @@ normalized_data <- mStat_normalize_data(
 )
 ```
 
+For methods involving rarefaction (e.g., "Rarefy-TSS"), a `seed` parameter (default `123`) ensures reproducibility. The rarefaction subsampling will produce the same result across runs without affecting the caller's random number state:
+
+```r
+normalized_data <- mStat_normalize_data(
+  data.obj = obj,
+  method = "Rarefy-TSS",
+  seed = 123  # For reproducible rarefaction
+)
+```
+
 ### Function Workflow:
 
 1. **Extract OTU Table:** The function begins by retrieving the OTU (Operational Taxonomic Unit) table from the provided data object.

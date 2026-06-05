@@ -61,6 +61,18 @@ We also acknowledge the work by the developers of `microbiomeutilities`, `phylos
 
 ## News
 
+### Version 1.5.0 (April 2026)
+
+MicrobiomeStat v1.5.0 brings significant improvements:
+
+* **`linda2()` exported**: Enhanced differential abundance testing with phylogenetic tree-guided smoothing (`tree.smooth = TRUE`), Max-T omnibus p-values (`omnibus = TRUE`), and Detection Depth Weighting (`weights = "detection_depth"`) for handling sample quality heterogeneity
+* **Unified analysis interface**: 6 core functions (`plot_taxa`, `plot_alpha`, `plot_beta`, `test_taxa`, `test_alpha`, `test_beta`) that automatically detect study design and route to the appropriate underlying functions. See the [Unified API guide](introduction/unified-api-simplify-your-analysis.md) for details.
+* **`ref.level` parameter**: Explicitly specify reference groups in taxa differential testing functions (`generate_taxa_test_single`, `generate_taxa_test_pair`, `generate_taxa_change_test_pair`, `generate_taxa_trend_test_long`)
+* **Reproducible rarefaction**: `mStat_normalize_data()` now accepts a `seed` parameter (default 123) for reproducible rarefaction
+* **New data converters**: `mStat_convert_MRExperiment_to_data_obj()` and `mStat_convert_MultiAssayExperiment_to_data_obj()` for importing data from metagenomeSeq and MultiAssayExperiment objects
+* **8 critical statistical bug fixes**: Including PERMANOVA distance/metadata misalignment, LinDA zero-handling dispatch, volatility test covariate adjustment, and more
+* **"other" feature data type**: Explicit support for pre-processed non-compositional data
+
 ### January 8th, 2024
 
 Exciting news for our users! We have enhanced the color palette functionality in our package. You can now use predefined palette names like "lancet", "nejm", "npg", "aaas", "jama", "jco", and "ucscgb" directly in the `palette` parameter across most functions. This update simplifies the process of customizing color schemes in your data visualizations, making your plots more visually appealing and easier to interpret. For more details, please refer to the function documentation.

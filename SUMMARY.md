@@ -5,6 +5,7 @@
 ## INTRODUCTION
 
 * [Exploring MicrobiomeStat: A Consideration for Your Research Toolkit](introduction/the-edge-of-microbiomestat-why-it-should-be-on-your-shortlist.md)
+* [Unified API: Simplify Your Analysis](introduction/unified-api-simplify-your-analysis.md)
 
 ## Setting Up MicrobiomeStat: Installation and Data Preparation
 
@@ -19,6 +20,8 @@
   * [Converting DESeqDataSet into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/incorporating-deseqdataset-into-microbiomestat.md)
   * [Importing Data from DADA2 into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/integrating-data-from-dada2-into-microbiomestat.md)
   * [Importing Data from Mothur into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/fetching-data-from-mothur-into-microbiomestat.md)
+  * [Converting MRExperiment into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/converting-mrexperiment-to-microbiomestat.md)
+  * [Converting MultiAssayExperiment into MicrobiomeStat](setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/converting-multiassayexperiment-to-microbiomestat.md)
 
 ## Single-Point Analysis
 

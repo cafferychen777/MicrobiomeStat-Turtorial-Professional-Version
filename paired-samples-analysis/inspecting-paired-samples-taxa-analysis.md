@@ -1,6 +1,6 @@
 # Feature-level Analysis
 
-In feature-level data analysis for paired samples design, the major tasks include identifying (1) features that change over time, (2) features that are differenital between groups over time,  and (3) features whose changes over time differ between groups. Features in (3) are a subset of features in (2). These tasks can be achieved by `generate_taxa_test_single` and `generate_taxa_change_test_pair`. The `generate_taxa_test_pair` function performs differential abundance analysis (DAA) based on compositional data using the mixed effects mode of LinDA, which is a DAA method based on log linear model with bias correction due to composiitonal effects. If the data are not compositional, standard linear mixed effects model (lme4) will be used.
+In feature-level data analysis for paired samples design, the major tasks include identifying (1) features that change over time, (2) features that are differenital between groups over time,  and (3) features whose changes over time differ between groups. Features in (3) are a subset of features in (2). These tasks can be achieved by `generate_taxa_test_single` and `generate_taxa_change_test_pair`. The `generate_taxa_test_pair` function performs differential abundance analysis (DAA) based on compositional data using the mixed effects mode of LinDA, which is a DAA method based on log linear model with bias correction due to compositional effects. If the data are not compositional, standard linear mixed effects model (lme4) will be used.
 
 > Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
@@ -12,6 +12,8 @@ The `generate_taxa_test_pair` function automatically distinguishes between categ
 * **Continuous variables** (numeric/integer): Tests linear association with the variable
 
 This automatic detection allows the same function to handle both types of predictors appropriately.
+
+The `ref.level` parameter allows you to explicitly specify the reference level for categorical `group.var`. By default, R uses the first level of the factor as the reference. Setting `ref.level` overrides this behavior, which is useful when you want to compare against a specific control group.
 
 ### Data Type Handling
 
@@ -34,14 +36,14 @@ The `generate_taxa_test_pair` outputs a table of LinDA association statistics fo
   
 The `generate_taxa_change_test_pair` function contains an additional parameter `feature.change.func`, which specifies the method or function used to compute the change between the two time points. The options include:
 
-* `"absolute change"` (default): Computes the absolute difference between the values at the two time points (`value_time_2 - value_time_1`).
-* `"log fold change"`: Computes the log2 fold change between the two time points. 
-* `"relative change"`: Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have 0 values, the change is defined as 0.
+* `"relative change"` (default): Computes the relative change as `(value_time_2 - value_time_1) / (value_time_2 + value_time_1)`. If both time points have 0 values, the change is defined as 0.
+* `"absolute change"`: Computes the absolute difference between the values at the two time points (`value_time_2 - value_time_1`).
+* `"log fold change"`: Computes the log2 fold change between the two time points.
 * A custom function: If a user-defined function is provided to calculate the change, it should take two numeric vectors as input corresponding to the values at the two time points (`value_time_1` and `value_time_2`) and return a numeric vector of the computed changes. 
 
 Results from both functions can be visualized using `generate_taxa_volcano_single`, will produce a volcano plot. It visualizes the relationship between the effect size (log foldchange) and its statistical significance. The function has the `feature.sig.level` and `feature.mt.method` parameters:
 * `feature.sig.level`: This parameter determines the significance level, influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences.
-* `feature.mt.method`: Thi parameter determines whether the fdr-adjusted p-values or raw p-values will be plotted . There are two options available currently: "fdr" (false discovery rate) and "none" (raw p-value).
+* `feature.mt.method`: This parameter determines whether the adjusted p-values or raw p-values will be plotted. Available options: "fdr" (false discovery rate), "bonferroni", and "none" (raw p-value).
   
 By understanding and appropriately setting these parameters, users can ensure a more accurate and contextually relevant interpretation of the plotted results.
 
@@ -153,9 +155,9 @@ This function creates a series of boxplots, one for each taxon, and outputs them
 * `feature.dat.type`: One of "count", "proportion" or "other".  For "count", the data will be converted to proportion data before the visualization.
 * `t0.level`: the name of the baseline level ("t1") or the first time point.
 * `ts.levels`: a character vector of the names of other levels to be visualized. In the paired samples setting, `ts.levels` can be the name of the second time point ("t2")
-* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should deterimne the appropriate transformation to better visualize the data. The available options for `transform` include:
-  * `"identity"`: No transformation (default)
-  * `"sqrt"`: Square root transformation
+* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should determine the appropriate transformation to better visualize the data. The available options for `transform` include:
+  * `"sqrt"`: Square root transformation (default)
+  * `"identity"`: No transformation
   * `"log"`: Logarithmic transformation. Zeros are replaced with half of the non-zero minimum  for each taxon before log transformation.
 * `feature.level`: Specifiy which level of the data to be plotted.
 * `features.plot`: This parameter can be used in all feature-level visualization functions to specify which taxa or features should be visualized. This is particularly useful for focusing on the results of differential abundance analyses. When you provide a vector of taxa or feature names to `features.plot`, this will directly select these features for visualization, overriding any settings in `prev.filter` and `abund.filter`. By using this parameter, you can directly highlight and examine the taxa or features that are significantly different in abundance across your comparisons.

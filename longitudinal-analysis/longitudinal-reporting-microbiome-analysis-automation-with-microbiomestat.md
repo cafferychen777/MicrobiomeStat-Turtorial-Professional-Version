@@ -6,7 +6,7 @@ description: >-
 
 # Reports Generation
 
-MicrobiomeStat provides an efficient solution by generating integrated reports for cross-sectional studies. These reports include:
+MicrobiomeStat provides an efficient solution by generating integrated reports for longitudinal studies. These reports include:
 
 * Visualizations to illustrate key findings
 * Statistical summaries that highlight significant results
@@ -16,8 +16,6 @@ The `mStat_generate_report_long()` function generates an integrated reports. It 
 * **Alpha diversity**: Functions used include `generate_alpha_boxplot_long()`, `generate_alpha_spaghettiplot_long()`, `generate_alpha_trend_test_long()`, and `generate_alpha_volatility_test_long()`.
 * **Beta diversity**: Functions used include `generate_beta_ordination_long()`, `generate_beta_pc_boxplot_long()`, `generate_beta_change_spaghettiplot_long()`, `generate_beta_trend_test_long()`, and `generate_beta_volatility_test_long()`.
 * **Feature-level**: Functions used include `generate_taxa_areaplot_long()`, `generate_taxa_heatmap_long()`, `generate_taxa_trend_test_long()`, `generate_taxa_volatility_test_long()`, `generate_taxa_boxplot_long()`, `generate_taxa_spaghettiplot_long()`, `generate_taxa_trend_volcano_long()`, `generate_taxa_volatility_volcano_long()`, `generate_taxa_barplot_long()`, `generate_taxa_change_heatmap_long()`, `generate_taxa_indiv_spaghettiplot_long()`, and `generate_taxa_indiv_boxplot_long()`.
-
-It then compiles the results into a publication-ready PDF report containing:
 
 The function then compiles these analyses into a comprehensive PDF report. The report includes:
 
@@ -73,14 +71,13 @@ Before using the function, it's important to understand the parameters:
   * Default is 'relative change'.
   * If none of the above options are matched, an error will be thrown indicating the acceptable options or prompting the user to provide a custom function.
 * `feature.box.axis.transform`: A string indicating the transformation to apply to the data before plotting. Options are:
-  * "identity": No transformation (default),
-  * "sqrt": Square root transformation,
+  * "sqrt": Square root transformation (default),
+  * "identity": No transformation,
   * "log": Logarithmic transformation.
 * `feature.analysis.rarafy`: Logical, indicating whether to rarefy the data at the feature-level for analysis. If TRUE, the feature data will be rarefied before analysis. Default is TRUE.
-* `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
-* `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
-* `dotplot.feature.no`: A numeric value indicating the number of top abundant features to retain in the dotplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 40.
-* `feature.mt.method`: Character, multiple testing method for features, "fdr" or "none", default is "fdr".
+* `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 30.
+* `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 30.
+* `feature.mt.method`: Character, multiple testing method for features, "fdr", "bonferroni", or "none", default is "fdr".
 * `feature.sig.level`: Numeric, significance level cutoff for highlighting features, default is 0.1.
 * `base.size`: Base font size for the generated plots.
 * `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
@@ -122,8 +119,8 @@ feature.box.axis.transform = "sqrt"
 output.file = "path/to/Omics Analysis Report.pdf" # Replace with your own file path for the output report
 
 # Specify parameters for feature retention
-bar.area.feature.no = 40 # Number of top abundant features to retain in barplot and areaplot
-heatmap.feature.no = 40 # Number of top abundant features to retain in heatmap
+bar.area.feature.no = 30 # Number of top abundant features to retain in barplot and areaplot
+heatmap.feature.no = 30 # Number of top abundant features to retain in heatmap
 
 # Specify optional parameters
 dist.obj = NULL # Replace with a pre-computed distance matrix if available
@@ -234,6 +231,6 @@ mStat_generate_report_long(
 
 The automated report reduces the need for manual analysis and ensures consistency. By integrating results from different analytical dimensions, it provides a comprehensive view of the data.
 
-MicrobiomeStat equips researchers with automated workflows to quickly synthesize and report findings from cross-sectional studies. The standardized reports integrate multidimensional perspectives, including alpha diversity, beta diversity, and differential abundance analysis, for comprehensive insights.
+MicrobiomeStat equips researchers with automated workflows to quickly synthesize and report findings from longitudinal studies. The standardized reports integrate multidimensional perspectives, including alpha diversity, beta diversity, and differential abundance analysis, for comprehensive insights.
 
 The reports contain clear visualizations and statistical summaries to aid in biological interpretation and facilitate result dissemination. By automating time-consuming manual analytical tasks, MicrobiomeStat enables rapid, reproducible, and robust reporting to advance microbiome research.

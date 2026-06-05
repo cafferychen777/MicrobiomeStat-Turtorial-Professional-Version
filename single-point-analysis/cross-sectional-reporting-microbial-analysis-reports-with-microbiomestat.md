@@ -49,15 +49,15 @@ Before using the function, it is important to understand the parameters:
 * `feature.dat.type`: The type of the feature data, which determines how the data is handled in downstream analyses. Should be one of: "count": Raw count data from a sequencing experiment (e.g. ASV/OTU count); "proportion": Data that has already been normalized to proportions/percentages (e.g., functional data); "other": Other non-compositional data types, where the data will be analyzed directly without normalization and transformation. The user needs to determine the data-specific QC, normalization, and transformation. If the user wants to normalize/transform the abundance data on his own way, he can also use this option.
 * `feature.analysis.rarafy`: Logical, indicating whether to rarefy the data for feature-level analysis. If TRUE, the feature data will be rarefied before visualization and analysis. Default is TRUE. Note: When the majority of the features are of low-abundance, their presence/absence strongly depends on the sequencing depth. Rarefaction can be used to remove the unwanted variation due to sequencing depth and could increase the power for the analysis of rare features. 
 * `vis.feature.level`: The feature levels to be visualized for an overview of the data (stacked barplot, heatmap, etc.).  Feature levels should correspond to the column names in the feature annotation matrix (`feature.ann`) of data.obj. It could also contain the "original" level, which is the raw feature level without aggregation.
-* `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20. Only applicable to count and proportion data.
-* `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 20.
+* `bar.area.feature.no`: A numeric value indicating the number of top abundant features to retain in both barplot and areaplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 40. Only applicable to count and proportion data.
+* `heatmap.feature.no`: A numeric value indicating the number of top abundant features to retain in the heatmap. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 40.
 * `dotplot.feature.no`: A numeric value indicating the number of top abundant features to retain in the dotplot. Features with average relative abundance ranked below this number will be grouped into 'Other'. Default 40. Only applicable to count and proportion data.
 * `test.feature.level`: The feature levels to be tested. Similar to `vis.feature.level`. The signficant features will be visualized collectively and individually.
-* `feature.mt.method`: Character, multiple testing method to identify differential features, "fdr" or "none". Default is "fdr".
+* `feature.mt.method`: Character, multiple testing method to identify differential features, "fdr", "bonferroni", or "none". Default is "fdr".
 * `feature.sig.level`: Numeric, significance cutoff for declaring differntial features, default is 0.1.
 * `feature.box.axis.transform`: A string indicating the transformation to be applied to abundance data before plotting. This parameter is only used in `generate_taxa_boxplot_single` and `generate_taxa_indiv_boxplot_single`. Options are:
-  * "identity": No transformation (default),
-  * "sqrt": Square root transformation,
+  * "sqrt": Square root transformation (default),
+  * "identity": No transformation,
   * "log": Logarithmic transformation. 
 * `base.size`: Base font size for the generated plots.
 * `theme.choice`: Plot theme choice. Can be one of: "prism": ggprism::theme\_prism(), "classic": theme\_classic(), "gray": theme\_gray(), "bw": theme\_bw().
@@ -108,8 +108,8 @@ feature.box.axis.transform = "sqrt" # Axis transformation for feature boxplots
 strata.var = "sex" # Variable to stratify on in visualization
 
 # Specify parameters for feature retention
-bar.area.feature.no = 20 # Number of top abundant features to retain in barplot and areaplot
-heatmap.feature.no = 20 # Number of top abundant features to retain in heatmap
+bar.area.feature.no = 40 # Number of top abundant features to retain in barplot and areaplot
+heatmap.feature.no = 40 # Number of top abundant features to retain in heatmap
 dotplot.feature.no = 40 # Number of top abundant features to retain in dotplot
 
 # Run the function

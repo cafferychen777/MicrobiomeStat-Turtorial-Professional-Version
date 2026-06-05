@@ -74,7 +74,7 @@ In addition to the basic data object, the MicrobiomeStat toolkit accepts special
 
 `alpha.obj`: For functions performing alpha diversity analysis, the `alpha.obj` parameter accepts a data object that encapsulates various alpha diversity measures of the samples (matrix type, rows: samples, columns: alpha diversity measures).  The `mStat_calculate_alpha_diversity` function calculates the common alpha diversity measures ("shannon", "simpson", "observed_species", "chao1", "ace", "pielou"). If no data object is provided to `alpha.obj` where needed, the function will be called automatically. However, to expedite the analysis process, it is advisable to pre-calculate the alpha diversity indices and store them in a properly named data object for future repeated use.
 
-It is important to note that `mStat_calculate_alpha_diversity` does not perform data rarefaction, a process that equalizes the sequencing depth across samples so that the alpha diversity measures (esp. species richness) are not influenced by sequencing depth variation. It is always recommended that the users perform rarafaction using `mStat_rarefy_data` before calculating the alpha diversity.
+It is important to note that `mStat_calculate_alpha_diversity` does not perform data rarefaction, a process that equalizes the sequencing depth across samples so that the alpha diversity measures (esp. species richness) are not influenced by sequencing depth variation. It is always recommended that the users perform rarefaction using `mStat_rarefy_data` before calculating the alpha diversity.
 
 ### dist.obj
 

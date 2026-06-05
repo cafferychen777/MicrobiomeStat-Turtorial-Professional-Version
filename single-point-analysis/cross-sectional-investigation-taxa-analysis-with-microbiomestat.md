@@ -1,6 +1,6 @@
 # Feature-level Analysis
 
-A central task in feature-level analysis is to identify taxa with differential abundance between groups. The `generate_taxa_test_single` function performs differential abundance analysis (DAA) based on compositional data using the LinDA method, which is a DAA method based on log linear model with bias correction due to composiitonal effects.  If the data are not compositional, regular linear regression analysis will be used.
+A central task in feature-level analysis is to identify taxa with differential abundance between groups. The `generate_taxa_test_single` function performs differential abundance analysis (DAA) based on compositional data using the LinDA method, which is a DAA method based on log linear model with bias correction due to compositional effects.  If the data are not compositional, regular linear regression analysis will be used.
 
 > Zhou H, He K, Chen J, Zhang X. LinDA: linear models for differential abundance analysis of microbiome compositional data. Genome Biol. 2022 Apr 14;23(1):95. doi: 10.1186/s13059-022-02655-5. PMID: 35421994; PMCID: PMC9012043.
 
@@ -24,6 +24,8 @@ This distinction is important for interpreting results:
 - For categorical variables, the coefficient represents the log2 fold change between groups
 - For continuous variables, the coefficient represents the change in log2 abundance per unit increase in the predictor
 
+The `ref.level` parameter (added in v1.4.4) allows you to explicitly specify the reference level for categorical `group.var`. By default, R uses the first level of the factor as the reference. Setting `ref.level` overrides this behavior, which is useful when you want to compare against a specific control group.
+
 The `generate_taxa_test_single` outputs a table of LinDA association statistics for all tested taxa/features. The table contains the following components:
 
 * `Variable`: It identifies the taxon/feature being analyzed.
@@ -34,7 +36,7 @@ The `generate_taxa_test_single` outputs a table of LinDA association statistics 
   
 `generate_taxa_volcano_single` will produce a volcano plot based on the `generate_taxa_test_single` output. It visualizes the relationship between the effect size (log foldchange) and its statistical significance. The function has the `feature.sig.level` and `feature.mt.method` parameters:
 * `feature.sig.level`: This parameter determines the significance level, influencing the position of the dashed lines in the volcano plot. It sets the threshold for distinguishing between significant and non-significant differences.
-* `feature.mt.method`: Thi parameter determines whether the fdr-adjusted p-values or raw p-values will be plotted . There are two options available currently: "fdr" (false discovery rate) and "none" (raw p-value). 
+* `feature.mt.method`: This parameter determines whether the adjusted p-values or raw p-values will be plotted. Available options: "fdr" (false discovery rate), "bonferroni", and "none" (raw p-value). 
 
 Following shows an example:
 
@@ -52,7 +54,8 @@ test.list <- generate_taxa_test_single(
     feature.dat.type = "count",
     feature.level = c("Phylum","Genus","Family"),
     prev.filter = 0.1,
-    abund.filter = 0.0001
+    abund.filter = 0.0001,
+    ref.level = "Placebo"  # Explicitly set reference level for group comparisons
 )
 ```
 
@@ -76,9 +79,9 @@ volcano_plots <- generate_taxa_volcano_single(
 
 Next, we will introduce functions to plot the taxa/features data. They can be used to visualize specific taxa/features, for example, those selected from differential abundance anlysis. Or they can be used to visualize all taxa with some basic filtering. The first function is `generate_taxa_boxplot_single`, which generate boxplots of abundance data. It has the following relevant parameters:
 * `feature.dat.type`: One of "count", "proportion" or "other".  For "count", the data will be converted to proportion data before the visualization. 
-* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should deterimne the appropriate transformation to better visualize the data. The available options for `transform` include:
-  * `"identity"`: No transformation (default)
-  * `"sqrt"`: Square root transformation
+* `transform`: This parameter indicates the transformation to apply to the abundance data when plotting. Transformations are only applied when the `feature.dat.type` is set to either "count" or "proportion".  When  `feature.dat.type` is "other",  no transformation will be performed. User should determine the appropriate transformation to better visualize the data. The available options for `transform` include:
+  * `"sqrt"`: Square root transformation (default)
+  * `"identity"`: No transformation
   * `"log"`: Logarithmic transformation. Zeros are replaced with half of the non-zero minimum  for each taxon before log transformation.
 * `feature.level`: Specifiy which level of the data to be plotted. Same meaning as in  `generate_taxa_test_single`.
 * `features.plot`: This parameter can be used in all feature-level visualization functions to specify which taxa or features should be visualized. This is particularly useful for focusing on the results of differential abundance analyses. When you provide a vector of taxa or feature names to `features.plot`, this will directly select these features for visualization, overriding any settings in `prev.filter` and `abund.filter`. By using this parameter, you can directly highlight and examine the taxa or features that are significantly different in abundance across your comparisons.
@@ -318,7 +321,7 @@ plot.list$Genus[[1]]
 - `group.var`: The grouping variable used in the differential testing
 - `test.list`: The output from `generate_taxa_test_single`, containing test results
 - `feature.sig.level`: Significance level cutoff for highlighting taxa (default is 0.05)
-- `feature.mt.method`: Multiple testing correction method, either "fdr" (default) or "none"
+- `feature.mt.method`: Multiple testing correction method: "fdr" (default), "bonferroni", or "none"
 - `features.plot`: Optional. Specific taxa to include in the plots
 - `palette`: Optional. Color palette for the plot
 - `pdf`: Whether to save the plot as a PDF file

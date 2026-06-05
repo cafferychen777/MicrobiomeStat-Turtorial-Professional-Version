@@ -17,7 +17,7 @@ install.packages("MicrobiomeStat")
 ```
 
 {% hint style="info" %}
-**Note:** The current version of MicrobiomeStat on CRAN supports only the `linda` and `linda.plot` functions. For a complete set of functionalities, especially for analyzing longitudinal data, consider installing the development version from GitHub.
+**Note:** The CRAN version of MicrobiomeStat may lag behind the latest development version. For the most up-to-date features, including `linda2()` with tree-guided smoothing, the unified analysis interface, and the latest bug fixes, consider installing the development version from GitHub.
 {% endhint %}
 
 ### Option 2: Installation via GitHub (Development Version)
@@ -42,7 +42,7 @@ After installation, you can check the installed version of MicrobiomeStat to ens
 packageVersion("MicrobiomeStat")
 ```
 
-This should display the version number of MicrobiomeStat. For the development version installed from GitHub, the current version is 1.1.3. For the CRAN version, the current version is 1.1. Ensure that the displayed version number matches the expected version for the source you installed from (GitHub or CRAN).
+This should display the version number of MicrobiomeStat. For the development version installed from GitHub, the current version is 1.5.0. Ensure that the displayed version number matches the expected version for the source you installed from (GitHub or CRAN).
 
 ## Dependencies
 
