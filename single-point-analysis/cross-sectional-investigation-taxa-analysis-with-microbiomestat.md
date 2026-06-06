@@ -353,7 +353,7 @@ MicrobiomeStat v1.4.2+ includes `linda2()`, an enhanced version of LinDA that su
 - When you want to **increase statistical power** for detecting differentially abundant taxa
 - When you expect **phylogenetically clustered effects** (related taxa responding similarly to treatment)
 
-### Key Parameters for Tree-Guided Smoothing
+### Key Parameters
 
 ```r
 linda2(
@@ -361,15 +361,22 @@ linda2(
   meta.dat,              # Sample metadata
   formula,               # Model formula (e.g., "~ group + age")
   feature.dat.type,      # "count", "proportion", or "other"
+  weights = NULL,        # Sample weights (NULL, "detection_depth", column name, or numeric vector)
   tree = NULL,           # Phylogenetic tree (phylo object)
   tree.smooth = FALSE,   # Enable tree-guided smoothing
   tree.lambda = 0.1,     # Smoothing strength (0.05-0.2 recommended)
   tree.k = 5,            # Number of nearest neighbors for local smoothing
-  tree.meff.exponent = 2.2  # M_eff correction exponent
+  omnibus = TRUE         # Max-T omnibus combining baseline and smoothed results
 )
 ```
 
-### Tree Smoothing Parameters Explained
+### Parameter Details
+
+* `weights`: Sample weights for regression models. Options:
+  - `NULL` (default): No weighting, standard LinDA analysis
+  - `"detection_depth"`: Automatic Detection Depth Weighting (DDW) using `sqrt(colSums(feature.dat > 0))`. Recommended for handling sample quality heterogeneity
+  - Character string: Name of a column in `meta.dat` containing custom weights
+  - Numeric vector: Direct sample weights (length must equal number of samples)
 
 * `tree.lambda`: Controls smoothing strength. Higher values = more borrowing from neighbors.
   - Default: 0.1 (mild smoothing)
@@ -381,10 +388,7 @@ linda2(
   - Default: 5
   - Lower values prevent signal leakage to distant taxa
 
-* `tree.meff.exponent`: Exponent for effective number of tests correction.
-  - Default: 2.2 (for N ≤ 100 samples per group)
-  - Use 3.5 for larger sample sizes (N > 100)
-  - This ensures proper FDR control after smoothing
+* `omnibus`: When `TRUE` (default) and tree smoothing is enabled, computes Max-T omnibus p-values that combine baseline and smoothed results. This achieves the "envelope" effect: it captures the advantage of smoothing for phylogenetically clustered signals while not losing power for isolated signals.
 
 ### Example: Tree-Guided Analysis with phyloseq Data
 
@@ -402,22 +406,43 @@ sample_data(GP)$Environment <- ifelse(
   "Human", "Environmental"
 )
 
-# Run linda2 with tree-guided smoothing
+# Run linda2 with tree-guided smoothing and omnibus
 result <- linda2(
   phyloseq.obj = GP,
   formula = "~ Environment",
   tree.smooth = TRUE,      # Enable tree smoothing
   tree.lambda = 0.1,       # Mild smoothing
+  omnibus = TRUE,          # Max-T omnibus (default)
   verbose = TRUE
 )
 
 # The tree is automatically extracted from the phyloseq object
-# Results include both smoothed p-values and M_eff correction
 ```
+
+### Detection Depth Weighting (DDW)
+
+`linda2()` supports automatic Detection Depth Weighting, which adjusts for differences in sample detection quality. Samples with more detected features (higher detection depth) receive higher weight, improving power when sample quality is heterogeneous.
+
+```r
+# Run linda2 with DDW
+result <- linda2(
+  feature.dat = otu_table,
+  meta.dat = metadata,
+  formula = "~ group",
+  feature.dat.type = "count",
+  weights = "detection_depth"   # Automatic DDW
+)
+```
+
+Technical details:
+- DDW uses `sqrt(detection_depth)` rather than raw detection depth
+- Raw detection depth weights cause standard error underestimation (~7.5%) and inflated Type I error
+- The square root transformation preserves power gains while maintaining proper FDR control
+- DDW is most beneficial when samples have heterogeneous detection depths (CV > 0.2)
 
 ### Precision-Weighted Bias Correction
 
-`linda2()` also includes an improved bias correction method that weights taxa by their precision (1/SE²). This reduces bias estimation error by up to 84% when taxa have heterogeneous standard errors (which is common in microbiome data where high-abundance taxa have lower variance).
+`linda2()` also includes an improved bias correction method that weights taxa by their precision (1/SE²). This reduces bias estimation error when taxa have heterogeneous standard errors (common in microbiome data where high-abundance taxa have lower variance).
 
 This feature is automatically enabled when:
 - SE ratio (max/min) is less than 100
@@ -425,17 +450,26 @@ This feature is automatically enabled when:
 
 ### Output Interpretation
 
-The output from `linda2()` is similar to `linda()`, with additional tree smoothing information:
+The output from `linda2()` is similar to `linda()`, with additional columns when tree smoothing is enabled:
 
 ```r
 # Access results for a specific variable
 result$output$EnvironmentHuman
 
-# Columns include:
+# Standard columns:
+# - baseMean: Normalized mean abundance
 # - log2FoldChange: Bias-corrected effect size
 # - lfcSE: Standard error
-# - pvalue: Raw p-value (after smoothing if enabled)
-# - padj: FDR-adjusted p-value (with M_eff correction if tree smoothing enabled)
+# - stat: Test statistic
+# - pvalue: Final p-value (omnibus if enabled, smoothed otherwise)
+# - padj: FDR-adjusted p-value
+# - reject: Whether the taxon is significant at the specified alpha
+# - df: Degrees of freedom
+
+# Additional columns with tree smoothing:
+# - pvalue.baseline: P-value from standard (unsmoothed) analysis
+# - pvalue.smoothed: P-value after tree-guided smoothing (with M_eff correction)
+# - pvalue.omnibus: Max-T omnibus p-value (if omnibus = TRUE)
 ```
 
 ### When Tree Smoothing Helps Most
