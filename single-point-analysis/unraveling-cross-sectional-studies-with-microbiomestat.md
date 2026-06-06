@@ -20,7 +20,7 @@ The dataset provides taxonomic classifications at three ranks: Phylum, Family, a
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-10 at 18.32.30.png" alt=""><figcaption><p>Taxonomic annotations for the microbial features in the <code>peerj32</code> dataset. Each row represents a microbial feature, classified at the Phylum, Family, and Genus levels.</p></figcaption></figure>
 
-We will use `peerj32` dataset to showcase the utility of MicrobiomeStats in analyzing cross-sectional/case-control data. For users wishing to apply our tutorial to their own datasets, please see the following guide:
+We will use `peerj32` dataset to showcase the utility of MicrobiomeStat in analyzing cross-sectional/case-control data. For users wishing to apply our tutorial to their own datasets, please see the following guide:
 
 {% content-ref url="../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/" %}
 [laying-the-foundation-creating-the-microbiomestat-data-object](../setting-up-microbiomestat-installation-and-data-preparation/laying-the-foundation-creating-the-microbiomestat-data-object/)

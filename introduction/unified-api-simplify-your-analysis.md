@@ -6,7 +6,7 @@ description: >-
 
 # Unified API: Simplify Your Analysis
 
-Starting from version 1.5.0, MicrobiomeStat provides a **unified API** with 6 core functions that automatically detect your study design (cross-sectional, paired, or longitudinal) and route to the appropriate underlying functions. This significantly simplifies the user experience — instead of memorizing dozens of function-specific names, you can use a consistent interface for all analyses.
+Starting from version 1.5.1, MicrobiomeStat provides a **unified API** with 6 core functions that automatically detect your study design (cross-sectional, paired, or longitudinal) and route to the appropriate underlying functions. This significantly simplifies the user experience — instead of memorizing dozens of function-specific names, you can use a consistent interface for all analyses.
 
 ## Overview
 
@@ -176,7 +176,7 @@ Common parameters shared across the unified functions:
   * Vector of >2: longitudinal with specific time points
 * `change.type`: For paired/longitudinal comparisons — `"none"` (raw values), `"relative"`, `"log_fold"`, or `"absolute"`
 * `feature.dat.type`: Data type — `"count"`, `"proportion"`, or `"other"`
-* `theme`: Plot theme — `"bw"`, `"classic"`, `"gray"`, or `"prism"`
+* `theme`: Plot theme — `"bw"`, `"classic"`, `"gray"`, `"minimal"`, or `"prism"` (also supports `"light"`, `"dark"`, `"void"`)
 
 ## When to Use Unified vs. Specific Functions
 

@@ -42,7 +42,7 @@ After installation, you can check the installed version of MicrobiomeStat to ens
 packageVersion("MicrobiomeStat")
 ```
 
-This should display the version number of MicrobiomeStat. For the development version installed from GitHub, the current version is 1.5.0. Ensure that the displayed version number matches the expected version for the source you installed from (GitHub or CRAN).
+This should display the version number of MicrobiomeStat. For the development version installed from GitHub, the current version is 1.5.1. Ensure that the displayed version number matches the expected version for the source you installed from (GitHub or CRAN).
 
 ## Dependencies
 

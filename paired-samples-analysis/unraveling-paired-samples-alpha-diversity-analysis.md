@@ -2,7 +2,7 @@
 
 Welcome to this tutorial on Alpha Diversity Analysis for Paired Samples. This analysis will involve studying variations in alpha diversity across different time points and groups. Our primary tools will be illustrative boxplots coupled with formal statistical tests, which will assist in identifying potential informative patterns in alpha diversity. One of our main objectives is to explore changes in alpha diversity within the same group and compare the changes between groups.
 
-MicrobiomeStat supports "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness characteritics in the microbiome samples.
+MicrobiomeStat supports "shannon", "simpson", "observed\_species", "chao1", "ace", and "pielou". Each of these metrics furnishes distinct insights into the species richness and evenness characteristics in the microbiome samples.
 
 For those functions performing alpha diversity analysis, they all include an `alpha.obj` parameter, which accepts a matrix of  alpha diversity measures (row - samples, column - measures).  `mStat_calculate_alpha_diversity` could be used to generate the common alpha diversity measures.  If `alpha.obj` is NULL, `mStat_calculate_alpha_diversity` will be called autonomously. To speed up computation, we recommend calling `mStat_calculate_alpha_diversity` once and store the alpha diversity measures in an object, which can be used later repeatedly.
 

@@ -10,9 +10,9 @@ When covariates (`adj.vars`) are identified, the `mStat_calculate_adjusted_dista
 
 This process ensures the extracted microbial patterns are not confounded by the specified covariates, thus presenting a more accurate representation of the microbial community structures.
 
-Based on the distance matrices, we can also extract their first several principal coordinates (PCs), which capture the main variation in the data. PCs can be calculated by calling `mstat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers favoring advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. For those PC-based functions, they all have a `pc.obj` parameter, which accepts a list of PC matrices based on a variety of beta diversity measures. If the parameter is not specified, `mStat_calculate_PC` will be called automatically. Or the users can create their own list of PC matrices and pass it to `pc.obj`. We recommend th user to create the list once in the analysis and use it repeatedly.
+Based on the distance matrices, we can also extract their first several principal coordinates (PCs), which capture the main variation in the data. PCs can be calculated by calling `mStat_calculate_PC` function. While users are free to select between "mds" and "nmds" as their ordination method, in scenarios where `pc.obj` isn't provided beforehand, the toolkit defaults to the "mds" method. Researchers favoring advanced ordination techniques like t-SNE or UMAP can employ external tools to compute results. For those PC-based functions, they all have a `pc.obj` parameter, which accepts a list of PC matrices based on a variety of beta diversity measures. If the parameter is not specified, `mStat_calculate_PC` will be called automatically. Or the users can create their own list of PC matrices and pass it to `pc.obj`. We recommend the user to create the list once in the analysis and use it repeatedly.
 
-MicrobiomeStats supports "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted), "GUniFrac" (generalized), "WUniFrac" (weighted), and "JS" (Jensen-Shannon divergence). These measures can be computed using the `mStat_calculate_beta_diversity` function, which is designed to handle a range of distance calculations for assessing the dissimilarity between microbial communities.
+MicrobiomeStat supports "BC" (Bray-Curtis), "Jaccard", "UniFrac" (unweighted), "GUniFrac" (generalized), "WUniFrac" (weighted), and "JS" (Jensen-Shannon divergence). These measures can be computed using the `mStat_calculate_beta_diversity` function, which is designed to handle a range of distance calculations for assessing the dissimilarity between microbial communities.
 
 Building on these distance measures, the `generate_beta_trend_test_long()` function in MicrobiomeStat utilizes a linear mixed effects model for longitudinal beta diversity trend analysis. This function uses the distance matrix as the response, time as a fixed effect, and subject as a random effect. It also supports interaction with a grouping variable and inclusion of covariates for model refinement.
 
@@ -106,7 +106,7 @@ dotplot_T2D <- generate_beta_per_time_dotplot_long(
 
 In addition to these statistical analyses, MicrobiomeStat also provides visualization tools for beta diversity. For instance, the `generate_beta_pc_boxplot_long()` function creates a plot that shows individual trajectories across ordination axes, connecting data points from one timepoint to the next.
 
-```{r
+```r
 data(ecam.obj)
 generate_beta_pc_boxplot_long(
   data.obj = ecam.obj,
@@ -134,7 +134,7 @@ generate_beta_pc_boxplot_long(
 
 Expanding on this, the `generate_beta_ordination_long()` function creates a plot where samples cluster based on similarity, providing a global overview of the data.
 
-```{r
+```r
 generate_beta_ordination_long(
   data.obj = subset_T2D.obj,
   dist.obj = NULL,  
@@ -161,7 +161,7 @@ generate_beta_ordination_long(
 
 Lastly, the `generate_beta_change_spaghettiplot_long()` function creates a plot that shows individual trajectories of microbial change, providing a detailed view of each subject's journey through time.
 
-```{r
+```r
 generate_beta_change_spaghettiplot_long(
   data.obj = ecam.obj,
   dist.obj = NULL,

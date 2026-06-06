@@ -14,7 +14,7 @@ Metadata provides key sample information for integrated microbiome analysis. Mic
 
 The `mStat_update_meta_data()` function updates metadata from a file or dataframe:
 
-```{r
+```r
 mStat_update_meta_data(
   data.obj = obj,
   map.file = "new_meta.csv" 
@@ -36,7 +36,7 @@ This allows incorporating new metadata to enable more powerful integrated analys
 
 The `mStat_update_sample_name()` function updates sample names across data components:
 
-```{r
+```r
 mStat_update_sample_name(
   data.obj = obj,
   new.name = c("s1", "s2", "s3")

@@ -31,7 +31,7 @@ The output is a single merged data object ready for integrated analysis.
 
 ### Usage
 
-```{r
+```r
 mStat_combine_data(
   data.obj1 = obj1, 
   data.obj2 = obj2

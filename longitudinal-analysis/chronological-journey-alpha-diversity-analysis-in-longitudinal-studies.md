@@ -79,7 +79,7 @@ alpha_volatility_test_results <- generate_alpha_volatility_test_long(
 
 After discussing the functions `generate_alpha_trend_test_long` and `generate_alpha_volatility_test_long`, let's explore another important aspect of analyzing longitudinal alpha diversity data in the context of Type 2 Diabetes (T2D) dataset.
 
-In addition to the trend and volatility tests, MicrobiomeStat provides the capability to perform detailed alpha diversity tests at each time point in a longitudinal study. This is achieved using the `` function. This function allows for a comprehensive examination of alpha diversity measures such as Shannon, Simpson, Observed Species, Chao1, ACE, and Pielou's Evenness across different time points in the dataset.
+In addition to the trend and volatility tests, MicrobiomeStat provides the capability to perform detailed alpha diversity tests at each time point in a longitudinal study. This is achieved using the `generate_alpha_per_time_test_long` function. This function allows for a comprehensive examination of alpha diversity measures such as Shannon, Simpson, Observed Species, Chao1, ACE, and Pielou's Evenness across different time points in the dataset.
 
 To perform the longitudinal alpha diversity test for the T2D dataset, we apply the `generate_alpha_per_time_test_long` function. This function requires specifying various parameters including alpha diversity measures, time variable, levels for time points, group variable, and any additional variables for adjustment. Here's an example:
 

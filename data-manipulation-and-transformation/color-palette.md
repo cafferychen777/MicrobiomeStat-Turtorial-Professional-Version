@@ -18,7 +18,7 @@ Choosing the right color palette is essential for creating visually appealing an
 
 #### Usage
 
-```{r
+```r
 # Default palette
 mStat_get_palette()
 

@@ -19,7 +19,7 @@ Rarefaction is a technique that equalizes the sequencing depth by randomly subsa
 
 The `mStat_rarefy_data()` function rarefies the feature table to an even sequencing depth.
 
-```{r}
+```r
 mStat_rarefy_data(
   data.obj = obj,
   depth = 10000

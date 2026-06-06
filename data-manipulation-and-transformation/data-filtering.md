@@ -26,7 +26,7 @@ MicrobiomeStat has been designed to provide researchers with a set of flexible f
 
 ### Removing Features with `mStat_remove_feature()`
 
-```{r}
+```r
 mStat_remove_feature(
   data.obj = obj,
   featureIDs = c("feat1", "feat2"),
@@ -83,7 +83,7 @@ By following these real-world examples, users can efficiently subset their micro
 
 ### Working with Distance Matrices: `mStat_subset_dist()`
 
-```{r}
+```r
 mStat_subset_dist(
   dist.obj = dist,
   samIDs = c("s1", "s2", "s3")  

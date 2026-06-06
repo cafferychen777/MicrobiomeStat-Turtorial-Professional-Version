@@ -61,9 +61,9 @@ We also acknowledge the work by the developers of `microbiomeutilities`, `phylos
 
 ## News
 
-### Version 1.5.0 (April 2026)
+### Version 1.5.1 (April 2026)
 
-MicrobiomeStat v1.5.0 brings significant improvements:
+MicrobiomeStat v1.5.1 brings significant improvements:
 
 * **`linda2()` exported**: Enhanced differential abundance testing with phylogenetic tree-guided smoothing (`tree.smooth = TRUE`), Max-T omnibus p-values (`omnibus = TRUE`), and Detection Depth Weighting (`weights = "detection_depth"`) for handling sample quality heterogeneity
 * **Unified analysis interface**: 6 core functions (`plot_taxa`, `plot_alpha`, `plot_beta`, `test_taxa`, `test_alpha`, `test_beta`) that automatically detect study design and route to the appropriate underlying functions. See the [Unified API guide](introduction/unified-api-simplify-your-analysis.md) for details.
