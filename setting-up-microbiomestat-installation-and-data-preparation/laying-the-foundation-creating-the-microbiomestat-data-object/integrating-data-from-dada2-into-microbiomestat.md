@@ -45,10 +45,12 @@ sam_tab <- read.table(
 )
 
 # Convert DADA2 data into a MicrobiomeStat data object
+# phy_tree is optional: provide a phylogenetic tree (phylo object) if available
 data_obj <- mStat_import_dada2_as_data_obj(
   seq_tab = seq_tab,
   tax_tab = tax_tab,
-  sam_tab = sam_tab
+  sam_tab = sam_tab,
+  phy_tree = NULL  # Set to a phylo object if you have a tree from DADA2
 )
 ```
 

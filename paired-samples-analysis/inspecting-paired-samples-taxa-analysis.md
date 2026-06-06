@@ -263,7 +263,7 @@ generate_taxa_change_boxplot_pair(
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-10-11 at 18.20.52.png" alt=""><figcaption></figcaption></figure>
 
-The `generate_taxa_barplot_pair` function will generate starked bar plots of taxa. In each sample pair, the same taxa are connected by lines ito track their abundance changes. The function outputs both individual and averaged bar plots. The function has an important parameter `feature.number`.
+The `generate_taxa_barplot_pair` function will generate stacked bar plots of taxa. In each sample pair, the same taxa are connected by lines to track their abundance changes. The function outputs both individual and averaged bar plots. The function has an important parameter `feature.number`.
 
 * `feature.number`: This parameter determines the maximum number of taxa/features that will be visualized directly in the barplot. For datasets with numerous features, it's practical to limit to the most abundant or significant taxa, ensuring that the visualization remains informative and isn't cluttered. When the number of taxa surpasses the value defined in `feature.number`, the function aggregates low-abundance taxa into a collective category labeled "other". This means, for instance, if there are over 20 features in the dataset but `feature.number` is set to 20, the least abundant features that exceed this count will be collectively presented as "other" in the visualization. This approach ensures that the chart remains legible, highlighting the most dominant features, while still accounting for the contributions of less abundant taxa.
 

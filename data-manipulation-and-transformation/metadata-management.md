@@ -17,9 +17,18 @@ The `mStat_update_meta_data()` function updates metadata from a file or datafram
 ```r
 mStat_update_meta_data(
   data.obj = obj,
-  map.file = "new_meta.csv" 
+  map.file = "new_meta.csv",
+  meta.sep = "\t"  # Use "," for CSV, "\t" for TSV (default)
 )
 ```
+
+**Parameters:**
+
+* `data.obj`: The MicrobiomeStat data object to update.
+* `map.file`: Path to the metadata file, or a data.frame.
+* `meta.sep`: Column separator for the metadata file. Default is `"\t"` (tab-separated). Use `","` for CSV files.
+* `quote`: Quote character used in the file. Default is `"\""`.
+* `comment`: Comment character. Default is `""` (none).
 
 It can handle CSVs, TSVs, etc.
 

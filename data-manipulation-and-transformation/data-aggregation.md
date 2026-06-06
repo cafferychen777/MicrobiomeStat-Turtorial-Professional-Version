@@ -31,6 +31,7 @@ Where:
 * `data.obj`: Refers to the data object within MicrobiomeStat that needs to be aggregated.
 * `subject.var`: Represents the primary variable for aggregation, such as a patient ID.
 * `strata.var`: Acts as an optional stratification variable, allowing for more nuanced aggregation based on groups or categories.
+* `meta.handle.conflict`: Controls how metadata conflicts are handled when multiple samples per subject have different values. Options are `"first"` (use the first value, default), `"stop"` (raise an error), or `"summarise"` (summarize conflicting values).
 
 In this example, we've prepared the data for our function using the `peerj32.obj` dataset. Next, we call the `mStat_aggregate_data()` function to aggregate the data based on the "subject" variable. We haven't provided any stratification variable (`strata.var`), so the function will aggregate solely based on the "subject" variable.
 
